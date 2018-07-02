@@ -1,2 +1,0 @@
-# progress
-go go go!
