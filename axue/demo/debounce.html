@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>函数防抖</title>
+</head>
+<body>
+<p>当一个动作触发比较频发时, 可以使用防抖, 在行为停止后延迟一段时间执行</p>
+<input type="text" id="inp">
+
+<script>
+  var inp = document.getElementById('inp');
+  var timer = null;
+  inp.addEventListener('input', inpChange);
+
+  function inpChange(e) {
+    sendRequest(e.target.value);
+  }
+
+  function sendRequest(value) {
+    clearTimeout(timer);
+
+    timer = setTimeout(function () {
+      console.log(value);
+    }, 500);
+  }
+</script>
+</body>
+</html>
