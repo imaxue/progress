@@ -1,0 +1,36 @@
+##插件使用：##
+
+ 放入项目中，并在package.json中  script里面 配一下
+
+       "add": "node  ./lib/add.js"====
+
+       命令行运行： npm run add 
+
+##知识点##
+
+1. inquirer主要功能：
+   inquirer.prompt([{
+           type: String, // 表示提问的类型，下文会单独解释
+     name: String, // 在最后获取到的answers回答对象中，作为当前问题的键 
+    message: String|Function, // 打印出来的问题标题
+    default: String|Number|Array|Function, // 用户不输入回答时，问题的默认值。或者使用函数来return     一个默认值。假如为函数时，函数第一个参数为当前问题的输入答案。
+     choices: Array|Function, // 给出一个选择的列表，假如是一个函数的话，第一个参数为当前问题的输入答案。为数组时，数组的每个元素可以为基本类型中的值。
+     validate: Function, // 接受用户输入，并且当值合法时，函数返回true。当函数返回false时，一个默认的错误信息会被提供给用户。
+     filter: Function, // 接受用户输入并且将值转化后返回填充入最后的answers对象内。
+     when: Function|Boolean, // 接受当前用户输入的answers对象，并且通过返回true或者false来决定是否当前的问题应该去问。也可以是简单类型的值。
+     pageSize: Number, // 改变渲染list,rawlist,expand或者checkbox时的行数的长度
+         }])
+2. fs（Sync同步，不加是异步）
+   fs.exists     // 是否存在
+   fs.mkdir     // 创建目录
+   fs.writeFile  //写入文件
+   fs.readdir  // 读取目录
+   fs.stat   //获取文件信息，是否是文件，目录，块设备等
+3. path   获取绝对路径
+   process.cwd()   
+
+  path.resolve  //拼接绝对路径
+
+4.child_proces    创建子进程
+
+ cp.execSync('git config user.name', {encoding:'utf-8'})`
