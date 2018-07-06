@@ -13,3 +13,9 @@
 宁可十年不将军,不可一日不拱卒
 
 怕什么真理无穷,进一寸有一寸的欢喜
+
+
+## emoji链接
+
+[github emoji](https://github.com/carloscuesta/gitmoji/)
+[emoji demo](https://gitmoji.carloscuesta.me/)
