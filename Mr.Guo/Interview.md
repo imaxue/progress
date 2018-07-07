@@ -12,6 +12,7 @@
 ### 11.事件委托是什么？事件冒泡和捕获是什么？怎样避免？
 ### 12.事件队列是什么？有哪几种队列？
 ### 13.window.location相关api用过哪些？
+### 14.localStorage与sessionStorage、cookie区别？
 
 ## CSS相关
 ### 1.实现一个三角形，有几种方案？
@@ -35,6 +36,9 @@
 ### 2.willMount与didMount区别？什么时候用willMount什么时候用didMount？工作原理
 ### 3.redux工作流程，与mobx有什么区别？
 ### 4.react设计思想是什么，与vue区别？
+### 5.setstate事务机制
+### 6.react合成事件和原生事件
+### 7.异步action,  redux中间件洋葱模型
 
 ## es6相关
 ### 1.es6有哪些新特性？用过哪些新api？
@@ -60,5 +64,7 @@
 ### 1.在地址栏输入url敲回车后，发生了什么？
 ### 2.http与https区别？如何加密的？
 ### 3.webpack3与4的区别？用过哪些loader和plugins？
+### 4.跨域请求有几种方案，jsonp原理是什么？
+### 5.浏览器缓存怎么设置？
 
 ### （还有一些没想起来，后面会完善问题和答案，大家可以一起写......）
