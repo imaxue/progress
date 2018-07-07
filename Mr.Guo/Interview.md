@@ -16,6 +16,7 @@
 ### 15.js实现一个eventEmit类，具有on, off, emit方法。
 ### 16.es5和es6的this区别？
 ### 17.for in和for of的区别？
+### 18.localStorage与sessionStorage、cookie区别？
 
 ## CSS相关
 ### 1.实现一个三角形，有几种方案？
@@ -35,6 +36,7 @@
 ### 5.虚拟dom是什么，优势是什么？
 ### 6.vue-router传参问题？
 ### 7.路由模式有哪些？有什么区别？
+### 8.对diff算法机制的理解
 
 ## react相关
 ### 1.react有哪些常用的钩子函数
@@ -50,6 +52,7 @@
 ### 11.redux的store改变后，如何触发组件rerender，connect内部做了什么？
 ### 12.react-router3和4的思想区别？
 ### 13.react-router，hashHistory  vs  browerHistory, 服务端如何配合browerHistory？
+
 
 ## es6相关
 ### 1.es6有哪些新特性？用过哪些新api？
@@ -83,6 +86,6 @@
 ## 其他问题
 ### 1.在地址栏输入url敲回车后，发生了什么？
 ### 2.http与https区别？如何加密的？
-
+### 5.浏览器缓存怎么设置？
 
 ### （还有一些没想起来，后面会完善问题和答案，大家可以一起写......）
