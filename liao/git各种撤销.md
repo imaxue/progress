@@ -25,3 +25,18 @@ git push -f
 git reflog
 // 重复上边的步骤
 ```
+## 4, git reset HEAD~1
+
+按提交步骤回退,~后边的数字是回退几次命令
+(假如merge了一个其他的分支并提交）
+```shell
+git merge branch2
+git push
+
+// 现在要撤回
+
+git reset HEAD~1
+git checkout .
+// 如果只是个别文件可以git checkout aa.txt bb.txt
+git push -f
+```
