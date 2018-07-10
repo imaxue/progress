@@ -81,9 +81,9 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 
 ### git reset的原理
 1.
-  *移动HEAD所指向的分支的指向：如果你正在 master 分支上工作，执行 git reset 9e5e64a 将会修改 master 让指向 哈希值为 9e5e64a 的 commit object  
-  *无论你是怎么使用的git reset，上述过程都会发生，不同用法的区别在于会如何修改工作区及缓存区的内容，如果你用的是 git reset --soft，将仅仅执行上述过程  
-  *git reset本质上是撤销了上一次的 git commit 命令  
+  * 移动HEAD所指向的分支的指向：如果你正在 master 分支上工作，执行 git reset 9e5e64a 将会修改 master 让指向 哈希值为 9e5e64a 的 commit object  
+  * 无论你是怎么使用的git reset，上述过程都会发生，不同用法的区别在于会如何修改工作区及缓存区的内容，如果你用的是 git reset --soft，将仅仅执行上述过程  
+  * git reset本质上是撤销了上一次的 git commit 命令  
 2.加上 —mixed 会更新索引：git reset --mixed 和 git reset 效果一致，这是git reset的默认选项，此命令除了会撤销一上次提交外，还会重置index，相当于我们回滚到了 git add 和 git commit 前的状态  
 3.添加—hard会修改工作目录中的内容：除了发生上述过程外，还会恢复工作区为 上一个 commit对应的快照的内容，换句话说，是会清空工作区所做的任何更改  
 —hard 可以算是 reset 命令唯一的危险用法，使用它会真的销毁数据。  
