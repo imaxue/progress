@@ -2,7 +2,7 @@
 > fastclick插件[使用needsclick类名解决他和其他库点击冲突的问题]
 > 使用方法：
 > ` fastclick.attch(document.body)`
-### 2.JSOP的原理以及使用方法
+### 2.JSONP的原理以及使用方法
 #### JSONP原理：
 > ajax请求受同源策略影响，不允许进行跨域请求，而script标签src属性中的链接却可以访问跨域的js脚本，利用这个特性，服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域
 #### 使用方法
@@ -22,7 +22,7 @@
     })
   )
 ```
-##### 运用vue插件jsonp
+##### 运用vue插件jsonp以及通用方法的封装
 ``` javascript
   import originJsonp from 'jsonp'
   export default function jsonp(url, data, option) {
