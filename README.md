@@ -9,7 +9,7 @@
 - [算法笔记](https://github.com/imaxue/progress/blob/master/axue/Algorithms/note.md)--xue
 - [以太坊相关](https://github.com/imaxue/progress/tree/master/bai)--bai
 - [vue-cli升级webpack4.x不完全指南](https://github.com/imaxue/progress/blob/master/haonan/2018-7-8%20vue-cli%E5%8D%87%E7%BA%A7webpack4.x%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.md)--haonan
-- [简单爬虫](https://github.com/imaxue/progress/tree/master/hui)--hui
+- [简单爬虫 链接服务器 两种方式（ssh和sftp） 获取和上传](https://github.com/imaxue/progress/tree/master/hui)--hui
 - [mac进程占用，杀掉方法](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/02-study.md)--peng
 - [git各种撤销操作](https://github.com/imaxue/progress/blob/master/liao/git%E5%90%84%E7%A7%8D%E6%92%A4%E9%94%80.md)--liao
 - [小程序socket](https://github.com/imaxue/progress/blob/master/shangguan/socket.md)--shangguan
