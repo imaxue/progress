@@ -48,7 +48,7 @@ Git 中有一个比较难理解的概念叫做「HEAD分离」，映射到文件
 1.git checkout <file>:  此命令可以用来清除未缓存的更改，它可以看做是 git checkout HEAD <file> 的简写  
 2.git checkout <commit> <file> 可以用来恢复某文件为某个提交时的状态。  
 3.git checkout <branch>：  切换分支到 <branch> 其实际上是修改 .git/HEAD 中的内容为 <branch>，更新工作区内容为 <branch> 所指向的 commit 对象的内容。  
-4.git checkout <hash|tag>HEAD直接指向一个commit对象，更新工作区内容为该commit对象对应的快照，此时为HEAD分离状态
+4.git checkout <hash|tag>HEAD直接指向一个commit对象，更新工作区内容为该commit对象对应的快照，此时为HEAD分离状态  
 5.git branch -b new-branch|| git checkout branch 切换到其它分支或者新建分支
 ## git merge
   
@@ -59,7 +59,7 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 1.Git 将接收 commit 的哈希值写入文件 .git/MERGE_HEAD。此文件的存在说明 Git 正在做合并操作。(记录合并提交的状态)  
 2.Git 查找 base commit：被合并的两个分支的第一个共有祖先 commit  
 3.Git 基于 base commit、master commit 和 feature commit 创建索引；  
-4.Git 基于 base commit — master commit 和base commit — feature commit 分别生成 diff，diff 是一个包含文件路径的列表，其中包含添加、移除、修改或冲突等变化;  
+4.Git 基于 base commit — master commit 和base commit — feature commit 分别生成 diff，diff 是一个包含文件路径的列表，其中包含添加、移除、修改或冲突等变化;    
 5.Git 将 diff 应用到工作区;  
 6.Git 将 diff 应用到 index，如果某文件有冲突，其在index中将存在三份;  
 7.如果存在冲突，需要手动解决冲突  
@@ -72,8 +72,8 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 2.git reset : 重设缓存区，会取消所有文件的缓存  
 3.git reset --hard : 重置缓存区和工作区，修改其内容对最新的一次 commit 对应的内容  
 4.git reset <commit> : 移动当前分支的末端到指定的commit处  
-5.git reset --hard <commit>: 重置缓存区和工作区，修改其内容为指定 commit 对应的内容  
-
+5.git reset --hard <commit>: 重置缓存区和工作区，修改其内容为指定 commit 对应的内容    
+6.git reset HEAD  -- <file>  拉取最近一次提交到版本库的文件到暂存区  改操作不影响工作区
 ### git reset的原理
 1.
   - 移动HEAD所指向的分支的指向：如果你正在 master 分支上工作，执行 git reset 9e5e64a 将会修改 master 让指向 哈希值为 9e5e64a 的 commit object  
@@ -113,5 +113,6 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 git branch test 创建 本地分支
 git push origin test 把本地分支推送到远程
 git branch -a 查看远程分支
+git megre dev  合并分支  
 # 推荐地址
 [git深入学习地址](https://www.jianshu.com/p/9f993e50caa0)  
