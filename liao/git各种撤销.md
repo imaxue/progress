@@ -131,6 +131,26 @@ Date:   Tue Jul 10 21:34:10 2018 +0800
 
 ```
 
+## 7，git commit --amend
+
+修改最后一次commit信息
+```shell
+git commit --amend
+此时处于vim状态，按c开始编辑，修改完按esc退出编辑，连续按两次大写Z，退出
+
+```
+
+修改之前几次的
+比如要修改的commit是倒数第三条，使用下述命令：
+```shell
+git rebase -i HEAD~3
+把pick改为edit
+然后 :wq
+git commit --amend
+退出保存 :wq，然后回到正常状态
+git rebase --continue
+git push -f 推送到服务端
+```
 
 
 
