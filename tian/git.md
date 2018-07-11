@@ -109,5 +109,9 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 ## git fetch
 1.git fetch <some remote branch> :同步某个远程分支的改变到本地，会下载本地没有的数据，更新本地数据库，并移动本地对应分支的指向。  
 2.git fetch --all会拉取所有的远程分支的更改到本地    
+## 创建远程分支
+git branch test 创建 本地分支
+git push origin test 把本地分支推送到远程
+git branch -a 查看远程分支
 # 推荐地址
 [git深入学习地址](https://www.jianshu.com/p/9f993e50caa0)  
