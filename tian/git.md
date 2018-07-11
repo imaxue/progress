@@ -49,7 +49,7 @@ Git 中有一个比较难理解的概念叫做「HEAD分离」，映射到文件
 2.git checkout <commit> <file> 可以用来恢复某文件为某个提交时的状态。  
 3.git checkout <branch>：  切换分支到 <branch> 其实际上是修改 .git/HEAD 中的内容为 <branch>，更新工作区内容为 <branch> 所指向的 commit 对象的内容。  
 4.git checkout <hash|tag>HEAD直接指向一个commit对象，更新工作区内容为该commit对象对应的快照，此时为HEAD分离状态  
-5.git branch -b new-branch|| git checkout branch 切换到其它分支或者新建分支
+5.git branch -b new-branch|| git checkout branch 切换到其它分支或者新建分支  
 ## git merge
   
 Git 中分支合并有两种算法，快速向前合并 和 三路合并。
@@ -73,7 +73,9 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 3.git reset --hard : 重置缓存区和工作区，修改其内容对最新的一次 commit 对应的内容  
 4.git reset <commit> : 移动当前分支的末端到指定的commit处  
 5.git reset --hard <commit>: 重置缓存区和工作区，修改其内容为指定 commit 对应的内容    
-6.git reset HEAD  -- <file>  拉取最近一次提交到版本库的文件到暂存区  改操作不影响工作区
+6.git reset HEAD  -- <file>  拉取最近一次提交到版本库的文件到暂存区  改操作不影响工作区  
+7.git reset HEAD~1 返回上一次提交
+  
 ### git reset的原理
 1.
   - 移动HEAD所指向的分支的指向：如果你正在 master 分支上工作，执行 git reset 9e5e64a 将会修改 master 让指向 哈希值为 9e5e64a 的 commit object  
