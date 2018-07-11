@@ -16,6 +16,7 @@
 - [shelljs简单实用方法](https://github.com/imaxue/progress/blob/master/share/3/shelljs%E4%BD%BF%E7%94%A8.md)--liao
 - [密码技术](https://github.com/imaxue/progress/blob/master/share/3/%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF.pdf)--xue
 - [webpack简单介绍](https://github.com/imaxue/progress/blob/master/wzk/webpack.md)--kai
+- [git常用操作](https://github.com/imaxue/progress/blob/master/tian/git.md)--tian
 ## 鸡汤
 
 勿忘初心，方得始终
