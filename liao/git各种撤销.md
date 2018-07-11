@@ -11,9 +11,22 @@ git checkout -- a.txt
 ```shell
 git checkout master a.txt
 ```
-## 3， git reset --hard commitID
+## 3, git rm a.txt
+
+直接删除某个文件
+```shell
+git rm a.txt
+git commit -m "del a.txt"
+```
+## 4， git reset --soft|--mixed|--hard <commit_id>
 
 回退到某一个提交
+1.第一种情况：还没有push，只是在本地commit
+> 这里的<commit_id>就是每次commit的SHA-1，可以在log里查看到
+> --mixed    会保留源码,只是将git commit和index 信息回退到了某个版本.
+> --soft   保留源码,只回退到commit信息到某个版本.不涉及index的回退,如果还需要提交,直接commit即可.
+> --hard    源码也会回退到某个版本,commit和index 都会回退到某个版本.(注意,这种方式是改变本地代码仓库源码)
+
 ```shell
 git log
 // 如果没有你想要的就在冒号状态下一直回车，退出是在冒号下输入q
@@ -25,7 +38,18 @@ git push -f
 git reflog
 // 重复上边的步骤
 ```
-## 4, git reset HEAD~1
+2.commit push 代码已经更新到远程仓库
+```shell
+git revert <commit_id>
+git push -f
+```
+revert 之后你的本地代码会回滚到指定的历史版本,这时你再 git push 既可以把线上的代码更新。
+注意：git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit，看似达到的效果是一样的,其实完全不同。
+第一:上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.
+第二:如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.
+第三:reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的 HEAD 是一直向前的.
+
+## 5, git reset HEAD~1
 
 按提交步骤回退,~后边的数字是回退几次命令
 (假如merge了一个其他的分支并提交）
@@ -40,13 +64,7 @@ git checkout .
 // 如果只是个别文件可以git checkout aa.txt bb.txt
 git push -f
 ```
-## 5, git rm a.txt
 
-直接删除某个文件
-```shell
-git rm a.txt
-git commit -m "del a.txt"
-```
 
 ## 6, git rebase --onto baseBranch from to
 删除中间的某次commit
