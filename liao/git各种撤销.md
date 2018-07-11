@@ -40,3 +40,12 @@ git checkout .
 // 如果只是个别文件可以git checkout aa.txt bb.txt
 git push -f
 ```
+## 4, git rm a.txt
+
+直接删除某个文件
+```shell
+git rm a.txt
+git commit -m "del a.txt"
+```
+
+
