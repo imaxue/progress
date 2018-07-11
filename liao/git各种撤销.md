@@ -40,12 +40,83 @@ git checkout .
 // 如果只是个别文件可以git checkout aa.txt bb.txt
 git push -f
 ```
-## 4, git rm a.txt
+## 5, git rm a.txt
 
 直接删除某个文件
 ```shell
 git rm a.txt
 git commit -m "del a.txt"
 ```
+
+## 6, git rebase --onto baseBranch from to
+删除中间的某次commit
+
+我们先提交几次记录
+> git log
+我们会看到如下信息
+```shell
+commit aa1f22523b7c27c692a59588a72d396a97ae04be (HEAD -> branch2)
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:55 2018 +0800
+
+    4
+
+commit cb10df56ea102a558c24625e4ebbb296e0b9d1e8
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:38 2018 +0800
+
+    3
+
+commit 6407cefa0631920cfe8e12bfebc5f1f72c373b07
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:24 2018 +0800
+
+    2
+
+commit 3427ac34d38fb6bb06cfd222896e7e3a7a837219
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:10 2018 +0800
+
+    1
+```
+我们要删掉3的那次commit，我所在的分支是branch2，--onto后边第一个参数是base，也就是要删掉的commit的上一个commit，
+第二个参数是我们要拼接的commit起始位置，第三个是结束位置
+~表示分支的上一次或者上几次commit
+```shell
+git rebase --onto branch2~3 branch2~1 branch2
+
+执行完会发现冲突，这时候删掉第3次commit的代码，解决完冲突，然后恢复到最后一次commit
+git add .
+git rebase --continue
+
+```
+
+再git log，会发现，第三次commit已经没有了
+```shell
+commit 20586673a513c53709f1e75f786e501c62d6537d (HEAD -> branch2)
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:55 2018 +0800
+
+    4
+
+commit 6407cefa0631920cfe8e12bfebc5f1f72c373b07
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:24 2018 +0800
+
+    2
+
+commit 3427ac34d38fb6bb06cfd222896e7e3a7a837219
+Author: liaohainan <liaohainan@liaohainandeMacBook-Pro.local>
+Date:   Tue Jul 10 21:34:10 2018 +0800
+
+    1
+
+```
+
+
+
+
+
+
 
 
