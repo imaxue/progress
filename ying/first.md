@@ -22,7 +22,7 @@ server {
 }
 
 3.
-brew services start nginx 启动命令
+brew services start nginx 启动命令 或者配置完全局变量后 直接 nginx
 
 ps aux|grep ‘nginx' 看进程命令
 
