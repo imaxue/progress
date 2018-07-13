@@ -213,3 +213,41 @@ pkill -9 node
 	}
 })();
 ```
+> 新加一个好玩的东西 调用摄像头拍照 （emmm 可以当镜子用）
+```
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>页面调用摄像头</title>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>  
+<body>  
+<video id="video" autoplay=""style='width:640px;height:480px'></video>  
+<button id="paizhao">拍照</button>   
+<canvas id="canvas" width="640" height="480"></canvas>  
+<script type="text/javascript">  
+    var video=document.getElementById("video");  
+    var context=canvas.getContext("2d");  
+    var errocb=function(){  
+        console.log("sth srong");  
+    }  
+    if(navigator.getUserMedia){  
+        navigator.getUserMedia({"video":true},function(stream){  
+            video.srcObject=stream;  
+            video.play();  
+        },errocb);  
+    }else if(navigator.webkitGetUserMedia){  
+        navigator.webkitGetUserMedia({"video":true},function(stream){  
+            video.src=window.webkitURL.createObjectURL(stream);  
+            video.play();  
+        },errocb);  
+    }  
+    document.getElementById("paizhao").addEventListener("click",function(){  
+        context.drawImage(video,0,0,640,480);  
+    });  
+</script>  
+</body>  
+</html>  
+
+```
