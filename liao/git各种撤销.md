@@ -152,6 +152,17 @@ git rebase --continue
 git push -f 推送到服务端
 ```
 
+## 8, git merge --squash branch
+
+合并的时候不想携带分支的commit信息，合并到master的时候只会留下一条信息
+```shell
+ git merge --squash branch
+ git add .
+ git commit -m "merge branch"
+ git push
+
+```
+
 
 
 
