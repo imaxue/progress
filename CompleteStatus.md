@@ -11,7 +11,7 @@
 | [haonan](https://github.com/imaxue/progress/tree/master/haonan) | √          | √          |
 | [hui](https://github.com/imaxue/progress/tree/master/hui)    | √          | √          |
 | [kingpeng](https://github.com/imaxue/progress/tree/master/kingpeng) | √          |            |
-| [liao](https://github.com/imaxue/progress/tree/master/liao)  | √          |            |
+| [liao](https://github.com/imaxue/progress/tree/master/liao)  | √          |  √          |
 | [shangguan](https://github.com/imaxue/progress/tree/master/shangguan) | √          | √          |
 | [tian](https://github.com/imaxue/progress/tree/master/tian)  | √          | √          |
 | [wtl](https://github.com/imaxue/progress/tree/master/wtl)    | √          |            |
