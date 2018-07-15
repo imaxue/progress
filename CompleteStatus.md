@@ -3,9 +3,9 @@
 | Name                                                         | 2018/07/09 | 2018/07/15 |
 | ------------------------------------------------------------ | ---------- | ---------- |
 | [Lijiaojiao](https://github.com/imaxue/progress/tree/master/Lijiaojiao) | √          |            |
-| [Mr.Guo](https://github.com/imaxue/progress/tree/master/Mr.Guo) | √          |            |
+| [Mr.Guo](https://github.com/imaxue/progress/tree/master/Mr.Guo) | √          | √           |
 | [axue](https://github.com/imaxue/progress/tree/master/axue)  | √          | √          |
-| [bai](https://github.com/imaxue/progress/tree/master/bai)    | √          |            |
+| [bai](https://github.com/imaxue/progress/tree/master/bai)    | √          | √           |
 | [baocheng](https://github.com/imaxue/progress/tree/master/baocheng) | √          |            |
 | [cjj](https://github.com/imaxue/progress/tree/master/cjj)    | √          | √          |
 | [haonan](https://github.com/imaxue/progress/tree/master/haonan) | √          | √          |
