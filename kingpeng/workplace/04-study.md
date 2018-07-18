@@ -1,8 +1,9 @@
-### 最近在使用Next.js,一个react的服务器端渲染的框架开发H5项目，其中遇到了一些复杂组件的编写，找了几个很有用的优秀组件
+# 最近在使用Next.js,一个react的服务器端渲染的框架开发H5项目，其中遇到了一些复杂组件的编写，找了几个很有用的优秀组件
 
 ## 一、compnents
 
-# 1、上拉加载下拉刷新组件：react-infinite-scroll-component
+### 1、上拉加载下拉刷新组件：react-infinite-scroll-component
+
 [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component)
 
 DEMO: 具体用法参考官网
@@ -22,16 +23,18 @@ DEMO: 具体用法参考官网
 </InfiniteScroll>
 ```
 
-# 2、teatarea的高度自适应：react-textarea-autosize
-*这个组件非常友好react16以上的版本，相信你一定会涉及到类似于微信评论的组件开发*
+### 2、teatarea的高度自适应：react-textarea-autosize
+
 [react-textarea-autosize](https://github.com/andreypopp/react-textarea-autosize)
+</br>
+**这个组件非常友好react16以上的版本，相信你一定会涉及到类似于微信评论的组件开发** 
 
 DEMO:
 ```
-textarea = React.createRef() as any
-/**
- * refs具有自动聚焦事件
- */
+  textarea = React.createRef() as any
+  /**
+   * refs具有自动聚焦事件
+   */
   setFocus() {
     if (this.textarea) {
       this.textarea.focus();
@@ -83,12 +86,20 @@ textarea = React.createRef() as any
     localStorage.setItem('comment', value)
   }
 
-<Textarea onBlur={(e) => this.handlerBlur(e)} maxRows={3} maxLength={200} inputRef={tag => (this.textarea = tag)} style={{ width: '100%', height: '100%', minHeight: '.46rem', display: 'flex', padding: '3px', outlineStyle: 'none', outline: 'none', color: '#333', fontSize: '.28rem', fontFamily: 'PingFangSC-Regular', border: '1px solid #999', borderRadius: '4px', lineHeight: 1.5 }} placeholder="" />
+  <Textarea 
+     onBlur={(e) => this.handlerBlur(e)} 
+     maxRows={3} maxLength={200} 
+     inputRef={tag => (this.textarea = tag)} 
+     style={{ width: '100%', height: '100%', minHeight: '.46rem', display: 'flex', padding: '3px', outlineStyle: 'none', outline: 'none',         color: '#333', fontSize: '.28rem', fontFamily: 'PingFangSC-Regular', border: '1px solid #999', borderRadius: '4px', lineHeight:           1.5 }} 
+     placeholder=""
+   />
 ```
 
-# 3、实现点击自动复制的功能：react-copy-to-clipboard
-*浏览器对这个的支持很友好，但是手机厂商可不那么友好，这个组件方案不错，你要实现复制的div是这个组件的children*
+### 3、实现点击自动复制的功能：react-copy-to-clipboard
 [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard)
+</br>
+
+**浏览器对这个的支持很友好，但是手机厂商可不那么友好，这个组件方案不错，你要实现复制的div是这个组件的children**
 
 DEMO:
 ```
@@ -98,7 +109,7 @@ DEMO:
 </CopyToClipboard>
 ```
 
-# 4、走马灯1（轮播图）：react-slick
+### 4、走马灯1（轮播图）：react-slick
 
 [react-slick](https://github.com/akiran/react-slick)
 
@@ -124,10 +135,13 @@ var settings = {
 
 ```
 
-# 5、走马灯2（轮播图）：nuka-carousel
-推荐指数：四颗星，antd-mobile的Carousel组件封装了这个
-dots: 你想要的提示或者图片进度条可以自己根据图片的长度自己模拟成想要的样式
+### 5、走马灯2（轮播图）：nuka-carousel
+
 [nuka-carousel](https://github.com/FormidableLabs/nuka-carousel)
+
+**推荐指数：四颗星，antd-mobile的Carousel组件封装了这个** </br>
+**dots: 你想要的提示或者图片进度条可以自己根据图片的长度自己模拟成想要的样式** </br>
+
 
 DEMO
 ```
@@ -177,10 +191,8 @@ DEMO
 
 
 # 6、走马灯3（轮播图）：react-swipe
-推荐指数：四颗星，antd-mobile的Carousel组件封装了这个
-dots: 你想要的提示或者图片进度条可以自己根据图片的长度自己模拟成想要的样式
-[react-swipe](https://github.com/voronianski/react-swipe)
 
+[react-swipe](https://github.com/voronianski/react-swipe)
 
 DEMO：
 ```
@@ -317,7 +329,7 @@ alert('正在处理中,请稍后...')
 ```
 
 
-### JS：
+## 二、JS：
 
 ```
 /**
