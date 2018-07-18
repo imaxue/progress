@@ -1,4 +1,4 @@
-# 最近在使用Next.js,一个react的服务器端渲染的框架开发H5项目，其中遇到了一些复杂组件的编写，找了几个很有用的优秀组件
+## 最近在使用Next.js,一个react的服务器端渲染的框架开发H5项目，其中遇到了一些复杂组件的编写，找了几个很有用的优秀组件
 
 ## 一、compnents
 
@@ -27,6 +27,7 @@ DEMO: 具体用法参考官网
 
 [react-textarea-autosize](https://github.com/andreypopp/react-textarea-autosize)
 </br>
+
 **这个组件非常友好react16以上的版本，相信你一定会涉及到类似于微信评论的组件开发** 
 
 DEMO:
@@ -96,6 +97,7 @@ DEMO:
 ```
 
 ### 3、实现点击自动复制的功能：react-copy-to-clipboard
+
 [react-copy-to-clipboard](https://github.com/nkbt/react-copy-to-clipboard)
 </br>
 
@@ -140,6 +142,7 @@ var settings = {
 [nuka-carousel](https://github.com/FormidableLabs/nuka-carousel)
 
 **推荐指数：四颗星，antd-mobile的Carousel组件封装了这个** </br>
+
 **dots: 你想要的提示或者图片进度条可以自己根据图片的长度自己模拟成想要的样式** </br>
 
 
@@ -331,6 +334,8 @@ alert('正在处理中,请稍后...')
 
 ## 二、JS：
 
+### 1、是否是数组
+
 ```
 /**
   * 是否是数组
@@ -344,6 +349,8 @@ function isArray(obj) {
   return Array.isArray(obj);
 }
 ```
+
+。。。。
 
 
 
