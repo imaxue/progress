@@ -193,7 +193,7 @@ DEMO
 ```
 
 
-# 6、走马灯3（轮播图）：react-swipe
+### 6、走马灯3（轮播图）：react-swipe
 
 [react-swipe](https://github.com/voronianski/react-swipe)
 
@@ -329,6 +329,101 @@ DEMO:
 ```
 import { alert } from './components/Alert'
 alert('正在处理中,请稍后...')
+```
+
+### 8、多选框 单选样式
+
+```
+// 多选框 单选样式
+
+import React, { Component } from 'react'
+
+interface CheckBoxItem {
+    label: string
+    value: string | number
+
+}
+interface Props {
+    options: CheckBoxItem[], value?: (string | number)[]
+    onChange?: (value: (string | number)[]) => any
+}
+export default class CheckBox extends Component<Props, any> {
+    handleClick = (value: string | number) => {
+        let { value: values = [], options = [], onChange = new Function() } = this.props
+        values = values.filter(val => options.some(option => option.value === val))
+        if (values.includes(value)) {
+            onChange(values.filter(item => item !== value))
+        } else {
+            onChange([...values, value])
+        }
+    }
+    render() {
+        return (
+            <ul>
+                {this.props.options.map(item => <li key={item.value} onClick={e => this.handleClick(item.value)} className={'ant-radio-button-wrapper' + (this.props.value && this.props.value.includes(item.value) ? ' ant-radio-button-wrapper-checked' : '')}>{item.label}</li>)}
+            </ul>
+        )
+    }
+}
+
+```
+
+DEMO:
+```
+import React, { Component } from 'react'
+import { Radio } from 'antd'
+import CheckBox from './components/checkBox'
+const RadioButton = Radio.Button
+const RadioGroup = Radio.Group
+
+export default class Position extends Component<{ page: string, onChange?: (val: string | (string | number)[]) => any, value?: (string | number)[] }> {
+    state = {
+        listPageOptions: new Array(10).fill(0).map((item, index) => ({ label: index + '', value: index + '' }))
+    }
+    
+    pageShowHandleChange = (val: string | (string | number)[]) => { // 详情页点击事件
+        if (!Array.isArray(val)) val = [val]
+        this.props.onChange && this.props.onChange(val)
+    }
+
+    listPageHandleChange = (values: (string | number)[]) => { // 列表页点击事件
+        const lastVal = values.map((item: string) => parseInt(item, 10)).sort((x, y) => x - y)[values.length - 1]
+        const options = new Array(10 + lastVal).fill(0).map((item, index) => ({ label: index + '', value: index + '' }))
+        this.setState({listPageOptions: options})
+        this.props.onChange && this.props.onChange(values)
+    }
+
+    render() {
+        const { listPageOptions: options } = this.state
+        const { page, value } = this.props
+        if (!page) return null
+        if (page === 'show') {
+            const val = value && value[0]
+            return (
+                <RadioGroup value={val} onChange={(e: any) => this.pageShowHandleChange(e.target.value)}>
+                    <RadioButton value="顶部">顶部</RadioButton>
+                    <RadioButton value="内容中第一张图下面">内容中第一张图下面</RadioButton>
+                    <RadioButton value="翻页上面">翻页上面</RadioButton>
+                    <RadioButton value="翻页下面">翻页下面</RadioButton>
+                    <RadioButton value="图+">图+</RadioButton>
+                    <RadioButton value="推荐1">推荐1</RadioButton>
+                    <RadioButton value="推荐2">推荐2</RadioButton>
+                    <RadioButton value="推荐3">推荐3</RadioButton>
+                    <RadioButton value="推荐4">推荐4</RadioButton>
+                    <RadioButton value="推荐5">推荐5</RadioButton>
+                    <RadioButton value="推荐6">推荐6</RadioButton>
+                    <RadioButton value="推荐7">推荐7</RadioButton>
+                    <RadioButton value="推荐8">推荐8</RadioButton>
+                    <RadioButton value="推荐9">推荐9</RadioButton>
+                    <RadioButton value="推荐10">推荐10</RadioButton>
+                </RadioGroup>
+            )
+        } else {
+            return <CheckBox value={value} onChange={this.listPageHandleChange} options={options as any} />
+        }
+    }
+}
+
 ```
 
 
