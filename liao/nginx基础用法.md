@@ -73,11 +73,11 @@ http {
 切换到nginx目录，在命令行里输入
 ```shell
 sudo nginx
-这样，nginx服务就启动了
-如果修改相应的配置，需要重启
+# 这样，nginx服务就启动了
+# 如果修改相应的配置，需要重启
 sudo nginx -s reload
-关闭服务
+# 关闭服务
 nginx -s stop
-看进程命令
+# 看进程命令
 ps aux|grep ‘nginx' 
 ```
