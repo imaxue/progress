@@ -89,7 +89,7 @@ pkill -9 node
 
 ```
 
-> 看到一个好玩的东西
+> 看到一个好玩的东西  运行在console里面
 
 ```
 
@@ -251,3 +251,13 @@ pkill -9 node
 </html>  
 
 ```
+> emmm 使整个页面可编辑 （ps 我也感觉没什么用 不过挺有意思的）
+
+```
+document.body.contentEditable='true';
+
+
+document.designMode='on'; 
+
+```
+
