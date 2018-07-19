@@ -1,0 +1,11 @@
+<wxs module="foo">
+ var msg = "hello word"
+ module.export = {
+  msg: msg
+ }
+</wxs>
+<template name="tpl1">
+  <view>这是一个{{text}}</view>
+  <view>{{foo.msg}}</view>
+  <include src="tpl1.wxml"/>
+</template>

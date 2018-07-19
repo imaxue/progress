@@ -19,3 +19,9 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.menu {
+  position: absolute;
+  top: 50rpx;
+  left: 30rpx;
+}

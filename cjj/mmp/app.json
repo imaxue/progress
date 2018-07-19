@@ -1,12 +1,26 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/wxml/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "Just do IT",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "list": [{
+      "text": "视图",
+      "pagePath": "pages/wxml/index"
+    }, {
+      "text": "组件",
+      "pagePath": "pages/logs/logs"
+    }, {
+      "text": "API",
+      "pagePath": "pages/index/index"
+    }]
   }
 }

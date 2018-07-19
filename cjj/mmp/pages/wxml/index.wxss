@@ -1,0 +1,16 @@
+/* pages/wxml/index.wxss */
+.text-red {
+  color: #f00;
+}
+
+.hidden {
+  display: none;
+}
+.title {
+  color: #000;
+  font-weight: bold;
+}
+
+.title + text {
+  font-size: 24rpx;
+}

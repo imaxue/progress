@@ -17,7 +17,7 @@
     </ul>
     <div class="image-add" v-if="addShow" @click="add">
       <slot name="add" v-if="$slots.add"></slot>
-      <span class="el-icon-plus" v-else></span>
+      <span v-else>+</span>
     </div>
       <input
         type="file"
