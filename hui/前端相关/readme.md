@@ -209,8 +209,10 @@ console.log("%c为王的诞生 献上礼炮", "font-size:16px;color:#ff6700;padd
 
 > 随机生成头像！！！！！ 感觉有一点点用哦  实际呢、、管他呢
 
-只需 HTTP 请求 <font color=#F5F5DC size=72>http://www.gravatar.com/avatar/{hash}?s=256&d=identicon</font> 其中：
+只需 HTTP 请求 <font color='#F5F5DC'>http://www.gravatar.com/avatar/{hash}?s=256&d=identicon</font> 其中：
 
 + hash：生成一个随机数填充
 + s：尺寸，像素为单位
 + d：风格，目前可选 identicon、monsterid、wavatar、retro、robohash 等
+
+
