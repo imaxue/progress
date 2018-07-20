@@ -292,5 +292,13 @@ document.head.appendChild(style);
 > 为王的诞生 献上礼炮 ╮(╯▽╰)╭
 
 ```
-console.log("%c为王的诞生献上礼炮", "font-size:16px;color:#ff6700;padding:200px 300px;line-height:120px;background:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532077451611&di=52feacb5a51215a302a1b56a452e6c72&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2Fde0b5c2293ecc048f6323fa499ec8c9031d458f0.jpg') no-repeat;");
+console.log("%c为王的诞生 献上礼炮", "font-size:16px;color:#ff6700;padding:200px 300px;line-height:120px;background:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532077451611&di=52feacb5a51215a302a1b56a452e6c72&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2Fde0b5c2293ecc048f6323fa499ec8c9031d458f0.jpg') no-repeat;");
 ```
+
+> 随机生成头像！！！！！ 感觉有一点点用哦  实际呢、、管他呢
+
+只需 HTTP 请求 <font color=#F5F5DC size=72>http://www.gravatar.com/avatar/{hash}?s=256&d=identicon</font> 其中：
+
++ hash：生成一个随机数填充
++ s：尺寸，像素为单位
++ d：风格，目前可选 identicon、monsterid、wavatar、retro、robohash 等
