@@ -1,0 +1,25 @@
+{
+  "name": "egg-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "egg-bin test",
+    "cov": "egg-bin cov"
+  },
+  "keywords": [
+    "egg"
+  ],
+  "author": "Mr.guo",
+  "license": "ISC",
+  "devDependencies": {
+    "egg-bin": "^4.7.1"
+  },
+  "dependencies": {
+    "egg": "^2.9.1",
+    "egg-view-nunjucks": "^2.2.0",
+    "moment": "^2.22.2"
+  }
+}
