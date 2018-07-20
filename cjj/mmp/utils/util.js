@@ -14,6 +14,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+export function wxPromisify(fn) {
+  return function (obj = {}) {
+    let instance = obj.instance || function () { }
+    return new Promise((resolve, reject) => {
+      Object.assign(obj, {
+        success: resolve,
+        fail: reject
+      })
+      instance(fn(obj))
+    })
+  }
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  wxPromisify
 }

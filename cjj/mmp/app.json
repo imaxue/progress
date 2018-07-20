@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/wxml/index"
+    "pages/com/index",
+    "pages/wxml/index",
+    "pages/api/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,15 +13,29 @@
     "navigationStyle": "default"
   },
   "tabBar": {
-    "list": [{
-      "text": "视图",
-      "pagePath": "pages/wxml/index"
-    }, {
-      "text": "组件",
-      "pagePath": "pages/logs/logs"
-    }, {
-      "text": "API",
-      "pagePath": "pages/index/index"
-    }]
+    "color": "#f9f9f9",
+    "selectedColor": "#68ad56",
+    "borderStyle": "white",
+    "backgroundColor": "#333",
+    "list": [
+      {
+        "text": "视图",
+        "pagePath": "pages/wxml/index",
+        "iconPath": "assets/icon/view.png",
+        "selectedIconPath": "assets/icon/view-active.png"
+      },
+      {
+        "text": "组件",
+        "pagePath": "pages/com/index",
+        "iconPath": "assets/icon/com.png",
+        "selectedIconPath": "assets/icon/com-active.png"
+      },
+      {
+        "text": "API",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/icon/api.png",
+        "selectedIconPath": "assets/icon/api-active.png"
+      }
+    ]
   }
 }

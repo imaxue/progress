@@ -1,0 +1,3 @@
+<!--pages/com/index.wxml-->
+<view class="h2">自定义组件</view>
+<image-uploader count="{{4}}" bindchange="upload"></image-uploader>
