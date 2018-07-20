@@ -1,13 +1,26 @@
-## CSS3之多列布局columns详解
+# 多列布局/瀑布流
+
+## 一、CSS3之多列布局columns详解
 
 前段时间用css3的多列布局实现了瀑布流列表
+
+优点：
+
+* 几行代码、简单实现、
+
+缺点：
+
+* 性能不好，尤其是渲染，列表从左向右渲染，如果给item设置了缝隙，那么会出现错位，顶部对不齐的问题，导致的效果是顺序会打乱
+
 
 **特别注意：使用这个特性的不好一点是，列表是按照先渲染左边的列，再渲染右边的列，导致的效果是顺序会打乱**
 
 CSS3提供了个新属性columns用于多列布局。
+
 基本属性如下：
 
 1. columns: <'column-width'> || <'column-count'>
+
 设置对象的列数和每列的宽度。复合属性。
 
 ```
@@ -23,6 +36,7 @@ columns: 200px;
 ```
 
 2. column-width：<length> | auto 设置对象的宽度；使用像素表示。
+
 auto：根据 <' column-count '> 自定分配宽度
 
 ```
@@ -34,7 +48,9 @@ column-width: 200px;
 ```
 
 3. column-count：<integer> | auto 用来定义对象中的列数，使用数字 1-10表示。
+  
 auto：根据 <' column-width '> 自定分配宽度
+  
 ```
 /*列数固定，根据容器宽度液态分布列宽*/
 -moz-column-count:5;
@@ -42,6 +58,7 @@ auto：根据 <' column-width '> 自定分配宽度
 column-count:5;
 ```
 4. column-gap: normal || length， normal是默认值，为1em， length 是用来设置列与列之间的间距。
+
 ```
 /* 固定列间隙为40px */
 -moz-column-gap: 40px;
@@ -54,7 +71,9 @@ column-gap: 40px;
 column-gap: normal;
 ```
 5. column-rule：<' column-rule-width '> || <' column-rule-style '> || <' column-rule-color '>
+
 设置对象的列与列之间的边框。复合属性
+
 ```
 /* 在列与列之间设置绿色间隔线 */
 -moz-column-rule: 10px solid #090;
@@ -62,38 +81,43 @@ column-gap: normal;
 column-rule: 10px solid #090;
 ```
 6. column-fill：auto | balance
+
 设置对象所有列的高度是否统一;
 auto： 列高度自适应内容;
 balance： 所有列的高度以其中最高的一列统一
 
 7. column-break-before：auto | always | avoid | left | right | page | column | avoid-page | avoid-column
+
 设置对象之前是否断行;
 auto： 既不强迫也不禁止在元素之前断行并产生新列;
 always： 总是在元素之前断行并产生新列
 avoid：避免在元素之前断行并产生新列
 
 8. column-break-after：auto | always | avoid | left | right | page | column | avoid-page | avoid-column
+
 设置对象之后是否断行
 
 9. column-break-inside：auto | avoid | avoid-page | avoid-column
+
 设置对象内部是否断行;
 auto：既不强迫也不禁止在元素内部断行并产生新列;
 avoid：避免在元素内部断行并产生新列
 
 column-span: none（默认值）|| all，none是不跨越任何列。all 是元素跨越所有列，并定位在列的Z轴之上。
 
-浏览器支持：
+**浏览器支持：**
 
 Internet Explorer 10+ 和 Opera 支持 column-width 属性。
 Firefox 支持替代的 -moz-column-width 属性。
 Safari 和 Chrome 支持替代的 -webkit-column-width 属性。
 注释：Internet Explorer 9 以及更早版本的浏览器不支持 column-width 属性。
 
-下面使用column实现一个瀑布流布局的demo如下：
+### 下面使用column实现一个瀑布流布局的demo如下：
 
 先预览看效果
 
 碰到的问题如下：
+
 1. 在做demo的时候，需要显示内容的div设置高度为100% 和 overflow: auto; 否则的话，多列样式column-width布局时内容被截断、错乱。
 比如上面的demo的样式添加如下代码：
 
@@ -101,6 +125,7 @@ Safari 和 Chrome 支持替代的 -webkit-column-width 属性。
   height: 100%;
   overflow: auto;
 }
+
 下面是html代码如下：
 
 ```
@@ -212,7 +237,7 @@ CSS代码如下：
 
 KeyWords: 瀑布流、masonry
 
-1、[react-responsive-masonry](https://github.com/xuopled/react-responsive-masonry)
+### 1、[react-responsive-masonry](https://github.com/xuopled/react-responsive-masonry)
 
 [在线Demo](https://xuopled.github.io/react-responsive-masonry/)
 
@@ -224,7 +249,8 @@ JS：
 
 ```
 import Masonry from 'react-responsive-masonry'
- {!!this.state.isBrowser && res && !!isArray(res) ? <div style={{ backgroundColor: '#fff', marginBottom: '.2rem' }} className={styles.listCss}>
+
+{!!this.state.isBrowser && res && !!isArray(res) ? <div style={{ backgroundColor: '#fff', marginBottom: '.2rem' }} className={styles.listCss}>
           <Masonry
             columnsCount={2} gutter="2.5px"
           >
@@ -438,7 +464,7 @@ import Masonry from 'react-responsive-masonry'
    {this.tabHtml()}
 </div>
 {!!this.state.isBrowser && list && !!isArray(list) ? <div style={{ backgroundColor: '#fff', marginBottom: '0rem' }}>
-          {
+        {
             <InfiniteScroll
               dataLength={list.length}
               next={this.fetchMoreData}
@@ -463,5 +489,22 @@ import Masonry from 'react-responsive-masonry'
 
 ```
 
+### 2、[react-masonry-layout](https://github.com/scarletsky/react-masonry-layout)
+
+推荐指数：两颗星
+
+### 3、[react-masonry-infinite](https://github.com/skoob13/react-masonry-infinite)
+
+推荐指数：Pc端使用更好，它已经结合了上拉加载的功能
+
+### 4、蚂蚁金服的社区精选组件[react-virtualized](https://github.com/bvaughn/react-virtualized)
+
+[Antd design社区精选组件](https://ant.design/docs/react/recommendation-cn)
+
+[DEMO](https://bvaughn.github.io/react-virtualized/#/components/Masonry)
+
+[在线预览](https://codesandbox.io/s/7y66p25qv6)
+
+~~解决问题好开心啊，就像时长在坐地铁时候放下了心底里的一块小石头~~
 
 
