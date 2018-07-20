@@ -21,7 +21,7 @@ CSS3提供了个新属性columns用于多列布局。
 
 1. columns: <'column-width'> || <'column-count'>
 
-设置对象的列数和每列的宽度。复合属性。
+  设置对象的列数和每列的宽度。复合属性。
 
 ```
 /*列数及列宽固定*/
@@ -37,7 +37,7 @@ columns: 200px;
 
 2. column-width：<length> | auto 设置对象的宽度；使用像素表示。
 
-auto：根据 <' column-count '> 自定分配宽度
+  auto：根据 <' column-count '> 自定分配宽度
 
 ```
 /*列宽固定，根据容器宽度液态分布列数*/
@@ -49,7 +49,7 @@ column-width: 200px;
 
 3. column-count：<integer> | auto 用来定义对象中的列数，使用数字 1-10表示。
   
-auto：根据 <' column-width '> 自定分配宽度
+  auto：根据 <' column-width '> 自定分配宽度
   
 ```
 /*列数固定，根据容器宽度液态分布列宽*/
@@ -72,7 +72,7 @@ column-gap: normal;
 ```
 5. column-rule：<' column-rule-width '> || <' column-rule-style '> || <' column-rule-color '>
 
-设置对象的列与列之间的边框。复合属性
+  设置对象的列与列之间的边框。复合属性
 
 ```
 /* 在列与列之间设置绿色间隔线 */
@@ -82,7 +82,7 @@ column-rule: 10px solid #090;
 ```
 6. column-fill：auto | balance
 
-设置对象所有列的高度是否统一;
+  设置对象所有列的高度是否统一;
 auto： 列高度自适应内容;
 balance： 所有列的高度以其中最高的一列统一
 
@@ -508,6 +508,6 @@ import Masonry from 'react-responsive-masonry'
 
 [在线预览](https://codesandbox.io/s/7y66p25qv6)
 
-~~解决问题好开心啊，就像时长在坐地铁时候放下了心底里的一块小石头~~
+~~解决问题好开心啊，~~❤️~~石沉海~~
 
 
