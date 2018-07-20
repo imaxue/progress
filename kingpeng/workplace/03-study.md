@@ -1,8 +1,8 @@
-### CSS3之多列布局columns详解
+## CSS3之多列布局columns详解
 
 前段时间用css3的多列布局实现了瀑布流列表
 
-特别注意：使用这个特性的不好一点是，列表是按照先渲染左边的列，再渲染右边的列，导致的效果是顺序会打乱
+**特别注意：使用这个特性的不好一点是，列表是按照先渲染左边的列，再渲染右边的列，导致的效果是顺序会打乱**
 
 CSS3提供了个新属性columns用于多列布局。
 基本属性如下：
@@ -204,3 +204,264 @@ CSS代码如下：
   border-bottom: 1px solid #cccccc;
 }
 ```
+
+
+**就在刚才、就在刚才、就在刚才、找到了更好的瀑布流解决方案**
+
+## 解决方案
+
+KeyWords: 瀑布流、masonry
+
+1、[react-responsive-masonry](https://github.com/xuopled/react-responsive-masonry)
+
+[在线Demo](https://xuopled.github.io/react-responsive-masonry/)
+
+Example：
+
+A、静态瀑布流
+
+JS：
+
+```
+import Masonry from 'react-responsive-masonry'
+ {!!this.state.isBrowser && res && !!isArray(res) ? <div style={{ backgroundColor: '#fff', marginBottom: '.2rem' }} className={styles.listCss}>
+          <Masonry
+            columnsCount={2} gutter="2.5px"
+          >
+            {this.listMapHtml()}
+          </Masonry>
+        </div> : <div className={styles.noList} style={{ color: '#000', padding: '1rem 0 2rem'}}>{!!isDelay ? '暂无内容！' : '正在加载...'}</div>}
+
+// 推荐列表遍历 注意a标签实现页面跳转的域名：https://hk.levect.com
+  listMapHtml() {
+    const { res, appid, eid, uid } = this.props as any
+    const { Uid } = this.state as any
+    if (!Utility.isArray(res)) {
+      return null
+    }
+    return res.slice(0, 20).map((item, index) => {
+      const _smallUrl = item.smallUrl && item.smallUrl !== '' ? item.smallUrl.replace('http://', 'https://') : ''
+      const _authUrl = item.authorUrl && item.authorUrl ? item.authorUrl.replace('http://', 'https://') : ''
+      return (
+        <a
+          href={`https://hk.levect.com/share/ImgDetail?groupid=${item.groupId}&appid=${appid}&eid=${eid}&uid=${Uid}`}
+          className={styles.itemCss} key={'img_item' + index}
+        >
+          <div className={styles.imgCss}>
+            <img src={_smallUrl && _smallUrl !== '' ? _smallUrl.replace('.webp', '') : ''} alt="" />
+          </div>
+          <div className={styles.imgBottom} >
+            <div className={styles.defaultFlex} style={{ paddingLeft: '.2rem', background: 'transparent' }}>
+              {_authUrl && _authUrl !== '' ?
+              <div style={{ position: 'relative', display: 'flex' }}>
+                <img className={styles.authorSmall} src={_authUrl && _authUrl !== '' ? _authUrl.replace('.webp', '') : ''} alt="" />
+                {item.vipLevel > 0 ? <div style={{ position: 'absolute', bottom: 0, right: 0 }}>
+                  <Icon IconType="iconV4" IsHidePadding />
+                </div> : ''}
+              </div>
+                :
+                <Icon IconType="iconPortraitSmall" IsHidePadding />
+              }
+              <div style={{ paddingLeft: '.12rem' }}>
+                <div className={styles.descCss} style={{ opacity: 1, fontSize: '.24rem' }}>
+                  {item && item.authorName && item.authorName !== '' ? `${item.authorName}` : '无'}
+                </div>
+              </div>
+            </div>
+            {isArray(item.childs) && <div style={{ paddingRight: '.2rem' }}>
+              <Icon IconType="iconGroupPicture" IsHidePadding />
+            </div>}
+          </div>
+        </a>
+      );
+    })
+  }
+
+```
+
+CSS：
+
+```
+// 瀑布流列表
+.listCss {
+  margin-bottom: .3rem;
+  // // css3 多列布局样式
+  // -moz-column-count: 2; 	/* Firefox */
+  // -webkit-column-count: 2; /* Safari 和 Chrome */
+  // column-count: 2;
+  // /* 固定列间隙为5px */
+  // -moz-column-gap: 5px;		/* Firefox */
+  // -webkit-column-gap: 5px;	/* Safari 和 Chrome */
+  // column-gap: 5px;
+  // column-fill: balance;
+  // // flex 两列布局
+  // // display: flex;
+  // // flex-wrap: wrap;
+  // // align-content: space-between;
+  padding: 0 .15rem;
+  overflow: auto;
+  height: 100%;
+  box-sizing: border-box;
+  .itemCss {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    // margin-bottom: 5px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    // flex-basis: 50%;
+    // display: flex;
+    // justify-content: space-between;
+    .imgCss {
+      // height: 5rem;
+      overflow: hidden;
+      box-sizing: border-box;
+      > img {
+        width: 100%;
+        display: block;  // 兼容底部的间隙
+        // position: relative;  // 裁剪图片
+        // top: 50%;
+        // -webkit-transform: translateY(-50%);  
+        // -ms-transform: translateY(-50%);  
+        // -moz-transform: translateY(-50%);  
+        // transform: translateY(-50%);
+      }
+    }
+    .imgBottom {
+      @extend .defaultFlex;
+      box-sizing: border-box;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
+      // left: 0px;
+      width: 100%;
+      background-image: linear-gradient(-180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.30) 100%);
+      height: .8rem;
+      box-sizing: border-box;
+      .authorSmall {
+        overflow: hidden;
+        width: .4rem;
+        height: .4rem;
+        border-radius: 50%;
+        border: 1px solid #dfdfdf;
+        // opacity: .5;
+      }
+    }
+  } 
+}
+
+// 无数据
+.noList {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 13px;
+  width: 100%;
+  padding-left: .2rem;
+}
+
+```
+
+B：tab切换、结合上拉加载下拉刷新的瀑布流
+
+JS：
+
+```
+import InfiniteScroll from 'react-infinite-scroll-component'
+import Masonry from 'react-responsive-masonry'
+
+// tab-html
+  tabHtml() {
+    const { resAuthor } = this.props as any
+    const { tabs, currentIndex } = this.state
+    return tabs.map((item, index) => {
+      return (
+        <div key={'tab_' + index} onClick={this.handlerChangeTab.bind(this, index)} className={styles.tabItem} style={{ borderRight: index === 0 ? '1px solid #DBDBDB' : ''}}>
+          <div>
+            <Icon IconType={index === currentIndex ? item.icon : item.selectIcon} />
+          </div>
+          <div className={styles.textCss + ' ' + (index === currentIndex ? '' : styles.select)}>
+            {item.text} {index === 0 ? (resAuthor && resAuthor.authorMakeCount ? resAuthor.authorMakeCount : 0) : (resAuthor && resAuthor.authorCollectCount ? resAuthor.authorCollectCount : 0)}
+          </div>
+        </div>
+      );
+    })
+  }
+
+// 列表遍历  https://hk.levect.com
+  listMapHtml() {
+    const { appid, eid } = this.props as any
+    const { currentIndex, collectLists, workLists } = this.state
+    const list = currentIndex === 0 ? workLists : collectLists
+    if (!Utility.isArray(list)) {
+      return null
+    }
+    return list.map((item, index) => {
+      const _smallUrl = item.smallUrl && item.smallUrl !== '' ? item.smallUrl.replace('http://', 'https://') : ''
+      const _authUrl = item.authorUrl && item.authorUrl ? item.authorUrl.replace('http://', 'https://') : ''
+      return (
+        <a
+          href={`https://hk.levect.com/share/ImgDetail?groupid=${item.groupId}&appid=${appid}&eid=${eid}`}
+          className={styles.itemCss} key={'user_detail_item' + index}
+        >
+          <div className={styles.imgCss}>
+            <img src={_smallUrl && _smallUrl !== '' ? _smallUrl.replace('.webp', '') : ''} alt="" />
+          </div>
+          <div className={styles.imgBottom} >
+            <div className={styles.defaultFlex} style={{ paddingLeft: '.2rem', background: 'transparent' }}>
+              {_authUrl && _authUrl !== '' ?
+              <div style={{ position: 'relative', display: 'flex' }}>
+                <img className={styles.authorSmall} src={_authUrl && _authUrl !== '' ? _authUrl.replace('.webp', '') : ''} alt="" />
+                {item.vipLevel > 0 ? <div style={{ position: 'absolute', bottom: 0, right: 0 }}>
+                  <Icon IconType="iconV4" IsHidePadding />
+                </div> : ''}
+              </div>
+                :
+                <Icon IconType="iconPortraitSmall" IsHidePadding />
+              }
+              <div style={{ paddingLeft: '.12rem' }}>
+                <div className={styles.descCss} style={{ opacity: 1, fontSize: '.24rem' }}>
+                  {item && item.authorName && item.authorName !== '' ? `${item.authorName}` : '无'}
+                </div>
+              </div>
+            </div>
+            {isArray(item.childs) && <div style={{ paddingRight: '.2rem' }}>
+              <Icon IconType="iconGroupPicture" IsHidePadding />
+            </div>}
+          </div>
+        </a>
+      );
+    })
+  }
+
+<div className={styles.tabsContainer}>
+   {this.tabHtml()}
+</div>
+{!!this.state.isBrowser && list && !!isArray(list) ? <div style={{ backgroundColor: '#fff', marginBottom: '0rem' }}>
+          {
+            <InfiniteScroll
+              dataLength={list.length}
+              next={this.fetchMoreData}
+              hasMore={currentIndex === 0 ? hasMore1 : hasMore2}
+              loader={<h4 style={{ textAlign: 'center' }}></h4>}
+              endMessage={
+                <p style={{ textAlign: 'center', fontSize: '.24rem' }}>
+                </p>
+              }
+            >
+              <div className={styles.listCss} style={{}}>
+                <Masonry
+                  columnsCount={2} gutter="2.5px"
+                >
+                  {this.listMapHtml()}
+                </Masonry>
+              </div>
+            </InfiniteScroll>
+          }
+        </div> : <div className={styles.noList} style={{ color: '#000', paddingTop: '2rem'}}>{!!isDelay ? '暂无内容！' : '正在加载...'}</div>}
+
+
+```
+
+
+
