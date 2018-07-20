@@ -272,6 +272,16 @@ var style = document.createElement("style");
 // 在该样式元素中创建新的节点（样式）
 style.appendChild(document.createTextNode("*{cursor:none !important}"));  
 
+//或者让你的世界变得模糊
+style.appendChild(document.createTextNode("
+p {
+    color: transparent;
+    text-shadow: #111 0 0 5px;
+}
+"));  
+
+
+
 // 将该样式元素添加到DOM中
 document.head.appendChild(style); 
 
