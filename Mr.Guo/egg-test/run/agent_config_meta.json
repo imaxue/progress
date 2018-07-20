@@ -1,0 +1,269 @@
+{
+  "keys": "/Users/guojingyuan/egg/egg-test/config/config.default.js",
+  "view": {
+    "defaultViewEngine": "/Users/guojingyuan/egg/egg-test/config/config.default.js",
+    "mapping": {
+      ".tpl": "/Users/guojingyuan/egg/egg-test/config/config.default.js"
+    },
+    "root": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view@2.1.0@egg-view/config/config.default.js",
+    "cache": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view@2.1.0@egg-view/config/config.local.js",
+    "defaultExtension": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view@2.1.0@egg-view/config/config.default.js"
+  },
+  "news": {
+    "pageSize": "/Users/guojingyuan/egg/egg-test/config/config.default.js",
+    "serverUrl": "/Users/guojingyuan/egg/egg-test/config/config.default.js"
+  },
+  "middleware": "/Users/guojingyuan/egg/egg-test/config/config.default.js",
+  "robot": {
+    "ua": "/Users/guojingyuan/egg/egg-test/config/config.default.js"
+  },
+  "session": {
+    "maxAge": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js",
+    "key": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js",
+    "httpOnly": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js",
+    "encrypt": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+    "protocolWhiteList": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+    "defaultMiddleware": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+    "csrf": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "useSession": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "ignoreJSON": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "cookieName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "sessionName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "headerName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "bodyName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "queryName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "xframe": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "value": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "hsts": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.local.js",
+      "maxAge": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "includeSubdomains": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "dta": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "noopen": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "nosniff": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "value": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "xssProtection": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "value": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "csp": {
+      "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "policy": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js",
+      "checkAddress": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-security@2.2.3@egg-security/config/config.default.js"
+  },
+  "jsonp": {
+    "limit": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-jsonp@2.0.0@egg-jsonp/config/config.default.js",
+    "callback": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-jsonp@2.0.0@egg-jsonp/config/config.default.js",
+    "csrf": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-jsonp@2.0.0@egg-jsonp/config/config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-onerror@2.1.0@egg-onerror/config/config.default.js",
+    "appErrorFilter": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-onerror@2.1.0@egg-onerror/config/config.default.js",
+    "templatePath": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-onerror@2.1.0@egg-onerror/config/config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-i18n@2.0.0@egg-i18n/config/config.default.js",
+    "dirs": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-i18n@2.0.0@egg-i18n/config/config.default.js",
+    "queryField": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-i18n@2.0.0@egg-i18n/config/config.default.js",
+    "cookieField": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-i18n@2.0.0@egg-i18n/config/config.default.js",
+    "cookieMaxAge": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-i18n@2.0.0@egg-i18n/config/config.default.js"
+  },
+  "watcher": {
+    "type": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-watcher@3.0.0@egg-watcher/config/config.local.js",
+    "eventSources": {
+      "default": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-watcher@3.0.0@egg-watcher/config/config.default.js",
+      "development": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-watcher@3.0.0@egg-watcher/config/config.default.js"
+    }
+  },
+  "multipart": {
+    "autoFields": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fields": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fileSize": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "files": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fileExtensions": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "whitelist": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js"
+  },
+  "development": {
+    "watchDirs": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-development@2.3.1@egg-development/config/config.default.js",
+    "ignoreDirs": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-development@2.3.1@egg-development/config/config.default.js",
+    "fastReady": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-development@2.3.1@egg-development/config/config.default.js",
+    "reloadOnDebug": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-development@2.3.1@egg-development/config/config.default.js",
+    "overrideDefault": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-development@2.3.1@egg-development/config/config.default.js"
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-schedule@3.3.0@egg-schedule/config/config.default.js",
+      "file": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-schedule@3.3.0@egg-schedule/config/config.default.js"
+    }
+  },
+  "logrotator": {
+    "filesRotateByHour": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
+    "hourDelimiter": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
+    "filesRotateBySize": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
+    "maxFileSize": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
+    "maxFiles": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
+    "rotateDuration": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
+    "maxDays": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js"
+  },
+  "static": {
+    "prefix": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
+    "dir": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
+    "dynamic": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
+    "preload": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
+    "buffer": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
+    "maxFiles": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js"
+  },
+  "nunjucks": {
+    "autoescape": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view-nunjucks@2.2.0@egg-view-nunjucks/config/config.default.js",
+    "throwOnUndefined": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view-nunjucks@2.2.0@egg-view-nunjucks/config/config.default.js",
+    "trimBlocks": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view-nunjucks@2.2.0@egg-view-nunjucks/config/config.default.js",
+    "lstripBlocks": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view-nunjucks@2.2.0@egg-view-nunjucks/config/config.default.js",
+    "cache": "/Users/guojingyuan/egg/egg-test/node_modules/_egg-view-nunjucks@2.2.0@egg-view-nunjucks/config/config.local.js"
+  },
+  "env": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "name": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "proxy": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "protocolHeaders": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "ipHeaders": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "hostHeaders": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "pkg": {
+    "name": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "version": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "description": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "main": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "scripts": {
+      "dev": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "debug": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "test": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "cov": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    },
+    "keywords": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "author": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "license": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "devDependencies": {
+      "egg-bin": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    },
+    "dependencies": {
+      "egg": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "egg-view-nunjucks": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "moment": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    }
+  },
+  "baseDir": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "HOME": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "rundir": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "dump": {
+    "ignore": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "notFound": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "sitefile": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "middlewares": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "httpClient": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "bodyParser": {
+    "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "encoding": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "formLimit": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "jsonLimit": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "strict": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "queryString": {
+      "arrayLimit": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "depth": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "parameterLimit": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "encoding": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "env": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "level": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "consoleLevel": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "disableConsoleAfterReady": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "outputJSON": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "buffer": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "appLogName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "coreLogName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "agentLogName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "errorLogName": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "coreLogger": {
+      "consoleLevel": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.local.js"
+    },
+    "allowDebugAtProd": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "dnsCacheMaxLength": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "dnsCacheMaxAge": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "request": {
+      "timeout": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "freeSocketKeepAliveTimeout": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "maxSockets": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "maxFreeSockets": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "freeSocketKeepAliveTimeout": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "maxSockets": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "maxFreeSockets": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "logging": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "coreMiddleware": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "workerStartTimeout": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "port": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+      "hostname": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js",
+    "responseTimeout": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+  },
+  "onClientError": "/Users/guojingyuan/egg/egg-test/node_modules/_egg@2.9.1@egg/config/config.default.js"
+}
