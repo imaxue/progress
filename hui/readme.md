@@ -260,4 +260,22 @@ document.body.contentEditable='true';
 document.designMode='on'; 
 
 ```
+> 让鼠标不见 emmm 也没什么用
+
+```
+// 返回所有该网站用到的样式列表
+document.styleSheets
+
+// 创建一个新的样式元素
+var style = document.createElement("style"); 
+
+// 在该样式元素中创建新的节点（样式）
+style.appendChild(document.createTextNode("*{cursor:none !important}"));  
+
+// 将该样式元素添加到DOM中
+document.head.appendChild(style); 
+
+//然后鼠标就不见啦  啦啦啦啦啦啦
+
+```
 
