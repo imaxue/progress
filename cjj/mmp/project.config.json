@@ -11,8 +11,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.1",
-	"appid": "touristappid",
+	"libVersion": "2.2.0",
+	"appid": "wx6aa1ed76b6832595",
 	"projectname": "mmp",
 	"condition": {
 		"search": {
@@ -35,9 +35,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "视图",
-					"pathName": "pages/wxml/index"
+					"pathName": "pages/com/index",
+					"query": ""
 				}
 			]
 		}

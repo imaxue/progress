@@ -1,5 +1,6 @@
 <!--pages/wxml/index.wxml-->
 <import src="./tpl.wxml" />
+<wxs src="../../utils/util.wxs" module="util"/>
 <view class="h2">视图层</view>
 <view class="list">
   <view class="list-item">
@@ -33,4 +34,6 @@
     <view class="h4">模版及引用</view>
     <template is="tpl1" data="{{text: 'template'}}"/>
   </view>
+  <view class="h4">wxs的应用</view>
+  <view>{{util.fmt('666')}}</view>
 </view>

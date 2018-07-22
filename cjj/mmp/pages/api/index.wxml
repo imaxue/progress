@@ -1,0 +1,10 @@
+<!--pages/api/index.wxml-->
+<view class='h1'>API</view>
+<view class='list'>
+  <view class='list-item'>
+    <view class='h4'>授权及登录接口</view>
+    <view>
+      <button wx:if="{{canUseBtnGetUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    </view>
+  </view>
+</view>

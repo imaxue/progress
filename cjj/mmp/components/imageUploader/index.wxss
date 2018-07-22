@@ -1,0 +1,61 @@
+/* components/imageUploader/index.wxss */
+
+.image-uploader {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  border: 1rpx solid #e6ebf5;
+  border-radius: 10rpx;
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.append-image,
+.image-preview__item {
+  position: relative;
+  margin: 0 20rpx 20rpx 0;
+  width: 200rpx;
+  height: 200rpx;
+  border: 1rpx solid #e6ebf5;
+  overflow: hidden;
+}
+
+.image-preview__image {
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.append-image__icon {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.append-image__icon::before,
+.append-image__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f5f5f5;
+}
+
+.append-image__icon::before {
+  width: 100rpx;
+  height: 2rpx;
+}
+
+.append-image__icon::after {
+  width: 2rpx;
+  height: 100rpx;
+}
+
+.append-image__icon:first-child {
+  display: block;
+}
