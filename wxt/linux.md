@@ -429,6 +429,8 @@ whois www.example.com lookup on Whois database
  
 
 详细情况请参考sun官方文档。
+https://www.cnblogs.com/yjd_hycf_space/p/7730690.html
+
 http://java.sun.com/j2se/1.7.0/docs/tooldocs/share/jps.html
 
 GO TOP INDEX ^ 
