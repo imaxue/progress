@@ -110,6 +110,5 @@ ps aux|grep ‘nginx'
 2）达192.168.0.224后，location /lile 匹配到之后，转发的地址为：http://192.168.0.37/，这里在proxy_pass的 http://192.168.0.37/ 的“/”会把/lile给替换掉
 3）然后到达192.168.0.37，直接匹配到的是root /web1，所以就去/web1目录下取数据 
 
-sudo nginx无
-sudo nginx
+
 ```
