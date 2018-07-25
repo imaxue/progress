@@ -29,12 +29,12 @@ Component({
       }]
       if (app.dev) {
         let data = Object.keys(Array.from({ length: 20 }))
-        itemList.push('打印globalData', '分页', '清除缓存')
+        itemList.push('打印Data', '分页', '清除缓存')
         itemEvent.push(() => {
-          console.log(app.globalData)
+          console.log('globalData:', app.globalData)
           let page = getCurrentPages()
           page = page[page.length - 1]
-          console.log(page.data)
+          console.log('pageData:', page.data)
         }, function (index) {
           setMultMenu({
             data,

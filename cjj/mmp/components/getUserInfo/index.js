@@ -46,7 +46,7 @@ Component({
   },
   attached () {
     console.log('component Attached')
-    app.init().then(() => {
+    app.init(() => {
       this.setData({
         visible: false
       })

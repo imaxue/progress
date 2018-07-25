@@ -1,3 +1,5 @@
+<menu></menu>
+<get-user-info></get-user-info>
 <!--pages/api/index.wxml-->
 <view class='h1'>API</view>
 <view class='list'>
@@ -8,4 +10,3 @@
     </view>
   </view>
 </view>
-<get-user-info></get-user-info>
