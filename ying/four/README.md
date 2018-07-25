@@ -20,8 +20,8 @@
 >>特殊问题：非微信授权页面，使用router.replace IOS手机没有下方返回按钮，即为没有记录之前history；但是微信授权页面，使用router.replace IOS手机有下方返回按钮，且会记录之前history记录。
 
 
-# position: fixed;在移动端抖动的问题（andriod）
+#position: fixed;在移动端抖动的问题（andriod）
 >https://blog.csdn.net/zx_001/article/details/50293709
->我用的第一种方法解决
+>>我用的第一种方法解决
 >>position: fixed;
 >>-webkit-transform: translateZ(0);
