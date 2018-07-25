@@ -1,58 +1,75 @@
 //app.js
-const { wxPromisify } = require('./utils/util.js')
-const checkSession = wxPromisify(wx.checkSession)
-const wxLogin = wxPromisify(wx.login)
+import { wxPromisify, showBusy, showSuccess, checkSession, wxLogin, wxRequest, wxModal, getUserInfo } from './utils/util.js'
+
+let loginInstance = null 
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-    this.init()
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
-    // // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo
-
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (this.userInfoReadyCallback) {
-    //             this.userInfoReadyCallback(res)
-    //           }
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+    console.log('App onlaunch')
   },
+  dev: true,
   init () {
     let { loggedIn } = this.globalData
+    // 检查session是否过期，如果过期则重新登录
     if (loggedIn) {
-      // 检查session是否过期，如果过期则重新登录
-      checkSession().catch(this.login)
-    } else {
-      this.login()
+      return checkSession().catch(() => {
+        this.globalData.loggedIn = false
+        return this.login()
+      })
     }
+    return this.login()
+  },
+  getUserInfo () {
+    let { userInfo } = this.globalData
+    if (userInfo) return Promise.resolve(userInfo)
+    return getUserInfo()
   },
   // 登录方法
-  login () {
-    wxLogin().then(({ code }) => {
-      console.log(code)
-    }).catch(err => {
-      console.log(err)
-      this.globalData.loggedIn = false
-    })
+  login() {
+    // 登录
+    if (loginInstance) return loginInstance
+    showBusy('Now Loading...')
+    return (loginInstance = wxLogin().then(({ code }) => {
+      return this.getUserInfo().then(res => {
+        let { encryptedData, iv, signature } = res
+        this.globalData.userInfo = res
+        showBusy('登录中')
+        return wxRequest({
+          url: 'https://ovwkkrnj.qcloud.la/weapp/login',
+          method: 'get',
+          header: {
+            'X-WX-Code': code,
+            'X-WX-Encrypted-Data': encryptedData,
+            'X-WX-IV': iv
+          }
+        })
+      })
+    }).then(({ data }) => {
+      loginInstance = null
+      if (data.code === 0) {
+        showSuccess('登录成功')
+        let { userinfo } = data.data
+        this.globalData.loggedIn = true
+        this.globalData.userInfo = userinfo
+        this.globalData.openid = userinfo.openId
+      } else {
+        wx.hideToast()
+        return Promise.reject(data)
+      }
+    }).catch(({ errMsg, error }) => {
+      wx.hideToast()
+      loginInstance = null
+      if (errMsg && errMsg.indexOf('fail') > -1) return Promise.reject(new Error(errMsg))
+      wxModal({
+        title: '登录错误',
+        content: `错误信息： ${JSON.stringify(errMsg || error)}`,
+        confirmText: '重新登录'
+      }).then(({ confirm }) => {
+        if (confirm) {
+          this.login()
+        }
+      })
+
+    }))
   },
   globalData: {
     userInfo: null,

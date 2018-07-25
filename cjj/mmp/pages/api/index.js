@@ -8,8 +8,8 @@ Page({
     canUseBtnGetUserInfo: wx.canIUse('button.open-type.getUserInfo')
   },
   
-  getUserInfo () {
-
+  getUserInfo (event) {
+    console.log(event)
   },
 
   /**

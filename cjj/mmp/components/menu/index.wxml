@@ -1,0 +1,7 @@
+<!--components/menu/index.wxml-->
+<view class="menu" bindtap="showMenu">
+  <view class="menu-button">○○○</view>
+</view>
+<popup visible="{{visible}}">
+  <button open-type="openSetting" bindopensetting="openSetting" bindtap="openSetting">打开系统设置界面</button>
+</popup>

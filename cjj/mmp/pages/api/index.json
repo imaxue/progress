@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "get-user-info": "../../components/getUserInfo/index"
+  }
+}

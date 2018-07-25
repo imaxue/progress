@@ -1,3 +1,18 @@
 <!--pages/com/index.wxml-->
 <view class="h2">自定义组件</view>
 <image-uploader count="{{4}}" bindchange="upload"></image-uploader>
+<popup popup-class="popup-content" title="提示">
+  <button slot="reference" style="margin-right: 15rpx;" size="mini">弹出popup</button>
+  <view class="popup-inner">
+    <text>这是一个弹框</text>
+  </view>
+</popup>
+<popup popup-class="popup-content">
+  <view slot="title" class="popup-title">这是一个自定义的标题</view>
+  <button slot="reference" size="mini">弹出popup</button>
+  <view class="popup-inner">
+    <text>这是一个自定义标题的弹框</text>
+  </view>
+</popup>
+<menu></menu>
+<get-user-info></get-user-info>

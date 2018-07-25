@@ -1,5 +1,8 @@
 {
   "usingComponents": {
-    "image-uploader": "../../components/imageUploader/index"
+    "menu": "../../components/menu/index",
+    "image-uploader": "../../components/imageUploader/index",
+    "popup": "../../components/popup/index",
+    "get-user-info": "../../components/getUserInfo/index"
   }
 }
