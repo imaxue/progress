@@ -18,3 +18,10 @@
 >>解决问题：QQ空间返回好多次才能返回到页面。
 >>例子：1.从百度跳转到谷歌 2.replace 谷歌会把百度替换掉 返回会返回谷歌
 >>特殊问题：非微信授权页面，使用router.replace IOS手机没有下方返回按钮，即为没有记录之前history；但是微信授权页面，使用router.replace IOS手机有下方返回按钮，且会记录之前history记录。
+
+
+# position: fixed;在移动端抖动的问题（andriod）
+>https://blog.csdn.net/zx_001/article/details/50293709
+>我用的第一种方法解决
+>>position: fixed;
+>>-webkit-transform: translateZ(0);
