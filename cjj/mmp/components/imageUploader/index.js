@@ -1,7 +1,6 @@
 // components/imageUploader/index.js
-const { wxPromisify } = require('../../utils/util.js')
+import { wxPromisify, wxModal } from '../../utils/util.js'
 const chooseImage = wxPromisify(wx.chooseImage)
-const showModal = wxPromisify(wx.showModal)
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -30,7 +29,7 @@ Component({
     remove({ currentTarget }) {
       let { files } = this.data
       let { index } = currentTarget.dataset
-      showModal({
+      wxModal({
         title: '提示',
         content: '删除此图片',
         showCancel: true,

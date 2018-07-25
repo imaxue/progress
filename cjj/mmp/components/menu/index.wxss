@@ -1,0 +1,6 @@
+/* components/menu/index.wxss */
+.menu {
+  position: fixed;
+  top: 65rpx;
+  left: 30rpx;
+}
