@@ -26,7 +26,7 @@
 
 ### 算法
 
-- [算法笔记](https://github.com/imaxue/progress/blob/master/axue/Algorithms/note.md)--xue
+- [算法笔记](https://github.com/imaxue/progress/blob/master/axue/Algorithms)--xue
 - [密码技术](https://github.com/imaxue/progress/blob/master/share/3/%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF.pdf)--xue
 
 
