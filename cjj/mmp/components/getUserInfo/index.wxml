@@ -1,0 +1,8 @@
+<!--components/getUserInfo/index.wxml-->
+<popup visible="{{visible}}" popup-class="popup-content" close-on-click-modal="{{false}}">
+  <view slot="title" class="title">欢迎使用MMP小程序</view>
+  <view class="content">
+    <text>请在授权登录后放心使用MMP小程序\n我们不保证你的信息和数据是否会泄漏</text>
+  </view>
+  <button open-type="getUserInfo" plain bindgetuserinfo="getUserInfo">微信授权登录</button>
+</popup>

@@ -109,3 +109,52 @@ function quickSort(a) {
 
 ```
 
+
+
+> 另外一种快速排序方式, 原地排序, 空间复杂度更低
+
+```javascript
+function partition(array, low, high) {
+    let i = low, j = high + 1;
+
+    let v = array[low];
+
+    while (true) {
+        while (less(array[++i], v)) {
+            if (i === high) {
+                break;
+            }
+        }
+
+        while (less(v, array[--j])) {
+            if (j === low) {
+                break;
+            }
+        }
+
+        if (i >= j) {
+            break;
+        }
+
+        exchange(array, i, j)
+    }
+    exchange(array, low, j);
+    return j;
+}
+
+function quickSort(array, low, high) {
+
+    if (high <= low) {
+        return;
+    }
+
+    let pivot = partition(array, low, high);
+
+    quickSort(array, low, pivot - 1);
+    quickSort(array, pivot + 1, high);
+}
+
+quickSort(arr, 0, arr.length - 1)
+console.log(arr);
+```
+
