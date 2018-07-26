@@ -1,20 +1,48 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
+import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
+// 按需加载要走的组件
+import Bundle from './router/Bundle';
+// 直接引入的组件
 import App from './js/App';
-import One from './js/One';
-import Two from './js/Two';
-
-
+// import One from './js/One'; import Two from './js/Two'; 引入css
 import './css/index.css';
+//  按需加载的组件用Bundle组件包裹一下
+const One = (props) => (
+    <Bundle
+        load={() => require.ensure([], function () {
+        return require('./js/One')
+    }, 'One')}>
+        {(One) =>< One {
+            ...props
+        } />}
+    </Bundle>
+)
 
-console.log('hello pack');
-console.log("我还");
+const Two = (props) => (
+    <Bundle
+        load={() => require.ensure([], function () {
+        return require('./js/Two')
+    }, 'Two')}>
+        {(Two) =>< Two {
+            ...props
+        } />}
+    </Bundle>
+)
 
+const Next = (props) => (
+    <Bundle
+        load={() => require.ensure([], function () {
+        return require('./js/Next')
+    }, 'Next')}>
+        {(Next) =>< Next {
+            ...props
+        } />}
+    </Bundle>
+)
+
+// 正常写法
 class Reactroot extends React.Component {
-    // state = {     change: 'yes' } onClick = () => {     this.setState({ change:
-    // this.state.change == "yes"             ? 'no'             : 'yes' }) }
     render() {
         return (
             <Router >
@@ -32,13 +60,16 @@ class Reactroot extends React.Component {
                     </ul>
 
                     <hr/>
-
-                    <Route exact path="/" component={App}/>
-                    <Route path="/one" component={One}/>
-                    <Route path="/two" component={Two}/>
+                    <Switch>
+                        <Route exact path="/" component={App}/>
+                        <Route exact path="/one" component={One}/>
+                        <Route path="/one/next" component={Next}/>
+                        <Route path="/two" component={Two}/>
+                    </Switch>
                 </div>
             </Router>
         )
     }
 }
-ReactDOM.render(<Reactroot/>, document.getElementById("APP"))
+ReactDOM.render(
+    <Reactroot/>, document.getElementById("APP"))
