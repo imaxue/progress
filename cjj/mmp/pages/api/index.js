@@ -1,4 +1,5 @@
 // pages/api/index.js
+const app = getApp()
 Page({
 
   /**
@@ -8,15 +9,17 @@ Page({
     canUseBtnGetUserInfo: wx.canIUse('button.open-type.getUserInfo')
   },
   
-  getUserInfo () {
-
+  getUserInfo (event) {
+    console.log(event)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    app.init(function () {
+      console.log('此处调接口获取页面数据')
+    })
   },
 
   /**

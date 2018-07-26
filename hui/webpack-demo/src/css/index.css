@@ -1,0 +1,12 @@
+.bird{
+    width: 280px;
+    height: 200px;
+    transform: translateX(0px);
+    transition: transform  2s;
+}
+.bird-fly{
+    width: 280px;
+    height: 200px;
+    transform: translateX(200px);
+    transition: transform  2s;
+}
