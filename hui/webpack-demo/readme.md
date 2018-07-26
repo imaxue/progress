@@ -1,4 +1,4 @@
-##老黄搭项目 吓死你系列（webpack4+react+react-root4）
+## 老黄搭项目 吓死你系列（webpack4+react+react-root4）
 
 ## 初始化项目
 
@@ -12,7 +12,7 @@ $ npm init -y
 ```
 初始化之后我们的项目里面会有一个packge.json文件
 
-##新建一个HTML 作为我们单页应用的主页面
+## 新建一个HTML 作为我们单页应用的主页面
 
 然后我们在项目下新建一个HTML
 
@@ -30,7 +30,7 @@ $ npm init -y
     </body>
 </html>
 ```
-###创建js文件
+### 创建js文件
 
 在 webpack-demo 目录下新建 index.js，内容暂时留空。
 
@@ -64,7 +64,7 @@ import ReactDOM from 'react-dom'
 
 我们要用 webpack 来构建我们的源代码 - webpack 将调用 babelJS 预处理我们的 JavaScript 代码。
 
-##安装 webpack
+## 安装 webpack
 
 在 webpack-demo 项目根目录中安装 webpack
 
@@ -72,7 +72,7 @@ import ReactDOM from 'react-dom'
 $ npm install -D webpack  //-D 的意思是 --save-dev （奖励老郭一朵小红花）
 ```
 
-##编译 JavaScript
+## 编译 JavaScript
 
 webpack 是个打包工具，它需要一个入口文件，一个输出文件。（但是我们写的是webpack4 它有默认的 哇哈哈哈哈  默认 固定入口目录为src，与入口默认文件index.js）
 
@@ -193,13 +193,13 @@ webpack v4.12.0
 ```
 刷新浏览器，控制台已经不再报错。
 
-##实时刷新
+## 实时刷新
 
 在 index.html 文件中引用构建出的 main.js 文件后，我们有几个问题需要解决。
     1.入口文件 src/index.js 的变化如何通知给 webpack，以便重新构建 dist/main.js 文件？
     2.dist/main.js 文件更新后，浏览器中打开的页面该如何自动刷新？
 
-###监控文件
+### 监控文件
 
 第一个问题，webpack 有好几个解决办法，其中 watch 选项最直观，我们可以让 webpack 监控文件变化，一旦文件有变化，就重新构建。但默认情况下，watch 选项是禁用的。
 
@@ -244,11 +244,11 @@ ed01d2b2b0f8319e79d4
 
 webpack 监控到 src/index.js 文件的变化，重新构建 dist/main.js，耗时 16ms。
 
-###刷新浏览器
+### 刷新浏览器
 
 至于自动刷新浏览器的问题，webpack 提供 webpack-dev-server 来解决，它是一个基于 expressjs 的开发服务器，提供实时刷新浏览器页面的功能。
 
-##webpack-dev-serve
+## webpack-dev-serve
 
 首先在项目下安装 webpack-dev-serve
 
@@ -351,7 +351,7 @@ Please check the command executed.
 我们只能通过 webpack.config.js 文件来配置 mode，至于原因，可以看[作者的理由](https://github.com/webpack-contrib/webpack-serve/issues/44#issuecomment-370431725)。
 
 
-##编码
+## 编码
 
 完成上述准备工作后，在 src/index.js 中写个简单的 React 代码
 
@@ -388,7 +388,7 @@ $ npm install -D "babel-loader@^8.0.0-beta" @babel/core @babel/preset-react
 
 在 webpack-dev-server 下，我们可以通过 --module-bind 参数来指定 js 语言的加载器
 
-###开始写我们的重头戏 webpack.config.js 
+### 开始写我们的重头戏 webpack.config.js 
 
 来新建一个 webpack.config.js 文件
 
@@ -417,9 +417,9 @@ module.exports = {
 我们在配置文件中指定了 js 文件的加载器，重启 webpack-dev-server，它会自动读取 webpack.config.js 配置。命令行不再报错，浏览器页面渲染出 “hello webpack”。
 
 
-##然后就是各种加载器
+## 然后就是各种加载器
 
-##图片加载器
+## 图片加载器
 
 我们需要一张图片，我从 我的私房照里选出一张 ，放到 src/img/bird.jpg 位置。
 
@@ -492,7 +492,7 @@ $ npm install -D file-loader
 
 查看浏览器，图片已经渲染出来 - 但是图片太大了。我们需要 CSS 来控制图片尺寸。
 
-##加载 CSS 文件
+## 加载 CSS 文件
 
 在 React.js 里，CSS 有很多种写法，比如我们可以直接写在 style 中
 
@@ -676,7 +676,7 @@ $ npm i -D @babel/plugin-proposal-class-properties
 
 查看浏览器，图片已经可以点击。
 
-###打包
+### 打包
 
 在完成项目开发后，我们需要输出文件给生产环境部署，执行
 
@@ -717,7 +717,7 @@ const path = require('path')
 
 之后再执行 npx webpack --mode production，webpack 就会在构建前清空 dist 目录。
 
-###html-webpack-plugin
+### html-webpack-plugin
 
 前面提到，我们在部署时，需要将 index.html 拷入 dist 目录，这其实很不方便，而且容易遗漏。另外，这个简单项目里我们只引用 main.js，如果入口文件多起来，文件名中再加上 hash 的话，手动管理 index.html 的成本非常高。
 
@@ -912,7 +912,7 @@ $ mv Bundle.js router
 
 ```
 
-写我们的Bundle.js
+## 写我们的Bundle.js
 
 ```
 // 异步加载组件
