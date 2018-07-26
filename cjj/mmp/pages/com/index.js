@@ -1,16 +1,26 @@
 // pages/com/index.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    text: '组件'
+    userName: ''
   },
 
   upload (event) {
     let { files } = event.detail
     console.log(files)
+  },
+
+  onInput (event) {
+    let { value } = event.detail
+    let { key } = event.target.dataset
+    if (!key) return
+    this.setData({
+      [key]: value
+    })
   },
 
   /**

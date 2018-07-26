@@ -6,11 +6,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canUseBtnGetUserInfo: wx.canIUse('button.open-type.getUserInfo')
+    canUseBtnGetUserInfo: wx.canIUse('button.open-type.getUserInfo'),
+    obj: {
+      a: {
+        b: 1
+      }
+    }
   },
   
   getUserInfo (event) {
     console.log(event)
+  },
+
+  watch: {
+    'obj': {
+      handler(newValue, oldValue) {
+        console.log(newValue, oldValue)
+      },
+      immediate: true
+    }
   },
 
   /**

@@ -12,3 +12,38 @@
 .popup-inner {
   text-align: center;
 }
+
+.form {
+  display: block;
+  padding: 10rpx;
+  border: 1rpx solid #f0f0f0;
+  background-color: #f9f9f9;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.form-item__label {
+  width: 140rpx;
+  text-align: right;
+}
+
+.form-item__content {
+  position: relative;
+  flex: 1;
+}
+
+.form-item__inner {
+  padding-left: 20rpx;
+}
+
+.form-item__error {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  color: #f00;
+}

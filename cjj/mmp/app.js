@@ -1,6 +1,6 @@
 //app.js
 import { wxPromisify, showBusy, showSuccess, checkSession, wxLogin, wxRequest, wxModal, getUserInfo } from './utils/util.js'
-
+import { watch } from './utils/watch.js'
 let loginInstance = null 
 App({
   onLaunch: function () {
@@ -10,6 +10,14 @@ App({
   init (callback) {
     let { loggedIn } = this.globalData
     // 检查session是否过期，如果过期则重新登录
+    let page = getCurrentPages()
+    if (page && page.length > 0) {
+      let curPage = page[0]
+      if (!curPage.__init__) {
+        curPage.__init__ = true
+        watch.call(curPage, curPage.watch)
+      }
+    }
     if (loggedIn) {
       return checkSession().then(() => {
         callback && callback()

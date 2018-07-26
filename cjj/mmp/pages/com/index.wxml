@@ -1,8 +1,31 @@
 <menu></menu>
 <get-user-info></get-user-info>
+<wxs module="validator">
+  var userName = function (value) {
+    return value ? '' : '请输入姓名'
+  }
+  module.exports = {
+    userName: userName
+  }
+</wxs>
 <!--pages/com/index.wxml-->
+<view class="h2">基础组件</view>
+<view class='desc'>此处只介绍部分，其他的组件官方文档说明很详细</view>
+<view class='h3'>表单及表单验证</view>
+<form class='form' report-submit>
+  <view class="desc">表单提交时如果需要后续给用户发送反馈小程序消息，可在form标签上添加report-submit属性，然后在bindsubmit事件中可以获取到formId</view>
+  <view class='form-item'>
+    <label class='form-item__label'>姓名</label>
+    <view class='form-item__content'>
+      <input type="text" placeholder='请输入姓名' class='form-item__inner' data-key="userName" bindinput='onInput' value="{{userName}}"/>
+      <view class='form-item__error'>{{validator.userName(userName)}}</view>
+    </view>
+  </view>
+</form>
 <view class="h2">自定义组件</view>
+<view class="h3">图片选择/预览</view>
 <image-uploader count="{{4}}" bindchange="upload"></image-uploader>
+<view class='h3'>弹框组件</view>
 <popup popup-class="popup-content" title="提示">
   <button slot="reference" style="margin-right: 15rpx;" size="mini">弹出popup</button>
   <view class="popup-inner">
