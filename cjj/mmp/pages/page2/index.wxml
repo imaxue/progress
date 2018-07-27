@@ -1,0 +1,5 @@
+<!--pages/page2/index.wxml-->
+<view>此处是page2</view>
+<navigator url="/pages/page3/index" open-type="navigate">
+  <button type='primary'>前往page2</button>
+</navigator>

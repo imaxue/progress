@@ -23,6 +23,7 @@
 .form-item {
   display: flex;
   align-items: center;
+  padding: 20rpx 0;
   background-color: #fff;
 }
 

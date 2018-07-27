@@ -1,0 +1,10 @@
+<view class="container">
+  <button bindtap='chooseVideo' type='primary' wx:if="{{!video}}">点击选择一个视频</button>
+  <view class="video" wx:else>
+    <video id="myVideo" src="{{video}}" danmu-list="{{list}}" enable-danmu danmu-btn controls bindtimeupdate="timeUpdate"></video>
+    <view>
+      <input placeholder='输入弹幕' bindinput='onInput'/>
+      <button bindtap='sendDanmu'>发送弹幕</button>
+    </view>
+  </view>
+</view>

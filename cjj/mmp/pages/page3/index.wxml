@@ -1,0 +1,11 @@
+<!--pages/page3/index.wxml-->
+<view>此处是page3</view>
+<navigator url="/pages/com/index" open-type="redirect">
+  <button type='primary'>回退到首页</button>
+</navigator>
+<navigator url="/pages/page2/index" delta="{{2}}" open-type="navigateBack">
+  <button type='primary'>回退到page1</button>
+</navigator>
+<navigator url="/pages/page2/index" delta="{{1}}" open-type="navigateBack">
+  <button type='primary'>回退到page2</button>
+</navigator>

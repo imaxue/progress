@@ -123,6 +123,51 @@ export const showSuccess = text => wx.showToast({
   icon: 'success'
 })
 
+// 获取一个随机十六进制颜色值
+export function getRandomColor() {
+  let rgb = '#'
+  for (let i = 0; i < 3; ++i) {
+    let color = Math.floor(Math.random() * 256).toString(16)
+    color = color.length == 1 ? '0' + color : color
+    rgb += color
+  }
+  return rgb
+}
+
+/**
+ *兼容requestAnimationFrame方法 
+ *
+ */
+
+let lastTime = 0
+
+export function requestAnimation(fn) {
+  if (typeof requestAnimationFrame === 'function') {
+    return requestAnimationFrame(fn)
+  } else {
+    let currTime = new Date().getTime()
+    let timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
+    let id = setTimeout(function () {
+      fn(currTime + timeToCall)
+    }, timeToCall)
+    lastTime = currTime + timeToCall
+    return id
+  }
+}
+
+/**
+ * 兼容cancelAnimationFrame方法
+ */
+
+export function cancelAnimation(id) {
+  if (typeof cancelAnimationFrame === 'function') {
+    cancelAnimationFrame(id)
+  } else {
+    clearTimeout(id)
+  }
+}
+
+
 export const checkSession = wxPromisify(wx.checkSession)
 
 export const wxLogin = wxPromisify(wx.login)
@@ -132,3 +177,5 @@ export const wxRequest = wxPromisify(wx.request)
 export const wxModal = wxPromisify(wx.showModal)
 
 export const getUserInfo = wxPromisify(wx.getUserInfo)
+
+export const wxChooseVideo = wxPromisify(wx.chooseVideo)

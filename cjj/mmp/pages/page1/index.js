@@ -1,39 +1,18 @@
-// pages/com/index.js
-
+// pages/page1/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    params: {
-      userName: ''
-    }
-  },
-
-  upload (event) {
-    let { files } = event.detail
-    console.log(files)
-  },
-
-  onInput (event) {
-    let { value } = event.detail
-    let { key } = event.target.dataset
-    if (!key) return
-    this.setData({
-      [key]: value
-    })
-  },
-
-  submit (event) {
-    console.log(event)
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   console.log('Page onLoad')
+  
   },
 
   /**
