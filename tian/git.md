@@ -71,7 +71,7 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 1.git reset file 从缓存区移除特定文件，但是不会改变工作区的内容  
 2.git reset : 重设缓存区，会取消所有文件的缓存  
 3.git reset --hard : 重置缓存区和工作区，修改其内容对最新的一次 commit 对应的内容  
-4.git reset <commit> : 移动当前分支的末端到指定的commit处  
+4.git reset commit : 移动当前分支的末端到指定的commit处  
 5.git reset --hard <commit>: 重置缓存区和工作区，修改其内容为指定 commit 对应的内容    
 6.git reset HEAD  -- <file>  拉取最近一次提交到版本库的文件到暂存区  改操作不影响工作区  
 7.git reset HEAD~1 返回上一次提交
