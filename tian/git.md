@@ -35,8 +35,8 @@ git add [file]，这个命令会依次做下面两件事情：
 git branch -r查看远程所有分支  
 git branch查看本地所有分支  
 git branch -a查看本地和远程所有分支  
-git branch -d <branchname>删除本地分支  
-git branch -d -r <branchname>  
+git branch -d branchname删除本地分支  
+git branch -d -r branchname  
 使用-D则表示强制删除，相当于 --delete --force
 重命名分支 git branch (-m | -M) <oldbranch> <newbranch>  使用-M则表示强制重命名  
 ## git checkout
@@ -45,9 +45,9 @@ git checkout 实际上就是在操作HEAD
 我们知道每一个 commit 对象都对应着一个快照。可依据其恢复本地的工作目录。 HEAD 指向的 commit 是判断工作区有何更改的基础。
 Git 中有一个比较难理解的概念叫做「HEAD分离」，映射到文件层面，其实指的是 .git/HEAD 直接指向某个commit对象.  
 用法：  
-1.git checkout <file>:  此命令可以用来清除未缓存的更改，它可以看做是 git checkout HEAD <file> 的简写  
-2.git checkout <commit> <file> 可以用来恢复某文件为某个提交时的状态。  
-3.git checkout <branch>：  切换分支到 <branch> 其实际上是修改 .git/HEAD 中的内容为 <branch>，更新工作区内容为 <branch> 所指向的 commit 对象的内容。  
+1.git checkout file:  此命令可以用来清除未缓存的更改，它可以看做是 git checkout HEAD <file> 的简写  
+2.git checkout commit file 可以用来恢复某文件为某个提交时的状态。  
+3.git checkout branch：  切换分支到 <branch> 其实际上是修改 .git/HEAD 中的内容为 <branch>，更新工作区内容为 <branch> 所指向的 commit 对象的内容。  
 4.git checkout <hash|tag>HEAD直接指向一个commit对象，更新工作区内容为该commit对象对应的快照，此时为HEAD分离状态  
 5.git branch -b new-branch|| git checkout branch 切换到其它分支或者新建分支  
 ## git merge
@@ -71,9 +71,9 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 1.git reset file 从缓存区移除特定文件，但是不会改变工作区的内容  
 2.git reset : 重设缓存区，会取消所有文件的缓存  
 3.git reset --hard : 重置缓存区和工作区，修改其内容对最新的一次 commit 对应的内容  
-4.git reset <commit> : 移动当前分支的末端到指定的commit处  
-5.git reset --hard <commit>: 重置缓存区和工作区，修改其内容为指定 commit 对应的内容    
-6.git reset HEAD  -- <file>  拉取最近一次提交到版本库的文件到暂存区  改操作不影响工作区  
+4.git reset commit : 移动当前分支的末端到指定的commit处  
+5.git reset --hard commit: 重置缓存区和工作区，修改其内容为指定 commit 对应的内容    
+6.git reset HEAD  -- file  拉取最近一次提交到版本库的文件到暂存区  改操作不影响工作区  
 7.git reset HEAD~1 返回上一次提交
   
 ### git reset的原理
@@ -96,7 +96,7 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 6.默认情况下，git stash 只会储藏已经在索引中的文件。 使用 git stash —include-untracked 或 git stash -u 命令，Git 才会将任何未跟踪的文件添加到stash;  
 7.使用命令git stash pop 命令可以用来应用最新的stash,并立即从stash栈上扔掉它  
 8.使用命令 git stash —patch ，可触发交互式stash会提示哪些改动想要储藏、哪些改动需要保存在工作目录中。  
-9.使用命令git stash branch <new branch>：构建一个名为new branch的新分支，并将stash中的内容写入该分支  
+9.使用命令git stash branch new branch：构建一个名为new branch的新分支，并将stash中的内容写入该分支  
 
 ## git clean
 使用git clean命令可以去除冗余文件或者清理工作目录。 使用git clean -f -d命令可以用来移除工作目录中所有未追踪的文件以及空的子目录。  
@@ -104,7 +104,7 @@ Git 中分支合并有两种算法，快速向前合并 和 三路合并。
 所有在不知道 git clean 命令的后果是什么的时候，不要使用-f,推荐先使用 -n 来看看会有什么后果。  
 ## git remote
 1.查看远程仓库 git remote  
-2.添加远程仓库 git remote add <shortname> <url>   git remote add pb https://github.com/paulboone/ticgit
+2.添加远程仓库 git remote add shortname url   git remote add pb https://github.com/paulboone/ticgit
 3.远程仓库重命名 git remote rename   git remote rename pb paul
 4.远程仓库的移除 git remote rm <name> 
   

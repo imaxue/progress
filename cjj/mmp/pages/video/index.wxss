@@ -1,0 +1,7 @@
+/* pages/music/index.wxss */
+.container {
+  padding: 20rpx;
+}
+.video {
+  text-align: center;
+}

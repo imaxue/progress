@@ -1,16 +1,20 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/com/index",
     "pages/wxml/index",
-    "pages/api/index"
+    "pages/api/index",
+    "pages/video/index",
+    "pages/page1/index",
+    "pages/page2/index",
+    "pages/page3/index",
+    "pages/lottery/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Just do IT",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "default"
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#f9f9f9",
@@ -32,7 +36,7 @@
       },
       {
         "text": "API",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/api/index",
         "iconPath": "assets/icon/api.png",
         "selectedIconPath": "assets/icon/api-active.png"
       }

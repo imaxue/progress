@@ -1,3 +1,7 @@
 {
- "navigationBarTitleText": "视图"
+ "navigationBarTitleText": "视图",
+ "usingComponents": {
+    "menu": "../../components/menu/index",
+    "get-user-info": "../../components/getUserInfo/index"
+  }
 }

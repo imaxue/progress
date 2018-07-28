@@ -10,6 +10,7 @@
 }
 
 page {
+  padding-top: 140rpx;
   font-size: 28rpx;
 }
 
@@ -49,6 +50,12 @@ view {
 
 .h6 {
   font-size: 0.67em;
+}
+
+.desc {
+  font-size: 100%;
+  color: #555;
+  text-indent: 1.2em;
 }
 
 .list {

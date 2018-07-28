@@ -1,7 +1,7 @@
-H5与客户端交互
-一 、 H5调取客户端方法
-
-方案1：
+#H5与客户端交互
+>一 、 H5调取客户端方法
+>>方案1：
+```javascript
 1.组装数据
 2.var imgData = JSON.stringify(this.isMobileData);
 3.
@@ -61,10 +61,10 @@ showImagesBrowser(data) {
 DDAppWebView.showImagesBrowser && DDAppWebView.showImagesBrowser(data);
 
 }
+```
 
 
-
-方案2
+>>方案2
 
 https://www.cnblogs.com/dailc/p/5931324.html
 

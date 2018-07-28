@@ -1,0 +1,38 @@
+<!--pages/lottery/index.wxml-->
+<view class="container" bindlongpress="showMenu">
+  <view class="header">
+    <image src="/assets/images/lottery_head.png"></image>
+    <view>抽大奖啦！</view>
+  </view>
+  <view class="awards">
+    <view class="wheel">
+      <view class="wheel-container" wx:if="{{!showLottery}}">
+        <canvas canvas-id="wheel" style="width: {{width}}rpx; height: {{height}}rpx;">
+        </canvas>
+      </view>
+      <view class="pointer" id="pointer" data-modal-value="showLottery" bindtap="rotate" wx:if="{{!showLottery}}">
+        <canvas canvas-id='pointer' style="width:186rpx;height:220rpx;">
+        </canvas>
+      </view>
+    </view>
+  </view>
+  <view class="show-luckys image-bg" >
+    <view class="luckys-num">中奖记录</view>
+    <view class="luckys-container">
+       <view class="lucky-users">
+        <view class="lucky-users-list" wx:for="{{'123'}}" wx:key="index">
+          <view class="list-item" wx:for="{{luckyUsers}}" wx:key="index">
+            <view class="list-item__content">{{item.phone + '：'}}</view>
+            <view class="list-item__content">{{item.reward}}</view>
+            <view class="list-item__content">{{ item.lottery_time }}</view>
+          </view>
+        </view>
+      </view> 
+    </view>
+  </view>
+</view>
+<view class="modal-wrap" wx:if="{{showLottery}}" data-modal-value="showLottery"></view>
+<view class="modal modal-lottery" wx:if="{{showLottery}}"> 
+  <view class="modal-content"><text>{{lottery[result].id > 0 ? '恭喜您获得' + lottery[result].name : '很遗憾\n未中奖'}}</text></view>
+  <view class="close-btn icon-close" bindtap="closeModal"></view>
+</view>

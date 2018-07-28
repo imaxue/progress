@@ -36,7 +36,7 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "视图",
+					"name": "组件",
 					"pathName": "pages/com/index",
 					"query": ""
 				}

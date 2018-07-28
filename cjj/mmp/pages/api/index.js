@@ -1,22 +1,39 @@
 // pages/api/index.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    canUseBtnGetUserInfo: wx.canIUse('button.open-type.getUserInfo')
+    canUseBtnGetUserInfo: wx.canIUse('button.open-type.getUserInfo'),
+    obj: {
+      a: {
+        b: 1
+      }
+    }
   },
   
-  getUserInfo () {
+  getUserInfo (event) {
+    console.log(event)
+  },
 
+  watch: {
+    'obj': {
+      handler(newValue, oldValue) {
+        console.log(newValue, oldValue)
+      },
+      immediate: true
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    app.init(function () {
+      console.log('此处调接口获取页面数据')
+    })
   },
 
   /**
