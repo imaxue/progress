@@ -2,3 +2,4 @@
 + [2018-7-8 vue-cli升级webpack4.x不完全指南](https://github.com/imaxue/progress/blob/master/haonan/2018-7-8%20vue-cli%E5%8D%87%E7%BA%A7webpack4.x%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.md)
 + [2018-7-15 redux的使用](https://github.com/imaxue/progress/blob/master/haonan/2018-7-15%20redux%E7%9A%84%E4%BD%BF%E7%94%A8.md)
 + [2018-7-22 关于h5 history api的认识](https://github.com/imaxue/progress/blob/master/haonan/2018-7-22%20%E5%85%B3%E4%BA%8Eh5%20history%20api%E7%9A%84%E8%AE%A4%E8%AF%86.md)
++ [2018-7-28 实现在手机微信中打开自定义域名的网站并正常触发app唤醒功能](https://github.com/imaxue/progress/blob/master/haonan/2018-7-28%20%E5%AE%9E%E7%8E%B0%E5%9C%A8%E6%89%8B%E6%9C%BA%E5%BE%AE%E4%BF%A1%E4%B8%AD%E6%89%93%E5%BC%80%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E7%9A%84%E7%BD%91%E7%AB%99%E5%B9%B6%E6%AD%A3%E5%B8%B8%E8%A7%A6%E5%8F%91app%E5%94%A4%E9%86%92%E5%8A%9F%E8%83%BD.md)
