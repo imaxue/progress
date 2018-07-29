@@ -22,6 +22,8 @@
 
 4、04-study：[服务器端渲染框架NextJs中使用的react组件](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/04-study.md)
 
+5、05-syudy：[微信分享：原生微信环境api分享、浏览器菜单引导分享](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/05-study.md)
+
  AND MORE...
 
 ### 总结一些实际开发中的应用和遇到的问题的解决方案
