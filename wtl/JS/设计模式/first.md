@@ -83,3 +83,15 @@ var obj = {
 
 ```
 
+下面这种也是实现uncurrying 的一种方式，大家可以理解一下
+
+```js
+
+  Function.prototype.uncurrying = function () {
+    var self = this; 
+     return function () {
+      return Function.prototype.call.apply(self, arguments);
+    }
+  };
+```
+
