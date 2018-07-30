@@ -221,6 +221,7 @@ Page({
       this.getLotteryActive()
       this.getLottery()
     })
+    this.defaultRotate()
   },
 
   /**

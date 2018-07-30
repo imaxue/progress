@@ -3,7 +3,8 @@ import { wxPromisify, showBusy, showSuccess, checkSession, wxLogin, wxRequest, w
 import { watch } from './utils/watch.js'
 let loginInstance = null 
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
+    console.log(options)
     console.log('App onlaunch')
   },
   dev: true,
@@ -40,7 +41,7 @@ App({
     showBusy('Now Loading...')
     return (loginInstance = wxLogin().then(({ code }) => {
         return this.getUserInfo().then(res => {
-          let { encryptedData, iv, signature } = res
+          let { encryptedData, iv } = res
           this.globalData.userInfo = res
           showBusy('登录中')
           return wxRequest({

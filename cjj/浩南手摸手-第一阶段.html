@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      border: 1px solid #000;
+    }
+    .btn {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>{{text}}</h1>
+    <div class="btn" @click="onclick">
+      <button @click.stop="onclick">按钮</button>
+    </div>
+  </div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+  <script>
+    class Dep {
+      constructor () {
+        this.subs = []
+      }
+
+      push (watcher) {
+        this.subs.push(watcher)
+      }
+      
+      notify (newValue, oldValue) {
+        let { length } = this.subs
+        for (let i = 0; i < length; i++) {
+          this.subs[i].update(newValue, oldValue)
+        }
+      }
+    }
+
+    class Observer {
+      constructor (data) {
+        this.init(data)
+      }
+
+      init (data) {
+        for (const key in data) {
+          let value = data[key]
+          this.defineReactive(data, key, value)
+          value && typeof value === 'object' && this.init(value)
+        }
+      }
+
+      defineReactive (data, key, value) {
+        const dep = new Dep()
+        let oldValue = value
+        Object.defineProperty(data, key, {
+          configurable: true,
+          enumerable: true,
+          get () {
+            if (Dep.target) {
+              dep.push(Dep.target)
+            }
+            return oldValue
+          },
+          set (newValue) {
+            if (newValue === oldValue) return
+            dep.notify(newValue, oldValue)
+            value = newValue
+          }
+        })
+      }
+    }
+
+    class Watcher {
+      constructor (vm, key, callback) {
+        this.vm = vm
+        this.callback = callback
+        // 将watcher临时挂载至Dep类上
+        Dep.target = this
+        // 在获取vm.data中的属性值时，触发get方法将watcher添加到dep中
+        vm[key]
+        // 清除掉挂载的watcher以防重复添加
+        Dep.target = null
+      }
+
+      update (newValue, oldValue) {
+        this.callback && this.callback.call(this.vm, newValue, oldValue)
+      }
+    }
+
+    class Vue {
+      constructor (options) {
+        this.init(options)
+      }
+      init ({el, data, methods}) {
+        this.$el = document.querySelector(el)
+        this._data = data()
+        // 设置代理
+        this.proxy(this._data)
+        this.proxy(methods)
+
+        // observer
+        new Observer(this._data)
+
+        // watch
+        for (let key in this.watch) {
+          new Watcher(this, key, this.watch[key])
+        }
+
+        // compile
+        new Compile(this)
+      }
+      proxy (data) {
+        for (const key in data) {
+          Object.defineProperty(this, key, {
+            configurable: true,
+            enumerable: true,
+            get () {
+              return data[key]
+            },
+            set (value) {
+              data[key] = value
+            }
+          })
+        }
+      }
+    }
+
+    class Compile {
+      constructor (vm) {
+        this.vm = vm
+        this.compileNodes(vm.$el.childNodes)
+      }
+      compileNodes (nodes) {
+        if (nodes && nodes.length > 0) {
+          for (let node of nodes) {
+            switch (node.nodeType) {
+              case 1:
+                this.compileEvent(node)
+                break;
+              case 3:
+                this.compileTextNode(node)
+                break;
+              default:
+                break;
+            }
+            this.compileNodes(node.childNodes)
+          }
+        }
+      }
+      compileTextNode (node) {
+        let reg = /\{\{(.+)\}\}/
+        if (reg.test(node.textContent)) {
+          let key = RegExp.$1
+          let value = this.vm[key]
+          node.textContent = value
+          new Watcher(this.vm, key, function (newValue) {
+            node.textContent = newValue
+          })
+        }
+      }
+      compileEvent (node) {
+        let reg = /^@([\w.]+)/
+        let attrs = node.attributes
+        let vm = this.vm
+        for (const attr of attrs) {
+          if (!reg.test(attr.nodeName)) continue
+          const attrStr = RegExp.$1
+          const [event, modify] = attrStr.split('.')
+          node.addEventListener(event, function (event) {
+            switch (modify) {
+              case 'stop':
+                event.stopPropagation()
+                break;
+              default:
+                break;
+            }
+            let fn = vm[attr.value]
+            fn && fn.call(vm, event)
+          })
+        }
+      }
+    }
+  </script>
+  <script>
+      let vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            text: 'Hello World'
+          }
+        },
+        methods: {
+          onclick (e) {
+            this.text = 'Hello Kitty'
+          }
+        }
+      })
+  </script>
+</body>
+</html>
