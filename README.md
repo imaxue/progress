@@ -4,6 +4,7 @@
 * 每周更新一次，记录自己的学习心得或者是相关技术，如果是单纯的md，最好是用readme.md命名
 * 每次分享的内容, 放到share下面, 方便有需要的人自取
 * 如果觉得写的比较优秀的，请放到下边的大目录里，方便访问
+
 ## 目录
 
 ### JS原生相关
@@ -58,9 +59,18 @@
 
 ### 系统
 
-
 - [mac进程占用，杀掉方法](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/02-study.md)--peng
 - [shelljs简单实用方法](https://github.com/imaxue/progress/blob/master/share/3/shelljs%E4%BD%BF%E7%94%A8.md)--liao
+
+### 微信（公众号 | 小程序）
+
+- [微信分享](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/05-study.md)--peng
+- [微信知识点整理](https://github.com/imaxue/progress/blob/master/Lijiaojiao/%E5%BE%AE%E4%BF%A1%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86.md)--jiaojiao
+
+### Tools (工具 | 网址）
+
+- [图片压缩](https://tinypng.com/)
+- [阿里矢量图](http://iconfont.cn/)
 
 ### 其他
 
@@ -79,8 +89,6 @@
 
 怕什么真理无穷,进一寸有一寸的欢喜
 
-
 ## emoji链接
-
 
 [Emoji Demo](https://gitmoji.carloscuesta.me/)
