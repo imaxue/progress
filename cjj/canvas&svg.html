@@ -6,9 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    #cvs {
-      display: block;
+    .container {
+      display: flex;
       margin: 200px auto;
+      justify-content: center;
+    }
+    #cvs,
+    #svg {
+      margin: 0 10px;
       border: 1px solid #000;
     }
     .color {
@@ -20,7 +25,7 @@
       fill: none;
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: draw 2s ease infinite;
+      animation: draw 5s linear infinite;
     }
     @keyframes draw {
       to {
@@ -30,10 +35,12 @@
   </style>
 </head>
 <body>
-  <canvas id="cvs"></canvas>
-  <svg id="svg" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-    <g></g>
-  </svg>
+  <div class="container">
+    <canvas id="cvs"></canvas>
+    <svg id="svg" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <g></g>
+    </svg>
+  </div>
   <button id="clear">清除画布</button>
   <div class="color"></div>
   <input type="range" min="0" max="255" step="1" class="range">
@@ -65,7 +72,7 @@
         this.canWrite = false
         this.paths = []
         this.event = document.createEvent('HTMLEvents')
-        this.event.initEvent('drawing', false, false)
+        this.event.initEvent('drawing.end', false, false)
         this.fps = 1000 / 60
       }
       
@@ -103,11 +110,11 @@
         this.paths.push([{x, y}])
         this.ctx.moveTo(x, y)
         this.canWrite = true
-        this.canvas.dispatchEvent(this.event)
       }
       
       _end (event) {
         this.canWrite = false
+        this.canvas.dispatchEvent(this.event)
         document.removeEventListener('mousedown', preventHandler)
         window.removeEventListener('mouseup', preventHandler)
       }
@@ -123,13 +130,12 @@
         this.paths[this.paths.length - 1].push({x, y})
         this.ctx.lineTo(x, y)
         this.ctx.stroke()
-        this.canvas.dispatchEvent(this.event)
       }
-
+      
       setColor (color) {
         this.ctx.strokeStyle = color
       }
-
+      
       clear () {
         const { width, height } = this.options
         this.ctx.clearRect(0, 0, width, height)
@@ -159,7 +165,7 @@
 
     const svg = document.querySelector('#svg')
 
-    w.canvas.addEventListener('drawing', function () {
+    w.canvas.addEventListener('drawing.end', function () {
       let g = svg.children[0]
       for (const child of g.children) {
         g.removeChild(child)
