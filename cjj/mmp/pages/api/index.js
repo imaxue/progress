@@ -19,7 +19,7 @@ Page({
   },
 
   watch: {
-    'obj': {
+    'obj.a': {
       handler(newValue, oldValue) {
         console.log(newValue, oldValue)
       },

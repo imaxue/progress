@@ -38,7 +38,8 @@
 					"id": 0,
 					"name": "组件",
 					"pathName": "pages/com/index",
-					"query": ""
+					"query": "aaa=1&bbb=1",
+					"scene": "1001"
 				}
 			]
 		}

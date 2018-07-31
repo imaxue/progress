@@ -11,8 +11,7 @@
         </canvas>
       </view>
       <view class="pointer" id="pointer" data-modal-value="showLottery" bindtap="rotate" wx:if="{{!showLottery}}">
-        <canvas canvas-id='pointer' style="width:186rpx;height:220rpx;">
-        </canvas>
+        <canvas canvas-id='pointer' style="width:186rpx;height:220rpx;"></canvas>
       </view>
     </view>
   </view>
