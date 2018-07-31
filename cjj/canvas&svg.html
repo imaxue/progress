@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #cvs {
+      display: block;
+      margin: 200px auto;
+      border: 1px solid #000;
+    }
+    .color {
+      width: 20px;
+      height: 20px;
+      background-color: #000;
+    }
+    .line {
+      fill: none;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: draw 2s ease infinite;
+    }
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="cvs"></canvas>
+  <svg id="svg" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <g></g>
+  </svg>
+  <button id="clear">清除画布</button>
+  <div class="color"></div>
+  <input type="range" min="0" max="255" step="1" class="range">
+  <input type="range" min="0" max="255" step="1" class="range">
+  <input type="range" min="0" max="255" step="1" class="range">
+  <script>
+    function preventHandler (e) {
+      e && e.preventDefault()
+    }
+
+    class Write {
+      constructor (el, opt) {
+        const canvas = document.querySelector(el)
+        const ctx = canvas.getContext('2d')
+        const options = Object.assign({
+          width: 200,
+          height: 200,
+          color: '#000'
+        }, opt)
+
+        canvas.width = options.width
+        canvas.height = options.height
+        ctx.strokeStyle = options.color
+
+        this.options = options
+        this.canvas = canvas
+        this.ctx = ctx
+        this.stageInfo = canvas.getBoundingClientRect()
+        this.canWrite = false
+        this.paths = []
+        this.event = document.createEvent('HTMLEvents')
+        this.event.initEvent('drawing', false, false)
+        this.fps = 1000 / 60
+      }
+      
+      init () {
+        const { ctx, canvas } = this
+        canvas.addEventListener('mousedown', event => {
+          // 阻止默认事件
+          document.addEventListener('mousedown', preventHandler, false)
+          // 开始绘制
+          this._begin(event)
+        })
+        // 清空画布
+        this.clear()
+        window.addEventListener('mouseup', event => {
+          this._end(event)
+        })
+        let timer = null
+        this.canvas.addEventListener('mousemove', event => {
+          if (timer) {
+            clearTimeout(timer)
+          }
+          timer = setTimeout(() => {
+            this.canWrite && this._drawing(event)
+            timer = null
+          }, this.fps)
+        })
+        return this
+      }
+
+      _begin (event) {
+        // 取消选择
+        window.getSelection && getSelection().removeAllRanges()
+        this.ctx.beginPath()
+        const { x, y } = this._getCoord(event)
+        this.paths.push([{x, y}])
+        this.ctx.moveTo(x, y)
+        this.canWrite = true
+        this.canvas.dispatchEvent(this.event)
+      }
+      
+      _end (event) {
+        this.canWrite = false
+        document.removeEventListener('mousedown', preventHandler)
+        window.removeEventListener('mouseup', preventHandler)
+      }
+
+      _getCoord ({ pageX, pageY }) {
+        const x = pageX - this.stageInfo.left
+        const y = pageY - this.stageInfo.top
+        return { x, y }
+      }
+
+      _drawing (event) {
+        const { x, y } = this._getCoord(event)
+        this.paths[this.paths.length - 1].push({x, y})
+        this.ctx.lineTo(x, y)
+        this.ctx.stroke()
+        this.canvas.dispatchEvent(this.event)
+      }
+
+      setColor (color) {
+        this.ctx.strokeStyle = color
+      }
+
+      clear () {
+        const { width, height } = this.options
+        this.ctx.clearRect(0, 0, width, height)
+        this.paths = []
+      }
+
+      getPath () {
+        return this.paths
+      }
+    }
+  </script>
+
+  <script>
+    let w = new Write('#cvs').init()
+    document.querySelector('#clear').addEventListener('click', function () {
+      w.clear()
+    })
+    let colorArr = ['00', '00', '00']
+    document.querySelectorAll('.range').forEach((range, index) => {
+      range.addEventListener('change', function () {
+        colorArr[index] = parseInt(this.value).toString(16)
+        let color = '#' + colorArr.join('')
+        document.querySelector('.color').style.backgroundColor = color
+        w.setColor(color)
+      })
+    })
+
+    const svg = document.querySelector('#svg')
+
+    w.canvas.addEventListener('drawing', function () {
+      let g = svg.children[0]
+      for (const child of g.children) {
+        g.removeChild(child)
+      }
+      w.getPath().forEach(paths => {
+        let path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+        path.style.stroke = w.options.color
+        path.setAttribute('class', 'line')
+        let line = paths.map((coord, index) => {
+          let pre = index === 0 ? 'M' : 'L'
+          return `${pre}${coord.x} ${coord.y}`
+        }).join(' ')
+        path.setAttribute('d', line)
+        g.appendChild(path)
+      })
+    })
+  </script>
+</body>
+</html>
