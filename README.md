@@ -88,7 +88,7 @@
 - [python ORM](https://github.com/imaxue/progress/blob/master/wtl/python/peewee.md)--wtl
 - :sparkles:[服务器搭建采坑之旅](https://github.com/imaxue/progress/blob/master/wxt/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%87%87%E5%9D%91%E4%B9%8B%E6%97%85.md)--wxt
 - [mockjs模拟ajax](https://github.com/imaxue/progress/blob/master/baocheng/3-%E6%A8%A1%E6%8B%9Fajax%E4%B9%8BMock.js%E4%BB%8B%E7%BB%8D.md)--bao
--[联调跨域方案整理](https://github.com/imaxue/progress/blob/master/liao/%E8%81%94%E8%B0%83%E8%B7%A8%E5%9F%9F%E6%96%B9%E6%A1%88%E6%95%B4%E7%90%86.md)--liao
+- [联调跨域方案整理](https://github.com/imaxue/progress/blob/master/liao/%E8%81%94%E8%B0%83%E8%B7%A8%E5%9F%9F%E6%96%B9%E6%A1%88%E6%95%B4%E7%90%86.md)--liao
 
 
 ## 鸡汤
