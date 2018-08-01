@@ -22,7 +22,9 @@
 
 4、04-study：[服务器端渲染框架NextJs中使用的react组件](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/04-study.md)
 
-5、05-syudy：[微信分享：原生微信环境api分享、浏览器菜单引导分享](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/05-study.md)
+5、05-study：[微信分享：原生微信环境api分享、浏览器菜单引导分享](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/05-study.md)
+
+6、06-study: [css图片裁剪\获取图片原始宽高](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/06-study.md)
 
  AND MORE...
 
