@@ -1,9 +1,9 @@
 ## 简单的字符串模板，例如：
+
 ```js
 <li class = "mui-table-view-cell">
 <a class = "mui-navigate-right">
-<div class = "mui-elipsis-2">Hi, 李明明，申请交行信息卡，100元等你拿，李明明
-申请交行信息卡，100元等你拿</div>
+<div class = "mui-elipsis-2">Hi, 李明明，申请交行信息卡，100元等你拿，李明明申请交行信息卡，100元等你拿</div>
 <h5>所属栏目：为堂课防守打法大是大非</h5>
 </a>
 </li>
