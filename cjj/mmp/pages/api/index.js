@@ -19,11 +19,17 @@ Page({
   },
 
   watch: {
-    'obj.a': {
+    'obj': {
       handler(newValue, oldValue) {
         console.log(newValue, oldValue)
       },
       immediate: true
+    }
+  },
+
+  computed: {
+    value () {
+      return this.data.obj
     }
   },
 
