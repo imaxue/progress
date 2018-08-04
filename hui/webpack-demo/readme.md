@@ -1076,13 +1076,123 @@ import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 后半部分主要通过 浩楠 静姐 阿雪 老郭 军军 等人的协助完成
 
 
+## 抽取router文件 最近很忙 没时间研究新东西 然后周五被一个傻逼搞坏了心情
+
+首先 我们看 我们的router是写在index文件内的 但是我们项目中明显不是这样的 项目中 router文件一般都是单独存在 我们只需要在指定的文件内进行增删就好了 
+
+所以我要开始抽取router文件了
+
+在我们的router文件下 新建一个文件 就叫router.js就好了
+
+文件内容很简单 就是把index部分处理 router的部分 封装成一个组件 暴露出去就好了
+
+```
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+// 按需加载要走的组件
+import Bundle from './Bundle';
+
+//  按需加载的组件用Bundle组件包裹一下
+const One = (props) => (
+    <Bundle
+        load={() => require.ensure([], function () {
+        return require('../js/One')
+    }, 'One')}>
+        {(One) =>< One {
+            ...props
+        } />}
+    </Bundle>
+)
+
+const Two = (props) => (
+    <Bundle
+        load={() => require.ensure([], function () {
+        return require('../js/Two')
+    }, 'Two')}>
+        {(Two) =>< Two {
+            ...props
+        } />}
+    </Bundle>
+)
+
+const Next = (props) => (
+    <Bundle
+        load={() => require.ensure([], function () {
+        return require('../js/Next')
+    }, 'Next')}>
+        {(Next) =>< Next {
+            ...props
+        } />}
+    </Bundle>
+)
 
 
+class Routers extends React.Component {
+    render() {
+        return (
+            <Switch>
+                <Route exact path="/" component={App} />
+                <Route exact path="/one" component={One} />
+                <Route path="/one/next" component={Next} />
+                <Route path="/two" component={Two} />
+            </Switch>
+        )
+
+    }
+}
+
+export default Routers;
 
 
+```
 
 
+相应的 我们的index.js也应该去掉那部分代码
 
+
+```
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
+// 直接引入的组件
+import App from './js/App';
+import Routers from "./router/router";
+
+
+// 正常写法
+class Reactroot extends React.Component {
+    render() {
+        return (
+            <Router >
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="/">App</Link>
+                        </li>
+                        <li>
+                            <Link to="/one">one</Link>
+                        </li>
+                        <li>
+                            <Link to="/two">two</Link>
+                        </li>
+                    </ul>
+
+                    <hr/>
+                   <Routers />
+                </div>
+            </Router>
+        )
+    }
+}
+ReactDOM.render(
+    <Reactroot/>, document.getElementById("APP"))
+
+
+```
+
+现在我们的router文件就被抽离出来了  我们只需要在router文件内进行 按需加载的编写 和路由编写 就好了
 
 
 
