@@ -7,7 +7,7 @@
 **Object 参数说明**
 
 参数|类型|说明
----|:--:|---:
+--|:--:|--:
 from|String|转发事件来源:button：页面内转发按钮；menu：右上角转发菜单
 target|Object|如果 from 值是 button，则 target 是触发这次转发事件的 button，否则为 undefined
 webViewUrl|String|页面中包含<web-view>组件时，返回当前<web-view>的url
@@ -18,7 +18,7 @@ webViewUrl|String|页面中包含<web-view>组件时，返回当前<web-view>的
 **自定义转发内容**
 
 字段|说明|默认值
----|:--:|---:
+--|:--:|--:
 title|转发标题|当前小程序名称
 path|转发路径|当前页面 path ，必须是以 / 开头的完整路径
 imageUrl|使用默认截图
