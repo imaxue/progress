@@ -1,5 +1,5 @@
 # nginx 基础
->1.安装nginx
+# 1.安装nginx
 >http://www.jianshu.com/p/026d67cc6cb1
 
 # 2.  转发配置
@@ -20,7 +20,7 @@
 
 >}
 
-# 3.
+# 3.基础命令
 >brew services start nginx 启动命令 或者配置完全局变量后 直接 nginx
 
 >ps aux|grep ‘nginx' 看进程命令
