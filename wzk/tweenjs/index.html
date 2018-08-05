@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/lib/jquery/jquery-1.12.3.min.js"></script>
+    <script src="js/lib/tweenjs/tweenjs.js"></script>
+</head>
+<body>
+    <div id="box"></div>
+    <script>  
+
+        var handle = {
+            t: 0
+        };
+        var changingData = 0;
+        createjs.Tween.get(handle)  
+            .wait(1000)
+            .to({ t: 1 }, 1000)
+            .addEventListener("change", function () {
+                console.log('handle.t', handle.t)
+                $("#box").text(parseInt(handle.t* 68));
+            })
+            .call(function () {
+                console.log("处理完成")
+            })  
+
+    </script>
+</body>
+</html>
