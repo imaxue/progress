@@ -1,9 +1,9 @@
-#微信QQ二次分享遇到的一些坑
+# 微信QQ二次分享遇到的一些坑
 >1.二次分享设置音频格式不起效果，只有一次分享可以设置音频类型。
 >2.微信二次分享到QQ 与 QQ二次分享到微信时
     微信的desc是必须要有的，QQ的summary 是必须要有的，否则会导致互相传时的二次分享不成功。
 
-#router push 与replace的区别
+# router push 与replace的区别
 >1.router.push(location)=====window.history.pushState
 >>想要导航到不同的 URL，则使用 router.push 方法。这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。
 
