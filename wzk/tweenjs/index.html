@@ -9,22 +9,42 @@
 <body>
     <div id="box"></div>
     <script>  
-
+        //onChange事件方式一
+        // var handle = {
+        //     t: 0
+        // };
+        // var changingData = 0;
+        // createjs.Tween.get(handle)
+        //     //weit延时后开始动画
+        //     .wait(1000)
+        //     .to({ t: 1 }, 1000)
+        //     .addEventListener("change", function () {
+        //         //addEventListener每次渐变的数据发生改变时就会触发
+        //         console.log('handle.t', handle.t)
+        //         $("#box").text(parseInt(handle.t* 68));
+        //     })
+            //call函数和addEventListener不能同时调用
+            // .call(function () {
+            //     console.log("处理完成")
+            // })  
+        
+        //onChange事件方式二
         var handle = {
             t: 0
         };
         var changingData = 0;
-        createjs.Tween.get(handle)  
-            .wait(1000)
-            .to({ t: 1 }, 1000)
-            .addEventListener("change", function () {
-                console.log('handle.t', handle.t)
-                $("#box").text(parseInt(handle.t* 68));
-            })
-            .call(function () {
-                console.log("处理完成")
-            })  
+        createjs.Tween.get(handle, {
+            onChange: function () {
+                callback(handle.t)
+            }
+        })
+        .wait(100)
+        .to({ t: 1 }, 1000)
 
+        function callback(t) {
+            console.log('t', t)
+            $("#box").text(parseInt(handle.t* 68));
+        }
     </script>
 </body>
 </html>
