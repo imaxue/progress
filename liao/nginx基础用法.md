@@ -96,7 +96,19 @@ ps aux|grep ‘nginx'
 多个location配置的情况下匹配顺序为（参考资料而来，还未实际验证，试试就知道了，不必拘泥，仅供参考）：
 首先匹配 =，其次匹配^~, 其次是按文件中顺序的正则匹配，最后是交给 / 通用匹配。当有匹配成功时候，停止匹配，按当前匹配规则处理请求
 ```
-
+nginx 严格匹配 和 模糊匹配（from ying)
+>严格匹配(只能有hello)  
+```javascript
+    location  ~ /hello$ {
+        proxy_pass ^.*$  https://www.baidu.com/;
+    }
+```
+>模糊匹配(含有hello即可)
+```javascript
+    location  ~ /hello {
+        proxy_pass ^.*$  https://www.baidu.com/;
+    }
+```
 ## proxy_pass有无/的区别
 
 ```html
