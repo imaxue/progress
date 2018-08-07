@@ -26,6 +26,8 @@
 
 6、06-study: [css图片裁剪\获取图片原始宽高](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/06-study.md)
 
+7、07-study: [本地缓存localStorage、mencached、redis封装](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/07-study.md)
+
  AND MORE...
 
 ### 总结一些实际开发中的应用和遇到的问题的解决方案
