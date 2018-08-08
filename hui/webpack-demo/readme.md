@@ -1087,11 +1087,17 @@ import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 文件内容很简单 就是把index部分处理 router的部分 封装成一个组件 暴露出去就好了
 
 ```
-import React from 'react'
+
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 // 按需加载要走的组件
 import Bundle from './Bundle';
+
+//这是主页面
+import App from '../js/App';
+
 
 //  按需加载的组件用Bundle组件包裹一下
 const One = (props) => (
@@ -1128,17 +1134,17 @@ const Next = (props) => (
 )
 
 
-class Routers extends React.Component {
+
+class Routers extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/" component={App} />
-                <Route exact path="/one" component={One} />
-                <Route path="/one/next" component={Next} />
-                <Route path="/two" component={Two} />
-            </Switch>
-        )
-
+            <Route exact path="/" component={App}/>
+            <Route exact path="/one" component={One}/>
+            <Route path="/one/next" component={Next}/>
+            <Route path="/two" component={Two}/>
+        </Switch>
+        );
     }
 }
 
@@ -1156,10 +1162,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
+import 'antd/dist/antd.css'
 // 直接引入的组件
-import App from './js/App';
-import Routers from "./router/router";
+import Routers from './router/routers';
 
+
+// 引入css
+import './css/index.css';
 
 // 正常写法
 class Reactroot extends React.Component {
@@ -1167,7 +1176,7 @@ class Reactroot extends React.Component {
         return (
             <Router >
                 <div>
-                    <ul>
+                    {/* <ul>
                         <li>
                             <Link to="/">App</Link>
                         </li>
@@ -1177,10 +1186,9 @@ class Reactroot extends React.Component {
                         <li>
                             <Link to="/two">two</Link>
                         </li>
-                    </ul>
+                    </ul> */}
 
-                    <hr/>
-                   <Routers />
+                  <Routers />
                 </div>
             </Router>
         )
@@ -1188,11 +1196,61 @@ class Reactroot extends React.Component {
 }
 ReactDOM.render(
     <Reactroot/>, document.getElementById("APP"))
-
-
 ```
 
 现在我们的router文件就被抽离出来了  我们只需要在router文件内进行 按需加载的编写 和路由编写 就好了
+
+
+### 引入antd 
+
+emm 我开始写业务代码了 开始给我们这个Just IT写一个主页  但是要我自己手撸组件太烦了 于是我引入了一个UI组件  antd
+
+```
+废话不多说 上手就先把 antd先给下载了
+
+$ npm install antd --save
+```
+
+看一眼我们的package.json antd在了 接下来继续安装一个友好的插件
+
+```
+$ npm install babel-plugin-import --save-dev
+
+```
+
+好了 齐活
+
+给我们的App.js 来入手一个
+
+```
+
+import {Button} from 'antd';
+
+
+render() {
+        return (
+            ...
+            <Button>BTN<Button/>
+            ...
+        )    
+    }
+
+```
+
+看看页面 显示了 但是不是我们需要的样子 
+
+看一眼官网 恩 需要我们一开时就加载一个全局css样式
+
+在我们的index.js 写上
+
+```
+
+// 引入antd css
+import 'antd/dist/antd.css'
+
+```
+重启node ok齐活 
+
 
 
 
