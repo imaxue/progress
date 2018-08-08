@@ -1,4 +1,4 @@
->1.antd 问题
+# 1.antd 问题
 
 1. tag
   问题：删除tag时候，antd的删除不会删除数据，需要自己添加事件处理数据
@@ -12,13 +12,13 @@
   异步获取的不能当做默认值，加载时间内还没有进来，是null
   
 3. table
-  # table里面可以做一些操作，比如使用index表示编号
+  > table里面可以做一些操作，比如使用index表示编号
  ```
  {"title":"编号”,
  "dataIndex":"num”,
   render:(text,record,index)=> index+1}
  ```
- # table 里面对数据做操作，如时间戳转为日期格式
+ > table 里面对数据做操作，如时间戳转为日期格式
  ```
  {"title":"应还款日”,
  "dataIndex":"shouldRefundDate”,
@@ -47,5 +47,5 @@
             </FormItem>
  ```
  
->2.react 中引入插件的话，首字母必须要大写
+# 2.react 中引入插件的话，首字母必须要大写
 
