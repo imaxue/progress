@@ -1,7 +1,7 @@
 import React from 'react'
 import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
-import {Button} from 'antd';
+import {Button,BackTop} from 'antd';
 
 import '../css/app.css';
 
@@ -50,6 +50,7 @@ class App extends React.Component {
                     老黄版权所有　©1994-2018　没有备案 没有ICP 没有业务经营许可证 就是这么嚣张 不要问我为什么
                     </div>
                 </div>
+                <BackTop />
             </div>
         )
     }
