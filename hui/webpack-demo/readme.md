@@ -1,4 +1,4 @@
-## 老黄搭项目 吓死你系列（webpack4+react+react-root4）
+## [老黄搭项目 吓死你系列（webpack4+react+react-root4）](https://github.com/xihuihui/webpack-demo)
 
 你们说github上那么多脚手架 
 为什么闲的蛋疼要去手搭一个  
