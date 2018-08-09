@@ -1,0 +1,92 @@
+.index-body{
+    position: relative;
+}
+.top-box{
+    width: 100%;
+    height: 950px;
+    background: url(../img/bg-top.jpg) no-repeat;
+    background-size:100% 100%;
+}
+.bg-top{
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 1;
+}
+.box-text{
+    position: absolute;
+    top: 35%;
+    right: 19%;
+    color: #fff;
+}
+.logo{
+    font-size: 90px;
+    text-align: center;
+}
+.login{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    background:rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    text-align: center;
+    margin-right: 30px;
+    cursor:pointer;
+}
+.haonan{
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.haonan-name{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.haonan-text{
+    padding: 0 0 40px;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+}
+.haonan-img{
+    width: 100%;
+    height: 498px;
+    background: url(../img/haonan.jpg) no-repeat;
+    background-size:100% 100%;
+}
+
+.liao-img{
+    background: url(../img/008.jpg) no-repeat 100% 100%;
+    background-size: 100% 100%;
+}
+.hui{
+    width: 100%;
+}
+.hui-text{
+    width: 1000px;
+    margin: 0 auto;
+}
+.hui-img{
+    background: url(../img/005.jpg) no-repeat 100% 100%;
+    background-size: 100% 100%;
+    height: 654px;
+}
+.footer{
+    text-align: center;
+    font-size: 12px;
+}
+.footer a{
+    color: #74808b;
+    text-decoration: none;
+    outline: none;
+}
+.footer span{
+    margin: 0 5px;
+}
+.footer-text{
+    margin-top: 10px;
+    text-align: center;
+    color: #74808b;
+    margin-bottom: 30px;
+    font-size: 12px;
+}

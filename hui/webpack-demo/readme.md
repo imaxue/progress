@@ -1,4 +1,8 @@
-## 老黄搭项目 吓死你系列（webpack4+react+react-root4）
+## [老黄搭项目 吓死你系列（webpack4+react+react-root4）](https://github.com/xihuihui/webpack-demo)
+
+你们说github上那么多脚手架 
+为什么闲的蛋疼要去手搭一个  
+其实没有为什么  我就是闲的蛋疼 ╮(╯▽╰)╭
 
 ## 初始化项目
 
@@ -10,11 +14,11 @@ $ cd myjob/webpack-demo
 $ npm init -y
 
 ```
-初始化之后我们的项目里面会有一个packge.json文件
+初始化之后我的项目里面会有一个packge.json文件
 
-## 新建一个HTML 作为我们单页应用的主页面
+## 新建一个HTML 作为我单页应用的主页面
 
-然后我们在项目下新建一个HTML
+然后我在项目下新建一个HTML
 
 ```
 <!DOCTYPE html>
@@ -62,7 +66,7 @@ import ReactDOM from 'react-dom'
 
 百度 报错 浏览器不认识 import 语法。
 
-我们要用 webpack 来构建我们的源代码 - webpack 将调用 babelJS 预处理我们的 JavaScript 代码。
+我要用 webpack 来构建我的源代码 - webpack 将调用 babelJS 预处理我的 JavaScript 代码。
 
 ## 安装 webpack
 
@@ -74,7 +78,7 @@ $ npm install -D webpack  //-D 的意思是 --save-dev （奖励老郭一朵小�
 
 ## 编译 JavaScript
 
-webpack 是个打包工具，它需要一个入口文件，一个输出文件。（但是我们写的是webpack4 它有默认的 哇哈哈哈哈  默认 固定入口目录为src，与入口默认文件index.js）
+webpack 是个打包工具，它需要一个入口文件，一个输出文件。（但是我写的是webpack4 它有默认的 哇哈哈哈哈  默认 固定入口目录为src，与入口默认文件index.js）
 
 命令行下将 index.js 打包成 build.min.js
 
@@ -114,7 +118,7 @@ webpack v4.12.0
 1 warning:xxx
 ```
 
-打包成功，但有一个黄色警告。这是因为 webpack 4 引入了模式（mode），它有 development、production、none 三个值，我们不指定值时，默认使用 production。
+打包成功，但有一个黄色警告。这是因为 webpack 4 引入了模式（mode），它有 development、production、none 三个值，我不指定值时，默认使用 production。
 
 重新输入
 
@@ -125,7 +129,7 @@ $ npx webpack ./index.js -o build.min.js --mode development
 
 不再出现黄色警告。
 
-然后 不指定输入，输出文件 我们就会发现 webpack4的默认文件
+然后 不指定输入，输出文件 我就会发现 webpack4的默认文件
 
 你输入
 
@@ -152,7 +156,7 @@ Entry module not found: Error: Can't resolve './src' in '/Users/sam/tmp/webpack-
 
 好了 直接error 然后仔细看看 error 
 
-说在 ./src 下找不到 index.js 文件 - 我们不指定输入文件时，webpack 会默认查找 src/index.js - 这也是 webpack 4 引入的一个约定。我们且按约定将项目根目录下的 index.js 移动到 src/index.js
+说在 ./src 下找不到 index.js 文件 - 我不指定输入文件时，webpack 会默认查找 src/index.js - 这也是 webpack 4 引入的一个约定。我且按约定将项目根目录下的 index.js 移动到 src/index.js
 
 ```
 $ mkdir src
@@ -195,15 +199,15 @@ webpack v4.12.0
 
 ## 实时刷新
 
-在 index.html 文件中引用构建出的 main.js 文件后，我们有几个问题需要解决。
+在 index.html 文件中引用构建出的 main.js 文件后，我有几个问题需要解决。
     1.入口文件 src/index.js 的变化如何通知给 webpack，以便重新构建 dist/main.js 文件？
     2.dist/main.js 文件更新后，浏览器中打开的页面该如何自动刷新？
 
 ### 监控文件
 
-第一个问题，webpack 有好几个解决办法，其中 watch 选项最直观，我们可以让 webpack 监控文件变化，一旦文件有变化，就重新构建。但默认情况下，watch 选项是禁用的。
+第一个问题，webpack 有好几个解决办法，其中 watch 选项最直观，我可以让 webpack 监控文件变化，一旦文件有变化，就重新构建。但默认情况下，watch 选项是禁用的。
 
-我们可以在命令行下启用它
+我可以在命令行下启用它
 
 ```
 
@@ -224,7 +228,7 @@ webpack v4.12.0
 
 ```
 
-我们试试在 index.js 文件中添加一行 console.log('hello webpack')，保存文件后就会看到命令行下的变化
+我试试在 index.js 文件中添加一行 console.log('hello webpack')，保存文件后就会看到命令行下的变化
 
 ```
 ｢webpack｣: Build Finished
@@ -301,9 +305,9 @@ You can also set it to 'none' to disable any default behavior. Learn more: https
 
 ```
 
-来了 身为一个码农 从不看WARNING 我们先看看 效果出现了没有
+来了 身为一个码农 从不看WARNING 我先看看 效果出现了没有
 
-我们现在可以在 http://localhost:8080/ 访问我们的 index.html。
+我现在可以在 http://localhost:8080/ 访问我的 index.html。
 
 在入口文件 src/index.js 里再添加一行代码验证下浏览器页面的实时刷新功能
 
@@ -312,9 +316,9 @@ console.log('Just Fuck IT')
 
 ```
 
-观察命令行，我们可以看到，webpack-dev-serve 重新构建 main.js - 换句话说，webpack-dev-serve 自动启用 --watch 效果，前面的 npx webpack --mode development --watch 命令可以停用。
+观察命令行，我可以看到，webpack-dev-serve 重新构建 main.js - 换句话说，webpack-dev-serve 自动启用 --watch 效果，前面的 npx webpack --mode development --watch 命令可以停用。
 
-但是，浏览器中打开的页面并未自动刷新。这是一个让很多人困惑的问题。原因是 webpack-dev-serve 虽然监控到文件变化并重新构建了 main.js，但这个新构建的 main.js 存在于内存中，并且默认路径是 /main.js，而不是 /dist/main.js。我们有两个选择，一是调整 publicPath，二是调整 index.html 中的引用。
+但是，浏览器中打开的页面并未自动刷新。这是一个让很多人困惑的问题。原因是 webpack-dev-serve 虽然监控到文件变化并重新构建了 main.js，但这个新构建的 main.js 存在于内存中，并且默认路径是 /main.js，而不是 /dist/main.js。我有两个选择，一是调整 publicPath，二是调整 index.html 中的引用。
 
 懒人选后者
 
@@ -348,7 +352,7 @@ Please check the command executed.
     at <anonymous>$ npx webp
 
 ```
-我们只能通过 webpack.config.js 文件来配置 mode，至于原因，可以看[作者的理由](https://github.com/webpack-contrib/webpack-serve/issues/44#issuecomment-370431725)。
+我只能通过 webpack.config.js 文件来配置 mode，至于原因，可以看[作者的理由](https://github.com/webpack-contrib/webpack-serve/issues/44#issuecomment-370431725)。
 
 
 ## 编码
@@ -379,16 +383,16 @@ You may need an appropriate loader to handle this file type.
 
 ```
 
-报错了。为什么？因为我们写 JSX 语法，webpack 不认识。怎么办，找加载器 babel-loader 来翻译。
+报错了。为什么？因为我写 JSX 语法，webpack 不认识。怎么办，找加载器 babel-loader 来翻译。
 
 ```
 $ npm install -D "babel-loader@^8.0.0-beta" @babel/core @babel/preset-react
 
 ```
 
-在 webpack-dev-server 下，我们可以通过 --module-bind 参数来指定 js 语言的加载器
+在 webpack-dev-server 下，我可以通过 --module-bind 参数来指定 js 语言的加载器
 
-### 开始写我们的重头戏 webpack.config.js 
+### 开始写我的重头戏 webpack.config.js 
 
 来新建一个 webpack.config.js 文件
 
@@ -414,16 +418,16 @@ module.exports = {
 
 ```
 
-我们在配置文件中指定了 js 文件的加载器，重启 webpack-dev-server，它会自动读取 webpack.config.js 配置。命令行不再报错，浏览器页面渲染出 “hello webpack”。
+我在配置文件中指定了 js 文件的加载器，重启 webpack-dev-server，它会自动读取 webpack.config.js 配置。命令行不再报错，浏览器页面渲染出 “hello webpack”。
 
 
 ## 然后就是各种加载器
 
 ## 图片加载器
 
-我们需要一张图片，我从 我的私房照里选出一张 ，放到 src/img/bird.jpg 位置。
+我需要一张图片，我从 我的私房照里选出一张 ，放到 src/img/bird.jpg 位置。
 
-我们在 src/index.js 中 import 它
+我在 src/index.js 中 import 它
 
 ```
 import ReactDOM from 'react-dom'
@@ -445,7 +449,7 @@ You may need an appropriate loader to handle this file type.
 （翻译  这个傻逼不认识这个文件是什么）
 
 ```
-和处理 JSX 一个道理，我们需要图片加载器。
+和处理 JSX 一个道理，我需要图片加载器。
 
 在 webpack 里，负责加载图片的是 file-loader
 
@@ -475,7 +479,7 @@ $ npm install -D file-loader
 
 而且，webpack 在最终构建时，会自动将模块中引用的图片拷贝到相应目录 - 谢天谢地，再也不用手动拷贝静态资源。
 
-确保图片加载没问题后，我们来完善下代码
+确保图片加载没问题后，我来完善下代码
 
 ```
 -ReactDOM.render(<div>hello webpack</div>, document.body)
@@ -490,20 +494,20 @@ $ npm install -D file-loader
 
 ```
 
-查看浏览器，图片已经渲染出来 - 但是图片太大了。我们需要 CSS 来控制图片尺寸。
+查看浏览器，图片已经渲染出来 - 但是图片太大了。我需要 CSS 来控制图片尺寸。
 
 ## 加载 CSS 文件
 
-在 React.js 里，CSS 有很多种写法，比如我们可以直接写在 style 中
+在 React.js 里，CSS 有很多种写法，比如我可以直接写在 style 中
 
 ```
 <img src={Bird} alt='鸟' style={{maxWidth: 500}} />
 
 ```
 
-因为这就是 JavaScript，我们也就不需要额外处理。
+因为这就是 JavaScript，我也就不需要额外处理。
 
-但我们也可以写在 css 文件中。
+但我也可以写在 css 文件中。
 
 在 src 下新增 index.css
 
@@ -547,11 +551,11 @@ You may need an appropriate loader to handle this file type.
 
 ```
 
-我们需要 CSS 加载器：
+我需要 CSS 加载器：
 1.css-loader - 预处理 CSS 文件
 2.style-loader - 将 CSS 插入到 DOM 中的 style 标签
 
-注意，我们如果只使用了 css-loader，则 webpack 只是将 CSS 文件预处理成模块然后打包到构建文件中，并不会插入到页面 - 这是 style-loader 的作用。
+注意，我如果只使用了 css-loader，则 webpack 只是将 CSS 文件预处理成模块然后打包到构建文件中，并不会插入到页面 - 这是 style-loader 的作用。
 
 ```
 //安装
@@ -573,11 +577,11 @@ $ npm install -D css-loader style-loader
 
 重启 webpack-dev-serve，编译正常，css 已生效。
 
-但是，这里的 CSS 虽然是 import 进来的，但仍是全局的，等效于我们平常使用 <link href="" /> 引用 CSS。webpack 还提供 CSS Modules，可以将样式真正意义上的模块化。
+但是，这里的 CSS 虽然是 import 进来的，但仍是全局的，等效于我平常使用 <link href="" /> 引用 CSS。webpack 还提供 CSS Modules，可以将样式真正意义上的模块化。
 
-除了 CSS Modules 外，我们还有很多 CSS in js 方案可选，它们允许我们将样式跟 HTML、JS 放到一起 - 如果你写过 Vue.js 的单文件模块，可能会很喜欢。
+除了 CSS Modules 外，我还有很多 CSS in js 方案可选，它们允许我将样式跟 HTML、JS 放到一起 - 如果你写过 Vue.js 的单文件模块，可能会很喜欢。
 
-在成功配置图片与 CSS 后，我们可以继续完善代码：
+在成功配置图片与 CSS 后，我可以继续完善代码：
 
 src/index.css
 
@@ -678,7 +682,7 @@ $ npm i -D @babel/plugin-proposal-class-properties
 
 ### 打包
 
-在完成项目开发后，我们需要输出文件给生产环境部署，执行
+在完成项目开发后，我需要输出文件给生产环境部署，执行
 
 ```
 $ npx webpack --mode production
@@ -687,12 +691,12 @@ $ npx webpack --mode production
 
 就可以打包出所有静态资源。
 
-但这里有一个注意事项，所有静态资源是打包到 dist 目录的，而 index.html 是在根目录。在部署时，我们需要手动将 index.html 拷入 dist 目录。
+但这里有一个注意事项，所有静态资源是打包到 dist 目录的，而 index.html 是在根目录。在部署时，我需要手动将 index.html 拷入 dist 目录。
 
 清理 dist
-随着某些文件的增删，我们的 dist 目录下可能产生一些不再使用的静态资源，我们不想这些旧文件也部署到生产环境上占用空间，所以在 webpack 打包前最好能清理 dist 目录。
+随着某些文件的增删，我的 dist 目录下可能产生一些不再使用的静态资源，我不想这些旧文件也部署到生产环境上占用空间，所以在 webpack 打包前最好能清理 dist 目录。
 
-我们来试试 clean-webpack-plugin。
+我来试试 clean-webpack-plugin。
 
 首先是安装
 
@@ -719,9 +723,9 @@ const path = require('path')
 
 ### html-webpack-plugin
 
-前面提到，我们在部署时，需要将 index.html 拷入 dist 目录，这其实很不方便，而且容易遗漏。另外，这个简单项目里我们只引用 main.js，如果入口文件多起来，文件名中再加上 hash 的话，手动管理 index.html 的成本非常高。
+前面提到，我在部署时，需要将 index.html 拷入 dist 目录，这其实很不方便，而且容易遗漏。另外，这个简单项目里我只引用 main.js，如果入口文件多起来，文件名中再加上 hash 的话，手动管理 index.html 的成本非常高。
 
-我们可以借助 html-webpack-plugin，自动生成 index.html。
+我可以借助 html-webpack-plugin，自动生成 index.html。
 
 首先是安装
 
@@ -793,9 +797,9 @@ performance
 
 ```
 
-Cool，dist 目录下啥都有了，我们不再需要部署前手动拷贝 index.html。
+Cool，dist 目录下啥都有了，我不再需要部署前手动拷贝 index.html。
 
-但是我们总不能让react报错一直在吧 那我们写一个
+但是我总不能让react报错一直在吧 那我写一个
 
 ```
 <body>
@@ -804,7 +808,7 @@ Cool，dist 目录下啥都有了，我们不再需要部署前手动拷贝 inde
 
 ```
 
-然后修改我们的文件
+然后修改我的文件
 
 ```
 }
@@ -812,9 +816,9 @@ Cool，dist 目录下啥都有了，我们不再需要部署前手动拷贝 inde
 +ReactDOM.render(<App />, document.getElementById("APP"))
 ```
 
-报错了  他说找不到这个元素  这是因为我们打包的时候没有指定模板文件 所有index.html文件的修改 都不会触发 相信眼尖的早在命令行报错中看到了
+报错了  他说找不到这个元素  这是因为我打包的时候没有指定模板文件 所有index.html文件的修改 都不会触发 相信眼尖的早在命令行报错中看到了
 
-那么 我们修改一下config
+那么 我修改一下config
 
 ```
  plugins:[
@@ -828,15 +832,15 @@ Cool，dist 目录下啥都有了，我们不再需要部署前手动拷贝 inde
     ],
 ```
 
-现在 我们的react文件就不出错了
+现在 我的react文件就不出错了
 
 但是 我不可能就写这么一个js文件啊  我肯定有一堆的组件  甚至还有深层嵌套
 
-所以 我们在src文件下 创建一个css文件夹 一个js文件夹 
+所以 我在src文件下 创建一个css文件夹 一个js文件夹 
 
-把我们的css丢到css文件夹中  组件丢到js文件夹中 （但是 千万不要丢index.js）
+把我的css丢到css文件夹中  组件丢到js文件夹中 （但是 千万不要丢index.js）
 
-接下来我们引入react-router-dom
+接下来我引入react-router-dom
 
 ```
 npm install -D react-router-dom
@@ -851,10 +855,10 @@ import ReactDOM from 'react-dom'
 
 ```
 
-然后修改我们的代码 看上去正常一点
+然后修改我的代码 看上去正常一点
 
 ```
-//这里我们是直接引入的 
+//这里我是直接引入的 
 import Home from './js/Home';
 import One from './js/One';
 import Two from './js/Two';
@@ -896,15 +900,15 @@ class App extends React.Component {
 ```
 
 (ps:写Home.js,One.js,Two.js的代码就是直接return home one two 我就不写在readme里面了)
-运行发现 我们得到了一个可以跳转的网页 鹅妹子嘤
+运行发现 我得到了一个可以跳转的网页 鹅妹子嘤
 
-但是 我们仔细看打包文件
+但是 我仔细看打包文件
 
-他好像是把所有的文件都打包到一个main.js文件里面  这样不行啊 我们要的是按需加载
+他好像是把所有的文件都打包到一个main.js文件里面  这样不行啊 我要的是按需加载
 
-于是 再三请教我们的浩楠胸之后  我们浩楠胸开始教我
+于是 再三请教我的浩楠胸之后  我浩楠胸开始教我
 
-首先我们新建一个文件夹 
+首先我新建一个文件夹 
 
 ```
 $ mkdir router
@@ -912,7 +916,7 @@ $ mv Bundle.js router
 
 ```
 
-## 写我们的Bundle.js
+## 写我的Bundle.js
 
 ```
 // 异步加载组件
@@ -956,7 +960,7 @@ export default class Bundle extends Component {
 
 ```
 
-然后我们在index.js中修改一下
+然后我在index.js中修改一下
 
 ```
 import React from 'react'
@@ -992,16 +996,16 @@ const Two = (props) => (
 
 ```
 
-报错吧 iTerm  原因 他说返回的类型不对 是一个对象 没办法识别 这个蠢蛋  然后浩楠和我都懵逼了 这可咋办啊 要不咱们就这样完结算了吧  后来我抱着试一试的心态去问了我们的你我他一姐（静姐） 静姐 微微一笑  一群傻子 他识别不了 你们不知道下插件啊
+报错吧 iTerm  原因 他说返回的类型不对 是一个对象 没办法识别 这个蠢蛋  然后浩楠和我都懵逼了 这可咋办啊 要不咱们就这样完结算了吧  后来我抱着试一试的心态去问了我的你我他一姐（静姐） 静姐 微微一笑  一群傻子 他识别不了 你们不知道下插件啊
 
-于是 我们在膜拜中 静姐告诉了我们
+于是 我在膜拜中 静姐告诉了我
 
 ```
 npm install -D "@babel/plugin-syntax-dynamic-import"
 
 ```
 
-然后 我们在config中再次修改
+然后 我在config中再次修改
 
 ```
  options:{
@@ -1015,9 +1019,9 @@ npm install -D "@babel/plugin-syntax-dynamic-import"
 
 再次运行 完美 破菲特
 
-最后 我们深层嵌套路由 怎么办呢  我们中不能就一个一级目录玩一年吧
+最后 我深层嵌套路由 怎么办呢  我中不能就一个一级目录玩一年吧
 
-然后我们添加一个Next.js (照例我们还是直接返回一个next就够了))
+然后我添加一个Next.js (照例我还是直接返回一个next就够了))
 
 index.js文件 添加一下
 
@@ -1041,7 +1045,7 @@ const Next = (props) => (
 
 ```
 
-然后 我们的one.js 加一句
+然后 我的one.js 加一句
 
 ```
 class One extends Component {
@@ -1059,7 +1063,7 @@ class One extends Component {
 
 运行  完美 浏览器 url 变成了 http://localhost:8080/#/one/next  页面也显示了 Next 
 
-这里要注意一个点 我们在
+这里要注意一个点 我在
 
 ```
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'; //BrowserRouter是无法跳二级目录的 只有改成HashRouter 才可以 （奖励阿雪一朵小红花）
@@ -1078,20 +1082,26 @@ import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 ## 抽取router文件 最近很忙 没时间研究新东西 然后周五被一个傻逼搞坏了心情
 
-首先 我们看 我们的router是写在index文件内的 但是我们项目中明显不是这样的 项目中 router文件一般都是单独存在 我们只需要在指定的文件内进行增删就好了 
+首先 我看 我的router是写在index文件内的 但是我项目中明显不是这样的 项目中 router文件一般都是单独存在 我只需要在指定的文件内进行增删就好了 
 
 所以我要开始抽取router文件了
 
-在我们的router文件下 新建一个文件 就叫router.js就好了
+在我的router文件下 新建一个文件 就叫router.js就好了
 
 文件内容很简单 就是把index部分处理 router的部分 封装成一个组件 暴露出去就好了
 
 ```
-import React from 'react'
+
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 // 按需加载要走的组件
 import Bundle from './Bundle';
+
+//这是主页面
+import App from '../js/App';
+
 
 //  按需加载的组件用Bundle组件包裹一下
 const One = (props) => (
@@ -1128,17 +1138,17 @@ const Next = (props) => (
 )
 
 
-class Routers extends React.Component {
+
+class Routers extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/" component={App} />
-                <Route exact path="/one" component={One} />
-                <Route path="/one/next" component={Next} />
-                <Route path="/two" component={Two} />
-            </Switch>
-        )
-
+            <Route exact path="/" component={App}/>
+            <Route exact path="/one" component={One}/>
+            <Route path="/one/next" component={Next}/>
+            <Route path="/two" component={Two}/>
+        </Switch>
+        );
     }
 }
 
@@ -1148,7 +1158,7 @@ export default Routers;
 ```
 
 
-相应的 我们的index.js也应该去掉那部分代码
+相应的 我的index.js也应该去掉那部分代码
 
 
 ```
@@ -1156,10 +1166,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
+import 'antd/dist/antd.css'
 // 直接引入的组件
-import App from './js/App';
-import Routers from "./router/router";
+import Routers from './router/routers';
 
+
+// 引入css
+import './css/index.css';
 
 // 正常写法
 class Reactroot extends React.Component {
@@ -1167,7 +1180,7 @@ class Reactroot extends React.Component {
         return (
             <Router >
                 <div>
-                    <ul>
+                    {/* <ul>
                         <li>
                             <Link to="/">App</Link>
                         </li>
@@ -1177,10 +1190,9 @@ class Reactroot extends React.Component {
                         <li>
                             <Link to="/two">two</Link>
                         </li>
-                    </ul>
+                    </ul> */}
 
-                    <hr/>
-                   <Routers />
+                  <Routers />
                 </div>
             </Router>
         )
@@ -1188,11 +1200,61 @@ class Reactroot extends React.Component {
 }
 ReactDOM.render(
     <Reactroot/>, document.getElementById("APP"))
+```
 
+现在我的router文件就被抽离出来了  我只需要在router文件内进行 按需加载的编写 和路由编写 就好了
+
+
+### 引入antd 
+
+emm 我开始写业务代码了 开始给我这个Just IT写一个主页  但是要我自己手撸组件太烦了 于是我引入了一个UI组件  antd
+
+```
+废话不多说 上手就先把 antd先给下载了
+
+$ npm install antd --save
+```
+
+看一眼我的package.json antd在了 接下来继续安装一个友好的插件
+
+```
+$ npm install babel-plugin-import --save-dev
 
 ```
 
-现在我们的router文件就被抽离出来了  我们只需要在router文件内进行 按需加载的编写 和路由编写 就好了
+好了 齐活
+
+给我的App.js 来入手一个
+
+```
+
+import {Button} from 'antd';
+
+
+render() {
+        return (
+            ...
+            <Button>BTN<Button/>
+            ...
+        )    
+    }
+
+```
+
+看看页面 显示了 但是不是我需要的样子 
+
+看一眼官网 恩 需要我一开时就加载一个全局css样式
+
+在我的index.js 写上
+
+```
+
+// 引入antd css
+import 'antd/dist/antd.css'
+
+```
+重启node ok齐活 
+
 
 
 
