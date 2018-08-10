@@ -260,8 +260,38 @@ function getRandomColor () {
 }
 
 ```
-
-
+### 对比两层for循环
+```js
+let big = [
+  {id: 12},
+  {id: 6},
+  {id: 0},
+  {id: 32},
+  {id: 4},
+  {id: 18},
+]
+let small = [
+  {id: 0},
+  {id: 6},
+  {id: 32},
+  {id: 12},
+  {id: 18},
+  {id: 4},
+]
+let set = {};
+let result = [];
+let temp = null;
+for (let i = 0; i < small.length; i++) {
+  set[small[i].id] = i+1;
+}
+for (let i = 0; i < big.length; i++) {
+  	temp = big[i]
+  if (set[temp.id]) {
+    	let val = small[set[temp.id]-1];
+    	
+  }
+}
+```
 
 
 
