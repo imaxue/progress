@@ -1,6 +1,6 @@
 
 
-变量基本类型
+## 变量基本类型
 
 1. 整型
 
@@ -20,7 +20,7 @@
 | float  | 4    |
 | double | 8    |
 
-判断一个值是不是 NaN
+> 判断一个值是不是 NaN
 
 ```java
 Double.isNaN(value);
@@ -44,11 +44,18 @@ Double.isNaN(value);
 
 4. boolean
 
+| 类型  |      |
+| ----- | ---- |
+| true  |      |
+| false |      |
 
 
 
 
-常量: final 关键字定义, 只能被赋值一次, 不能更改
+
+## 常量
+
+> 使用 final 关键字定义, 只能被赋值一次, 不能更改
 
 ```java
 final double PRICE = 2.54 ;
