@@ -71,6 +71,7 @@ git reset --hard HEAD^
 #git 常用操作
 
 $ git ch(checkout) -b develop  创建开发分支develop
+
 $ git push  推送当前分支到远端仓库
 $ git st(status)  查看当前分支工作区、暂存区的工作状态
 $ git diff   diff文件的修改
