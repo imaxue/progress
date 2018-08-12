@@ -68,7 +68,7 @@ git reset --hard HEAD^
 
 但是 `reset` 的本质并不是删除了 commit，而是重新设置了 HEAD 和它指向的 branch。
 
-#git 常用操作
+# git 常用操作
 
 $ git ch(checkout) -b develop  创建开发分支develop
 
