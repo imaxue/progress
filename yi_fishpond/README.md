@@ -24,4 +24,9 @@
 
 学习mongodb基本操作与安装
 
+## 个人第四周任务
+
+准备个人演讲搭建reactmini demo和工作中react测试的总结
+
+
 
