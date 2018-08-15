@@ -10,94 +10,97 @@
     <div id="app">
         <p>{{msg}}</p>
         <p>{{msg}}</p>
-        <p @click="add">{{num}}</p>
-        <button @click="add">add</button>
+        <p>{{msg}}</p>
+        <p>{{num}}</p>
+        <input type="text" v-model="num">
+        <button @click="change">change</button>
     </div>
+
+
+
+
+
+
     <script>
-    
-    class Dep {
+    class Dep{
         constructor(){
             this.subs = []
         }
-        addSub(sub){
-            this.subs.push(sub)
+        addSub(watcher){
+            this.subs.push(watcher)
         }
-        notify(newVal, val){
-            for (const sub of this.subs) {
-                sub.update(newVal, val)
+        notify(val, oldVal){
+            for (const watcher of this.subs) {
+                watcher.update(val, oldVal)
             }
         }
-
     }
-    class Watcher {
+    class Watcher{
         constructor(vm, key, cb){
             this.vm = vm
             this.key = key
             this.cb = cb
             this.get()
         }
-        update(newVal,val){
-            this.cb.call(this.vm, newVal, val)
+        update(val, oldVal){
+            this.cb.call(this.vm, val, oldVal)
         }
-        get() {
+        get(){
             Dep.target = this
-            const val = this.vm.data[this.key]
+            let value = this.vm[this.key]
             Dep.target = null
         }
-
     }
-    class Observer {
+    class Observer{
         constructor(data){
+            this.data = data
             this.init(data)
         }
         init(data){
-            // console.log(data)
-            if(!data || typeof data !== 'object') return
+            if(!data || typeof(data) !== 'object') return
             for (const key in data) {
-                this.reactiveProxy(data, key, data[key])
+                this.defineReactive(data, key, data[key])
                 this.init(data[key])
             }
         }
-        reactiveProxy(data, key, val){
-            let _val = val
-            const dep = new Dep()
+        defineReactive(data, key, val){
+            let oldVal = val
+            let dep = new Dep()
             Object.defineProperty(data, key, {
                 configurable: true,
                 enumerable: true,
                 get(){
-                    // console.log(_val,'获取了值')
-                    if (Dep.target) {
+                    console.log('get')
+                    if(Dep.target){
                         dep.addSub(Dep.target)
                     }
-                    return _val
-                    
+                    return oldVal
                 },
-                set(newVal){
-                    if(_val === newVal) return
-                    // console.log(newVal,'newVal')
-                    dep.notify(newVal, _val)
-                    _val = newVal
+                set(val){
+                    if(val == oldVal) return
+                    console.log(val,'set')
+                    dep.notify(val, oldVal)
+                    oldVal = val
                 }
             })
         }
     }
-    class Compile {
-        constructor(el, vm){
+    class Compile{
+        constructor(vm, el, data){
             this.vm = vm
-            this.nodes = document.querySelector(el).childNodes
-            // console.dir(this.nodes)
-            this.compileNodes(this.nodes)
+            this.data = data
+            let nodes = document.querySelector(el).childNodes
+            console.dir(nodes)
+            this.compileNodes(nodes)
         }
         compileNodes(nodes){
             for (const node of nodes) {
                 switch (node.nodeType) {
                     case 1:
-                        this.compileEvent(node)
+                        this.compileNode(node)
                         break;
                 
                     case 3:
-                        // 这里是靠childNodes里的元素递归才能找到插值，第一次找不到
-                        console.log(node)
                         this.compileText(node)
                         break;
                 
@@ -106,61 +109,69 @@
                 }
                 node.childNodes && node.childNodes.length && this.compileNodes(node.childNodes)
             }
+            
         }
         compileText(node){
-            const reg = /\{\{(.*)\}\}/
-            if (node.textContent && reg.test(node.textContent)) {
-                // 获取文本绑定的data属性的key
-                const key = reg.exec(node.textContent)[1]
-                const val = this.vm.data[key]
-                node.textContent = val
-                // 这里我理解的是node.textContent也放到watcher里，这样才实现了数据更新
-                new Watcher(this.vm, key, function (newVal) {
-                    // console.log(newVal,'com')
-                    node.textContent = newVal
+            let reg = /\{\{(.*)\}\}/
+            if(node.textContent !== '' && reg.test(node.textContent)){
+                let key = reg.exec(node.textContent)[1]
+                node.textContent = this.vm[key]
+                new Watcher(this.vm, key, (val) => {
+                    node.textContent = val
                 })
             }
         }
-        compileEvent(node) {
-            const attrs = node.attributes
-            // console.log(attrs)
+        compileNode(node){
+            let attrs = node.attributes
             for (const attr of attrs) {
-                if (attr.name.indexOf('@') !== -1) {
-                    const event = attr.name.split('@')[1]
-                    // console.log(this.vm[attr.value])
-                    const fn = this.vm[attr.value]
-                    node.addEventListener(event, fn.bind(this.vm))
+                if(attr.name.indexOf('@') > -1){
+                    let event = attr.name.split('@')[1]
+                    let key = attr.value
+                    node.addEventListener(event, () => {
+                        this.vm[key]()
+                        
+                    })
+                }
+                if(attr.name.indexOf('v-model') > -1){
+                    let key = attr.value
+                    node.value = this.vm[key]
+                    node.addEventListener('input', (event) => {
+                        console.log(event)
+                        this.vm[key] = event.target.value
+                    })
                 }
             }
         }
     }
-    class Vue {
-        constructor({el, data, methods}){
-            this.el = el
+    class Vue{
+        constructor({el, data, methods, watch, created, mounted}){
             this.data = data()
             this.methods = methods
-            // 先代理到this上，再init
-            this.proxyData()
-            this.initData()
-            
-        }
-        initData(){
-            // console.log(this.data)
+            this.observer()
             new Observer(this.data)
-            new Compile(this.el, this)
-            // console.log(this.data.msg)
+            created && created.call(this)
+            this.watch = watch
+            this.initWatcher()
+            new Compile(this, el, this.data)
+            mounted && mounted.call(this)
         }
-        proxyData(){
-            let _this = this
+        initWatcher(){
+            for (const key in this.watch) {
+                new Watcher(this, key, this.watch[key])
+            }
+        }
+        observer(){
             for (const key in this.data) {
                 Object.defineProperty(this, key, {
                     configurable: true,
                     enumerable: false,
                     get(){
-                        return _this.data[key]
+                        // console.log('get')
+                        return this.data[key]
                     },
-                    set(newVal){
-                        _this.data[key] = newVal
+                    set(val){
+                        // console.log(val,'set')
+                        this.data[key] = val
                     }
                 })
             }
@@ -168,41 +179,51 @@
                 Object.defineProperty(this, key, {
                     configurable: true,
                     enumerable: false,
-                    get() {
-                        return _this.methods[key]
+                    get(){
+                        // console.log('get')
+                        return this.methods[key]
                     },
-                    set(val) {
-                        _this.methods[key] = val
+                    set(val){
+                        // console.log(val,'set')
+                        this.methods[key] = val
                     }
                 })
             }
-            
         }
-
     }
     
     var vm = new Vue({
         el: '#app',
-        data () {
+        data(){
             return {
-                msg: 'hello Vue',
-                num: 0,
+                msg: 'hello vue',
+                msg2: 'hello vue2',
+                num: 1
+
             }
         },
         methods: {
-            add(){
-                this.num = this.num + 1
+            change(){
+                // console.log(e)
+                console.log('click')
+                this.num++
+                this.msg = 'hello one'
+                // e.stopPropagation()
+                // this.set(this.good, 'a', 'aaaa')
             }
+        },
+        watch: {
+            num(val, oldVal){
+                console.log(val,'watch')
+            }
+        },
+        created(){
+            console.log('created')
+        },
+        mounted(){
+            console.log('mounted')
         }
     })
-    setTimeout(()=>{
-        
-        vm.data.msg = 'aa'
-    })
-    
-    
-    
-    
     </script>
 </body>
 </html>
