@@ -15,6 +15,7 @@
          color: red;
       }
 
+      注意：sass中使用/deep/
       .parent /deep/ .son {
         font-size: 12px;
       }

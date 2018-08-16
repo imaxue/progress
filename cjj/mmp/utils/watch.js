@@ -1,23 +1,68 @@
-function defineReactive(data, key, value, sourceKey, callback) {
-  Object.defineProperty(data, key, {
-    configurable: true,
-    enumerable: true,
-    get () {
-      return value
-    },
-    set (newVal) {
-      let newValue = getValue(sourceKey, newVal)
-      let oldValue = getValue(sourceKey, value)
-      value = newVal
-      if (newValue === oldValue) return
-      callback && callback(newValue, oldValue)
+class Dep {
+  constructor () {
+    this.subs = []
+  }
+  push (target) {
+    this.subs.push(target)
+  }
+  notify (newVal, oldVal) {
+    for (const sub of this.subs) {
+      sub.update(newVal, oldVal)
     }
-  })
+  }
 }
-export function watch (source) {
-  if (!source) return
-  Object.keys(source).forEach(key => {
-    let target = source[key]
+
+class Observer {
+
+  constructor (data) {
+    this.init(data)
+  }
+
+  init (data) {
+    for (const key in data) {
+      const value = data[key]
+      this.defineReactive(data, key, value)
+    }
+  }
+
+  defineReactive (data, key, value) {
+    const dep = new Dep()
+    Object.defineProperty(data, key, {
+      configurable: true,
+      enumerable: true,
+      get () {
+        if (Dep.target) {
+          dep.push(Dep.target)
+        }
+        return value
+      },
+      set (newValue) {
+        if (newValue === value) return
+        dep.notify(newValue, value)
+        value = newValue
+      }
+    })
+  }
+}
+
+class Watcher {
+
+  constructor (ctx, key, callback) {
+    Dep.target = this
+    ctx.data[key]
+    Dep.target = null
+    this.callback = callback
+  }
+
+  update (newValue, oldValue) {
+    this.callback && this.callback.call(this.ctx, newValue, oldValue)
+  }
+}
+
+export function watch (obj) {
+  if (!obj) return
+  Object.keys(obj).forEach(key => {
+    let target = obj[key]
 
     let callback = (newValue, value) => {
       if (typeof target === 'function') {
@@ -27,24 +72,34 @@ export function watch (source) {
       }
     }
 
-    let segments = /\w+\./.test(key) ? key.split('.') : []
-    let newKey = this.data.hasOwnProperty(key) ? key : segments.splice(0, 1)
-    let value = getValue(key, this.data)
-
     if (target.immediate === true) {
-      callback.call(this, value)
+      callback.call(this, this.data[key])
     }
-    defineReactive(this.data, newKey, this.data[newKey], segments, callback.bind(this))
+
+    new Watcher(this, key, callback)
   })
 }
 
-function getValue (key, obj) {
-  if (typeof obj !== 'object') return obj[key]
-  if (typeof key === 'string') {
-    if (obj.hasOwnProperty(key)) return obj[key]
-    key = key.split('.')
+export function computed (obj = {}) {
+  let firstComputed = {}
+  for (let key in obj) {
+    let target = obj[key]
+    let callback = () => {
+      if (typeof target === 'function') {
+        Dep.target = () => {
+          let value = target.call(this)
+          this.setData({
+            [key]: value
+          })
+        }
+      }
+    }
+    firstComputed[key] = target.call(this)
+    Dep.target = null
   }
-  return key.reduce((ret, key) => {
-    return ret.hasOwnProperty(key) ? ret[key] : undefined
-  }, obj)
+  this.setData(firstComputed)
+}
+
+export default function init (data) {
+  new Observer(data)
 }

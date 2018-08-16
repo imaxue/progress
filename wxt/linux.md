@@ -13,7 +13,7 @@ rm -rf * 删除所在目录下的所有文件并且不提示
 vim package.json 编辑package.json文件  
 service nginx restart 重启nginx服务  
 service nginx status 查看服务当前状态  
-rz 选择上传要上传的文件(没有的话需要先安装)   
+rz 选择上传要上传的文件(没有的话需要先安装)  
 unzip dist.zip 解压文件(没有的话需要先安装)
 netstat -tunlp netstat监控TCP/IP网络的非常有用的工具，它可以显示路由表、实际的网络连接以及每一个网络接口设备的状态信息  
 Nginx -t 验证nginx配置文件是否正确  

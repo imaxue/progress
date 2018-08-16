@@ -1,0 +1,27 @@
+<view class="container">
+	<view class="options-chooseTools">
+		<view class="content">
+			<view class="five-star" wx:for="{{toolsList}}" wx:key="index">
+				<view class="five-star-title box">
+					<view class="startitle">{{item.title}}</view>
+					<view class="starimg">
+						<view wx:for="{{item.star}}" wx:key="index" class="star"></view>
+					</view>
+				</view>
+				<view class="five-items">
+					<scroll-view scroll-x="{{true}}" class="five-scroll">
+						<view class="prop-item-detail" wx:for="{{item.list}}" wx:key="index" wx:for-item="recommend" data-toolName="{{recommend.name}}" data-toolId="{{recommend.tool_id}}" bindtap="chooseTool">
+							<view class="is-choosed {{recommend.tool_id === toolId ? 'tool-choosed' : 'tool-no-choosed'}}"></view>
+							<view class="prop-item-img-container">
+								<image src="{{recommend.image}}" class="prop-item-img" />
+							</view>
+							<view class="prop-item-name">工具名称：{{recommend.name}}</view>
+						</view>
+					</scroll-view>
+				</view>
+			</view>
+			<view class="choosed-name">已选：{{toolName}}</view>
+			<button open-type="share" class="invite">确认并邀请好友</button>
+		</view>
+	</view>
+</view>

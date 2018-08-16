@@ -93,8 +93,7 @@
             // 当我new的时候就触发这个函数，把自己丢进Dep中
             get() {
                 Dep.target = this
-                debugger
-                 this.vm[this.key]
+                const val = this.vm[this.key]
                 Dep.target = null
             }
         }

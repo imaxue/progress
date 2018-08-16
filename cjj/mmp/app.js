@@ -1,6 +1,6 @@
 //app.js
 import { wxPromisify, showBusy, showSuccess, checkSession, wxLogin, wxRequest, wxModal, getUserInfo } from './utils/util.js'
-import { watch } from './utils/watch.js'
+import init, { watch, computed } from './utils/watch.js'
 let loginInstance = null 
 App({
   onLaunch: function (options) {
@@ -16,7 +16,9 @@ App({
       let curPage = page[0]
       if (!curPage.__init__) {
         curPage.__init__ = true
+        init(curPage.data)
         watch.call(curPage, curPage.watch)
+        computed.call(curPage, curPage.computed)
       }
     }
     if (loggedIn) {
