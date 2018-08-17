@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #3f4c01;
+    }
+    .button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      color: #fff;
+      background-color: #333;
+      text-align: center;
+      cursor: pointer;
+    }
+    .svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .rect {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke-width: 6px;
+      opacity: 0.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 85 400;
+      stroke-dashoffset: -180;
+      transition: all .3s linear;
+    }
+    .button:hover .rect {
+      stroke-width: 4px;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 0;
+      stroke: url(#rg)
+    }
+  </style>
+</head>
+<body>
+  <div class="button">
+    <svg xmlns="http://www.w3.org/2000/svg" class="svg">
+      <rect class="rect"></rect>
+      <defs>
+        <radialGradient cx="60" cy="20" gradientUnits="userSpaceOnUse" id="rg">
+          <animate attributeName="cx" values="0;120;120;0" dur="2s" calcMode="linear" repeatCount="indefinite"></animate>
+          <animate attributeName="cy" values="40;40;0;0" dur="2s" calcMode="linear" repeatCount="indefinite"></animate>
+          <stop offset="0" stop-color="#67FECB"></stop>
+          <stop offset="25%" stop-color="#67FECB"></stop>
+          <stop offset="100%" stop-color="#009A7A"></stop>
+        </radialGradient>
+      </defs>
+    </svg>
+    <span>Button</span>
+  </div>
+</body>
+</html>

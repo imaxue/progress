@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        //组件工厂   用法返回一个Componet实例
+        function instantiateRecatComponet(node){
+            if (typeof node === 'string'||typeof node === 'number') {
+                return new ReactDOMTextCompent(node);
+            }
+        }
+        
+        //定义文本组件的构造函数，生成实例
+        function ReactDOMTextCompent(text){
+            //强行存储字符串的内容
+            this._currentElement = '' + text;
+            //用来标识当前Compent属性
+            this._rootNodeID = null;
+        }
+        
+        //挂载，处理渲染
+        ReactDOMTextCompent.prototype.mountComponent = function (rootID){
+            this._rootNodeID = rootID;
+            //把文本显示到页面上的一个过程,返回一段dom标签
+            return `<div data-reactid=${rootID}>${this._currentElement}</div>`
+        }
+
+        const ReactDOM ={
+            nextReactRootIndex : 0,
+            render: ( element , container)=>{
+                //入口，渲染调用
+                var componentInstance = instantiateRecatComponet(element);
+                var html = componentInstance.mountComponent(ReactDOM.nextReactRootIndex++);
+                container.innerHTML = html;
+            }
+        }
+        ReactDOM.render('hello world!', document.getElementById('root'));
+    </script>
+</body>
+</html>

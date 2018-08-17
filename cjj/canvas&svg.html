@@ -180,6 +180,9 @@
         }).join(' ')
         path.setAttribute('d', line)
         g.appendChild(path)
+        // 获取路径长度
+        let length = path.getTotalLength()
+        path.style.strokeDasharray = path.style.strokeDashoffset = length
       })
     })
   </script>
