@@ -101,3 +101,5 @@ exports.keys = 'wojiushiwobuyiyangdeyanhuo';
 ```
   const serviceRes = await this.ctx.service.myService.test();
 ```
+
+这个时候差不多快成型了，其他配置就不说了，详见[egg官网](https://eggjs.org/zh-cn/)吧，人家文档写的很好。
