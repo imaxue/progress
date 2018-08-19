@@ -443,7 +443,132 @@ optimum(N, W) // 900
 
 
 
+### 优先队列
+
+**作用:** 快速找出队列中最大或最小的元素
+
+**应用场景:** 
+* 在操作系统中, 为每个应用分配一个优先级, 快速找出优先级最高的应用
+* 粒子碰撞模拟
+* 图搜索算法
+* 数据压缩算法
+
+**数据结构:** 二叉堆
+
+**常用操作:** `删除最大元素` ***( 时间复杂度 O(logN) )*** , `插入元素` ***( 时间复杂度 O(logN)  )***
+
+```javascript
+class MaxPQ {
+
+    constructor(n) {
+        this.pq = new Array(n + 1) // 基于堆的完全二叉树
+        this.len = 0; // 已使用的长度
+    }
+
+    /**
+     * 比较大小
+     * @param x
+     * @param y
+     * @returns {boolean}
+     */
+    less(x, y) {
+        return this.pq[x] < this.pq[y];
+    }
+
+    /**
+     * 交换队列中的元素
+     * @param i
+     * @param j
+     */
+    exchange(i, j) {
+        let temp = this.pq[i];
+        this.pq[i] = this.pq[j];
+        this.pq[j] = temp;
+    }
+
+    /**
+     * 返回最大的元素
+     * @returns {*}
+     */
+    delMax() {
+        let max = this.pq[1]
+        this.exchange(1, this.len)
+        this.pq[this.len--] = null
+        this.sink(1)
+
+        return max;
+    }
+
+    /**
+     * 插入元素
+     * @param k
+     */
+    insert(k) {
+        this.pq[++this.len] = k;
+        this.swim(this.len)
+    }
+
+    /**
+     * 是否为空
+     * @returns {boolean}
+     */
+    isEmpty() {
+        return this.len === 0
+    }
+
+    /**
+     * 当前元素个数
+     * @returns {number}
+     */
+    size() {
+        return this.len
+    }
+
+    /**
+     * 上浮
+     * @param k
+     */
+    swim(k) {
+        while (k > 1 && this.less(Math.floor(k / 2), k)) {
+            this.exchange(Math.floor(k / 2), k)
+            k = Math.floor(k / 2)
+        }
+    }
+
+    /**
+     * 下沉
+     * @param k
+     */
+    sink(k) {
+        while (k <= this.len * 2) {
+            let j = k * 2
+            if (j < this.len && this.less(j, j + 1)) {
+                j++
+            }
+
+            if (!this.less(k, j)) {
+                break
+            }
+
+            this.exchange(j, k)
+
+            k = j
+        }
+    }
+}
 
 
+let mq = new MaxPQ(20)
+
+mq.insert(2)
+mq.insert(7)
+mq.insert(4)
+mq.insert(10)
+mq.insert(8)
+mq.insert(9)
+
+console.log(mq.delMax());
+
+```
 
 
