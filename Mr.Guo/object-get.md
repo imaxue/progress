@@ -26,11 +26,11 @@
 
 ```
 
-   let f = null;
+   let f;
    try {
     f = obj.a.e.f
    } catch () {
-    f= undefined
+    
    }
   
 ```
