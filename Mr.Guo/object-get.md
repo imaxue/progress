@@ -40,5 +40,13 @@
 
 ```
 
+来个测试,还是上面的obj：
 
+```js
+
+  const c = objectGet(obj, 'a.b.c') // 1
+  const f = objectGet(obj, 'a.e.f') // undefined
+
+```
+这个时候就不会出现程序报错的问题。
 
