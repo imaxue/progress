@@ -144,7 +144,8 @@
 
 ##### A、node 服务端封装
 
-```memcache.ts
+```
+memcache.ts
 
 npm i node_memcached
 
@@ -204,7 +205,8 @@ function createMemcache() {
 
 ##### B、环境变量的配置：（需要运维提供memcached服务器变量)
 
-```Dockerfile.dev
+```
+Dockerfile.dev
 
 FROM node:8.6.0
 WORKDIR /www/
@@ -262,6 +264,143 @@ EXPOSE 3000
 ```
 
 ### 三、redis缓存封装
+
+#### 1、redis包
+
+**注意：redis的环境变量在上边的Dockerfile.dev中
+
+[redis](https://github.com/NodeRedis/node_redis#sending-commands)
+
+##### A、node 服务端封装
+
+```
+myRedis.ts
+
+npm install redis
+
+import * as redis from 'redis'
+
+const redisOpt: any = {
+    db: process.env.REDIS_DB,
+    host: process.env.REDIS_HOST,
+}
+
+if (process.env.REDIS_PASSWORD) redisOpt.password = process.env.REDIS_PASSWORD
+
+const redisClient = redis.createClient(redisOpt)
+
+const redisKey = {
+    articlePre: '1:',
+    place: 'place',
+    user: 'user',
+    channels: 'channels',
+    extendImages: 'extendImages',
+    article: 'article',
+    baiduHot: 'baiduHot', // baiduHot
+    h5Advertisements: 'h5Advertisements', // 新版H5的广告
+}
+
+const myRedis = {
+    get(key): Promise<any> {
+        if (process.env.DISABLE_REDIS) return Promise.resolve(null)
+        return new Promise((resolve, reject) => {
+            redisClient.get(key, (err, res) => {
+                if (err)
+                    return reject(err)
+                try {
+                    const parserRes = JSON.parse(res)
+                    resolve(parserRes)
+                } catch (e) {
+                    resolve(res)
+                }
+            })
+        })
+    },
+    hget(objName: string, key: string): Promise<any> {
+        if (process.env.DISABLE_REDIS) return Promise.resolve(null)
+        return new Promise((resolve, reject) => {
+            redisClient.hget(objName, key, (err, res) => {
+                if (err) return reject(err)
+                resolve(res)
+            })
+        })
+    },
+    del(key: string) {
+        return new Promise((resolve, reject) => {
+            redisClient.del(key, (err, res) => {
+                if (err) return reject(err)
+                resolve(res)
+            })
+        })
+    },
+    set(key, value, expire?: number) {
+        if (typeof value === 'object') value = JSON.stringify(value)
+        return new Promise((resolve, reject) => {
+            redisClient.set(key, value, (err, reply) => {
+                if (err)
+                    return reject(err)
+                resolve('redis本地存储' + key + ' : ' + reply)
+                console.error('redis本地存储' + key + ' : ' + reply)
+            })
+            if (expire) redisClient.expire(key, expire)
+        })
+    },
+}
+
+redisClient.on('error', (err) => {
+    console.error('redis连接错误： ' + err)
+})
+
+export { redisClient, myRedis, redisKey }
+
+```
+
+##### B、使用实例
+
+```
+
+import { myRedis, redisClient, redisKey } from './myRedis'
+
+export async function getExtendImage(albumId: string, eid: string) {
+    const extendImages = await myRedis.get(redisKey.extendImages) || []
+    const selfEid = parseInt(eid, 10)
+    if (Number.isNaN(selfEid)) throw new Error('eid应该是数字！')
+    const extendImage = extendImages.find(item => item.albumId === albumId && item.eids.includes(selfEid)) || {}
+    return extendImage.extends || []
+}
+
+function getRedisDetail(detailId: string, language: string): Promise<{ body: object }> {
+    const key = language + ':albumId_:' + detailId
+    return new Promise((resolve, reject) => {
+        redisClient.get(key, (err, res) => {
+            if (err) return reject(err)
+            resolve(JSON.parse(res))
+        })
+    })
+}
+
+function setRedisDetail(detailId: string, value: IGroupImage, language: string) {
+    const key = language + ':albumId_:' + detailId
+    return new Promise((resolve, reject) => {
+        redisClient.set(key, JSON.stringify(value), (err, res) => {
+            if (err) return reject(err)
+            console.log('详情页保存redis缓存成功，id：', key)
+            resolve(res)
+            redisClient.expire(key, redisCacheDuration)
+        })
+    })
+}
+
+
+myRedis.get('belleId').then(belleId => {
+    myRedis.set('belleId', (belleId + ',' + imageId).replace('null,', ''))
+})
+
+```
+
+
+
+
 
 
 
