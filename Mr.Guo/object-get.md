@@ -22,6 +22,19 @@
   const f = obj && obj.a && obj.a.e && obj.a.e.f;
 ```
 
+或者
+
+```
+
+   let f = null;
+   try {
+    f = obj.a.e.f
+   } catch () {
+    f= undefined
+   }
+  
+```
+
 我们可以用一个函数去处理一下，帮助我们用更简单的表达式去获取我们想要的字段，代码如下
 
 ```js
