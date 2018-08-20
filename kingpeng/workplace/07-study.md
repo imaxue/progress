@@ -267,7 +267,7 @@ EXPOSE 3000
 
 #### 1、redis包
 
-**注意：redis的环境变量在上边的Dockerfile.dev中
+**注意：redis的环境变量在上边的Dockerfile.dev中**
 
 [redis](https://github.com/NodeRedis/node_redis#sending-commands)
 
