@@ -136,5 +136,133 @@
 
 ### 二、memcache缓存封装
 
+#### 1、memcached包
+
+[node-memcache](https://github.com/elbart/node-memcache)
+
+[memcached](https://github.com/3rd-Eden/memcached)
+
+##### A、node 服务端封装
+
+```memcache.ts
+
+npm i node_memcached
+
+import * as memcache from 'node_memcached'
+const client = createMemcache()
+
+export default {
+    duration: 1 * 60 * 60 * 24, // 缓存时长
+    client,
+    get(key): Promise<string> {
+        return new Promise((resolve, reject) => {
+            client.get(key, (err, res) => {
+                if (err) return reject(err)
+                // resolve(res)
+                try {
+                    const parserRes = JSON.parse(res)
+                    resolve(parserRes)
+                } catch (e) {
+                    resolve(res)
+                }
+            })
+        })
+    },
+    set(key, value, duration = this.duration) {
+        client.set(key, value, duration)
+    },
+    del(key: string) {
+        return new Promise((resolve, reject) => {
+            client.delete(key, (err, res) => {
+                if (err) return reject(err)
+                resolve(res)
+            })
+        })
+    },
+    /**
+     * @desc 创建新的客户端
+     */
+    createClient() {
+        this.client = createMemcache()
+        return this
+    },
+}
+
+function createMemcache() {
+    const user = {
+        username: process.env.MEMCACHE_USERNAME,
+        password: process.env.MEMCACHE_PASSWORD,
+    }
+    const client = memcache.createClient(process.env.MEMCACHE_PORT, process.env.MEMCACHE_HOST, user)
+    client.on("error", (err) => {
+        console.error("Error " + err)
+    })
+    return client
+}
+
+```
+
+##### B、环境变量的配置：（需要运维提供memcached服务器变量)
+
+```Dockerfile.dev
+
+FROM node:8.6.0
+WORKDIR /www/
+RUN npm config set registry https://registry.npm.taobao.org 
+
+ADD ./package.json /www/
+RUN npm install --production
+
+ENV TZ=Asia/Shanghai \
+    NODE_ENV="production" \
+    # API_URI="" \
+    API_URI="" \
+    ADMIN_API="" \
+    RES_URL="" \
+    MEMCACHE_HOST=""\
+    MEMCACHE_USERNAME=""\
+    MEMCACHE_PASSWORD=""\
+    MEMCACHE_PORT=""\
+    REDIS_HOST=''\
+    REDIS_PASSWORD=''\
+    REDIS_DB=9\
+    MONGOOSE_URI="" \
+    PORT=3000
+RUN ln -snf 
+
+EXPOSE 3000
+
+```
+
+##### C、example使用实例: 文章详情的缓存，并且记录请求接口的数和走缓存的数
+
+```
+    import MyMemcache from './memcache'
+    // MyMemcache缓存，并记录接口请求次数
+    const detailCache = await MyMemcache.get(String(groupId) + '-article') as any
+    let count = Number(await MyMemcache.get('countNum2') || 1)
+    let cacheCount = Number(await MyMemcache.get('cacheCount2') || 1)
+    // console.log('接口count', count)
+    // console.log('缓存count', cacheCount)
+    let article
+    const duration = 5 * 60 * 60 * 24  // 缓存时长五天
+    if (detailCache && typeof detailCache === 'object') {
+        article = detailCache
+        cacheCount++
+        MyMemcache.set('cacheCount2', cacheCount)
+    } else {
+        count++
+        article = (await client.getNewDetails({}, { groupId: String(groupId) })) as any
+        MyMemcache.set('countNum2', count)
+        if (article && JSON.stringify(article) !== '{}') {
+            MyMemcache.set(String(groupId) + '-article', JSON.stringify(article), duration)
+        }
+    }
+
+```
 
 ### 三、redis缓存封装
+
+
+
+
