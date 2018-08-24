@@ -20,12 +20,10 @@ Nginx -t 验证nginx配置文件是否正确
 
 
 
-
-
 ## 系统信息 
 arch 显示机器的处理器架构(1)  
 uname -m 显示机器的处理器架构(2)  
-uname -r 显示正在使用的内核版本  
+uname -r 显示正在使用的内核版本.  
 dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI)  
 hdparm -i /dev/hda 罗列一个磁盘的架构特性 
 hdparm -tT /dev/sda 在磁盘上执行测试性读取操作  
