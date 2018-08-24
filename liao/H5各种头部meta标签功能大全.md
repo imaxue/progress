@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>  H5标准声明，使用 HTML5 doctype，不区分大小写
 
 <head lang=”en”> 标准的 lang 属性写法
@@ -22,7 +23,7 @@
 
 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏
 
-```html
+
 <meta name=”apple-itunes-app” content=”app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL”>
 
 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari）
