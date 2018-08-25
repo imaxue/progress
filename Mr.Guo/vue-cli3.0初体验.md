@@ -74,8 +74,8 @@
   我也不懂这些规则之间有什么具体的差异，随便选一个吧，ESLint + Prettier，接卸来选择语法检查方式，这里我选择保存就检测
   
  ```
->( ) Lint on save // 保存就检测
- ( ) Lint and fix on commit // fix和commit时候检查
+ > ( ) Lint on save // 保存就检测
+   ( ) Lint and fix on commit // fix和commit时候检查
 ```
 
   然后它会问你 ，把babel,postcss,eslint这些配置文件放哪，这里随便选，我选择放在独立文件夹
