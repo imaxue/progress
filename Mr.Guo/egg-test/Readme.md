@@ -170,3 +170,32 @@ exports.keys = 'wojiushiwobuyiyangdeyanhuo';
 
   module.exports = Mailer;
 ```
+
+我们还需要装一个egg-cors,用来进行跨域。需要将cors进行开启。
+
+```js
+// config/plugin.js
+export.cors = {
+  enable: true,
+  package: 'egg-cors',
+}
+```
+
+我们还需要配置一下security
+
+```js
+    // config/config.default.js
+    exports.security = {
+      methodnoallow: {
+        enable: false
+      }, 
+      xframe: {
+        enable: false,
+      },
+      // csrf: {
+      //   headerName: '_csrf', // 通过 header 传递 CSRF token 的默认字段为 x-csrf-token
+      // },
+      csrf: false, // 尝试了官网的N多方法，都没有接收到前端的csrf，我放弃了，大神们如果搞出来了手摸手一下我
+      domainWhiteList: [ '127.0.0.1:8080' ]，对我的接口开放一个白名单
+    };
+```
