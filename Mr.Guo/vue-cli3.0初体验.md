@@ -178,3 +178,5 @@ devServer: {
   import axios from "./http";
   Vue.prototype.axios = axios;
 ```
+
+这样我们就能直接使用this.axios以及它的API了。
