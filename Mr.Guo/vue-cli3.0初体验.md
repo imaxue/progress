@@ -123,7 +123,7 @@
 
 ```
 devServer: {
-        open: process.platform === 'darwin',
+        open: process.platform === 'xxx',
         host: '0.0.0.0',
         port: 1234,
         https: false,
