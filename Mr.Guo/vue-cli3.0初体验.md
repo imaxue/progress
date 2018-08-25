@@ -47,7 +47,7 @@
 选择好配置后，选择路由模式
 
 ```
-  ? Please pick a preset: Manually select features
+? Please pick a preset: Manually select features
 ? Check the features needed for your project: Router, Vuex, CSS Pre-processors, Linter, Unit
 ? Use history mode for router?(Requires proper server settup for index fallback in production) Y/n
 ```
