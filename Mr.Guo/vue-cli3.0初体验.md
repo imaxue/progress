@@ -129,7 +129,52 @@ devServer: {
         https: false,
         hotOnly: false,
         // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-        proxy: null, // string | Object
+        proxy: null, // string | Object // 跨域代理
         before: app => {}
     },
+```
+
+安装axios
+
+```shell
+  npm i axios --save
+```
+
+然后我们给axios稍微做个简单的拦截器
+
+```js
+  import axios from "axios";
+
+  axios.defaults.timeout = 5000;
+  axios.defaults.baseURL = "http://127.0.0.1:7001";
+  // axios.defaults.withCredentials = true;
+
+  // request拦截器
+  // axios.interceptors.request.use(
+  //   config => {
+  //   处理一下
+  //   return config
+  // }, error => {
+  //   Promise.reject(error)
+  // })
+
+  axios.interceptors.response.use(
+    function(response) {
+      // 对响应数据做点什么
+      return response.data;
+    },
+    function(error) {
+      // 对响应错误做点什么
+      return Promise.reject(error);
+    }
+  );
+
+  export default axios;
+```
+
+然后在我们的main.js中引入
+
+```
+  import axios from "./http";
+  Vue.prototype.axios = axios;
 ```
