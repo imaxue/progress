@@ -1,0 +1,20 @@
+{
+  "name": "egghand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "egg-bin dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.9.1",
+    "egg-mysql": "^3.0.0",
+    "egg-sequelize": "^3.1.5"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.8.1"
+  }
+}
