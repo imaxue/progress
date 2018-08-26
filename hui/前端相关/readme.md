@@ -216,3 +216,10 @@ console.log("%c为王的诞生 献上礼炮", "font-size:16px;color:#ff6700;padd
 + d：风格，目前可选 identicon、monsterid、wavatar、retro、robohash 等
 
 
+> 今天特别累 随便写一点 小Tips
++ 首先是我项目中遇到的一个问题 hcharts中 我们地图上显示不了所有的省市名 （例如 北京和天津  一般都只显示北京 天津 默认就隐藏了  但是有时候 需求要全部显示）
++ 解决办法： https://api.hcharts.cn/highmaps#series<map>.dataLabels   先把 所有我们需要显示的省市写在Label中 然后 设置series<map>.dataLabels为true 也就是强制显示我们所有的Label
++ 然后 一行评分代码 "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate); 
++ 在分享一个https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md  好玩的插件  
+
+
