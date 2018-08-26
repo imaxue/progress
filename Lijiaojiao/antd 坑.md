@@ -18,6 +18,28 @@
  "dataIndex":"num”,
   render:(text,record,index)=> index+1}
  ```
+ 补充一个例子：table 里面有个switch ，BUG问题是使用mock 假数据，假数据状态是开切换了变成关之后，
+   刷新table 获取假数据状态应该是开，但是并不是假数据的状态
+   问题有两个：1。table的使用的是不变的做标记，index不可以，使用的是recode.id+record+status
+    2.父级是table，子集switch，改变子集的状态并没有传给父亲，当父亲两次给的都是开，子集就默认没有刷新，应该把子集的状态传到父级
+ ```
+   /*
+    * 更新table source 中对应id 的上班状态
+    */
+   updateUserSysStatus = (id='', userSysStatus='') => {
+        let tableData = Object.assign({}, this.props.tableData)
+        let dataSource = tableData.dataSource || [];
+        dataSource.map(item => {
+            if(item.id === id) {
+                item.userSysStatus = userSysStatus;
+            }
+            return item;
+        })
+        this.props.updateLocalData(dataSource)
+    }
+ ```
+ 
+ 
  > table 里面对数据做操作，如时间戳转为日期格式
  ```
  {"title":"应还款日”,

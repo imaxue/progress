@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>miniVUE</title>
+    <style>
+        .discript {
+            color: #333;
+            font-size: 12px;
+        }
+        .clicks {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="discript">
+        200行的代码实现简单的vue的双向绑定响应式，以及watch处理，基本的事件和钩子函数，代码中只解析了@方式注册事件，并未解析v-on的方式。
+    </div>
+    <div id="app">
+        <div>{{number}}</div>
+        <div @click="num" class="clicks">click me</div>
+    </div>
+</body>
+<script>
+    class Dep {
+        constructor() {
+            this.subs = [];
+        }
+        
+        addSub(sub) {
+            this.subs.push(sub);
+        }
+
+        // notify用来通知watcher变化，没一个watcher就是一个sub
+        notify(val, oldVal) {
+            for (const sub of this.subs) {
+                sub.updata(val, oldVal)
+            }
+        }
+
+    }
+
+    class Observer {
+        constructor(data) {
+            // 初始化数据
+            this.init(data)
+        }
+
+        init(data) {
+            if (!data || typeof data !== 'object') return;
+            for (const key in data) {
+                // 利用defineProperty修改原始数据属性，data[key]作为新数据返回使用
+                this.defineProperty(data, key, data[key]);
+                // 利用递归修改深层次数据
+                this.init(data[key]);
+            }
+        }
+        // 真正利用defineProperty修改getter和setter的函数
+        defineProperty(data, key, val) {
+            let oldVal = val;
+            const dep = new Dep();
+            Object.defineProperty(data, key, {
+                configurable: true,
+                enumerable: true,
+                get() {
+                    if (Dep.target) {
+                        dep.addSub(Dep.target)
+                    }
+                    return oldVal;
+                },
+                set(val) {
+                    if (val === oldVal) return;
+                    dep.notify(val, oldVal);
+                    oldVal = val;
+                }
+            })
+        }
+    }
+
+    // Watcher的作用是接收变化的通知，并且执行相应的函数
+    class Watcher {
+        constructor(vm, key, cb) {
+            this.vm = vm;
+            this.key = key;
+            this.cb = cb;
+            this.get();
+        }
+
+        get() {
+            Dep.target = this;
+            const val = this.vm[this.key];
+            Dep.target = null;
+        }
+
+        updata(newVal, oldVal) {
+            this.cb.call(this.vm, newVal, oldVal);
+        }
+    }
+
+    // 解析{{}}和@xxx事件模板
+    class Compile {
+        constructor(el, vm) {
+            // this.el = el;
+            this.vm = vm;
+            // childNodes可以用来获取dom下的所有子节点
+            this.compileNode(document.querySelector(el).childNodes);
+        }
+
+        compileNode(nodes) {
+            for (const node of nodes) {
+                // 判断子节点类型，这里只判断两种  1为标签类型，3为文本类型
+                switch (node.nodeType) {
+                    case 1:
+                        this.compileEvent(node);
+                        break;
+                    case 3:
+                        this.compileText(node);
+                        break;
+                }
+                node.childNodes && node.childNodes.length && this.compileNode(node.childNodes);
+            }
+        }
+
+        compileEvent(node) {
+            const attrs = node.attributes;
+            for (const attr of attrs) {
+                if (attr.name.indexOf('@') !== -1) {
+                    const event = attr.name.split('@')[1];
+                    const fn = this.vm[attr.value];
+                    node.addEventListener(event, fn.bind(this.vm))
+                }
+            }
+        }
+
+        compileText(node) {
+            const reg = /\{\{(.*)\}\}/
+            if (node.textContent && reg.test(node.textContent)) {
+                // 获取data中绑定的信息
+                const key = reg.exec(node.textContent)[1];
+                node.textContent = this.vm[key];
+                // 收集初始化的依赖
+                new Watcher(this.vm, key, function(newVal) {
+                    node.textContent = newVal;
+                })
+            }
+        }
+
+    }
+
+    class Vue {
+        constructor({el, data, methods, watch, beforeCreated, created, beforeMounte, mounted}) {
+            // this.el = el;
+            this.data = data();
+            this.methods = methods;
+            this.watch = watch;
+            // 这个方法是要把this.data.xxx/this.methods.xxx代理到this.xxx
+            this.proxyKey();
+
+            // 生命周期,具体执行顺序有待商榷
+            beforeCreated && beforeCreated();
+
+            // 初始化收集依赖
+            new Observer(this.data);
+
+            created && created()
+            // 初始化watch
+            this.initWatch();
+            
+            beforeMounte && beforeMounte();
+            // 初始化解析模板
+            new Compile(el, this);
+            
+            mounted && mounted();
+
+            return this
+        }
+
+        initWatch() {
+            for (const key in this.watch) {
+                new Watcher(this, key, this.watch[key])
+            }
+        }
+
+        proxyKey() {
+            // 实现this.data.xxx 到 this.xxx 的转化
+            const _this = this
+            for (const key in this.data) {
+                Object.defineProperty(this, key, {
+                    configurable: true,
+                    enumerable: false,
+                    get() {
+                        return _this.data[key];
+                    },
+                    set(val) {
+                        _this.data[key] = val;
+                    }
+                })
+            }
+
+            for (const key in this.methods) {
+                Object.defineProperty(this, key, {
+                    configurable: true,
+                    enumerable: false,
+                    get() {
+                        return _this.methods[key];
+                    },
+                    set(val) {
+                        _this.methods[key] = val;
+                    }
+                })
+            }
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                number: 1,
+            }
+        },
+        beforeCreated() {
+            console.log("I'm beforeCreated")
+        },
+        created() {
+            console.log("I'm created")
+        },
+        beforeMounte() {
+            console.log("I'm beforeMounte")
+        },
+        mounted() {
+            console.log("I'm mounted")
+        },
+        methods: {
+            num() {
+                this.number ++;
+            }
+        },
+        watch: {
+            number(newVal, oldVal) {
+                console.log(newVal, oldVal);
+            }
+        }
+    })
+</script>
+</html>

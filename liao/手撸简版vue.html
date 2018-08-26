@@ -139,6 +139,9 @@
                         console.log(event)
                         this.vm[key] = event.target.value
                     })
+                    new Watcher(this.vm, key, (val) => {
+                        node.value = this.vm[key]
+                    })
                 }
             }
         }
