@@ -7,5 +7,4 @@
     loading:'./static/loading.png'
   })
 ```
-
 `<img v-lazy="imgUrl">`

@@ -6,3 +6,5 @@
 + [2018-7-29 技术分享-vue原理](https://github.com/imaxue/progress/tree/master/haonan/2018-7-29%20%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB-vue%E5%8E%9F%E7%90%86)
 + [2018 8-5 在vue中父组件如何在子组件上监听自己触发的点击事件](https://github.com/imaxue/progress/blob/master/haonan/2018%208-5%20%E5%9C%A8vue%E4%B8%AD%E7%88%B6%E7%BB%84%E4%BB%B6%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%8A%E7%9B%91%E5%90%AC%E8%87%AA%E5%B7%B1%E8%A7%A6%E5%8F%91%E7%9A%84%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6.md)
 + [2018-8-11 开发移动web页面-使用pc调试真机](https://github.com/imaxue/progress/blob/master/haonan/2018-8-11%20%E5%BC%80%E5%8F%91%E7%A7%BB%E5%8A%A8web%E9%A1%B5%E9%9D%A2-%E4%BD%BF%E7%94%A8pc%E8%B0%83%E8%AF%95%E7%9C%9F%E6%9C%BA.md)
++ [2018-8-19 对垃圾回收机制的一些学习](https://github.com/imaxue/progress/blob/master/haonan/2018-8-19%20%E5%AF%B9%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0.md)
++ [2018-8-26 diff算法学习](https://github.com/imaxue/progress/blob/master/haonan/2018-8-26%20diff%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.md)

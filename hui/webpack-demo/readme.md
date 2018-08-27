@@ -1259,7 +1259,7 @@ import 'antd/dist/antd.css'
 业务代码 
 首页编写 登录弹窗添加  注册弹窗添加 具体实现 可看（https://github.com/xihuihui/webpack-demo）
 
-
+抽离登录弹窗  注册弹窗  添加图片压缩 具体实现（https://github.com/xihuihui/webpack-demo）
 
 
 

@@ -1,0 +1,249 @@
+{
+  "keys": "G:\\eggHand\\config\\config.default.js",
+  "session": {
+    "maxAge": "G:\\eggHand\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "G:\\eggHand\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "G:\\eggHand\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "G:\\eggHand\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "G:\\eggHand\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "G:\\eggHand\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "G:\\eggHand\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "G:\\eggHand\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "G:\\eggHand\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "G:\\eggHand\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "G:\\eggHand\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "G:\\eggHand\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "G:\\eggHand\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "G:\\eggHand\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "G:\\eggHand\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "G:\\eggHand\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "G:\\eggHand\\node_modules\\egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "G:\\eggHand\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "G:\\eggHand\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "multipart": {
+    "autoFields": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "G:\\eggHand\\node_modules\\egg-multipart\\config\\config.default.js"
+  },
+  "development": {
+    "watchDirs": "G:\\eggHand\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "G:\\eggHand\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "G:\\eggHand\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "G:\\eggHand\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "G:\\eggHand\\node_modules\\egg-development\\config\\config.default.js"
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "G:\\eggHand\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "G:\\eggHand\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "logrotator": {
+    "filesRotateByHour": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "G:\\eggHand\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "G:\\eggHand\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "G:\\eggHand\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "G:\\eggHand\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "G:\\eggHand\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "G:\\eggHand\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "G:\\eggHand\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "view": {
+    "root": "G:\\eggHand\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "G:\\eggHand\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "G:\\eggHand\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "G:\\eggHand\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "G:\\eggHand\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "env": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "name": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "version": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "description": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "main": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "test": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "dev": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    },
+    "author": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "license": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "egg": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "egg-mysql": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "egg-sequelize": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "strict": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "depth": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "env": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "level": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "G:\\eggHand\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxAge": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketKeepAliveTimeout": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketKeepAliveTimeout": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "logging": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "port": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "G:\\eggHand\\node_modules\\egg\\config\\config.default.js"
+}

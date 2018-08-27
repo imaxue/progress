@@ -33,6 +33,13 @@ Chai断言库
 
 类似 jquery 风格的 api 操作react 节点
 
+### Enzyme三种方法
+
+- shallow
+
+shallow rendering(测试虚拟DOM的方法（浅渲染）指的是，将一个组件渲染成虚拟DOM对象，但是只渲染第一层，不渲染所有子组件，所以处理速度非常快。它不需要DOM环境，因为根本没有加载进DOM。)的封装
+
+
 
 
 4. [Jest](https://jestjs.io/zh-Hans/)
