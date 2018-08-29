@@ -1,6 +1,8 @@
 ## vue diff算法
 
 1. 当数据发生变化时，vue是怎么更新节点的？
+
+
 要知道渲染真实DOM的开销是很大的，比如有时候我们修改了某个数据，如果直接渲染到真实dom上会引起整个dom树的重绘和重排，有没有可能我们只更新我们修改的那一小块dom而不要更新整个dom呢？diff算法能够帮助我们。
 
 我们先根据真实DOM生成一颗virtual DOM，当virtual DOM某个节点的数据改变后会生成一个新的Vnode，然后Vnode和oldVnode作对比，发现有不一样的地方就直接修改在真实的DOM上，然后使oldVnode的值为Vnode。
@@ -8,6 +10,8 @@
 diff的过程就是调用名为patch的函数，比较新旧节点，一边比较一边给真实的DOM打补丁。
 
 2. virtual DOM和真实DOM的区别？
+
+
 virtual DOM是将真实的DOM的数据抽取出来，以对象的形式模拟树形结构。比如dom是这样的：
 ```html
 <div>
@@ -38,10 +42,12 @@ var Vnode = {
 </div>
 ```
 上面的代码会分别比较同一层的两个div以及第二层的p和span，但是不会拿div和span作比较。在别处看到的一张很形象的图：
+
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519212338609-1617459354.png)
 
 ## diff流程图
 当数据发生改变时，set方法会让调用Dep.notify通知所有订阅者Watcher，订阅者就会调用patch给真实的DOM打补丁，更新相应的视图。
+
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519212357826-1474719173.png)
 
 ## 具体分析
@@ -215,24 +221,32 @@ oldCh和vCh各有两个头尾的变量StartIdx和EndIdx，它们的2个变量相
 
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519213155724-1596106357.png)
 - 第一步
+```js
 oldS = a, oldE = d；
 S = a, E = b;
+```
 oldS和S匹配，则将dom中的a节点放到第一个，已经是第一个了就不管了，此时dom的位置为：a b d
 
 - 第二步
+```js
 oldS = b, oldE = d；
 S = c, E = b;
+```
 oldS和E匹配，就将原本的b节点移动到最后，因为E是最后一个节点，他们位置要一致，这就是上面说的：当其中两个能匹配上那么真实dom中的相应节点会移到Vnode相应的位置，此时dom的位置为：a d b
 
 - 第三步
+```js
 oldS = d, oldE = d；
 S = c, E = d;
+```
 oldE和E匹配，位置不变此时dom的位置为：a d b
 
 - 第四步
+```js
 oldS++;
 oldE--;
 oldS > oldE;
+```
 遍历结束，说明oldCh先遍历完。就将剩余的vCh节点根据自己的的index插入到真实dom中去，此时dom位置为：a c d b
 
 一次模拟完成。
@@ -259,3 +273,5 @@ if (sameVnode(oldStartVnode, newStartVnode)) {
 
 
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519213134497-676744027.png)
+
+[来源参考](https://www.cnblogs.com/wind-lanyan/p/9061684.html)
