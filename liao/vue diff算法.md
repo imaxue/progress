@@ -210,8 +210,11 @@ oldCh和vCh各有两个头尾的变量StartIdx和EndIdx，它们的2个变量相
 ### 粉红色的部分为oldCh和vCh
 
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519211756656-545182812.png)
+
 我们将它们取出来并分别用s和e指针指向它们的头child和尾child
+
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519211809225-1140464542.png)
+
 现在分别对oldS、oldE、S、E两两做sameVnode比较，有四种比较方式，当其中两个能匹配上那么真实dom中的相应节点会移到Vnode相应的位置，这句话有点绕，打个比方
 
 - 如果是oldS和E匹配上了，那么真实dom中的第一个节点会移到最后
@@ -220,6 +223,7 @@ oldCh和vCh各有两个头尾的变量StartIdx和EndIdx，它们的2个变量相
 再配个图
 
 ![](https://images2018.cnblogs.com/blog/998023/201805/998023-20180519213155724-1596106357.png)
+
 - 第一步
 ```js
 oldS = a, oldE = d；
