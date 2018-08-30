@@ -16,7 +16,7 @@ application/x-www-from-urlencoded
 multipart/from-data
 text/plain
 ```
-序列化数据
+axios经过序列化数据，可以将application/json类型转换为multipart/from-data，从而实现简单请求
 ```js
 axios.post(this.authUrl,JSON.stringify(this.userInfo))
     .then(res => {
