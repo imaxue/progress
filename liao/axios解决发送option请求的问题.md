@@ -36,4 +36,4 @@ axios.post(this.authUrl,JSON.stringify(this.userInfo))
 彻底解决这个问题，也可以减少请求数量，缓解服务器压力
 
 
-[参考资料](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+[参考资料-阮一峰CORS](http://www.ruanyifeng.com/blog/2016/04/cors.html)
