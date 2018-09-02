@@ -28,5 +28,20 @@
 
 准备个人演讲搭建reactmini demo和工作中react测试的总结
 
+## 个人第五周任务
+
+react生命周期函数作用和使用
+
+## 个人第六周任务
+
+redxu介绍
+
+
+## 个人第七周任务
+
+react-router和react-router-dom的区别
+
+
+
 
 
