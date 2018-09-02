@@ -1263,6 +1263,60 @@ import 'antd/dist/antd.css'
 
 
 
+添加img压缩插件（此处感谢军军 此前我也试过 两个原因失败  一个是少引一个插件 一个是我下的插件有问题）
+
+```
+$ npm install imagemin-webpack-plugin -D
+$ npm install imagemin-mozjpeg -D
+
+```
+
+下完插件之后 在我的webpack.config.js内写入
+
+```
+//引入图片压缩插件
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const imageminMozjpeg = require('imagemin-mozjpeg')
+
+ plugins: [
+     ...
+   //图片压缩
+        new ImageminPlugin({
+            disable: process.env.NODE_ENV !== 'production',
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            plugins: [
+                imageminMozjpeg({
+                    quality: 10,
+                    progressive: true
+                })
+            ]
+        })
+      ],
+
+```
+
+然后重启我的项目 
+
+
+```
+
+                              Asset       Size        Chunks             Chunk Names
+         One.cd14c7f18fbaf8be4b43.js   1.63 KiB           One  [emitted]  One
+b4a97e1936f42459e25ec6cec16868c4.jpg   31.8 KiB                [emitted]
+6e996807b77fe4ac36c9a0558ab95ab3.jpg    160 KiB                [emitted]
+8f54396e9d0fba9ffc14b1151a87322b.jpg     13 KiB                [emitted]
+        Next.f282b80b07985bcfa579.js    1.4 KiB          Next  [emitted]  Next
+6e4342624c746bbaf281d8f09b17ca83.jpg   20.6 KiB                [emitted]
+         Two.6ca97e017fae1b4431f8.js  971 bytes           Two  [emitted]  Two
+        main.b4150c69211e42326b7e.js     53 KiB          main  [emitted]  main
+runtime~main.2544db6468edd0953099.js    8.9 KiB  runtime~main  [emitted]  runtime~main
+vendors~main.a9bbe49a27c6a6f1c437.js   6.72 MiB  vendors~main  [emitted]  vendors~main
+                          index.html  561 bytes                [emitted]
+
+```
+
+2.75MB压缩成了160KB
+
 
 
 
