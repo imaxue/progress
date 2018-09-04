@@ -1,6 +1,63 @@
 #react v16 新功能（不断添加）
 
-#1.createPortal  
+# 2.Fragment
+
+React 中常见模式是为一个组件返回多个元素。为了包裹多个元素你肯定写过很多的 div 和 span，
+进行不必要的嵌套，无形中增加了浏览器的渲染压力
+render 函数的返回必须有一个根节点，否则报错
+react 16开始， render支持返回数组
+
+```
+import React from 'react';
+
+export default function () {
+    return [
+        <div>一步 01</div>,
+        <div>一步 02</div>,
+        <div>一步 03</div>,
+        <div>一步 04</div>
+    ];
+}
+```
+不想写数据，可以使用Fragments 
+类似VUE的template 
+
+```
+import React from 'react';
+
+export default function () {
+    return (
+        <React.Fragment>
+            <div>一步 01</div>
+            <div>一步 02</div>
+            <div>一步 03</div>
+            <div>一步 04</div>
+        </React.Fragment>
+    );
+}
+```
+
+> Fragments简写形式<></> ,用空tag的写法不允许有key和属性，而且还有很多工具不支持
+
+```
+function Glossary(props) {
+  return (
+    <dl>
+      {props.items.map(item => (
+        // Without the `key`, React will fire a key warning
+        <React.Fragment key={item.id}>
+          <dt>{item.term}</dt>
+          <dd>{item.description}</dd>
+        </React.Fragment>
+      ))}
+    </dl>
+  );
+}
+```
+
+
+
+# 1.createPortal  
 
 可以翻译为‘传送门’，类似于科幻电影中的传送门，一个人从这个门进入，从另外一个门走出
 此次功能的增加主要是解决 类似Dialog 的弹出框一类的定位问题,由于弹框之类的浮层，需要加定位，
