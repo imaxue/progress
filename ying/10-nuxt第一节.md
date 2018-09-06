@@ -56,6 +56,7 @@ export default {
 >"build-test2": "nuxt build -c nuxt.config.ts2.js",
 >
 >2.创建两个nuxt.config.ts1.js 和 nuxt.config.ts2.js 文件
+>
 >3.在nuxt.config.js中
 >正式服配置
 >env: {
@@ -66,6 +67,7 @@ export default {
 >baseUrl: “tes1"
 >}
 >测试2同理
+>
 >4.在plugins中加一个公共接口js文件暴露一个对象
 >export const Config = {
 >remote4Server:''
