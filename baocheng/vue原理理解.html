@@ -55,6 +55,27 @@ class Observer {
 }
 
 
+// Watcher的作用是接收变化的通知，并且执行相应的函数
+class Watcher {
+    constructor(vm, key, cb) {
+        this.vm = vm
+        this.key = key
+        this.cb = cb
+        this.get()
+    }
+    // 当数据发生变化的时候就会触发这个事件
+    update(newVal, val) {
+        this.cb.call(this.vm, newVal, val)
+    }
+    // 当我new的时候就触发这个函数，把自己丢进Dep中
+    get() {
+        Dep.target = this
+        const val = this.vm[this.key]
+        Dep.target = null
+    }
+}
+
+
 class Vue {
     // new命令生成对象实例时，自动调用该方法
     constructor({
