@@ -1,4 +1,4 @@
-# Go 语言学习笔记
+#  Go 语言学习笔记
 
 
 
@@ -173,7 +173,7 @@ var b int = int(a)
 - &p: 取p变量在内存中的地址
 
 - *p: 取p指针对应的值
-- 指针变量的默认值是 `nil` , 可以使用 p== nil 判断指针是否已经指向一个变量
+- 指针变量的默认值是 `nil` , 可以使用 `p == nil` 判断指针是否已经指向一个变量
 
 
 
@@ -181,9 +181,30 @@ var b int = int(a)
 
 > func 函数名(参数列表) 返回值1,返回值2 {
 >
-> 	return x,y
+> 	return x, y
 >
 > }
+
+```go
+func func1(a int, b int) {
+    // 固定参数, 参数个数和类型都必须匹配
+}
+
+func func2(a, b string, c, d int) {
+    // a, b string 类型
+    // c, d int 类型
+}
+
+
+```
+
+
+
+
+
+
+
+
 
 new 函数创建一个变量, 并返回变量的指针
 
@@ -192,6 +213,8 @@ p := new(int)
 ```
 
 
+
+`_` 占位符, 用于语法需要实际并不需要的情况, 比如: 函数有两个返回值, 但是只需要其中的一个, 另外一个可以使用占位符
 
 
 
@@ -243,19 +266,21 @@ func Test() {
 
 
 
-### for 循环
+## for 循环
 
-for 初始化; 条件; 后置 {
-
+```go
+for i := 0; i < 100; i++ {  // 注意, 花括号不能换行
+    
 }
+```
 
 
 
-// 等同与while
-
-for 条件 {
-
+```go
+for i < 100 {
+    // 等同与while
 }
+```
 
 
 
@@ -267,15 +292,203 @@ for {
 
 
 
+### 使用 range
+
+```
+for i, data := range arr {
+	
+}
+```
 
 
-`_` 占位符, 用于语法需要实际并不需要的情况, 比如: 函数有两个返回值, 但是只需要其中的一个, 另外一个可以使用占位符
 
 
 
 
 
-数组.[m,n]    // 数组裁切, 取第 m  ~ n-1 个元素
+## 复合数据类型
+
+> 通过基本数据类型组合而成
+
+### 
+
+### 数组
+
+数组中的类型必须相同
+
+数组初始化
+
+```go
+var arr1 [3]int // 3 个元素的数组, 元素默认值均为 0 
+
+var arr2 [3]int = [3]int{1, 2, 3} // 3 个元素的数组, 赋值 1, 2, 3
+var arr3 [3]int = [3]int{1, 2}// 3 个元素的数组, 赋值 1, 2, arr3[2] 为默认值 0
+
+arr4 := [...]int{1, 2} // 数组长度由初始化的元素个数决定
+```
+
+如果数组长度和变量初始化时指定的数组的长度不同, 不能赋值
+
+```go
+arr1 := [2]int{1, 2}
+
+arr1 = [1]int{1}  // 编译错误
+```
+
+单独指定数组中某一个元素的值
+
+```go
+arr1 := [3]int{2: 1} // 将 arr1[2] 赋值为1, 其他元素均为 0
+```
+
+数组长度不同, 无法进行是否相等的比较
+
+```go
+arr1 := [1]int{1}
+arr2 := [2]int{1,2}
+
+arr1 == arr2 // 编译错误
+```
+
+
+
+调用函数时, 传递的参数为拷贝之后的副本, 所以对参数进行修改不会影响原始数据
+
+```go
+import "fmt"
+
+func main() {
+	arr := [2]int{1, 2}
+	double(arr)
+
+	for _, data := range arr {
+		fmt.Println(data) // 1, 2
+	}
+}
+
+func double(a [2]int) {
+	for _, data := range a {
+		data *= 2
+	}
+}
+```
+
+
+
+### slice
+
+slice 和数组是紧密相连的, 可以访问数组中的部分或全部元素, 被访问的数组称为 slice 的 `底层数组`
+
+slice 有三个属性: `指针`, `长度`, `容量`
+
+指针指向 slice 中第一个可以访问的元素
+
+长度指 slice 中元素的个数
+
+容量的大小指的是 slice 可以访问的第一个元素到底层数组最后一个元素的个数
+
+go 内置了 `len` 和 `cap` 来返回 slice 的长度和容量
+
+```go
+arr := [5]int{1,2,3,4,5}
+sub := arr[1:5]
+fmt.Println(sub) // [2 3]
+fmt.Println(len(sub)) // 2  
+fmt.Println(cap(sub)) // 4
+```
+
+
+
+对字符串的 slice 操作相当于取子串
+
+
+
+slice **无法用 == 比较**
+
+
+
+
+
+### map
+
+键值对的无序集合
+
+格式: 
+
+> map[keyType]valueType
+
+```go
+ages = make(map[string]int) // 从 string 到 map 的映射
+ages["alice"] = 18
+
+delete(ages, "alice") // 移除元素 alice
+```
+
+
+
+map 的初始值是 `nil`
+
+对初始值为 `nil` 的map, 大多数操作是安全的, 除了对一个键进行赋值
+
+```go
+var ages map[string]int
+ages["alice"] = 18 // 崩溃
+
+```
+
+
+
+判断一个 key 是否存在
+
+```go
+_, ok := ages["aaa"]
+
+if !ok {
+   fmt.Println("aaa, 不存在")
+}
+```
+
+
+
+map 中键值对的个数
+
+```go
+len(ages)
+```
+
+
+
+
+
+### 结构体
+
+结构体使用 `struct` 关键字来定义
+
+```go
+type Empolyee struct {
+    id int
+    age int
+    name string
+}
+
+var alice Empolyee
+alice.id = 100
+alice.age = 18
+
+// 可以使用指针来访问成员变量
+age := &alice.age
+*age++
+```
+
+
+
+如果一个结构体的成员变量名称是首字母大写的, 那么这个变量是可以导出的
+
+
+
+结构体类型不能包含自身类型的成员变量, 但是可以包含自身指针类型的成员变量
+
+
 
 
 
@@ -290,7 +503,26 @@ time.Sleep()
 
 
 
+### append()
 
+用于将元素追加到 `slice`后面
+
+
+
+### sort
+
+sort.String() 
+
+对字符串数组进行排序
+
+
+
+
+
+## 其他不知道该放哪的知识
+
+* `rune` 在golang中是 int32 的别名，在各个方面都与int32相同。 
+* 
 
 
 
