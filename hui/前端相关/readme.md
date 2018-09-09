@@ -222,4 +222,53 @@ console.log("%c为王的诞生 献上礼炮", "font-size:16px;color:#ff6700;padd
 + 然后 一行评分代码 "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate); 
 + 在分享一个https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md  好玩的插件  
 
+> 介绍一个css 未来可能会推出的新特性 @supports
 
+传统的 CSS 特性检测都是通过 javascript 实现的，但是未来，原生 CSS 即可实现。
+
+CSS @supports 通过 CSS 语法来实现特性检测，并在内部 CSS 区块中写入如果特性检测通过希望实现的 CSS 语句。
+
+```
+语法：
+@supports <supports_condition> {
+    /* specific rules */
+}
+
+举个例子：
+
+div {
+    position: fixed;
+}
+ 
+@supports (position:sticky) {
+    div {
+        position:sticky;
+    }
+}
+
+
+```
+
+上面的例子中，position: sticky 是 position 的一个新属性，用于实现黏性布局，可以轻松实现一些以往需要 javascript 才能实现的布局（戳我了解详情），但是目前只有在 -webkit- 内核下才得到支持。
+
+上面的写法，首先定义了 div 的 position: fixed ，紧接着下面一句 @supports (position:sticky) 则是特性检测括号内的内容，如果当前浏览器支持 @supports 语法，并且支持 position:sticky 语法，那么 div 的 则会被设置为 position:sticky 。
+
+我们可以看到，@supports 语法的核心就在于这一句：@supports (...) { } ，括号内是一个 CSS 表达式，如果浏览器判断括号内的表达式合法，那么接下来就会去渲染括号内的 CSS 表达式。除了这种最常规的用法，还可以配合其他几个关键字：
+
+@supports not && @supports and && @supports or
+
+@supports not -- 非
+
+not 操作符可以放在任何表达式的前面来产生一个新的表达式，新的表达式为原表达式的值的否定。看个例子：
+
+```
+@supports not (background: linear-gradient(90deg, red, yellow)) {
+    div {
+        background: red;
+    }
+}
+```
+
+因为添加了 not 关键字，所以与上面第一个例子相反，这里如果检测到浏览器不支持线性渐变 background: linear-gradient(90deg, red, yellow) 的语法，则将 div 的颜色设置为红色 background: red 。
+
+非常厉害  希望以后 会被实现
