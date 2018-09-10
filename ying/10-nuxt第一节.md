@@ -77,11 +77,11 @@ export default {
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
   Config.remote4Server =‘本地地址'
-} else if (process.env.baseUrl == "test1"){
+} else if (process.env.baseUrl == "test1") {
   Config.remote4Server = ‘测试1地址'
-} else if (process.env.baseUrl == "test2" {
+} else if (process.env.baseUrl == "test2") {
   Config.remote4Server = ‘测试2'
-} else if (process.env.baseUrl == "production"){
+} else if (process.env.baseUrl == "production") {
   Config.remote4Server = ‘正式服'
 }
 ```
