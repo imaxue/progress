@@ -76,7 +76,7 @@ export default {
 >process.env.baseUrl 可以读取到nuxt.config.js 中的配置项
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-Config.remote4Server =‘本地地址'
+  Config.remote4Server =‘本地地址'
 } else if (process.env.baseUrl == "test1"){
 Config.remote4Server = ‘测试1地址'
 } else if (process.env.baseUrl == "test2" {
