@@ -1,16 +1,15 @@
 /**
- * Created by liaohainan copy by jiaojiao
+ * Created by liaohainan by jiaojiao
  */
 
 const shell = require("shelljs");
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Path = require("path");
 
 let basePath = `${process.cwd()}/src/pages`;
-
-start();
-
+// 开始
+checkMaster()
+// 启动项目
 async function start() {
   let { name } = await whatName();
   await createDir(name);
@@ -19,7 +18,29 @@ async function start() {
   console.log(`项目${basePath}/${name}创建成功！请注意要手动添加菜单`);
   await startProject();
 }
-
+function checkMaster(){
+	let currentBranch = String(shell.exec('git symbolic-ref --short -q HEAD'))
+	if(currentBranch.trim() == 'master'){
+		let choices = ["不在master创建", "确定"];
+		inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "确定要在master分支创建项目吗？",
+        name: "object",
+        choices: choices
+      }
+    ])
+    .then(function(answers) {
+      if (answers.object == "确定") {
+        start();
+      } else {
+        console.log("已结束对话");
+      }
+    });
+	}
+}
+// 创建项目名称
 function whatName() {
   return inquirer.prompt([
     {
@@ -43,7 +64,7 @@ function whatName() {
     }
   ]);
 }
-
+// 创建路由
 async function creatRouter(name) {
   let { routerPath } = await creatRouterPath();
   let { routerName } = await creatRouterName();
@@ -61,9 +82,10 @@ async function creatRouter(name) {
     "-i",
     /\/\/ replace此行为自动创建脚本替换用，请不要随意做改动/,
     routerTemp,
-    "./src//router/index.js"
+    "./src/router/index.js"
   );
 }
+// 创建路由地址
 function creatRouterPath() {
   return inquirer.prompt([
     {
@@ -73,6 +95,7 @@ function creatRouterPath() {
     }
   ]);
 }
+// 创建路由名称
 function creatRouterName() {
   return inquirer.prompt([
     {
@@ -90,8 +113,9 @@ function createDir(name) {
 }
 
 // 启动项目
-const choices = ["启动项目", "不启动"];
+
 function startProject() {
+	let choices = ["启动项目", "不启动"];
   inquirer
     .prompt([
       {
