@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的vue</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //   在JavaScript中，对象的属性分为可枚举和不可枚举之分，
+    //   它们是由属性的enumerable值决定的。可枚举性决定了这个属性能否被for…in,Object.keys(),JSON.stringify查找遍历到
+    //   js中基本包装类型的原型属性是不可枚举的，如Object, Array, Number
+
+class Observer {
+    constructor(data) {
+        this.init(data)
+    }
+    // init方法使用核心的Object.defineProperty进行实际的转化操作，
+    init(data) {
+        if (!data || typeof data !== 'object') return
+        for (const key in data) {
+            this.defineProperty(data, key, data[key])
+            // 递归尾调用优化，感兴趣的看下http://es6.ruanyifeng.com/#docs/function#尾调用优化
+            this.init(data[key])
+        }
+    }
+
+    defineProperty(data, key, val) {
+        let objVal = val
+        const dep = new Dep()
+        Object.defineProperty(data, key, {
+            configurable: true,
+            enumerable: true,
+            get() {
+                // 为保证不会重复添加依赖，使用Dep.target进行判断
+                if (Dep.target) {
+                    dep.addSub(Dep.target)
+                }
+
+                return objVal
+            },
+            set(val) {
+                // 进行简单的值对比，相同就不触发后续操作
+                if (objVal === val) return
+                dep.notify(val, objVal)
+                objVal = val
+            }
+        })
+    }
+}
+
+
+// Watcher的作用是接收变化的通知，并且执行相应的函数
+class Watcher {
+    constructor(vm, key, cb) {
+        this.vm = vm
+        this.key = key
+        this.cb = cb
+        this.get()
+    }
+    // 当数据发生变化的时候就会触发这个事件
+    update(newVal, val) {
+        this.cb.call(this.vm, newVal, val)
+    }
+    // 当我new的时候就触发这个函数，把自己丢进Dep中
+    get() {
+        Dep.target = this
+        const val = this.vm[this.key]
+        Dep.target = null
+    }
+}
+
+
+class Vue {
+    // new命令生成对象实例时，自动调用该方法
+    constructor({
+        el,
+        data,
+        methods,
+        beforeCreate,
+        created,
+        beforeMounte,
+        mounted,
+        watch
+    }) {
+        this.data = data()
+        this.methods = methods
+        this.watch = watch
+        // 用来代理vue的各种属性
+        this.proxyKey()
+       
+        // 进行数据转化
+        new Observer(this.data)
+        
+        // 初始化watch
+        this.initWatch()
+       
+        // 模板解析
+        new Compile(el, this)
+
+        return this
+    }
+
+    initWatch() {
+        for (const key in this.watch) {
+            new Watcher(this, key, this.watch[key])
+        }
+    }
+
+    proxyKey() {
+        // 代理vue，用来实现this.title替代this.data.title的效果
+        const _this = this
+        for (const key in this.data) {
+            Object.defineProperty(this, key, {
+                configurable: true,
+                enumerable: false,
+                get() {
+                    return _this.data[key]
+                },
+                set(val) {
+                    _this.data[key] = val
+                }
+            })
+        }
+        for (const key in this.methods) {
+            Object.defineProperty(this, key, {
+                configurable: true,
+                enumerable: false,
+                get() {
+                    return _this.methods[key]
+                },
+                set(val) {
+                    _this.methods[key] = val
+                }
+            })
+        }
+    }
+}
+
+</script>
+
+</html>

@@ -28,6 +28,12 @@
 
 7、07-study：[本地缓存localStorage、mencached、redis封装](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/07-study.md)
 
+8、08-study: [Next.js：React服务端渲染框架](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/08-study.md)
+
+9、09-study: [Nuxt.js: Vue服务端渲染框架](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/09-study.md)
+
+10、10-study: [Typescript运用于react项目中的注意点](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/10-study.md)
+
  AND MORE...
 
 ### 总结一些实际开发中的应用和遇到的问题的解决方案
