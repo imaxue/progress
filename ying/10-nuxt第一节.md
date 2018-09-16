@@ -1,4 +1,4 @@
-#Window 或 Document 对象未定义？
+## Window 或 Document 对象未定义？
 >官网process.BROWSER_BUILD未更新
 >这是因为一些只兼容客户端的脚本被打包进了服务端的执行脚本中去。 对于只适合在客户端运行的脚本，需要通过使用 process.browser 变量来判断导入。
 ```javascript
@@ -6,7 +6,7 @@ if (process.browser) {
   require('external_library')
 }
 ```
-#异步数据 asyncData方法
+## 异步数据 asyncData方法
 >1.返回 Promise
 ```javascript
 export default {
@@ -38,7 +38,7 @@ export default {
   }
 }
 ```
-#如果组件的数据不需要异步获取或处理，可以直接返回指定的字面对象作为组件的数据。
+## 如果组件的数据不需要异步获取或处理，可以直接返回指定的字面对象作为组件的数据。
 ```javascript
 export default {
   data () {
@@ -47,7 +47,7 @@ export default {
 }
 ```
 
-#nuxt 区分环境打包
+## nuxt 区分环境打包
 >1.package.json
 >先看一下 nuxt-build 源码
 >在package.json中加入
@@ -75,12 +75,13 @@ export default {
 >process.env.NODE_ENV在开发环境时 为development,生产环境时候为production
 >process.env.baseUrl 可以读取到nuxt.config.js 中的配置项
 ```javascript
-if (process.env.NODE_ENV !== 'production') {
-  Config.remote4Server =‘本地地址'
-} else if (process.env.baseUrl == "test1"){
-Config.remote4Server = ‘测试1地址'
-} else if (process.env.baseUrl == "test2" {
-Config.remote4Server = ‘测试2'
-} else if (process.env.baseUrl == "production"){
-Config.remote4Server = ‘正式服'}
+  if (process.env.NODE_ENV !== 'production') {
+    Config.remote4Server ='本地地址'
+  } else if (process.env.baseUrl == "test1") {
+    Config.remote4Server = '测试1地址'
+  } else if (process.env.baseUrl == "test2") {
+    Config.remote4Server = '测试2'
+  } else if (process.env.baseUrl == "production") {
+    Config.remote4Server = '正式服'
+  }
 ```
