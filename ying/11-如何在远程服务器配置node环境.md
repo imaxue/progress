@@ -1,5 +1,6 @@
 1.先到目标服务器查看一下服务器的版本
 uname -a
+
 Linux iZ2zei3f3aqcugt55xjawxZ 2.6.32-573.22.1.el6.x86_64 #1 SMP Wed Mar 23 03:35:39 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
 2.将node官网上对应的版本下载到本地
