@@ -88,3 +88,31 @@ exit
 pkill -9 node 
 
 ```
+
+> 买了一个海外服务器 部署shadowsocks 
+
+首先 浏览器 进入 https://www.bwh1.net/ 
+
+选择你想要购买的服务器（个人建议购买KVM的）
+
+然后 Add to Cart 添加到你的购物车 Checkout （结账）
+
+填写一些你的个人信息  注意填好邮箱和密码
+
+最后选择 Alipay (阿里支付) 赞美马云
+
+支付 会出现支付宝二维码 扫描付款 
+
+然后登陆 https://www.bwh1.net/clientarea.php  选择 Services / My Services 
+
+进入后 查看KiwiVM Control Panel  管理面板  进入服务器 
+
+进入后查看有无 shadowsocks server 有 直接部署 
+
+无 在当前浏览器中输入网址:https://kiwivm.64clouds.com/main-exec.php?mode=extras_shadowsocks 等待装完 goback
+
+把显示的信息添加到你本机的小飞机  然后 就可以了 
+
+https://www.jianshu.com/p/e8eadf94cdaa （这里贴一个没有shadowsocks server处理链接）
+
+
