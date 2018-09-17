@@ -1,5 +1,5 @@
 /**
- * Created by liaohainan by jiaojiao
+ * Created by liaohainan 感谢jiaojiao
  */
 
 const shell = require("shelljs");
@@ -8,7 +8,10 @@ const fs = require("fs");
 
 let basePath = `${process.cwd()}/src/pages`;
 // 开始
-checkMaster()
+init()
+async function init(){
+	checkMaster() && start();
+}
 // 启动项目
 async function start() {
   let { name } = await whatName();
@@ -18,26 +21,15 @@ async function start() {
   console.log(`项目${basePath}/${name}创建成功！请注意要手动添加菜单`);
   await startProject();
 }
+// 检查分支
 function checkMaster(){
 	let currentBranch = String(shell.exec('git symbolic-ref --short -q HEAD'))
-	if(currentBranch.trim() == 'master'){
-		let choices = ["不在master创建", "确定"];
-		inquirer
-    .prompt([
-      {
-        type: "list",
-        message: "确定要在master分支创建项目吗？",
-        name: "object",
-        choices: choices
-      }
-    ])
-    .then(function(answers) {
-      if (answers.object == "确定") {
-        start();
-      } else {
-        console.log("已结束对话");
-      }
-    });
+	let branch_list = ['master', 'staging', 'preview']
+	if(branch_list.indexOf(currentBranch.trim()) > -1){
+		console.log(`不能在${currentBranch}分支创建新项目，请创建新分支后再操作`)
+		return false
+	}else{
+		return true
 	}
 }
 // 创建项目名称
