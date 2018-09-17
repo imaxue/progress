@@ -206,3 +206,95 @@
 		let directions = [Directions.Up, Directions.Down, Directions.Left, 		Directions.Right]
 
 		var directions = [0 /* Up */, 1 /* Down */, 2 /* Left */, 3 /* Right */];
+
+* 交叉类型
+
+> 是将多个类型合并为一个类型，把现有的多种类型叠加到一起成为一种类型，包含所有类型的特性
+> 如 Person & Serializable & Loggable
+
+	function extend<T, U>(first: T, second: U): T & U {
+    	let result = <T & U>{};
+    	for (let id in first) {
+        	(<any>result)[id] = (<any>first)[id];
+    	}
+    	for (let id in second) {
+        	if (!result.hasOwnProperty(id)) {
+            	(<any>result)[id] = (<any>second)[id];
+        }
+    }
+    	return result;
+	}
+
+
+* 联合类型
+
+> 表示一个值可以是几种类型之一，使用（|）分割，
+
+	function padLeft(value: string, padding: string | number) {
+    // ...
+	}
+	
+* 类型保护和类型断言
+
+> 由于可以为null的类型是通过联合类型实现，那么你需要使用类型保护来去除 null。 幸运地是这与在JavaScript里写的代码一致：
+
+	function f(sn: string | null): string {
+    	if (sn == null) {
+        	return "default";
+    	}else {
+        	return sn;
+    	}
+	}
+	// ||
+	function f(sn: string | null): string {
+    	return sn || "default";
+	}
+	
+	// 类型断言手动去除： 添加 ！ 后缀
+	function fixed(name: string | null): string {
+	    return name!.charAt(0) + '.  the ' + epithet;
+	 }
+	 
+* 类型别名 type
+
+> 类型别名有时和接口很像，但是可以作用于原始值，联合类型，元组以及其它任何你需要手写的类型。
+
+	type Name = string;
+	type NameResolver = () => string;
+	
+* 索引类型
+
+> 通过使用 索引类型查询 和 索引访问操作符
+
+	function pluck<T, K extends keyof T>(o: T, names: K[]): T[K][] {
+		return names.map(n => o[n]);
+	}
+	
+	interface Person {
+		name： string;
+		age: number;
+	}
+	let strings: string[] = pluck(person, ['name])
+	
+	
+> keyof T: 索引类型查询操作符（对于任何类型T，keyof T的结果为T上已知的公共属性名的联合）
+
+	let personProps: keyof Person;  // 'name' | 'age'
+	
+> 第二个操作符是 T[K], 索引访问操作符。
+
+	function getProperty<T, K extends keyof T>(o: T, name: K): T[K] {
+		return o[name];
+	}
+	
+> 索引类型和字符串索引签名
+
+	interface Map<T> {
+		[key: string]: T;
+	}
+	let keys: keyof Map<number>; // string;
+	let value: Map<number>['foo]; // number;
+	
+	type Keys = 'option1' | 'option2';
+	type Flags = { [K in Keys]: boolean };
+	

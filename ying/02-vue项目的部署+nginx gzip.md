@@ -1,4 +1,4 @@
-# nginx vue项目的部署 gzip压缩代码
+## nginx vue项目的部署 gzip压缩代码
 server {
         listen       端口;
         server_name localhost;
@@ -23,7 +23,7 @@ server {
         }
     }
 
-#几个知识点
+## 几个知识点
 >1.深度拷贝
 
 >Object.assign({}, row);
