@@ -32,7 +32,7 @@ https://raw.githubusercontent.com/imaxue/progress/master/yi_fishpond/linux%20pro
 
 ### 4.学习方法
 
-### 5.Linux与Windows的不用
+### 5.Linux与Windows的不同
 
 - Linux严格区分大小写
 
