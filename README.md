@@ -64,6 +64,7 @@
 - [vue模拟ajax之Mock.js使用.md](https://github.com/imaxue/progress/blob/master/baocheng/3-vue%E6%A8%A1%E6%8B%9Fajax%E4%B9%8BMock.js%E4%BD%BF%E7%94%A8.md)--baocheng
 - [vue-cli3.0初体验.md](https://github.com/imaxue/progress/blob/master/Mr.Guo/vue-cli3.0%E5%88%9D%E4%BD%93%E9%AA%8C.md)--guo
 - [vue diff算法](https://github.com/imaxue/progress/blob/master/liao/vue%20diff%E7%AE%97%E6%B3%95.md)--liao
+- [React.Children的使用.md](https://github.com/imaxue/progress/blob/master/haonan/2018-9-9%20React.Children%E7%9A%84%E4%BD%BF%E7%94%A8.md) --haonan
 
 ### 微信相关
 
@@ -93,6 +94,8 @@
 ### 服务端知识
 
 - [客户端(localStorage)、服务端(memcache/redis)缓存封装](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/07-study.md)--peng
+- [Nginx的location匹配.md](https://github.com/imaxue/progress/blob/master/wzk/nginx/Nginx%E7%9A%84location%E5%8C%B9%E9%85%8D.md)--wzk
+
 
 ### 其他
 
@@ -103,6 +106,8 @@
 - [mockjs模拟ajax](https://github.com/imaxue/progress/blob/master/baocheng/3-%E6%A8%A1%E6%8B%9Fajax%E4%B9%8BMock.js%E4%BB%8B%E7%BB%8D.md)--bao
 - [联调跨域方案整理](https://github.com/imaxue/progress/blob/master/liao/%E8%81%94%E8%B0%83%E8%B7%A8%E5%9F%9F%E6%96%B9%E6%A1%88%E6%95%B4%E7%90%86.md)--liao
 - [npm模块安装机制.md](https://github.com/imaxue/progress/blob/master/wzk/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6.md)--wzk
+- [移动端开发技巧.md](https://github.com/imaxue/progress/blob/master/tian/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.md)--tian
+
 
 
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 只拷贝了第一层属性的方式就叫做浅拷贝
+        // 拷贝了所有值的深层属性的方式就叫做深拷贝
+
+        var color1 = ['red', 'green'];
+        //创建一个空数组
+        var color2 = [];
+        //for循环进行拷贝
+        for (var i = 0; i < color1.length; i++) {
+            color2[i] = color1[i];
+        }
+
+        //最后得到两个相互独立的对象
+        console.log(color2)//['red','green'];
+        color1.push('black');//改变color1的值
+        console.log(color2)//['red','green']
+
+
+        // 问题来了，这样只拷贝了一层属性，如果数组中的某一项是一个对象或者数组，那么我们拷贝的就是一个引用地址
+        // 深拷贝实现的原理： 递归
+        //对于传入的参数，首先判断是否为引用类型，如果不是，直接返回即可；如果是，循环遍历该对象的属性，如果某个属性还是引用类型，则针对该属性再次调用deepCopy函数，从而完成深拷贝。
+
+
+        function deepCopy(obj) {
+            var result;
+
+            //引用类型分数组和对象分别递归
+            if (Object.prototype.toString.call(obj) == '[object Array]') {
+                result = []
+                for (i = 0; i < obj.length; i++) {
+                    result[i] = deepCopy(obj[i])
+                }
+            } else if (Object.prototype.toString.call(obj) == '[object Object]') {
+                result = {}
+                for (var attr in obj) {
+                    result[attr] = deepCopy(obj[attr])
+                }
+            }
+            //值类型直接返回
+            else {
+                return obj
+            }
+            return result
+        }
+
+    </script>
+</body>
+
+</html>
