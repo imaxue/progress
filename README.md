@@ -42,6 +42,7 @@
 - [git常用操作](https://github.com/imaxue/progress/blob/master/tian/git.md)--tian
 - [git各种撤销操作](https://github.com/imaxue/progress/blob/master/liao/git%E5%90%84%E7%A7%8D%E6%92%A4%E9%94%80.md)--liao
 - [git.js(Rebase合并、stash、reflog)](https://github.com/imaxue/progress/blob/master/Mr.Guo/git.md)--guo
+- [前端项目公共模块管理与更新的解决方案-git篇](https://github.com/imaxue/progress/blob/master/wzk/git/git%20submodule.md) -- wzk
 
 ### 构建工具
 
@@ -107,6 +108,7 @@
 - [联调跨域方案整理](https://github.com/imaxue/progress/blob/master/liao/%E8%81%94%E8%B0%83%E8%B7%A8%E5%9F%9F%E6%96%B9%E6%A1%88%E6%95%B4%E7%90%86.md)--liao
 - [npm模块安装机制.md](https://github.com/imaxue/progress/blob/master/wzk/npm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85%E6%9C%BA%E5%88%B6.md)--wzk
 - [移动端开发技巧.md](https://github.com/imaxue/progress/blob/master/tian/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7.md)--tian
+- [快速创建项目脚本](https://github.com/imaxue/progress/blob/master/liao/%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E8%84%9A%E6%9C%AC.js) --liao
 
 
 
@@ -114,6 +116,8 @@
 ## 鸡汤
 
 勿忘初心，方得始终
+
+坚持就有意义
 
 没有人逼你成长，但是其实每天进步一点点。一段时间过后，你也会有惊喜的发现，自己竟然做到了很多之前做不到的事情。
 
