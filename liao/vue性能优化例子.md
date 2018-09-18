@@ -1,3 +1,16 @@
+## 不需要绑定在template里的数据
+不需要绑定在template里的数据不需要写在data里，写在外边也可以直接调用，防止vue生成很多watcher，增加内存
+```js
+<script>
+let foo = '不需要绑定在template里的数据'
+export default {
+  data () {
+    return {
+      type:'1',
+    }
+  },
+```
+
 ## 超级大列表
 
 
