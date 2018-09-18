@@ -24,7 +24,7 @@ goodSelectDown(good){
 <div v-if="type===4">已退款</div>
 
 ```
-
+性能方面不如如下写法，因为vue在生成vdom的时候会把所有template都parse一次，而v-if只是控制isShow和keepAlive属性而已，每次diff的时候还会遍历节点，不如只更改数据性能要好
 ```html
 <div >{{type|typeFilter}}</div>
 
