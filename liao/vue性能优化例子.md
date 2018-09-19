@@ -10,7 +10,14 @@ export default {
     }
   },
 ```
+## :key="item.id"
 
+```html
+key值尽量选取唯一值，方便数组顺序改变时候diff的速度
+<li v-for="(item,index) in list" :key="item.id">{{item.name}}</li>
+数组顺序不需要改变的时候也可以直接赋值一个index
+<li v-for="(item,index) in list" :key="index">{{item.name}}</li>
+```
 ## 超级大列表
 
 
