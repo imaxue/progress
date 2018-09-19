@@ -55,3 +55,29 @@ filters:{
 },
 
 ```
+## watch里监听输入加节流阀
+
+```js
+watch: {
+    goodInput(val){
+      // 根据用户输入筛选上架列表
+      // temp是为了优化筛选显示速度
+      let temp = []
+      if(/^[0-9]*$/.test(val)){
+        temp = this.goodList.filter(e => String(e.gid).indexOf(val) >= 0)
+      }else{
+        temp = this.goodList.filter(e => e.gname.indexOf(val) >= 0)
+      }
+      this.goodSearchList = temp.slice(0, 100)
+      // 此处增加节流阀，防止用户快速输入造成页面卡顿，100条以后的数据只保留最后一次结果，
+      let tempVal = val
+      setTimeout((val)=>{
+        if(tempVal === val){
+          this.goodSearchList = temp
+        }
+      },300)
+      
+    },
+  },
+
+```
