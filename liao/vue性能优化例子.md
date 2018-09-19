@@ -81,3 +81,13 @@ watch: {
   },
 
 ```
+## 赋值页面未更新情况，大数组重新赋值尽量不要用深拷贝
+找到具体页面未更新数据的原因
+```js
+// 尽量使用$set，进行局部更新
+this.$set(this.arr,index,{a: 555})
+
+// 如无必要就不要用深拷贝去更新整个数组，例如
+this.arr = JSON.parse(JSON.stringify(this.arr))
+
+```
