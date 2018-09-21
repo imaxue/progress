@@ -117,7 +117,8 @@ nginx               1.15.3              06144b287844        2 weeks ago         
 
 浏览器打开`http://localhost:8000` 看一下:
 
-![1537546211532](C:\Users\WU\AppData\Roaming\Typora\typora-user-images\1537546211532.png)
+![](http://pff15yepv.bkt.clouddn.com/1537546211532.png)
+
 
 可以看到 Nginx 的欢迎页面，说明已经启动成功。
 
