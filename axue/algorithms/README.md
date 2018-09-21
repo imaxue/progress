@@ -53,7 +53,6 @@ for (let i = 0, l = arr.length; i < l; i++) {
             min = j;
         }
     }
-
     exchange(arr, i, min);
 }
 ```
