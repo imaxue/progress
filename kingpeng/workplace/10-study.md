@@ -38,12 +38,17 @@ declare namespace h5 {
 
 export default class AdBox extends Component<h5.IAdProps> {}
 
-
 ```
 
 ### 二、react.d.ts文件（react的ts文件声明）
 
-#### 场景a：react会转义一些标签的属性为“data-XXXX”，但是我们并不需要它这么转，有些js不识别
+#### 场景a：react对元素属性做了校验，如果在原生属性上使用此元素不支持的属性，则不能编译成功。必须使用data-前缀
+
+```
+<input type="text" data-init="22"/>
+
+```
+#### react会转义一些标签的属性为“data-init”，但是我们并不需要它这么转，有些js不识别，这时候以下声明文件就可以起作用了
 
 ```
 import { ScriptHTMLAttributes } from 'react'
@@ -65,6 +70,98 @@ declare module 'react' {
 
 <script type="text/javascript" id="fd78b1ed2c1a437fabb11882f3aa79f6" name="vivo-ad" ></script>
 
+```
+
+### 三、http-res.d.ts
+
+* 1、首先说明这个文件的作用在哪，其实是个骚操作，前提是你使用koa，还有服务端渲染框架Next或者Nuxt
+* 2、当你使用服务端使用node的框架koa或者express的时候，你想给res赋一个属性变量，以挂载其他的属性和方法的时候，就可以这么声明了
+
+```
+import http from 'http'
+
+declare module 'http' {
+    interface ServerResponse {
+        /**
+         * 后端next服务传给 getInitialProps的数据，获取方式 getInitialProps({res}) { return res.locals}
+         */
+        locals: any
+    }
+}
+
+```
+
+#### Example
+
+* 第一步：在middleware中间件文件夹中创建以下文件：init-res-locals.ts
+
+```
+import { Middleware } from 'koa'
+
+const initResLocals: Middleware = async (ctx, next) => {
+    ctx.res.locals = {}
+    await next()
+}
+
+export default initResLocals
+
+```
+
+* 第二步：在整个项目的入口文件index.ts中引入，执行
+
+```
+import Koa from 'koa'
+import koaStatic from 'koa-static'
+import initResLocals from './middleware/init-res-locals'
+const server = new Koa()
+const dev = process.env.NODE_ENV !== 'production'
+
+server.use(initResLocals)
+
+export default nextApp
+
+```
+
+* 第三步：在路由文件中就可以使用```res.locals```
+
+```
+import Router from 'koa-router'
+const router = new Router({ prefix: '/article' })
+export default router
+
+router.get('/show/nj/:groupId', async (ctx) => {
+    const eid = ctx.query.eid || '0'
+    const article = {}
+    const list = []
+    const query = {}
+    let page = '/Test'
+    ctx.status = 200
+    
+    ctx.res.locals = { article, city: ctx.state.city, showTopNav, list, }
+    return await app.render(ctx.req, ctx.res, page, { ...ctx.query, ...query })
+})
+
+```
+
+* 第四步：服务端渲染框架Next项目中，在Text页面就可以使用了
+
+```
+export default class Test extend Component<any> {
+  public static async getInitialProps({ res, query }) {
+     return { query, ...res.locals }
+  }
+  
+  componentDidMount() {
+  }
+  
+  render() {
+    const { query: { eid } } = this.props
+    
+    return(
+      <div>{eid}</div>
+    )
+  }
+}
 
 ```
 
