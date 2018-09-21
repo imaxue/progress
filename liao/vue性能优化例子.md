@@ -18,6 +18,38 @@ key值尽量选取唯一值，方便数组顺序改变时候diff的速度
 数组顺序不需要改变的时候也可以直接赋值一个index
 <li v-for="(item,index) in list" :key="index">{{item.name}}</li>
 ```
+
+## {{}}里尽量少写表达式
+
+如果多处复用一个表达式，尽量用computed提前缓存计算结果
+```html
+<p >{{name_id}}</p>
+<span>{{name_id}}</span>
+
+computed:{
+  name_id(){
+    return this.name + this.id
+  }
+}
+```
+
+
+
+在v-for里，尤其是筛选列表数据经常变化的，每次diff后如果是新出现的数据，会进行重新计算
+不推荐写法
+```html
+<p v-for="(item,index) in list" @click="select(item)" >{{item.gname + (item.gid != -1 ? `(gid: ${item.gid})` : '')}}</p>
+
+```
+推荐写法是先遍历数组数据，
+```js
+list.forEach(item => {
+  item.name_gid = item.gname + (item.gid != -1 ? `(gid: ${item.gid})` : ''
+})
+然后
+<p v-for="(item,index) in list" @click="select(item)" >{{item.name_gid}}</p>
+```
+
 ## 超级大列表
 
 
