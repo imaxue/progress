@@ -150,3 +150,4 @@ this.$set(this.arr,index,{a: 555})
 this.arr = JSON.parse(JSON.stringify(this.arr))
 
 ```
+## v-for和v-if当它们处于同一节点，v-for的优先级比v-if更高
