@@ -49,7 +49,27 @@ list.forEach(item => {
 然后
 <p v-for="(item,index) in list" @click="select(item)" >{{item.name_gid}}</p>
 ```
+小插曲
 
+发现了之前同事写的去重，性能太差，优化完只需要2ms，vuejs虽然给优化了很多地方，但是js部分也需要自己好好写
+```js
+// 去重
+console.time('some')
+list.forEach(good => {
+  let {gid} = good
+
+  if ( !(_arr.some(item => item.gid === gid)) ) {
+    _arr.push(good)
+  }
+})
+console.timeEnd('some')
+// 124ms
+console.time('seen')
+let seen = new Map()
+_arr = list.filter((item) => !seen.has(item.gid) && seen.set(item.gid, 1));
+console.timeEnd('seen')
+// 2ms
+```
 ## 超级大列表
 
 
