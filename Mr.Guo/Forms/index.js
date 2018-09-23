@@ -1,3 +1,3 @@
-import BaseForm from './BaseForm';
+import Forms from './Forms';
 
-export default BaseForm;
+export default Forms;
