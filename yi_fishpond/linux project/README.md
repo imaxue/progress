@@ -58,6 +58,10 @@ https://raw.githubusercontent.com/imaxue/progress/master/yi_fishpond/linux%20pro
 
 - 减少出错、被攻击的可能性
 
+## 虚拟机安装（VMware）
+
+
+
 ## 如何在Linux中进行软件安装？
 
 1. 软件包管理简介
