@@ -57,3 +57,26 @@ https://raw.githubusercontent.com/imaxue/progress/master/yi_fishpond/linux%20pro
 - 占用的系统资源更少
 
 - 减少出错、被攻击的可能性
+
+## 如何在Linux中进行软件安装？
+
+1. 软件包管理简介
+
++ 源码包
+
++ 开源
+
++ 可以自由选择所选功能
+
++ 软件是编译安装，更适合自己的操作系统，执行效率更高
+
++ 卸载方便
+
+缺点1安装步骤过多 缺点2
+
++ 二进制包(RPM包、默认系统包)
+
+
+
+2. rpm命令管理
+
