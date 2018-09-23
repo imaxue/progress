@@ -41,7 +41,7 @@ function getValueFromEvent(evt) {
   return target.type === 'checkbox' ? target.checked : target.value;
 }
 
-class BaseForm extends React.Component {
+class Forms extends React.Component {
   constructor(props) {
     super(props);
     this.formRefs = {};
@@ -149,7 +149,7 @@ class BaseForm extends React.Component {
     const { formItems = {} } = this.props;
     const formItem = formItems[key];
     if (!formItem) {
-      console.error(`BaseForm: cannot find \`${key}\` in \`formItems\`.`);
+      console.error(`Forms: cannot find \`${key}\` in \`formItems\`.`);
       return {};
     }
     return formItem;
@@ -302,7 +302,7 @@ class BaseForm extends React.Component {
           }, form);
           break;
         default:
-          console.error(`BaseForm: 'type' of key '${key}' is required, check the 'formItems' props of BaseForm.`);
+          console.error(`Forms: 'type' of key '${key}' is required, check the 'formItems' props of Forms.`);
       }
       return children ? (
         <FormItem
@@ -322,7 +322,7 @@ class BaseForm extends React.Component {
     const { formKeys, layout = 'horizontal' } = this.props;
     const isMultiCol = formKeys.length > 0 && typeof formKeys[0] === 'object';
     return (
-      <Form layout={layout} className={styles.baseForm}>
+      <Form layout={layout} className={styles.Forms}>
         {isMultiCol ? (
           <Row>
             {formKeys.map((cfg, idx) => (
@@ -344,4 +344,4 @@ export default Form.create({
   // onFieldsChange(props, changedFields) {
   //   props.onChange(changedFields);
   // }
-})(BaseForm);
+})(Forms);
