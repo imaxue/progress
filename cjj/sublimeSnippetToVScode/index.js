@@ -32,7 +32,7 @@ async function sublimeSnippetToVScode (src) {
 sublimeSnippetToVScode(path.join(__dirname, 'src'))
 .then(result => writeFile('snippet.json', JSON.stringify(result), { encoding: 'utf-8' }))
 .then(() => {
-  console.log('Convert success!')
+  console.log('convert success!')
 }).catch(err => {
-  console.error(`Convert Fail!\n${err}`)
+  console.error(`convert failed!\n${err}`)
 })
