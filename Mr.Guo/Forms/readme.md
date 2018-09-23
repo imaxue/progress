@@ -2,7 +2,7 @@
 category: Components
 subtitle: 基础表单
 type: Data Entry
-title: BaseForm
+title: Forms
 ---
 
 基础表单组件，对 antd 的表单进行了封装，用配置化的方式生成表单。
@@ -95,7 +95,7 @@ title: BaseForm
   };
 
   const Form = (props) => (
-    <BaseForm
+    <Forms
       formItems={formItems}
       formData={formData}
     />
