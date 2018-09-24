@@ -1,0 +1,18 @@
+.base-form {
+  &:global(.ant-form-inline) {
+    :global(.ant-form-item) {
+      padding: 0;
+      &:last-child {
+        margin-right: 0;
+      }
+      & > div {
+        float: left;
+        padding: 0;
+      }
+      :global(.ant-form-item-control) {
+        height: 28px;
+        line-height: 27px;
+      }
+    }
+  }
+}
