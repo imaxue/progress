@@ -168,8 +168,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 
 ```
 
-### 加载依赖 
-“mini-css-extract-plugin”: “^0.4.1”, 
+### 替换依赖 “mini-css-extract-plugin”
+
 修改 webpack.prod.conf.js 
 ```js
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -188,24 +188,8 @@ new MiniCssExtractPlugin({
 
 ```
 
-和 utils.js 配置
+修改utils.js 
 ```js
-
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-// ...
-// extract css into its own file
-// new ExtractTextPlugin({
-// ...
-// })
-// 升级 webpack4， 由 ExtractTextPlugin 改用 MiniCssExtractPlugin
-new MiniCssExtractPlugin({
-  filename: utils.assetsPath('css/[name].[contenthash].css'),
-  allChunks: true,
-}),12345678910111213
-
-
 
 // utils.js
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
