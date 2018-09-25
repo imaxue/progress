@@ -1,9 +1,10 @@
+# vue-cli升级webpack4
 
 1、升级nodejs
 
 　　使用 webpack4 时，必须保证 Node.js 版本 >= 8.9.4，因为 webpack4 使用了大量的ES6语法，这些语法在 nodejs新版 v8 中得到了原生支持
 
-　　2、升级webpack主要部件，包括webpack、webpack-bundle-analyzer、webpack-dev-server、webpack-merge
+2、升级webpack主要部件，包括webpack、webpack-bundle-analyzer、webpack-dev-server、webpack-merge
 
 　　升级的操作很简单，先删除，再安装即可。但要注意的是webpack4版本中 cli 工具分离成了 webpack 核心库 与 webpack-cli 命令行工具两个模块，需要使用 CLI，必安装 webpack-cli 至项目中
 ```shell
@@ -31,7 +32,7 @@ npm uninstall -D vue-loader
 npm install -D vue-loader
 ```
 
-　5、替换webpack相关插件，extract-text-webpack-plugin替换为mini-css-extract-plugin
+5、替换webpack相关插件，extract-text-webpack-plugin替换为mini-css-extract-plugin
 ```shell
 npm uninstall -D extract-text-webpack-plugin
 npm install -D mini-css-extract-plugin
