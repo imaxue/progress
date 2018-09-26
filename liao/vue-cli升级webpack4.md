@@ -227,3 +227,6 @@ function generateLoaders (loader, loaderOptions) {
 }
 
 ```
+## 其他
+如果遇到postcss警告需要再升级下依赖
+npm update  postcss-loader
