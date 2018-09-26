@@ -230,3 +230,5 @@ function generateLoaders (loader, loaderOptions) {
 ## 其他
 如果遇到postcss警告需要再升级下依赖
 npm update  postcss-loader
+打包报错，切换分支打包报错，记得再安装一次
+npm install
