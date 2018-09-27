@@ -71,35 +71,13 @@ const webpackConfig = merge(baseWebpackConfig, {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        default: false,
-        common: false,
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           chunks: 'initial',
+          minChunks: 2,
           name: 'vendors',
         },
-        'async-vendors': {
-          test: /[\\/]node_modules[\\/]/,
-          minChunks: 2,
-          chunks: 'async',
-          name: 'async-vendors'
-        },
-        // styles: {
-        //   name: 'app',
-        //   test: /\.css$/,
-        //   chunks: 'all',
-        //   // minSize: 0, // 最小尺寸，默认0
-        //   // minChunks: 0,
-        //   // reuseExistingChunk: true,
-        //   chunks: 'initial',
-        //   minChunks: 1,
-        //   enforce: true
-        // },
-        commons: {
-          test: /node_modules/,
-          chunks: "initial",
-          name: "vendors"
-        },
+       
         // 以下这部分，是把所有css文件合并成一个文件，vendors除外，如果vendors也打包进去，把注释的那行替换一下
         // 如果不想合并，喜欢按需加载，把下边的都注释就可以了
         "styles-compiled": {
