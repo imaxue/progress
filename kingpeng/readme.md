@@ -34,6 +34,8 @@
 
 10、10-study: [Typescript运用于react项目中的注意点](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/10-study.md)
 
+11、11-study：[React16---context新特性使用示例](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/React16.x/03-context%E6%96%B0%E7%89%B9%E6%80%A7.md)
+
  AND MORE...
 
 ### 总结一些实际开发中的应用和遇到的问题的解决方案
