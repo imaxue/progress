@@ -10,3 +10,4 @@
 + [2018-8-26 diff算法学习](https://github.com/imaxue/progress/blob/master/haonan/2018-8-26%20diff%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0.md)
 + [2018-9-9 React.Children的使用](https://github.com/imaxue/progress/blob/master/haonan/2018-9-9%20React.Children%E7%9A%84%E4%BD%BF%E7%94%A8.md)
 + [2018-09-21 node中error处理-uncaughtException](https://github.com/imaxue/progress/blob/master/haonan/2018-09-21%20node%E4%B8%ADerror%E5%A4%84%E7%90%86-uncaughtException.md)
++ [2018-9-30 react-router4异步加载组件方式](https://github.com/imaxue/progress/blob/master/haonan/2018-9-30%20react-router4%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E6%96%B9%E5%BC%8F.md)
