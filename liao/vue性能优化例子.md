@@ -117,6 +117,8 @@ filters:{
 ## watch里监听输入加节流阀
 
 ```js
+// 提前定义定时器变量
+let timer = null;
 watch: {
     goodInput(val){
       // 根据用户输入筛选上架列表
@@ -129,13 +131,20 @@ watch: {
       }
       this.goodSearchList = temp.slice(0, 100)
       // 此处增加节流阀，防止用户快速输入造成页面卡顿，100条以后的数据只保留最后一次结果，
-      let tempVal = val
-      setTimeout((val)=>{
-        if(tempVal === val){
-          this.goodSearchList = temp
-        }
-      },300)
       
+      // 这是老的做法，比对temp数据进行更新，但是每次都要执行一次setTimeout，
+      // let tempVal = val
+      // setTimeout(()=>{
+      //   if(tempVal === this.goodInput){
+      //     this.goodSearchList = temp
+      //   }
+      // },500)
+      
+      // 在axue的指导下，用真正的节流阀，来清理定时器，这样只需要执行最后一次就可以了
+      clearTimeout(timer);
+      timer = setTimeout(()=>{
+        this.goodSearchList = temp
+      },500)
     },
   },
 
