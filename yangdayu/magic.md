@@ -8,7 +8,7 @@
 				return currentFile
 			},
 			set() {
-				console.log('setting currentFile')
+				console.warn('setting currentFile')
 			}
 		}
 	})
