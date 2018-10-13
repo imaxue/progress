@@ -33,6 +33,7 @@ export default {
     handleClick (e) {
       const files = e.target.files
       const rawFile = files[0]
+      this.excelData.fileName = rawFile.name
       if (!rawFile) return
       this.upload(rawFile)
     },
