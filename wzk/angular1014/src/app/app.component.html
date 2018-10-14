@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div class="top">
+	  <button nz-button [nzType]="'primary'">
+	  	<a routerLink="/pages/index">首页</a>
+	  </button>
+	  <button nz-button [nzType]="'primary'">
+	  	<a routerLink="/pages/user">我的</a>
+	  </button>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<!-- <div class="app">
+  <div class="top">hello</div>
+</div> -->
+
