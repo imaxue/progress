@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65db4293-e9e5-423b-bd62-7485c720aa3c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ying/13-数组去重十种方法.md" afterDir="false" />
-    </list>
+    <list default="true" id="65db4293-e9e5-423b-bd62-7485c720aa3c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,7 +15,7 @@
     <session id="1304124018">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.opened" value="3" />
@@ -59,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ying/13-数组去重十种方法.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="43" column="36" lean-forward="true" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+            <state relative-caret-position="457">
+              <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -112,22 +110,6 @@
               <item name="progress" type="b2602c69:ProjectViewProjectNode" />
               <item name="progress" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="progress" type="b2602c69:ProjectViewProjectNode" />
-              <item name="progress" type="462c0819:PsiDirectoryNode" />
-              <item name="axue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="progress" type="b2602c69:ProjectViewProjectNode" />
-              <item name="progress" type="462c0819:PsiDirectoryNode" />
-              <item name="axue" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="progress" type="b2602c69:ProjectViewProjectNode" />
-              <item name="progress" type="462c0819:PsiDirectoryNode" />
-              <item name="ying" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -164,12 +146,12 @@
       <updated>1538282384693</updated>
       <workItem from="1538282388000" duration="638000" />
       <workItem from="1538283030555" duration="44000" />
-      <workItem from="1538283320169" duration="727000" />
+      <workItem from="1538283320169" duration="1292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1409000" />
+    <option name="totallyTimeSpent" value="1974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="79" y="51" width="1241" height="788" extended-state="0" />
@@ -225,8 +207,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ying/13-数组去重十种方法.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="43" column="36" lean-forward="true" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+        <state relative-caret-position="457">
+          <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
         </state>
       </provider>
     </entry>
