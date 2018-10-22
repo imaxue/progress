@@ -15,6 +15,23 @@
     //   在JavaScript中，对象的属性分为可枚举和不可枚举之分，
     //   它们是由属性的enumerable值决定的。可枚举性决定了这个属性能否被for…in,Object.keys(),JSON.stringify查找遍历到
     //   js中基本包装类型的原型属性是不可枚举的，如Object, Array, Number
+class Dep {
+    constructor() {
+        // subs是一个依赖池，里面放了所有的Watcher
+        this.subs = []
+    }
+
+    addSub(sub) {
+        this.subs.push(sub)
+    }
+    // notify用来通知变化给Watcher，每一个Watcher就是一个sub
+    notify(newVal, val) {
+        for (const sub of this.subs) {
+            sub.update(newVal, val)
+        }
+    }
+}
+
 
 class Observer {
     constructor(data) {
@@ -72,6 +89,62 @@ class Watcher {
         Dep.target = this
         const val = this.vm[this.key]
         Dep.target = null
+    }
+}
+
+
+
+
+ // Complie是用于进行模板解析的
+class Compile {
+    constructor(el, vm) {
+        this.vm = vm
+        // childNodes可以用来获取dom下的所有子节点
+        this.compileNode(document.querySelector(el).childNodes)
+    }
+
+    compileNode(nodes) {
+        for (const node of nodes) {
+            // 判断节点的类型，1为标签类型，3为文本类型
+            switch (node.nodeType) {
+                // 对于标签类型，我们需要解析attr属性用来获取标签上监听了什么事件
+                case 1:
+                    this.compileEvent(node)
+                    break
+                // 对于文本类型，我们需要解析内部的属性，用来填充内部的文本
+                case 3:
+                    this.compileText(node)
+                    break
+            }
+            node.childNodes && node.childNodes.length && this.compileNode(node.childNodes)
+        }
+    }
+
+    compileText(node) {
+        const reg = /\{\{(.*)\}\}/
+        if (node.textContent && reg.test(node.textContent)) {
+            // 获取文本绑定的data属性的key
+            const key = reg.exec(node.textContent)[1]
+            // 获取vue上data的值
+            const val = this.vm[key]
+            node.textContent = val
+            // new Watcher用来进行依赖的收集，当我绑定的这个值发生改变的时候再执行相应的函数
+            new Watcher(this.vm, key, function (newVal) {
+                node.textContent = newVal
+            })
+        }
+    }
+
+    compileEvent(node) {
+        const attrs = node.attributes
+        for (const attr of attrs) {
+            // 解析事件，这里跟上面的差不多
+            if (attr.name.indexOf('@') !== -1) {
+                const event = attr.name.split('@')[1]
+                const fn = this.vm[attr.value]
+                node.addEventListener(event, fn.bind(this.vm))
+            }
+        }
     }
 }
 
