@@ -1,6 +1,8 @@
 # NumPy
 
 > **NumPy**是Python一个扩展程序库。支持高阶大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库
+>
+> NumPy的核心是**ndarray**其中**nd**代表n维
 
 ##### numpy底层是C语言写的性能优越
 
@@ -25,5 +27,10 @@ print(time.time()-start) // 0.06101584434509277
 
 
 
-NumPy的核心是**ndarray**其中**nd**代表n维
+#### 创建ndarrays
+
+- 使用常规的python list
+- 使用内置的Numpy函数
+
+
 
