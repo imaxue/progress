@@ -42,6 +42,74 @@ componentDidUpdate()
 
 componentWillUnmount()
 
+# 4.ref
+在react典型的数据流中，props传递是父子组件交互的唯一方式；通过传递一个新的props值来使子组件重新re-render,从而达到父子组件通信。
+在react典型的数据量之外，某些情况下（例如和第三方的dom库整合，或者某个dom元素focus等）为了修改子组件我们可能需要另一种方式，这就是ref方式
+
+ ### ref一共有两种使用方式
+回调函数形式（官方推荐）:string形式
+第一种 回调函数形式 
+> 回调函数形式一共有三种触发方式
+组件渲染后
+组件卸载后
+ref改变后
+
+```
+import React,{Component} from 'react'
+export default class UserAdd extends Component{
+    constructor(){
+        super();
+    }
+    handleSubmit=()=>{
+        let name=this.name.value;
+        console.log(name);
+    }
+    render(){
+        return(
+            <form onSubmit={this.handleSubmit}>
+                <div className="from-group">
+                    <label htmlFor="name">姓名</label>
+                    <input type="text" className="form-control" ref={ref=>this.name=ref}/>
+                </div>
+                <div className="from-group">
+                    <input type="submit" className="btn btn-primary"/>
+                </div>
+            </form>
+        )
+    }
+
+}
+
+```
+第二种 字符串的形式 使用时用this.refs.string
+```
+import React,{Component} from 'react'
+export default class UserAdd extends Component{
+    constructor(){
+        super();
+    }
+    handleSubmit=()=>{
+        let name=this.refs.name.value;
+        console.log(name);
+    }
+    render(){
+        return(
+            <form onSubmit={this.handleSubmit}>
+                <div className="from-group">
+                    <label htmlFor="name">姓名</label>
+                    <input type="text" className="form-control" ref="name"/>
+                </div>
+                <div className="from-group">
+                    <input type="submit" className="btn btn-primary"/>
+                </div>
+            </form>
+        )
+    }
+
+}
+
+```
+
 > 参考地址：https://segmentfault.com/a/1190000012921279
 
 

@@ -65,3 +65,22 @@ npm run dev
 页面上出现了熟悉的页面 OK
 
 然后我们开始吧 嗨喂狗
+
+
+
+
+## 发现一个特别有意思的vue-cli3.0 
+
+```
+首先 你先把你的vue-cli升级到最新
+
+npm i -g @vue/cli
+```
+
+在终端执行vue ui, 会默认初始化localhost:8000且自动打开
+
+```
+vue ui
+```
+
+具体可看 https://segmentfault.com/a/1190000015366009 全图形界面

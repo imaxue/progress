@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script src="lib/util.js"></script>
+<script src="lib/element.js"></script>
+<script src="lib/patch.js"></script>
+<script src="lib/list-diff2.js"></script>
+<script src="lib/diff.js"></script>
+
+<script>
+    // 1. 构建虚拟DOM
+    var tree = el('div', {'id': 'container'}, [
+        el('h1', {style: 'color: red'}, ['simple virtal dom']),
+        el('p', ['Hello, virtual-dom']),
+        el('ul', [el('li')])
+    ]);
+
+    // 2. 通过虚拟DOM构建真正的DOM
+    var root = tree.render();
+    document.body.appendChild(root);
+
+    // 3. 生成新的虚拟DOM
+    var newTree = el('div', {'id': 'container'}, [
+        el('h1', {style: 'color: blue'}, ['simple virtal dom']),
+        el('p', ['Hello, virtual-dom']),
+        el('ul', [el('li', ['li1']), el('li', ['li1'])])
+    ]);
+
+    // 4. 比较两棵虚拟DOM树的不同
+    var patches = diff(tree, newTree);
+
+    // 5. 在真正的DOM元素上应用变更
+    patch(root, patches)
+</script>
+</body>
+</html>
