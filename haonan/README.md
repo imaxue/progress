@@ -13,4 +13,4 @@
 + [2018-9-30 react-router4异步加载组件方式](https://github.com/imaxue/progress/blob/master/haonan/2018-9-30%20react-router4%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6%E6%96%B9%E5%BC%8F.md)
 + [2018-10-12 React冒泡处理-小需求的新问题](https://github.com/imaxue/progress/blob/master/haonan/2018-10-12%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-%E5%B0%8F%E9%9C%80%E6%B1%82%E7%9A%84%E6%96%B0%E9%97%AE%E9%A2%98.md)
 + [2018-10-21 React冒泡处理-safari的坑.md](https://github.com/imaxue/progress/blob/master/haonan/2018-10-21%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-safari%E7%9A%84%E5%9D%91.md)
-+ [2018-10-21 React冒泡处理-总结篇.md](https://github.com/imaxue/progress/blob/master/haonan/2018-10-26%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-%E6%80%BB%E7%BB%93%E7%AF%87.md)
++ [2018-10-26 React冒泡处理-总结篇.md](https://github.com/imaxue/progress/blob/master/haonan/2018-10-26%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-%E6%80%BB%E7%BB%93%E7%AF%87.md)
