@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <input type="file" id="file" value="上传图片"/>
+    <div id="result">预览容器</div>  
+</head>
+<body>
+
+<script type="text/javascript">
+    var result = document.getElementById("result");
+    var file = document.getElementById("file");
+    //判断浏览器是否支持FileReader接口  
+    if (typeof FileReader == 'undefined') {
+        result.InnerHTML = "<p>你的浏览器不支持FileReader接口 </p> ";
+        //使选择控件不可操作  
+        file.setAttribute("disabled", "disabled");
+    }
+
+
+    function readAsDataURL() {
+        //检验是否为图像文件  
+        var file = document.getElementById("file").files[0];
+        if (!/image\/\w+/.test(file.type)) {
+
+            alert("看清楚，这个需要图片！");
+
+            return false;
+
+        }
+
+        var reader = new FileReader();
+        //将文件以Data URL形式读入页面  
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            var result = document.getElementById("result");
+            //显示文件  
+            result.innerHTML = '<img src="' + this.result + '" alt="" />';
+        }
+    }
+
+    function readAsBinaryString() {
+
+        var file = document.getElementById("file").files[0];
+
+        var reader = new FileReader();
+        //将文件以二进制形式读入页面  
+
+        reader.readAsBinaryString(file);
+
+        reader.onload = function (f) {
+
+            var result = document.getElementById("result");
+            //显示文件  
+
+            result.innerHTML = this.result;
+
+        }
+
+    }
+</script>
+</body>
+</html>
