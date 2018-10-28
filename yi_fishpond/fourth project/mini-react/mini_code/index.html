@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    
+    <script>
+        //Component工厂函数  返回一个实例
+        function instantiateReactComponent(node){
+            if (typeof node === "string" ||typeof node === "number" ) {
+                return new ReactDOMTextComponent(node);
+            }
+        }
+        
+        //文字与数字实例
+        function ReactDOMTextComponent(text){
+            this._currentElement = '' + text;
+            this.rootNodeID = null;
+        }
+
+        ReactDOMTextComponent.prototype.mountComponent = function (rootID){
+            this._rootNodeID = rootID;
+            return `<div data-reactid="${rootID}">${this._currentElement}<div>`
+        }
+
+        const ReactDOM ={
+            nextReactRootIndex :0,
+            render :function(element,container){
+                var componentInstance = instantiateReactComponent(element);
+                var html = componentInstance.mountComponent(ReactDOM.nextReactRootIndex);
+                container.innerHTML = html;
+            }
+        }
+
+
+        //ReactDOM.render('红眼军军有荒古扫把', document.getElementById('root'));
+
+        ReactDOM.render(React.createElement('div',{name:'jj',onClick:hello},'click me'), document.getElementById('root'));
+        function hello (){
+            console.log("军军又炸团了")
+        }
+    </script>
+</body>
+</html>
