@@ -11,4 +11,7 @@ docker pull mongo
 docker run --name my-mongo -p 27017:27017  -d mongo
 ```
 这样就启动起来了
-
+停止
+docker stop my-mongo
+移除
+docker rm my-mongo
