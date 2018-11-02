@@ -19,3 +19,13 @@ docker stop my-mongo
 ```shell
 docker rm my-mongo
 ```
+启动之前运行过的
+```shell
+docker run my-mongo
+```
+查看正在运行的
+```shell
+docker ps
+查看所有
+docker ps -a
+```
