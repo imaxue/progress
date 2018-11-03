@@ -290,3 +290,27 @@ console.log((!(~+[]) + {})[--[~+""][+[]] * [~+[]] + ~~!+[]] + ({} + [])[[~!+[]] 
  即使Access-Control-Max-Age设置为600，下次请求时依然会发送options请求，此bug在2012年被提出，但至今未修复。具体见 https://bugs.chromium.org/p/chromium/issues/detail?id=131368
 
  但是Firefox 不会有问题 当然 前后台 联调一下 这个问题也不算什么问题
+
+ 心情不好 随便写点
+
+
+```
+将彻底屏蔽鼠标右键，无右键菜单
+
+<body oncontextmenu=window.event.returnvalue=false>
+
+
+取消选取、防止复制
+
+<body onselectstart=return false>
+
+
+不准粘贴
+
+<body onpaste=return false>
+
+
+防止复制
+
+<body oncopy=return false; oncut=return false;>
+```
