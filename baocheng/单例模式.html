@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    定义:单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式保证系统中一个类只有一个实例。
+
+    实例：用闭包来实现拥有私有变量的单例对象。
+
+    var Singleton = (function(){
+        var instance;
+        function initInstance(){
+            var object = new Object();
+            object.msg = "Singleton instance";
+            return object;
+        }
+        return {
+            getInstance:function(){
+                if(!instance){
+                    instance = initInstance();
+                }
+                return instance;
+            }
+        };
+    })();
+
+    var instance1 = Singleton.getInstance();
+    var instance2 = Singleton.getInstance();
+    instance1 === instance2;//true
+    在上边这个例子中，instance只有一个实例，都是通过Singleton.getInstance()方法得到。其中的instance作为私有变量，initInstance()是一个私有方法，getInstance()方法可以在外部访问到，并且多次调用返回都是同一个实例。
+     
+    单例模式的优点：
+           很好地组织代码，把相关方法和属性组织在一个单例对象中。
+           防止全局命名空间被变量污染，提高网页稳定性。
+           
+    单例模式的缺点：有可能导致模块之间的强耦合。
+
+</body>
+</html>

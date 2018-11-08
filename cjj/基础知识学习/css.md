@@ -24,3 +24,15 @@ css颜色可以使用以下方式来描述：
 
   # 粘性固定（position: sticky）
     position:sticky它是相对定位（position:relative）和固定定位（position:fixed）的混合。元素在可见区域时是相对定位，但是元素一旦要超出可见区域时，则会变为固定定位。我们可以用top来设定一个阀值，也就是说如果设置top: 10px;那么在元素离顶端还有10px距离的时候固定。使用这个属性值可以达到之前需要用js来监听scroll事件设定元素吸顶的效果
+
+# @supports
+
+判断css是否支持某个属性
+```css
+@supports (mix-blend-mode: difference) {
+  h1 {
+    color: #fff;
+    mix-blend-mode: difference;
+  }
+}
+```
