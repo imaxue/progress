@@ -170,6 +170,8 @@
   # 服务端
   # 导入socket库:
   import socket
+  import threading
+  import time
   # 创建一个基于IPv4和TCP协议的Socket：
   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   # 每个连接都必须创建新线程（或进程）来处理，否则，单线程在处理连接的过程中，无法接受其他客户端的连接：
