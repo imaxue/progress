@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>搭建迷你React</title>
+</head>
+<body>
+	<div id="root"></div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="./myReact.js"></script>
+<script type="text/javascript">
+    /*var App = React.createReactClass({
+	    getInitialState: function(){
+	        //初始化状态， 在class中constructor()
+	        return {type: 'say: '};
+	    },
+	    componentWillMount: function(){
+	        console.log('我要开始挂载了...')
+	    },
+	    componentDidMount: function(){
+	        console.log('我已经挂载了...');
+	    },
+	    render: function(){
+	        console.log('渲染');
+	        return React.createElement('div', null, this.state.type, "Hello ", this.props.name)
+	    }
+	});
+
+	ReactDOM.render(React.createElement(App, {name: 'fish'}), document.getElementById('root'));*/
+
+    // ReactDOM.render('你好，我是fish', document.getElementById('root'));
+    // ReactDOM.render('React.createElement('div',null, '你好)', document.getElementById('root'));
+
+    var Hello = React.createReactClass({
+        getInitialState: function(){
+            return {
+                type: 'say: '
+            }
+        },
+        changeType: function(){
+            // 只为演示, 切勿模仿
+            this.props.name = 'junjun';
+            this.setState({
+                type: 'make'
+            })
+        },
+        render: function(){
+            return React.createElement('div',{onclick: this.changeType.bind(this)}, this.state.type, "Hello", this.props.name);
+        }
+    })
+
+    ReactDOM.render(React.createElement(Hello,{name:'fish'}), document.getElementById('root'));
+</script>
+</body>
+</html>

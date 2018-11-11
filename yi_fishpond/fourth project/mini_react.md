@@ -25,7 +25,7 @@ mini特点概述：
   1.	npm install -g create-react-app
   2.	create-react-app mini-react
   3.	进入目录 -> cd mini-react
-  4.	Npm start 运行项目
+  4.	npm start 运行项目
 
 ### 首页渲染
 
@@ -46,17 +46,18 @@ mini特点概述：
 1. 浏览器自带的  JSX以小写开头, div p input form ..
 
   问题： 以div为例子， input,img 不需要tagClose。 
-  react事件处理是非常复杂的，实现了一套标准的 W3C事件，我们这偷懒使用的jquery的事件代理。 
+  react事件处理是非常复杂的，实现了一套标准的 W3C事件，这偷懒使用的jquery的事件代理。 
 
 2. 自定义元素， <App/>。。
-
-
 
  =========> 自定义组件
 
 
    createReactClass: 
 
+   使用了create-react-class 替代es6中class的概念
+
+   参考文本 https://blog.csdn.net/younghaiqing/article/details/79562980
 
 
  =======  总结：
