@@ -278,3 +278,47 @@ not 操作符可以放在任何表达式的前面来产生一个新的表达式�
 
 console.log((!(~+[]) + {})[--[~+""][+[]] * [~+[]] + ~~!+[]] + ({} + [])[[~!+[]] * ~+[]]);
 ```
+
+最近发现了一个以前没有注意的小玩意  当我本机请求后台服务器的时候  产生了跨域  后台要求的是 请求方法是PUT Content-Type 是 json 然后我就发现 我调试不通  
+
+浏览器自动认为这是一个非简单请求 自动发送了一个OPTIONS 做嗅探 后台虽然能接收到我发送的值 我也能console 出res 但是 浏览器上 不会显示任何东西 而且他会发送第二次请求  第二次请求才是真正的请求 
+
+当然这种情况 以前没有出现 是因为我一直都是moke的数据 上线也是直接打包 发给后台 后台把前端包和自己的代码 一起部署上去 就不存在跨域问题所以一直没发现 
+
+这个问题当时我查看了 阮一峰的博客 http://www.ruanyifeng.com/blog/2016/04/cors.html 说设置Access-Control-Max-Age一个缓存时间就不会有问题  但是Chrome浏览器 对于这个设定是有BUG的
+
+ 即使Access-Control-Max-Age设置为600，下次请求时依然会发送options请求，此bug在2012年被提出，但至今未修复。具体见 https://bugs.chromium.org/p/chromium/issues/detail?id=131368
+
+ 但是Firefox 不会有问题 当然 前后台 联调一下 这个问题也不算什么问题
+
+ 心情不好 随便写点
+
+
+```
+将彻底屏蔽鼠标右键，无右键菜单
+
+<body oncontextmenu=window.event.returnvalue=false>
+
+
+取消选取、防止复制
+
+<body onselectstart=return false>
+
+
+不准粘贴
+
+<body onpaste=return false>
+
+
+防止复制
+
+<body oncopy=return false; oncut=return false;>
+```
+
+
+```
+I don't know what to write
+
+I am very tired
+
+```

@@ -10,6 +10,7 @@ mini特点概述：
   1. JSX不涉及。使用原生 JavaScript。 
 
   2. 为了方便，某些时候会用到jQuery。 （trigger）
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
   3. 以实现效果为首要前提，代码以及性能优化不考虑。
 

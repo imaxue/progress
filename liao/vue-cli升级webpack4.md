@@ -205,6 +205,15 @@ function generateLoaders (loader, loaderOptions) {
 }
 
 ```
+
+## 最后babel-loader
+在webpack.base.conf.js文件里，babel-loader后边加上一个参数，项目构建时间再缩减一半
+```
+loader: 'babel-loader?cacheDirectory=true',
+```
+- cacheDirectory：默认值为 false。当有设置时，指定的目录将用来缓存 loader 的执行结果。之后的 webpack 构建，将会尝试读取缓存，来避免在每次执行时，可能产生的、高性能消耗的 Babel 重新编译过程(recompilation process)。如果设置了一个空值 (loader: 'babel-loader?cacheDirectory') 或者 true (loader: babel-loader?cacheDirectory=true)，loader 将使用默认的缓存目录 node_modules/.cache/babel-loader，如果在任何根目录下都没有找到 node_modules 目录，将会降级回退到操作系统默认的临时文件目录。
+
+
 ## 其他
 如果遇到postcss警告需要再升级下依赖
 npm update  postcss-loader

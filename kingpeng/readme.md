@@ -8,7 +8,7 @@
 
 * node、express、mongdb、redis、docker、koa
 
-* npm、webpack、git
+* npm、webpack、git、
 
 * 快应用、小程序
 
@@ -38,7 +38,9 @@
 
 12、12-study: [React16.x学习](https://github.com/imaxue/progress/tree/master/kingpeng/workplace/React16.x)
 
+13、13-study: [Styled-Components](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/12-study.md)
+
  AND MORE...
 
-### 总结一些实际开发中的应用和遇到的问题的解决方案
+### 我劝你善良✨
 

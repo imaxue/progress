@@ -54,3 +54,13 @@ webpack自身只支持javaScript。而loader能够让webpack处理那些非JavaS
 
 打包优化、资源管理和注入环境变量
 
+    - clean-webpack-plugin 每次清理dist目录，重新生成dist目录
+
+    - html-webpack-plugin 生成html模板
+
+## 执行命令
+
+    + webpack entry.js -o output.js --mode=development/production
+    entry => 入口文件    
+    output => 输出文件
+    development（开发）production（生产）
