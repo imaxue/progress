@@ -2,6 +2,8 @@
 
 #####: request.js
 
+```
+
 import fetch from '@system.fetch'
 import prompt from '@system.prompt'
 const devBaseUrl = '***'
@@ -46,3 +48,5 @@ export default {
   post: request('POST'),
   delete: request('DELETE')
 }
+
+```
