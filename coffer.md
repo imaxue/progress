@@ -3,10 +3,10 @@
 |1|bai| 50
 |2|haonan|50
 |3|guo|50
-|4|peng|150
+|4|peng|100
 |5|wtl|100
 |6|wxt|100
-|7|wzk|50
+|7|wzk|100
 |8|axue|50
 |9|wxt|50
 |10|huang|100
