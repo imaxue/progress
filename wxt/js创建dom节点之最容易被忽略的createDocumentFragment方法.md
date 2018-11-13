@@ -26,15 +26,17 @@
 ```javascript
 function test(){
     var li = document.getElementByTaName('li')[0];  //ul中的第一个li节点
-    alert(document.getElementByTaName('li')[0].innerText) // 显示Alice
+    console.log(document.getElementByTaName('li')[0].innerText) // 显示Alice
     var newFrag = document.createDocumentFragment();
     newFrag.appendChild(li);
-    alert(document.getElementByTaName('li')[0].innerText) // 显示Bod
-    alert(document.getElementByTaName('ul')[0].innerHTML)} //显示<li>Bob</li>,由此可见，第一个节点确实被删了
+    console.log(document.getElementByTaName('li')[0].innerText) // 显示Bod
+    console.log(document.getElementByTaName('ul')[0].innerHTML)} //显示<li>Bob</li>,由此可见，第一个节点确实被删了
     //现在fragment中的修改节点
     newFrag.childNode[0].childNodes[0].nodeValue='Candy';
     //更改一个孩子节点的文本内容
     // .childNodes[0].nodeValue等同于：.innerText  或.textContent
      document.getElementByTaName('ul')[0].appendChild(newFrag);
-     alert(document.getElementByTaName('ul')[0].innerHTML)} //显示<li>Bob</li><li>Candy</li>  ,由此可见仅仅是添加了newFrag的子孙节点。
-```
+     console.log(document.getElementByTaName('ul')[0].innerHTML)
+} //显示<li>Bob</li><li>Candy</li>  ,由此可见仅仅是添加了newFrag的子孙节点。
+
+```                                                                         

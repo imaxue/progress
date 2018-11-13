@@ -40,6 +40,8 @@
 
 13、13-study: [Styled-Components](https://github.com/imaxue/progress/blob/master/kingpeng/workplace/12-study.md)
 
+14、14-study: [快应用](https://github.com/imaxue/progress/tree/master/kingpeng/workplace/kuaiyingyong)
+
  AND MORE...
 
 ### 我劝你善良✨

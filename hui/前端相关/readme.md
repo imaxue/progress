@@ -314,3 +314,11 @@ console.log((!(~+[]) + {})[--[~+""][+[]] * [~+[]] + ~~!+[]] + ({} + [])[[~!+[]] 
 
 <body oncopy=return false; oncut=return false;>
 ```
+
+
+```
+I don't know what to write
+
+I am very tired
+
+```

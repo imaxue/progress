@@ -11,7 +11,7 @@
     function instantiateReactComponet(node){
         // 文本或者数字元素
         if(typeof node === 'string' || typeof node === 'number') {
-            return new ReactDOMTextComponent(node);
+            return new f(node);
         }
  
         //浏览器默认节点情况
@@ -76,7 +76,7 @@
                         for (var j = innerKey.length -1; j >0; j--){
                             var c = innerKey.charAt(j);
                             if(c >= 'A' && c <= 'Z'){
-                                //记录我们出现大写字符的位置。 slice, substirng
+                                //记录出现大写字符的位置。 slice, substirng
                                 context = context.substring(0,j) + '-' + context.substring(j, j+1).toLowerCase() + context.substring(j+1);
                             }
                         }
@@ -249,7 +249,7 @@
  
     var App = React.createReactClass({
         getInitialState: function(){
-            //初始化状态， 在class中我们constructor()
+            //初始化状态， 在class中constructor()
             return {type: 'say: '};
         },
         componentWillMount: function(){
@@ -264,7 +264,7 @@
         }
     });
  
-    ReactDOM.render(React.createElement(App, {name: 'Derry'}), document.getElementById('root'));
+    ReactDOM.render(React.createElement(App, {name: 'fish'}), document.getElementById('root'));
  
 </script>
 </body>
