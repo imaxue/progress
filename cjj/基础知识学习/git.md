@@ -14,3 +14,14 @@
     $ git commit --amend
   ```
   最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。
+
+- 合并某个分支上的部分改动至另外一个分支 (示例中将branch分支中的file合并到master分支)
+  - 首先切换到目标分支
+    ```git
+      $ git checkout master
+    ```
+  - 执行合并命令
+    ```git
+      $ git checkout --patch branchname file
+    ```
+  - 在命令行提示中输入'yes'，然后回车
