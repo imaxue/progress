@@ -15,3 +15,4 @@
 + [2018-10-21 React冒泡处理-safari的坑.md](https://github.com/imaxue/progress/blob/master/haonan/2018-10-21%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-safari%E7%9A%84%E5%9D%91.md)
 + [2018-10-26 React冒泡处理-总结篇.md](https://github.com/imaxue/progress/blob/master/haonan/2018-10-26%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-%E6%80%BB%E7%BB%93%E7%AF%87.md)
 + [2018-11-2 React-router升级4.x](https://github.com/imaxue/progress/blob/master/haonan/2018-11-2%20React-router%E5%8D%87%E7%BA%A74.x.md)
++ [2018-11-16 在React中使用Render Props思想封装逻辑](https://github.com/imaxue/progress/blob/master/haonan/2018-11-16%20%E5%9C%A8React%E4%B8%AD%E4%BD%BF%E7%94%A8Render%20Props%E6%80%9D%E6%83%B3%E5%B0%81%E8%A3%85%E9%80%BB%E8%BE%91.md)
