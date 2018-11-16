@@ -42,6 +42,27 @@ componentDidUpdate()
 
 componentWillUnmount()
 
+生命周期
+装载 mount ：第一次DOM渲染
+* constructor ：构造函数，不是每个组件都需要定义，武装天的组件不需要；
+                                需要构函数，为了：1.初始化state，因为组件生命周期中任何函数都可能要访问state，所以生命周期中第一个被调用的构造函数，自然是初始化state的最理想的地方            
+                                                                2.绑定成员函数的this环境，如使用bind
+* getInitiaState ：在从reactClass 方法定义的组件才会用到，在ES6的方法定义的react 组件中不会用到
+* getDefaultProps ：函数很少用
+* componentWillMount ： 用处不大，没有渲染的结构，此处一般会放在constructor中实现
+* Render ： 渲染函数
+* componentDidMount：与WILL兄弟函数 区别：will 可以再服务器和连蓝旗端调用，Did 只能在浏览器被调用，服务器端使用react 不会被调动
+
+更新过程 update ：props 或者 state 被修改的时候，组件重新被渲染
+*   componentWillReceiveProps
+* shouldComponentUpdate
+* componentWillUpdate
+* Render
+* componentDidUpdate      
+
+卸载过程 Unmount :组件从DOM删除
+* componentWillUnmount 
+
 # 4.ref
 在react典型的数据流中，props传递是父子组件交互的唯一方式；通过传递一个新的props值来使子组件重新re-render,从而达到父子组件通信。
 在react典型的数据量之外，某些情况下（例如和第三方的dom库整合，或者某个dom元素focus等）为了修改子组件我们可能需要另一种方式，这就是ref方式
@@ -110,6 +131,21 @@ export default class UserAdd extends Component{
 
 ```
 
+# 5.用 PropTypes 确认prop的类型
+import PropTypes from 'prop-types’;
+class MyComponent extends React.Component {
+    render() {
+        // 只能包含一个子元素，否则会给出警告
+        const children = this.props.children;
+        return (
+            <div>{children}</div>
+        );
+    }
+}
+
+MyComponent.propTypes = {
+    children: React.PropTypes.element.isRequired
+}
 > 参考地址：https://segmentfault.com/a/1190000012921279
 
 
