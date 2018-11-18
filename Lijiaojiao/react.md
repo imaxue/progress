@@ -1,8 +1,11 @@
 > # 核心概念 
 
-# 1.虚拟DOM（Virtual DOM）
+# 1.DOM
 
-React将DOM抽象为虚拟DOM，虚拟DOM其实就是用一个对象来描述DOM，
+DOM本质 :浏览器的概念，用JS对象表示页面上上的元素，浏览器提供操作DPM的API
+一个网页的形成过程：
+  浏览器请求服务器获取HTML文件，浏览器在内存中解析DOM元素为DOM树，浏览器展现DOM树
+虚拟DOM :React将DOM抽象为虚拟DOM，虚拟DOM其实就是用一个对象来描述DOM，
 通过对比前后两个对象的差异，最终只把变化的部分重新渲染，提高渲染的效率
 
  DOM 树的信息都可以用 JavaScript 对象来表示，然后用 JavaScript 对象表示的树结构来构建一棵真正的DOM树。
