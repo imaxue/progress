@@ -10,6 +10,23 @@ export default {
     }
   },
 ```
+
+如果数据只需要使用一次，可以使用v-once进行绑定
+```js
+export default {
+  data () {
+    return {
+      type:'1',
+    }
+  },
+  data2: {
+    foo: 111
+  }
+```
+也可以使用和data平级的数据,这种数据可以通过$option获取
+```html
+<p >{{$option.data2.foo}}</p>
+```
 ## :key="item.id"
 
 ```html
