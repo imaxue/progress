@@ -39,12 +39,12 @@ React.createElement() 这个方法首先会进行一些避免bug的检查，之�
  
  ```
  
-  这样的对象被称为 “React 元素”。它代表所有你在屏幕上看到的东西。React 通过读取这些对象来构建 DOM 并保持数据内容一致。
+ 这样的对象被称为 “React 元素”。它代表所有你在屏幕上看到的东西。React 通过读取这些对象来构建 DOM 并保持数据内容一致。
 JSX 允许直接在模板插入 JavaScript 变量；如果这个变量是一个数组，则会展开这个数组的所有成员；
 如果 JSX 中的XML带有换行，则推荐，有XML的外面加上一个小括号，这样可以防止 分号自动插入 的bug；
 在JSX中的XML，通过引号定义以字符串为值的标签属性：const element = <div tabIndex="0"></div>;，通过大括号来定义以 JavaScript 表达式为值的标签属性：const element = <img src={user.avatarUrl}></img>;；切注意：如果使用了大括号包裹的 JavaScript 表达式时就不要再到外面套引号了。JSX 会将引号当中的内容识别为字符串而不是表达式；
 JSX不允许没有闭合的标签；
-  因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 XML 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称;例如：class 用 className 代替，而 tabindex 用 tabIndex 代替；
+因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 XML 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称;例如：class 用 className 代替，而 tabindex 用 tabIndex 代替；
 React DOM 在渲染之前默认会 过滤 所有传入的值。它可以确保应用不会被注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 XSS(跨站脚本) 攻击；
 
 ## 3. 注释
