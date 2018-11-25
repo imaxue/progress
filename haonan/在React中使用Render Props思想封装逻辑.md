@@ -1,10 +1,10 @@
 # 前言
-对于react来说，将UI与业务分离的方法一直在演进，从早期的``mixins``到``HOC``再到今天说的**Render Prop**
+对于React来说，将UI与业务分离的方法一直在演进，从早期的``mixins``到``HOC``再到今天说的**Render Prop**
 
 # 什么是Render Prop?
 这是一个组件间共享代码逻辑的技巧，通过将props传递给函数来实现，我们熟悉的``React-Router``就采用了这样的方式
 
->Next time you think you need a HOC (higher-order component) in @reactjs, you probably don't.
+>Next time you think you need a HOC (higher-order component) in @Reactjs, you probably don't.
 
 这是React-Router的作者``Michael Jackson``在其twitter上说过的一句话，翻译过来的意思是：
 

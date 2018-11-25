@@ -322,3 +322,18 @@ I don't know what to write
 I am very tired
 
 ```
+
+
+```
+发现一个特别有意思的 弹幕实现技术
+
+https://juejin.im/post/5be54a286fb9a049ae07641b  
+
+
+主要是使用canvas 
+
+```
+
+```
+我没有学习 我有罪 
+```
