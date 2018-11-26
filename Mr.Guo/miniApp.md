@@ -199,3 +199,12 @@
 3. 支持发布小程序，也可以想办法接入Jenkins等工具做持续集成 (小程序持续集成后面会提)
 ...
 
+## 小程序踩坑
+我在这里简要说一下我这周踩过的小程序的坑，主要是围绕video标签的
+1.video标签不能放在scroll-view里面，这样他就不会随着我们的滑动而滚动
+2.如果要在video标签覆盖内容，一定要使用cover-view和cover-image标签，其他均无效
+3.使用cover-view和cover-image标签时，一定要放在video标签后面，并且必须要使用定位
+4.video这个标签层级很高，一般的标签不能遮住它，所以使用video标签时一定要小心
+5.cover-view和cover-image标签一定要嵌套cover-image和cover-view标签，也可使用button标签
+6.使用cover-view时，尽量不要子元素超出父元素以外，会有意想不到的结果
+7.使用button时，button标签内必须有内容，如果是一个空标签，即使有宽高也不会显示

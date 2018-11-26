@@ -46,7 +46,7 @@ package.json文件生成的两种方式
 
 也可单独修改默认配置：
 
-```js
+```shell
     npm config set init.author.email "zy9230311@163.com";
     npm config set init.author.name "fish";
     npm config set init.author.url "https://github.com/pettyfish";
@@ -58,7 +58,7 @@ package.json文件生成的两种方式
 
 在创建的package.json文件中包含了scripts字段：
 
-```js
+```javascript
     "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
     }
@@ -66,17 +66,33 @@ package.json文件生成的两种方式
 
 在终端运行`npm run test`或简写形式的`npm test`得到的结果都是相同的。
 
+### 创建自定义 npm script
 
+在项目中添加有实际用途的 eslint 脚本，eslint 是社区中接受度比较高的 javascript 风格检查工具
 
-## 职责
++ 执行如下命令将 eslint 添加为 devDependencies：
 
-优化用户体验
+```shell
+    npm install eslint -D
+```
 
-## 解决问题(css)
++ 初始化 eslint 配置      
 
-+ 官方文档(mdn,w3c)
+```shell
+    ./node_modules/.bin/eslint --init
+```
 
-    book => css世界
++ 生成.eslintrc.js 配置文件
 
-+ 
++ 添加并且运行eslint 命令
+
+    
+让多个 npm script 并行？
+
+只需要用 && 符号把多条 npm script 按先后顺序串起来即可
+     
+
+让多个 npm script 串行？
+
+把连接多条命令的 && 符号替换成 & 即可。
 

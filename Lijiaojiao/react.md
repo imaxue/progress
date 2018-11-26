@@ -1,8 +1,11 @@
 > # 核心概念 
 
-# 1.虚拟DOM（Virtual DOM）
+# 1.DOM
 
-React将DOM抽象为虚拟DOM，虚拟DOM其实就是用一个对象来描述DOM，
+DOM本质 :浏览器的概念，用JS对象表示页面上上的元素，浏览器提供操作DPM的API
+一个网页的形成过程：
+  浏览器请求服务器获取HTML文件，浏览器在内存中解析DOM元素为DOM树，浏览器展现DOM树
+虚拟DOM :React将DOM抽象为虚拟DOM，虚拟DOM其实就是用一个对象来描述DOM，
 通过对比前后两个对象的差异，最终只把变化的部分重新渲染，提高渲染的效率
 
  DOM 树的信息都可以用 JavaScript 对象来表示，然后用 JavaScript 对象表示的树结构来构建一棵真正的DOM树。
@@ -41,6 +44,27 @@ componentDidUpdate()
 > Unmounting
 
 componentWillUnmount()
+
+生命周期
+装载 mount ：第一次DOM渲染
+* constructor ：构造函数，不是每个组件都需要定义，武装天的组件不需要；
+                                需要构函数，为了：1.初始化state，因为组件生命周期中任何函数都可能要访问state，所以生命周期中第一个被调用的构造函数，自然是初始化state的最理想的地方            
+                                                                2.绑定成员函数的this环境，如使用bind
+* getInitiaState ：在从reactClass 方法定义的组件才会用到，在ES6的方法定义的react 组件中不会用到
+* getDefaultProps ：函数很少用
+* componentWillMount ： 用处不大，没有渲染的结构，此处一般会放在constructor中实现
+* Render ： 渲染函数
+* componentDidMount：与WILL兄弟函数 区别：will 可以再服务器和连蓝旗端调用，Did 只能在浏览器被调用，服务器端使用react 不会被调动
+
+更新过程 update ：props 或者 state 被修改的时候，组件重新被渲染
+*   componentWillReceiveProps
+* shouldComponentUpdate
+* componentWillUpdate
+* Render
+* componentDidUpdate      
+
+卸载过程 Unmount :组件从DOM删除
+* componentWillUnmount 
 
 # 4.ref
 在react典型的数据流中，props传递是父子组件交互的唯一方式；通过传递一个新的props值来使子组件重新re-render,从而达到父子组件通信。
@@ -110,6 +134,21 @@ export default class UserAdd extends Component{
 
 ```
 
+# 5.用 PropTypes 确认prop的类型
+import PropTypes from 'prop-types’;
+class MyComponent extends React.Component {
+    render() {
+        // 只能包含一个子元素，否则会给出警告
+        const children = this.props.children;
+        return (
+            <div>{children}</div>
+        );
+    }
+}
+
+MyComponent.propTypes = {
+    children: React.PropTypes.element.isRequired
+}
 > 参考地址：https://segmentfault.com/a/1190000012921279
 
 
