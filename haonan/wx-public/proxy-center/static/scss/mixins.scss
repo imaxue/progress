@@ -1,0 +1,237 @@
+@mixin font-size($value) {
+    [data-dpr="1"] & {
+        font-size: $value / 2;
+    }
+    [data-dpr="2"] & {
+        font-size: $value;
+    }
+    [data-dpr="3"] & {
+        font-size: $value * 1.5;
+    }
+}
+
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-containers
+/// @group flexbox
+@mixin flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/// Flexbox inline 容器
+/// @group flexbox
+@mixin inline-flex {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+/// Flexbox 方向
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-direction-property
+/// @group flexbox
+@mixin flex-direction($value: row) {
+    @if $value==row-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: horizontal;
+    }
+    @else if $value==column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+    }
+    @else if $value==column-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: vertical;
+    }
+    @else {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+    }
+    -webkit-flex-direction: $value;
+    -moz-flex-direction: $value;
+    -ms-flex-direction: $value;
+    flex-direction: $value;
+}
+
+/// Flexbox 包裹
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-wrap-property
+/// @group flexbox
+@mixin flex-wrap($value: nowrap) {
+    // No Webkit Box fallback.
+    -webkit-flex-wrap: $value;
+    -moz-flex-wrap: $value;
+    @if $value==nowrap {
+        -ms-flex-wrap: none;
+    }
+    @else {
+        -ms-flex-wrap: $value;
+    }
+    flex-wrap: $value;
+}
+
+/// Flexbox 流
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-flow-property
+/// @group flexbox
+@mixin flex-flow($values: (row nowrap)) {
+    // No Webkit Box fallback.
+    -webkit-flex-flow: $values;
+    -moz-flex-flow: $values;
+    -ms-flex-flow: $values;
+    flex-flow: $values;
+}
+
+/// Flexbox 顺序
+/// 参见： http://w3.org/tr/css3-flexbox/#order-property
+/// @group flexbox
+@mixin order($int: 0) {
+    -webkit-box-ordinal-group: $int + 1;
+    -webkit-order: $int;
+    -moz-order: $int;
+    -ms-flex-order: $int;
+    order: $int;
+}
+
+/// Flexbox Grow
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-grow-property
+/// @group flexbox
+@mixin flex-grow($int: 0) {
+    -webkit-box-flex: $int;
+    -webkit-flex-grow: $int;
+    -moz-flex-grow: $int;
+    -ms-flex-positive: $int;
+    flex-grow: $int;
+}
+
+/// Flexbox Shrink
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-shrink-property
+/// @group flexbox
+/// @param {Int} $int [1] - shrink值
+@mixin flex-shrink($int: 1) {
+    -webkit-flex-shrink: $int;
+    -moz-flex-shrink: $int;
+    -ms-flex-negative: $int;
+    flex-shrink: $int;
+}
+
+/// Flexbox Basis http://www.w3.org/TR/css3-flexbox/#flex-basis-property
+/// @group flexbox
+/// @param $value [auto] - basis值
+@mixin flex-basis($value: auto) {
+    -webkit-flex-basis: $value;
+    -moz-flex-basis: $value;
+    -ms-flex-preferred-size: $value;
+    flex-basis: $value;
+}
+
+/// Flexbox "Flex" 快捷方式
+/// 参见： http://w3.org/tr/css3-flexbox/#flex-property
+/// @group flexbox
+/// @param $fg [1] - grow值
+/// @param $fs [null] - shrink值
+/// @param $fb [null] - basis值
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+    // Set a variable to be used by box-flex properties
+    $fg-boxflex: $fg; // Box-Flex only supports a flex-grow value so let's grab the
+    // first item in the list and just return that.
+    @if type-of($fg)=='list' {
+        $fg-boxflex: nth($fg, 1);
+    }
+    -webkit-box-flex: $fg-boxflex;
+    -webkit-flex: $fg $fs $fb;
+    -moz-box-flex: $fg-boxflex;
+    -moz-flex: $fg $fs $fb;
+    -ms-flex: $fg $fs $fb;
+    flex: $fg $fs $fb;
+}
+
+/// Flexbox Justify Content
+/// 参见： http://w3.org/tr/css3-flexbox/#justify-content-property
+/// @group flexbox
+/// @param $value [flex-start] - Justify Content值
+@mixin justify-content($value: flex-start) {
+    @if $value==flex-start {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+    }
+    @else if $value==flex-end {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+    }
+    @else if $value==space-between {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    }
+    @else if $value==space-around {
+        -ms-flex-pack: distribute;
+    }
+    @else {
+        -webkit-box-pack: $value;
+        -ms-flex-pack: $value;
+    }
+    -webkit-justify-content: $value;
+    -moz-justify-content: $value;
+    justify-content: $value;
+}
+
+/// Flexbox Align Items
+/// 参见： http://w3.org/tr/css3-flexbox/#align-items-property
+/// @group flexbox
+/// @param $value [stretch] - Align Items值
+@mixin align-items($value: stretch) {
+    @if $value==flex-start {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+    }
+    @else if $value==flex-end {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+    }
+    @else {
+        -webkit-box-align: $value;
+        -ms-flex-align: $value;
+    }
+    -webkit-align-items: $value;
+    -moz-align-items: $value;
+    align-items: $value;
+}
+
+/// Flexbox Align Self
+/// @group flexbox
+/// @param $value [auto] - Align Self值
+@mixin align-self($value: auto) {
+    // No Webkit Box Fallback.
+    -webkit-align-self: $value;
+    -moz-align-self: $value;
+    @if $value==flex-start {
+        -ms-flex-item-align: start;
+    }
+    @else if $value==flex-end {
+        -ms-flex-item-align: end;
+    }
+    @else {
+        -ms-flex-item-align: $value;
+    }
+    align-self: $value;
+}
+
+/// Flexbox Align Content
+/// 参见： http://w3.org/tr/css3-flexbox/#align-content-property
+/// @param $value [stretch] - Align Content值
+@mixin align-content($value: stretch) {
+    // No Webkit Box Fallback.
+    -webkit-align-content: $value;
+    -moz-align-content: $value;
+    @if $value==flex-start {
+        -ms-flex-line-pack: start;
+    }
+    @else if $value==flex-end {
+        -ms-flex-line-pack: end;
+    }
+    @else {
+        -ms-flex-line-pack: $value;
+    }
+    align-content: $value;
+}
