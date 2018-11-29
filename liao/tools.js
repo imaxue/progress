@@ -15,7 +15,7 @@ function trim (str) {
     return Number(`${Math.round(`${value}e${decimals}`)}e-${decimals}`);
   }
 
-用字符串方法求和
+// 用字符串方法求和
 function sumStrings(a,b){
   if(a == 0 && b == 0){
     return 0
@@ -30,5 +30,18 @@ function sumStrings(a,b){
     }
     return res.replace(/^0+/,'');
 }
-    
+
+// 求和
+var num = [1,2,3,4,5];
+var res = num.reduce(function(total,num){
+    return total+num;
+    //return total + Math.round(num);//对数组元素四舍五入并计算总和
+},0);
+console.log(res)；//15
+// 合并二维数组
+var red = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+ return a.concat(b);
+}, []);
+console.log(red)
+VM291:4 (6) [0, 1, 2, 3, 4, 5]
     
