@@ -13,4 +13,22 @@ function trim (str) {
   */
   function precisionRound(value, decimals) {
     return Number(`${Math.round(`${value}e${decimals}`)}e-${decimals}`);
-  },
+  }
+
+用字符串方法求和
+function sumStrings(a,b){
+  if(a == 0 && b == 0){
+    return 0
+  }
+    var res='', c=0;
+    a = a.split('');
+    b = b.split('');
+    while (a.length || b.length || c){
+        c += ~~a.pop() + ~~b.pop();
+        res = c % 10 + res;
+        c = c>9;
+    }
+    return res.replace(/^0+/,'');
+}
+    
+    
