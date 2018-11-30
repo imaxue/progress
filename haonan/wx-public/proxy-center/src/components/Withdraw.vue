@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div>
     <div class="money">
       <div class="price">
         <img src="/static/images/price.png" alt="price">
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "Form"
+  name: "Withdraw"
 };
 </script>
 
