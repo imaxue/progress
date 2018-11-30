@@ -37,16 +37,8 @@ export default {
   display: inline-block;
   padding: 0 15px;
   border: 1px solid #fff;
-  &::before {
-    position: absolute;
-    top: -1px;
-    left: -12.5px;
-    content: "";
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 1px solid #fff;
-  }
+  font-size: 14px;
+  color: #fff;
 }
 </style>
 
