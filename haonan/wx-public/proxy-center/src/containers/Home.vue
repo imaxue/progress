@@ -17,7 +17,7 @@
 						<p class="weui-grid__label">我的佣金</p>
 						<p class="weui-grid__label">Grid</p>
 					</div>
-					<div class="weui-grid">
+					<div class="weui-grid" @click="$router.push('/directPush')">
 						<div class="weui-grid__icon">
 							<img src="/static/images/directPush.png">
 						</div>

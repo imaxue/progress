@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from 'src/containers/Home'
 import Withdraw from 'src/containers/Withdraw'
 import WithdrawHistory from 'src/containers/WithdrawHistory'
+import DirectPush  from 'src/containers/DirectPush'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/withdraw/history',
       name: 'withdraw_history',
       component: WithdrawHistory
-    }
+    },
+    {
+      path: '/directPush',
+      name: 'directPush',
+      component: DirectPush
+    },
   ]
 })
