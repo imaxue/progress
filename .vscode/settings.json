@@ -1,0 +1,4 @@
+{
+    "prettier.arrowParens": "always",
+    "prettier.disableLanguages": [],
+}
