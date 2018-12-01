@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from 'src/components/Home'
-import Withdraw from 'src/components/Withdraw'
-import WithdrawHistory from 'src/components/WithdrawHistory'
+import Home from 'src/containers/Home'
+import Withdraw from 'src/containers/Withdraw'
+import WithdrawHistory from 'src/containers/WithdrawHistory'
 
 Vue.use(Router)
 
