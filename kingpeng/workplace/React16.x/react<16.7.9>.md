@@ -3,8 +3,8 @@
 ### 1、TouchScroll.tsx
 
 ```
->import { CSSProperties, PureComponent, TouchEvent, WheelEvent } from "react"; 
->import StopBodyScroll from "./StopBodyScroll";
+> import { CSSProperties, PureComponent, TouchEvent, WheelEvent } from "react"; 
+> import StopBodyScroll from "./StopBodyScroll";
 
 export default class TouchScroll extends PureComponent<{ className?: string, style?: CSSProperties }> {
     private touchBeginY = 0;
@@ -302,7 +302,7 @@ class FloatComment extends PureComponent<IFloatCommentProps & ContextValueType> 
                         <img onClick={this.props.onClose} src={publicRuntimeConfig.resUrl + "/img/close.png"} />
                     </header>
                     {!this.state.comments.length && this.state.isFetched && <Blank>暂无评论，来抢沙发...</Blank>}
-                    ** <CommentList as={TouchScroll} onTouchMove={console.log}> **
+                    **<CommentList as={TouchScroll} onTouchMove={console.log}>**
                         {this.state.comments.map(item => <div key={item.commentId}>
                             <FloatCommentItem
                                 onClick={() => {
