@@ -4,6 +4,7 @@ import Home from 'src/containers/Home'
 import Withdraw from 'src/containers/Withdraw'
 import WithdrawHistory from 'src/containers/WithdrawHistory'
 import DirectPush  from 'src/containers/DirectPush'
+import CopyDemo  from 'src/containers/CopyDemo'
 
 Vue.use(Router)
 
@@ -29,5 +30,10 @@ export default new Router({
       name: 'directPush',
       component: DirectPush
     },
+    {
+      path: '/copydemo',
+      name: 'copydemo',
+      component: CopyDemo
+    }
   ]
 })

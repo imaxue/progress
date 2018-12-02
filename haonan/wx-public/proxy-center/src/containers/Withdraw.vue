@@ -8,7 +8,10 @@
 				>
 				<span>0.00</span>
 			</div>
-			<p class="history" @click="$router.push('/withdraw/history')">提现记录</p>
+			<p
+			 class="history"
+			 @click="$router.push('/withdraw/history')"
+			>提现记录</p>
 		</div>
 		<div class="weui-cells weui-cells_form">
 			<div class="weui-cell">
@@ -17,6 +20,8 @@
 				</div>
 				<div class="weui-cell__bd">
 					<input
+					 v-model.number="form.price"
+					 @blur="verifyprice"
 					 class="weui-input"
 					 type="number"
 					 placeholder="单次最少提现10元"
@@ -39,18 +44,6 @@
 			</div>
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">姓名</label>
-				</div>
-				<div class="weui-cell__bd">
-					<input
-					 class="weui-input"
-					 type="text"
-					 placeholder="请输入支付宝账号姓名"
-					/>
-				</div>
-			</div>
-			<div class="weui-cell">
-				<div class="weui-cell__hd">
 					<label class="weui-label">账号</label>
 				</div>
 				<div class="weui-cell__bd">
@@ -61,17 +54,81 @@
 					/>
 				</div>
 			</div>
+			<div class="weui-cell">
+				<div class="weui-cell__hd">
+					<label class="weui-label">姓名</label>
+				</div>
+				<div class="weui-cell__bd">
+					<input
+					 class="weui-input"
+					 type="text"
+					 placeholder="请输入支付宝账号姓名"
+					/>
+				</div>
+			</div>
 		</div>
 		<p class="tips">提现金额为10的倍数，单次提现不超过5000元</p>
 		<div class="submit">
-			<p>确定</p>
+			<p @click="verifyForm">确定</p>
 		</div>
 	</div>
 </template>
 
 <script>
 export default {
-	name: "Withdraw"
+	name: "Withdraw",
+
+	data() {
+		return {
+			isVerifyPass: true,
+			form: {
+				price: "",
+				name: "",
+				account: ""
+			}
+		};
+	},
+
+	methods: {
+		verifyprice(isSubmit = false) {
+			const price = this.form.price;
+			let isPass = false;
+			if (isSubmit && !price) {
+				this.$toast("请输入提现金额!");
+			} else if (isNaN(price)) {
+				this.$toast("请输入数字!");
+			} else if (price === 0) {
+				this.$toast("提现金额不能为0!");
+			} else if (price % 10 !== 0) {
+				this.$toast("提现金额为10的倍数!");
+			} else if (price > 5000) {
+				this.$toast("单次提现不能超过5000元!");
+			} else {
+				isPass = true;
+			}
+
+			if (isSubmit) this.isVerifyPass = isPass;
+		},
+		verifyForm() {
+			this.isVerifyPass = true;
+			for (const key in this.form) {
+				if (this[`verify${key}`]) {
+					this[`verify${key}`](true);
+					if (!this.isVerifyPass) break;
+				} else {
+					if (this.form[key] === "") {
+						if (key === "name") {
+							this.$toast("请输入支付宝账号姓名!");
+						}
+						if (key === "account") {
+							this.$toast("请输入支付宝账号!");
+						}
+						break;
+					}
+				}
+			}
+		}
+	}
 };
 </script>
 
@@ -123,10 +180,10 @@ export default {
 .submit {
 	padding: 0 15px;
 	p {
-		padding: 5px;
+		padding: 10px 5px;
 		text-align: center;
 		color: #fff;
-        border-radius: 15px;
+		border-radius: 20px;
 		background-color: #468cfe;
 	}
 }
