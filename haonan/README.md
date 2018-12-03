@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 目录索引
 + [vue-cli升级webpack4.x不完全指南](https://github.com/imaxue/progress/blob/master/haonan/2018-7-8%20vue-cli%E5%8D%87%E7%BA%A7webpack4.x%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97.md)
 + [redux的使用](https://github.com/imaxue/progress/blob/master/haonan/2018-7-15%20redux%E7%9A%84%E4%BD%BF%E7%94%A8.md)
@@ -16,3 +17,6 @@
 + [React冒泡处理-总结篇.md](https://github.com/imaxue/progress/blob/master/haonan/2018-10-26%20React%E5%86%92%E6%B3%A1%E5%A4%84%E7%90%86-%E6%80%BB%E7%BB%93%E7%AF%87.md)
 + [React-router升级4.x](https://github.com/imaxue/progress/blob/master/haonan/2018-11-2%20React-router%E5%8D%87%E7%BA%A74.x.md)
 + [在React中使用Render Props思想封装逻辑](https://github.com/imaxue/progress/blob/master/haonan/2018-11-16%20%E5%9C%A8React%E4%B8%AD%E4%BD%BF%E7%94%A8Render%20Props%E6%80%9D%E6%83%B3%E5%B0%81%E8%A3%85%E9%80%BB%E8%BE%91.md)
+=======
+
+>>>>>>> bf82cf837b3d74b050eda89122eee04de634d7fe
