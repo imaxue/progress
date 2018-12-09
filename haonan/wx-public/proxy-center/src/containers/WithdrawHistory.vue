@@ -7,7 +7,7 @@
 				<span>状态</span>
 			</li>
 			<li
-			 v-for="(item, index) of items"
+			 v-for="(item, index) of historys"
 			 :key="`key${index}`"
 			 class="history-item"
 			>
@@ -31,7 +31,7 @@ export default {
 
 	data() {
 		return {
-			items: [],
+			historys: [],
 			isShowLoading: false
 		};
 	},
@@ -43,7 +43,7 @@ export default {
 			.then(({ data }) => {
 				// 200表示请求成功并正确返回数据
 				if (data.code === 200) {
-					this.items = data.result;
+					this.historys = data.result;
 				} else {
 					// 请求成功但数据错误抛出报错信息
 					this.$toast(data.message);
@@ -51,7 +51,6 @@ export default {
 			})
 			// 接口未通使用catch捕获，统一抛出错误
 			.catch(e => {
-				console.log(3);
 				this.$toast("服务器开小差了!");
 			});
 	}

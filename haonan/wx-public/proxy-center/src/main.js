@@ -24,5 +24,11 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  // 用户存放全局共享数据
+  data() {
+    return {
+      globalData: {}
+    }
+  }
 })
