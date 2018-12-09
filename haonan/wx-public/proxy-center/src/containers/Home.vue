@@ -8,7 +8,7 @@
 				<div class="time">
 					<span>注册时间：2018-02-04</span>
 					<span> | </span>
-					<span>编号：200103</span>			
+					<span>编号：200103</span>
 				</div>
 			</div>
 		</div>
@@ -22,7 +22,10 @@
 						<p class="weui-grid__label">我的佣金</p>
 						<p class="weui-grid__label">Grid</p>
 					</div>
-					<div class="weui-grid" @click="$router.push('/directPush')">
+					<div
+					 class="weui-grid"
+					 @click="$router.push('/directPush')"
+					>
 						<div class="weui-grid__icon">
 							<img src="/static/images/directPush.png">
 						</div>
@@ -78,7 +81,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.weui-grid__label{
+.weui-grid__label {
 	color: #585252;
 }
 .home {
