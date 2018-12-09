@@ -20,8 +20,8 @@
 				</div>
 				<div class="weui-cell__bd">
 					<input
-					 v-model.number="form.price"
-					 @blur="verifyprice"
+					 v-model.number="form.amount"
+					 @blur="verifyAmount"
 					 class="weui-input"
 					 type="number"
 					 placeholder="单次最少提现10元"
@@ -48,6 +48,7 @@
 				</div>
 				<div class="weui-cell__bd">
 					<input
+					 v-model.trim="form.payNum"
 					 class="weui-input"
 					 type="text"
 					 placeholder="请输入支付宝账号"
@@ -60,6 +61,7 @@
 				</div>
 				<div class="weui-cell__bd">
 					<input
+					 v-model.trim="form.payName"
 					 class="weui-input"
 					 type="text"
 					 placeholder="请输入支付宝账号姓名"
@@ -82,26 +84,26 @@ export default {
 		return {
 			isVerifyPass: true,
 			form: {
-				price: "",
-				name: "",
-				account: ""
+				amount: "",
+				payName: "",
+				payNum: ""
 			}
 		};
 	},
 
 	methods: {
-		verifyprice(isSubmit = false) {
-			const price = this.form.price;
+		verifyAmount(isSubmit = false) {
+			const amount = this.form.amount;
 			let isPass = false;
-			if (isSubmit && !price) {
+			if (isSubmit && !amount) {
 				this.$toast("请输入提现金额!");
-			} else if (isNaN(price)) {
+			} else if (isNaN(amount)) {
 				this.$toast("请输入数字!");
-			} else if (price === 0) {
+			} else if (amount === 0) {
 				this.$toast("提现金额不能为0!");
-			} else if (price % 10 !== 0) {
+			} else if (amount % 10 !== 0) {
 				this.$toast("提现金额为10的倍数!");
-			} else if (price > 5000) {
+			} else if (amount > 5000) {
 				this.$toast("单次提现不能超过5000元!");
 			} else {
 				isPass = true;
@@ -117,10 +119,10 @@ export default {
 					if (!this.isVerifyPass) break;
 				} else {
 					if (this.form[key] === "") {
-						if (key === "name") {
+						if (key === "payName") {
 							this.$toast("请输入支付宝账号姓名!");
 						}
-						if (key === "account") {
+						if (key === "payNum") {
 							this.$toast("请输入支付宝账号!");
 						}
 						break;

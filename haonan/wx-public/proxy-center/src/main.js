@@ -15,6 +15,7 @@ Vue.use(VueAxios, axios)
 Vue.component('Loading', Loading)
 
 Vue.prototype.$toast = toast
+Vue.prototype.$http.defaults.headers['open-id'] = '1'
 
 Vue.config.productionTip = false
 
