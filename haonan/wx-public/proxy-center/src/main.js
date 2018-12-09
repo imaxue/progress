@@ -36,6 +36,7 @@ Vue.use(VueAxios, axios)
 Vue.component('Loading', Loading)
 
 Vue.prototype.$toast = toast
+Vue.prototype.$http.defaults.headers['open-id'] = '1'
 
 Vue.config.productionTip = false
 
@@ -44,6 +45,12 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  // 用户存放全局共享数据
+  data() {
+    return {
+      globalData: {}
+    }
+  }
 })
 >>>>>>> bf82cf837b3d74b050eda89122eee04de634d7fe

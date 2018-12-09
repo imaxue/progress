@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .earth {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .earth-row {
+      display: flex;
+      flex: 1;
+    }
+
+    .earth-cell {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #ccc;
+      background-color: lightblue;
+    }
+
+    .earth-cell.is--maxland {
+      background-color: red;
+    }
+    .earth-cell.is--land {
+      background-color: lightyellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="earth"></div>
+  <script>
+    const earth = document.querySelector('.earth')
+
+    function markMap(rows, columns) {
+      const allLands = []
+      let landStr = ''
+      for (let i = 0; i < rows; i++) {
+        const row = []
+        landStr += '<div class="earth-row">'
+        for (let j = 0; j < columns; j++) {
+          const value = ~~(Math.random() * 10 < 3)
+          row.push(value)
+          landStr += `<span class="earth-cell">${value}</span>`
+        }
+        landStr += '</div>'
+        allLands.push(row)
+      }
+      earth.innerHTML = landStr
+      return allLands
+    }
+    const ROWS = 10
+    const COLUMNS = 10
+    const DIRECTIONS = [[0, -1], [-1, 0], [1, 0], [0, 1]]
+    // 地图数组
+    const earthMap = markMap(ROWS, COLUMNS)
+    // 陆地数组
+    let lands = []
+
+    const temp = []
+
+    function isLand(x, y) {
+      return x >= 0 && y >= 0 && x < COLUMNS && y < ROWS && earthMap[y][x] === 1
+    }
+    const findIsLand = (x, y) => {
+      if (!isLand(x, y)) return
+      if (temp.some(item => item.x === x && item.y === y)) return
+      temp.push({ x, y })
+      DIRECTIONS.forEach(item => findIsLand(x + item[0], y + item[1]))
+    }
+    console.time('start')
+    for (let y = 0; y < ROWS; y++) {
+      for (let x = 0; x < COLUMNS; x++) {
+        if (lands.some(list => list.some(item => item.x === x && item.y === y))) continue
+        findIsLand(x, y)
+        lands.push(temp.splice(0))
+      }
+    }
+
+    console.timeEnd('start')
+
+    lands.sort((a, b) => b.length - a.length)
+
+    // 添加陆地标识
+    lands.forEach((list, index) => {
+      list.forEach(({ x, y }) => {
+        const row = earth.querySelectorAll('.earth-row')[y]
+        if (row) {
+          const cell = row.querySelectorAll('.earth-cell')[x]
+          if (!cell) return
+          cell.classList.add(index === 0 ? 'is--maxland' : 'is--land')
+        }
+      })
+      
+    })
+  </script>
+</body>
+
+</html>

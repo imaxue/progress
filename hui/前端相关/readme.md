@@ -681,5 +681,46 @@ https://juejin.im/post/5be54a286fb9a049ae07641b
 ```
 我猜我随便写点东西 commit 他们也不会发现 (ಡωಡ) 
 
+<<<<<<< HEAD
 >>>>>>> bf82cf837b3d74b050eda89122eee04de634d7fe
+=======
+```
+
+```
+首先 写一段tag 打包上传的错误代码
+
+#!/bin/bash
+set -e
+
+read -p "Enter Version [major,minor,patch or version number]:" verb
+verb=${verb:-"patch"}
+#npm publish
+cver=`npm version $verb`
+#git tag cver
+cver=${cver:1}
+#git tag v${cver}
+
+npm run buildUC
+
+curl -v -F r=releases \
+        -F hasPom=false \
+        -F g=com.blueocn.tps-ui \
+        -F a=ent-usersystem \
+        -F v=${cver} \
+        -F p=zip \
+        -F file="@latest.zip" \
+        -u admin:oneAPM123 \
+        http://10.128.7.197:8081/nexus/service/local/artifact/maven/content
+#cd ..
+git push origin --follow-tags
+git push origin v${cver}
+
+
+上面这段代码 用的时候会出现两个错误 第一个 会出现tag版本一直报错已存在
+原因是 git tag v${cver} 他先一步创建了tag版本
+
+第二个  最下面的 push 没法执行  因为cd ..
+注释这两句 就好了
+
+>>>>>>> 6f564fecf6241d7c590d23602ca5df2354d7a6bf
 ```
