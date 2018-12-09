@@ -1,3 +1,19 @@
+
+## 12.9更新
+
+## 一些点区别
+## 1.react-router && react-router-dom 
+React-router提供了一些router的核心api，包括Router, Route, Switch等，但是它没有提供dom操作进行跳转的api。
+React-router-dom提供了BrowserRouter, Route, Link等api,我们可以通过dom的事件控制路由。例如点击一个按钮进行跳转
+
+## 2.HashRouter && BrowserRouter
+HashRouter 有#，不需要这个#用browserRouter
+
+## 3.Link和NavLink的选择
+两者都是可以控制路由跳转的，不同点是NavLink的api更多，更加满足你的需求。
+
+
+---------------------------------------------------------------------------
 ## 1.withrouter
 
 withRouter可以包装任何自定义组件，将react-router 的 history,location,match 三个对象传入。 

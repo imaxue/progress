@@ -10,7 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.5.2",
+    "vue-axios": "^2.1.4",
+    "vue-clipboard2": "^0.2.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -58,8 +61,8 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
+    "> 1% in CH",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie <= 11"
   ]
 }

@@ -86,3 +86,144 @@ export function encodeText(text) {
     if (!text || typeof text !== 'string') return '';
     return text.trim().replace(/[\n]/g, '<br/>');
 }
+
+
+/**
+ * 判断当前对象是否为空
+ * 
+ * @method isEmpty
+ * @param {Object}
+ *            obj
+ * @return {Boolean} empty 当为 null,undefined,"" 将返回true
+ */
+window.isEmpty = function(obj) {
+ return (obj == null || typeof obj == "undefined" || obj.length == 0)
+}
+
+/**
+ * 判断当前对象是否非空
+ * 
+ * @method isNotEmpty
+ * @param {Object}
+ *            obj
+ * @return {Boolean}
+ */
+window.isNotEmpty = function(obj) {
+ return !isEmpty(obj);
+}
+
+/**
+ * 判断是否为函数
+ * 
+ * @method isFunc
+ * @param {Object}
+ *            fun
+ * @return {Boolean}
+ */
+window.isFunc = function(fun) {
+ return (fun != null && typeof fun == "function");
+}
+
+/**
+ * 判断不是函数
+ * 
+ * @method isNotFunc
+ * @param {Object}
+ *            fun
+ * @return {Boolean}
+ */
+window.isNotFunc = function(fun) {
+ return !isFunc(fun);
+}
+
+/**
+ * 判断 cur 是否为 type 类型
+ * 
+ * @method typeOf
+ * @param {Object}
+ *            cur
+ * @param {String}
+ *            type
+ * @example typeOf("Hello","string");//将返回true
+ * @return {Boolean}
+ */
+window.typeOf = function(cur, type) {
+ if (typeof type != "string")
+  return false;
+ return typeof cur == type;
+}
+
+/**
+ * 判断是否为数组
+ * 
+ * @method isArray
+ * @param {Object}
+ *            array
+ * @return {Boolean}
+ */
+window.isArray = function(array) {
+ return isNotEmpty(array) && className(array) == "Array"
+}
+
+/**
+ * 判断不是数组
+ * 
+ * @method isNotArray
+ * @param {Object}
+ *            arr
+ * @return {Boolean}
+ */
+window.isNotArray = function(arr) {
+ return !isArray(arr);
+}
+
+/**
+ * 判断两个对象是否为相同的类
+ * 
+ * @method isSameClass
+ * @param {Object}
+ *            cur
+ * @param {Object}
+ *            cur2
+ * @return {Boolean}
+ */
+window.isSameClass = function(cur, cur2) {
+ if (isNotEmpty(cur) && isNotEmpty(cur2)) {
+  return className(cur) == className(cur2);
+ }
+ return false;
+}
+
+/**
+ * 判断两个对象为不同类
+ * 
+ * @method isDifClass
+ * @param {Object}
+ *            cur
+ * @param {Object}
+ *            cur2
+ * @return {Boolean}
+ */
+window.isDifClass = function(cur, cur2) {
+ return !isSameClass(cur, cur2);
+}
+
+/**
+ * 判断当前是否处在iframe中
+ * 
+ * @method isIframe
+ * @return {Boolean}
+ */
+window.isIframe = function() {
+ return top.location != self.location;
+}
+
+/**
+ * 判断当前不处在iframe中
+ * 
+ * @method isIframe
+ * @return {Boolean}
+ */
+window.isNotIframe = function() {
+ return !isIframe();
+};
