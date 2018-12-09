@@ -17,15 +17,7 @@
 				<span class="done">已到账(请至银行卡查收)</span>
 			</li>
 		</ul>
-		<transition name="fade">
-			<div v-show="isShowLoading">
-				<div class="weui-mask_transparent"></div>
-				<div class="weui-toast">
-					<i class="weui-loading weui-icon_toast"></i>
-					<p class="weui-toast__content">数据加载中</p>
-				</div>
-			</div>
-		</transition>
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
@@ -35,9 +27,9 @@ export default {
 
 	data() {
 		return {
-			isShowLoading: false
+			isShowLoading: true
 		};
-    }
+	}
 };
 </script>
 
@@ -66,13 +58,5 @@ export default {
 			color: #56b589;
 		}
 	}
-}
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-	opacity: 0;
 }
 </style>

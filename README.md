@@ -11,7 +11,7 @@
 
 - [数学（与或）](https://github.com/imaxue/progress/tree/master/axue/math)--xue
 - [JS基础（运算符，拷贝）](https://github.com/imaxue/progress/blob/master/share/3/%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF.pdf)--guo
-- [History API](https://github.com/imaxue/progress/blob/master/haonan/2018-7-22%20%E5%85%B3%E4%BA%8Eh5%20history%20api%E7%9A%84%E8%AE%A4%E8%AF%86.md)--haonan
+- [History API](https://github.com/imaxue/progress/blob/master/haonan/%E5%85%B3%E4%BA%8Eh5%20history%20api%E7%9A%84%E8%AE%A4%E8%AF%86.md)--haonan
 - [ios禁止缩放](https://github.com/imaxue/progress/blob/master/shangguan/ios%E7%A6%81%E6%AD%A2%E7%BC%A9%E6%94%BE.md)--shangguan
 - [H5调用相机](https://github.com/imaxue/progress/blob/master/tian/H5%E8%B0%83%E7%94%A8%E7%9B%B8%E6%9C%BA.md)--tian
 - [正则表达式简单学习](https://github.com/imaxue/progress/blob/master/tian/%E6%AD%A3%E5%88%99%E5%AD%A6%E4%B9%A0.md)--tian
