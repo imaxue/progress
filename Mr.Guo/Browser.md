@@ -198,3 +198,4 @@ console.log('script end');
 
 通过上述的  Event loop 顺序可知，如果宏任务中的异步代码有大量的计算并且需要操作 DOM 的话，为了更快的 界面响应，我们可以把操作 DOM 放入微任务中。
 
+原文：https://github.com/InterviewMap/CS-Interview-Knowledge-Map/blob/master/Browser/browser-ch.md
