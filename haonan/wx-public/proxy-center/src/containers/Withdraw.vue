@@ -73,6 +73,7 @@
 		<div class="submit">
 			<p @click="verifyForm">确定</p>
 		</div>
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
@@ -83,6 +84,7 @@ export default {
 	data() {
 		return {
 			isVerifyPass: true,
+			isShowLoading: false,
 			form: {
 				amount: "",
 				payName: "",
@@ -125,10 +127,34 @@ export default {
 						if (key === "payNum") {
 							this.$toast("请输入支付宝账号!");
 						}
+						this.isVerifyPass = false;
 						break;
 					}
 				}
 			}
+			if (this.isVerifyPass) {
+				this.withdraw();
+			}
+		},
+		withdraw() {
+			this.isShowLoading = true;
+			this.$http
+				.post("/api/agentCenter/cashOut", this.form)
+				.then(({ data }) => {
+					this.isShowLoading = false;
+					return data;
+				})
+				.then(data => {
+					if (data.code === 200) {
+						this.$toast("信息提交成功,请等待工作人员审核!");
+					} else {
+						this.$toast(data.message);
+					}
+				})
+				.catch(e => {
+					this.isShowLoading = false;
+					this.$toast("服务器开小差了!");
+				});
 		}
 	}
 };

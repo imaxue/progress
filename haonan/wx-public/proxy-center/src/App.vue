@@ -19,7 +19,6 @@ export default {
 					this.$toast("服务器开小差了!");
 				});
 		}
-		this.$root.globalData.userName = '大铁棍子医院丶捅主任'
 	}
 };
 </script>
