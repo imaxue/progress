@@ -38,6 +38,10 @@ export default new Router({
       path: '/copydemo',
       name: 'copydemo',
       component: CopyDemo
+    },
+    {
+      path: '*',
+      redirect: '/index'
     }
   ]
 })

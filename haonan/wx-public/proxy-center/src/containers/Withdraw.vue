@@ -151,7 +151,7 @@ export default {
 						this.$toast(data.message);
 					}
 				})
-				.catch(e => {
+				.catch(() => {
 					this.isShowLoading = false;
 					this.$toast("服务器开小差了!");
 				});
