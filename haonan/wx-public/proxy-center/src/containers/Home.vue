@@ -71,6 +71,7 @@
 				<p class="weui-footer__text">Copyright &copy; 由觅码科技独家提供技术支持 - 2018</p>
 			</div>
 		</div>
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
@@ -79,14 +80,17 @@ export default {
 	name: "Home",
 	data() {
 		return {
-			info:{}
+			info:{},
+			isShowLoading:false
 		}
 	},
 	created() {
+		this.isShowLoading = true;
 		this.$http
 			.get("/api/agentCenter/survery")
 			// 解构response
 			.then(({ data }) => {
+				this.isShowLoading = false;
 				// 200表示请求成功并正确返回数据
 				if (data.code === 200) {
 					this.info = data.result;
@@ -97,7 +101,7 @@ export default {
 			})
 			// 接口未通使用catch捕获，统一抛出错误
 			.catch(e => {
-				console.log(3);
+				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
 			});
 	}

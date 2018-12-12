@@ -13,7 +13,7 @@
 				<p class="iconTime">{{item.teamNum}}</p>
 			</div>
 		</div>
-		
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
@@ -22,14 +22,17 @@ export default {
 	name: "List",
 	data() {
 		return {
-			items:[]
+			items:[],
+			isShowLoading: false
 		}
 	},
 	created() {
+		this.isShowLoading = true;
 		this.$http
 			.get("/api/agentCenter/firstAgent")
 			// 解构response
 			.then(({ data }) => {
+				this.isShowLoading = false;
 				// 200表示请求成功并正确返回数据
 				if (data.code === 200) {
 					this.items = data.result;
@@ -40,18 +43,16 @@ export default {
 			})
 			// 接口未通使用catch捕获，统一抛出错误
 			.catch(e => {
-				console.log(3);
+				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
 			});
 	},
 	methods: {
 		copySuccess(e) {
-			console.log(e);
-			alert("复制成功");
+			alert("微信号码复制成功");
 		},
 		copyFail(e) {
-			console.log(e);
-			alert("复制失败");
+			alert("微信号码复制失败");
 		},
 		copy(item) {
 			this.$copyText(item.name).then(this.copySuccess, this.copyFail);
