@@ -55,6 +55,7 @@ export default {
 				this.$toast("服务器开小差了!");
 			});
 	}
+	
 };
 </script>
 

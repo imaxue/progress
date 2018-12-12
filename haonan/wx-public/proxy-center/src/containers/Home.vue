@@ -6,9 +6,9 @@
 				<img src="/static/images/icon.jpeg">
 				<div class="name">姓名</div>
 				<div class="time">
-					<span>注册时间：2018-02-04</span>
+					<span>注册时间：{{info.flowTime}}</span>
 					<span> | </span>
-					<span>编号：200103</span>			
+					<span>编号：{{info.number}}</span>			
 				</div>
 			</div>
 		</div>
@@ -20,14 +20,14 @@
 							<img src="/static/images/price.png">
 						</div>
 						<p class="weui-grid__label">我的佣金</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label red">{{info.commission}} 元</p>
 					</div>
 					<div class="weui-grid" @click="$router.push('/directPush')">
 						<div class="weui-grid__icon">
 							<img src="/static/images/directPush.png">
 						</div>
 						<p class="weui-grid__label">我的直推</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label">{{info.firstAgentNum}} 人</p>
 					</div>
 					<div
 					 class="weui-grid"
@@ -37,7 +37,7 @@
 							<img src="/static/images/cashDraw.png">
 						</div>
 						<p class="weui-grid__label">佣金提现</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label"> &nbsp;</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
@@ -51,21 +51,21 @@
 							<img src="/static/images/totalMoney.png">
 						</div>
 						<p class="weui-grid__label">我的总业绩</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label red" >{{info.totalRecord}} 元</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
 							<img src="/static/images/teamSum.png">
 						</div>
 						<p class="weui-grid__label">团队总数</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label">{{info.teamNum}} 人</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="bottom">
 			<div class="weui-footer">
-				<p class="weui-footer__text">Copyright &copy; 技术支持由觅码科技独家提供 - 2018</p>
+				<p class="weui-footer__text">Copyright &copy; 由觅码科技独家提供技术支持 - 2018</p>
 			</div>
 		</div>
 	</div>
@@ -73,7 +73,31 @@
 
 <script>
 export default {
-	name: "Home"
+	name: "Home",
+	data() {
+		return {
+			info:{}
+		}
+	},
+	created() {
+		this.$http
+			.get("/api/agentCenter/survery")
+			// 解构response
+			.then(({ data }) => {
+				// 200表示请求成功并正确返回数据
+				if (data.code === 200) {
+					this.info = data.result;
+				} else {
+					// 请求成功但数据错误抛出报错信息
+					this.$toast(data.message);
+				}
+			})
+			// 接口未通使用catch捕获，统一抛出错误
+			.catch(e => {
+				console.log(3);
+				this.$toast("服务器开小差了!");
+			});
+	}
 };
 </script>
 
@@ -87,7 +111,9 @@ export default {
 	min-height: 100%;
 	overflow-y: scroll;
 }
-
+.red {
+	color:red
+}
 .center {
 	padding: 10px;
 }
