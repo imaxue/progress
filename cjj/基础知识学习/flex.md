@@ -1,0 +1,5 @@
+- 剩余空间＝父容器空间－子容器1.flex-basis/width - 子容器2.flex-basis/width - …
+- 如果父容器空间不够，就走压缩flex-shrink，否则走扩张flex-grow
+- 如果你不希望某个容器在任何时候都不被压缩，那设置flex-shrink:0
+- 如果子容器的的flex-basis设置为0(width也可以，不过flex-basis更符合语义)，那么计算剩余空间的时候将不会为子容器预留空间。
+- 如果子容器的的flex-basis设置为auto(width也可以，不过flex-basis更符合语义)，那么计算剩余空间的时候将会根据子容器内容的多少来预留空间。
