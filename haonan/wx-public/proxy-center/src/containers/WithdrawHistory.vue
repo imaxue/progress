@@ -6,15 +6,17 @@
 				<span>金额</span>
 				<span>状态</span>
 			</li>
-			<li class="history-item">
-				<span>2018-09-15</span>
-				<span>100</span>
-				<span>审核中(预计9月16号到账)</span>
-			</li>
-			<li class="history-item">
-				<span>2018-09-15</span>
-				<span>100</span>
-				<span class="done">已到账(请至银行卡查收)</span>
+			<li
+			 v-for="(item, index) of historys"
+			 :key="`key${index}`"
+			 class="history-item"
+			>
+				<span>{{item.createTime}}</span>
+				<span>{{item.amount}}</span>
+				<span :class="{
+					done: item.status === 3,
+					fail: item.status === 2
+				  }">{{item.status === 1 ? '审核中' : item.status === 2 ? '审核未通过' : '已到账（请至银行卡查收）'}}</span>
 			</li>
 		</ul>
 		<loading :is-show-loading="isShowLoading" />
@@ -27,8 +29,34 @@ export default {
 
 	data() {
 		return {
-			isShowLoading: true
+			historys: [],
+			isShowLoading: false
 		};
+	},
+
+	created() {
+		this.isShowLoading = true;
+		this.$http
+			.post("/api/agentCenter/getCashOutLog")
+			.then(({ data }) => {
+				this.isShowLoading = false;
+				return data;
+			})
+			// 解构response
+			.then(data => {
+				// 200表示请求成功并正确返回数据
+				if (data.code === 200) {
+					this.historys = data.result;
+				} else {
+					// 请求成功但数据错误抛出报错信息
+					this.$toast(data.message);
+				}
+			})
+			// 接口未通使用catch捕获，统一抛出错误
+			.catch(() => {
+				this.isShowLoading = false;
+				this.$toast("服务器开小差了!");
+			});
 	}
 };
 </script>
@@ -49,13 +77,16 @@ export default {
 		flex: 1;
 		text-align: center;
 		&:first-child {
-			flex: 2;
+			flex: 3;
 		}
 		&:last-child {
 			flex: 3;
 		}
 		&.done {
 			color: #56b589;
+		}
+		&.fail {
+			color: red;
 		}
 	}
 }

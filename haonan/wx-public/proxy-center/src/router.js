@@ -12,6 +12,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/index'
+    },
+    {
+      path: '/index',
       name: 'home',
       component: Home
     },
@@ -34,6 +38,10 @@ export default new Router({
       path: '/copydemo',
       name: 'copydemo',
       component: CopyDemo
+    },
+    {
+      path: '*',
+      redirect: '/index'
     }
   ]
 })

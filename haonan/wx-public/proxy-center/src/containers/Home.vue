@@ -4,7 +4,12 @@
 			<div class="titleBlue"></div>
 			<div class="titleWhite">
 				<img src="/static/images/icon.jpeg">
-				<!-- <div>姓名</div> -->
+				<div class="name">姓名</div>
+				<div class="time">
+					<span>注册时间：2018-02-04</span>
+					<span> | </span>
+					<span>编号：200103</span>
+				</div>
 			</div>
 		</div>
 		<div class="center">
@@ -17,7 +22,10 @@
 						<p class="weui-grid__label">我的佣金</p>
 						<p class="weui-grid__label">Grid</p>
 					</div>
-					<div class="weui-grid" @click="$router.push('/directPush')">
+					<div
+					 class="weui-grid"
+					 @click="$router.push('/directPush')"
+					>
 						<div class="weui-grid__icon">
 							<img src="/static/images/directPush.png">
 						</div>
@@ -60,7 +68,7 @@
 		</div>
 		<div class="bottom">
 			<div class="weui-footer">
-				<p class="weui-footer__text">Copyright &copy; 2008-2016 weui.io</p>
+				<p class="weui-footer__text">Copyright &copy; 技术支持由觅码科技独家提供 - 2018</p>
 			</div>
 		</div>
 	</div>
@@ -73,6 +81,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.weui-grid__label {
+	color: #585252;
+}
 .home {
 	width: 100%;
 	height: 100%;
@@ -87,20 +98,32 @@ export default {
 .top {
 	margin-bottom: 40px;
 	.titleBlue {
-		height: 60px;
+		height: 80px;
 		background-color: #468cfe;
 	}
 	.titleWhite {
 		background-color: white;
-		height: 80px;
+		height: 120px;
 		margin: -30px 2%;
 		border-radius: 5px;
 		box-shadow: 0 5px 20px -7px #7babf7;
+		.name {
+			color: #10aeff;
+			font-size: 14px;
+			text-align: center;
+			margin-top: -10px;
+		}
+		.time {
+			color: #b9b3b3;
+			font-size: 12px;
+			text-align: center;
+			margin-top: 10px;
+		}
 	}
 	img {
-		width: 50px;
-		height: 50px;
-		border-radius: 25px;
+		width: 60px;
+		height: 60px;
+		border-radius: 30px;
 		position: relative;
 		left: 50%;
 		margin-left: -25px;
