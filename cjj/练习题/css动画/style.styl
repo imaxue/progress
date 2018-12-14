@@ -1,0 +1,42 @@
+$line-size = 5px
+$gap = $line-size * 14
+$rule-width = $gap + $line-size
+$stop = percentage($line-size / $rule-width)
+$stop1 = percentage($line-size * 5 / $rule-width)
+$color-scale = #333
+.ruler
+  position relative
+  width $width = 840px
+  height 100px
+
+  &-inner
+    width 100%
+    height @height - $line-size * 3
+    background-image linear-gradient(90deg, $color-scale $stop, transparent $stop, transparent), linear-gradient(90deg, $color-scale $stop1, transparent $stop1, transparent)
+    background-size $rule-width 80%, ($rule-width / 5) 60%
+    background-repeat repeat-x
+    background-position 0 100%, 0 100%
+  &-slider
+    position absolute
+    top 0
+    left 0
+    bottom $line-size * 1.5
+    width $line-size
+    background-color #f00
+    animation slide 5s linear infinite alternate
+    @keyframes slide
+      0%
+        transform: translate3d(0, 0, 0)
+      100%
+        transform: translate3d($width, 0, 0)
+    &:after
+      content ''
+      position absolute
+      left -($line-size)
+      bottom -($line-size + 10px)
+      width 0
+      height 0
+      border ($line-size * 1.5) solid transparent
+      border-bottom-color #f00
+      border-top-width: 0
+    
