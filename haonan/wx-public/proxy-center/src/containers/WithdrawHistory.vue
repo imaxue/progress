@@ -93,12 +93,10 @@ export default {
 			>
 				<span>{{item.createTime}}</span>
 				<span>{{item.amount}}</span>
-				<span
-			      :class="{
+				<span :class="{
 					done: item.status === 3,
 					fail: item.status === 2
-				  }"
-				>{{item.status === 1 ? '审核中' : item.status === 2 ? '审核未通过' : '已到账（请至银行卡查收）'}}</span>
+				  }">{{item.status === 1 ? '审核中' : item.status === 2 ? '审核未通过' : '已到账（请至银行卡查收）'}}</span>
 			</li>
 		</ul>
 		<loading :is-show-loading="isShowLoading" />
@@ -117,10 +115,15 @@ export default {
 	},
 
 	created() {
+		this.isShowLoading = true;
 		this.$http
 			.post("/api/agentCenter/getCashOutLog")
-			// 解构response
 			.then(({ data }) => {
+				this.isShowLoading = false;
+				return data;
+			})
+			// 解构response
+			.then(data => {
 				// 200表示请求成功并正确返回数据
 				if (data.code === 200) {
 					this.historys = data.result;
@@ -130,10 +133,12 @@ export default {
 				}
 			})
 			// 接口未通使用catch捕获，统一抛出错误
-			.catch(e => {
+			.catch(() => {
+				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
 			});
 	}
+	
 };
 </script>
 

@@ -152,12 +152,14 @@ export default {
 		<div class="weui-cells weui-cells_form">
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">提现金额</label>
+					<label class="weui-label">
+						<span class="required">*</span> 提现金额
+					</label>
 				</div>
 				<div class="weui-cell__bd">
 					<input
 					 v-model.number="form.amount"
-					 @blur="verifyAmount"
+					 @blur="verifyamount(false)"
 					 class="weui-input"
 					 type="number"
 					 placeholder="单次最少提现10元"
@@ -180,7 +182,9 @@ export default {
 			</div>
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">账号</label>
+					<label class="weui-label">
+						<span class="required">*</span> 账号
+					</label>
 				</div>
 				<div class="weui-cell__bd">
 					<input
@@ -193,7 +197,9 @@ export default {
 			</div>
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">姓名</label>
+					<label class="weui-label">
+						<span class="required">*</span> 姓名
+					</label>
 				</div>
 				<div class="weui-cell__bd">
 					<input
@@ -209,6 +215,7 @@ export default {
 		<div class="submit">
 			<p @click="verifyForm">确定</p>
 		</div>
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
@@ -219,6 +226,7 @@ export default {
 	data() {
 		return {
 			isVerifyPass: true,
+			isShowLoading: false,
 			form: {
 				amount: "",
 				payName: "",
@@ -228,7 +236,7 @@ export default {
 	},
 
 	methods: {
-		verifyAmount(isSubmit = false) {
+		verifyamount(isSubmit) {
 			const amount = this.form.amount;
 			let isPass = false;
 			if (isSubmit && !amount) {
@@ -261,10 +269,34 @@ export default {
 						if (key === "payNum") {
 							this.$toast("请输入支付宝账号!");
 						}
+						this.isVerifyPass = false;
 						break;
 					}
 				}
 			}
+			if (this.isVerifyPass) {
+				this.withdraw();
+			}
+		},
+		withdraw() {
+			this.isShowLoading = true;
+			this.$http
+				.post("/api/agentCenter/cashOut", this.form)
+				.then(({ data }) => {
+					this.isShowLoading = false;
+					return data;
+				})
+				.then(data => {
+					if (data.code === 200) {
+						this.$toast("信息提交成功,请等待工作人员审核!");
+					} else {
+						this.$toast(data.message);
+					}
+				})
+				.catch(() => {
+					this.isShowLoading = false;
+					this.$toast("服务器开小差了!");
+				});
 		}
 	}
 };
@@ -324,6 +356,10 @@ export default {
 		border-radius: 20px;
 		background-color: #468cfe;
 	}
+}
+.required {
+	line-height: 1;
+	color: red;
 }
 </style>
 

@@ -27,16 +27,18 @@ import router from 'src/router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueClipboard from 'vue-clipboard2'
+import VueCookies from 'vue-cookies'
 import Loading from 'src/components/Loading'
 import toast from 'src/functions/toast'
 
 Vue.use(VueClipboard)
 Vue.use(VueAxios, axios)
+Vue.use(VueCookies)
 
 Vue.component('Loading', Loading)
 
 Vue.prototype.$toast = toast
-Vue.prototype.$http.defaults.headers['open-id'] = '1'
+Vue.prototype.$http.defaults.headers['open-id'] = ''
 
 Vue.config.productionTip = false
 
@@ -45,12 +47,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>',
-  // 用户存放全局共享数据
-  data() {
-    return {
-      globalData: {}
-    }
-  }
+  template: '<App/>'
 })
 >>>>>>> bf82cf837b3d74b050eda89122eee04de634d7fe

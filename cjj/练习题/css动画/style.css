@@ -1,0 +1,65 @@
+.ruler {
+  position: relative;
+  width: 840px;
+  height: 100px;
+}
+.ruler-inner {
+  width: 100%;
+  height: 85px;
+  background-image: linear-gradient(90deg, #333 6.666666666666667%, transparent 6.666666666666667%, transparent), linear-gradient(90deg, #333 33.33333333333333%, transparent 33.33333333333333%, transparent);
+  background-size: 75px 80%, 15px 60%;
+  background-repeat: repeat-x;
+  background-position: 0 100%, 0 100%;
+}
+.ruler-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 7.5px;
+  width: 5px;
+  background-color: #f00;
+  animation: slide 5s linear infinite alternate;
+}
+.ruler-slider:after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  bottom: -15px;
+  width: 0;
+  height: 0;
+  border: 7.5px solid transparent;
+  border-bottom-color: #f00;
+  border-top-width: 0;
+}
+@-moz-keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(840px, 0, 0);
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(840px, 0, 0);
+  }
+}
+@-o-keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(840px, 0, 0);
+  }
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(840px, 0, 0);
+  }
+}

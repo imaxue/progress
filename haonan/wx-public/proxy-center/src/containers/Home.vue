@@ -146,12 +146,12 @@ export default {
 		<div class="top">
 			<div class="titleBlue"></div>
 			<div class="titleWhite">
-				<img src="/static/images/icon.jpeg">
-				<div class="name">姓名</div>
+				<img :src="userInfo.headimgurl">
+				<div class="name">{{userInfo.nickname}}</div>
 				<div class="time">
-					<span>注册时间：2018-02-04</span>
+					<span>注册时间：{{info.flowTime}}</span>
 					<span> | </span>
-					<span>编号：200103</span>
+					<span>编号：{{info.number}}</span>
 				</div>
 			</div>
 		</div>
@@ -163,7 +163,7 @@ export default {
 							<img src="/static/images/price.png">
 						</div>
 						<p class="weui-grid__label">我的佣金</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label red">{{info.commission}} 元</p>
 					</div>
 					<div
 					 class="weui-grid"
@@ -173,7 +173,7 @@ export default {
 							<img src="/static/images/directPush.png">
 						</div>
 						<p class="weui-grid__label">我的直推</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label">{{info.firstAgentNum}} 人</p>
 					</div>
 					<div
 					 class="weui-grid"
@@ -183,43 +183,93 @@ export default {
 							<img src="/static/images/cashDraw.png">
 						</div>
 						<p class="weui-grid__label">佣金提现</p>
-						<p class="weui-grid__label">Grid</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
 							<img src="/static/images/secondTeam.png">
 						</div>
 						<p class="weui-grid__label">二级团队</p>
-						<p class="weui-grid__label">Grid</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
 							<img src="/static/images/totalMoney.png">
 						</div>
 						<p class="weui-grid__label">我的总业绩</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label red">{{info.totalRecord}} 元</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
 							<img src="/static/images/teamSum.png">
 						</div>
 						<p class="weui-grid__label">团队总数</p>
-						<p class="weui-grid__label">Grid</p>
+						<p class="weui-grid__label">{{info.teamNum}} 人</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="bottom">
 			<div class="weui-footer">
-				<p class="weui-footer__text">Copyright &copy; 技术支持由觅码科技独家提供 - 2018</p>
+				<p class="weui-footer__text">Copyright &copy; 由觅码科技独家提供技术支持 2018 - {{nowYear}}</p>
 			</div>
 		</div>
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
 <script>
 export default {
-	name: "Home"
+	name: "Home",
+
+	data() {
+		return {
+			nowYear: new Date().getFullYear(),
+			info: {},
+			isShowLoading: false,
+			userInfo: {}
+		};
+	},
+
+	methods: {
+		handleResponse(res, cb) {
+			if (res.data.code === 200) {
+				cb(res.data.result);
+			} else {
+				this.$toast(res.data.message);
+			}
+		},
+		setUserInfo(result) {
+			this.userInfo = result;
+		},
+		setInfo(result) {
+			this.info = result;
+		}
+	},
+
+	created() {
+		const authorizationCode = this.$cookies.get('authorizationCode');
+		this.isShowLoading = true;
+		this.$http
+			.all([
+				this.$http.get("/api/agentCenter/survery"),
+				this.$http.get(`/api/auth/userInfo?code=${authorizationCode}`)
+			])
+			.then(response => {
+				this.isShowLoading = false;
+				for (const res of response) {
+					const url = res.config.url;
+					if (url === "/api/agentCenter/survery") {
+						this.handleResponse(res, this.setInfo);
+					}
+					if (url === "/api/auth/userInfo") {
+						this.handleResponse(res, this.setUserInfo);
+					}
+				}
+			})
+			.catch(() => {
+				this.isShowLoading = false;
+				this.$toast("服务器开小差了!");
+			});
+	}
 };
 </script>
 
@@ -233,7 +283,9 @@ export default {
 	min-height: 100%;
 	overflow-y: scroll;
 }
-
+.red {
+	color: red;
+}
 .center {
 	padding: 10px;
 }

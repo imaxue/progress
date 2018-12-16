@@ -24,6 +24,7 @@ export default {
 <template>
 	<div id="app">
 		<router-view />
+		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
@@ -31,18 +32,10 @@ export default {
 export default {
 	name: "App",
 
-	mounted() {
-		// 公众号重定向到该项目，获取路由的code值
-		const code = this.$route.query.code;
-		if (code !== undefined || code !== null) {
-			this.$http
-				.get(`/api/auth/access_token?code=${code}`)
-				.then(({ data }) => {})
-				.catch(e => {
-					this.$toast("服务器开小差了!");
-				});
-		}
-		this.$root.globalData.userName = '大铁棍子医院丶捅主任'
+	data() {
+		return {
+			isShowLoading: false
+		};
 	}
 };
 </script>
