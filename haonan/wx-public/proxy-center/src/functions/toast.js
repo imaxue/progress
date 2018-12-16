@@ -3,16 +3,12 @@ import Toast from 'src/components/Toast'
 
 const ToastConstructor = Vue.extend(Toast)
 
-export default (options) => {
-    let _options = options
-    if (typeof options === 'string') {
-        _options = {
-            msg: options
-        }
-    }
-
+export default (msg = '', duration = 2) => {
     const instance = new ToastConstructor({
-        data: _options
+        data: {
+            msg,
+            duration
+        }
     })
     instance.vm = instance.$mount()
     document.body.appendChild(instance.vm.$el)

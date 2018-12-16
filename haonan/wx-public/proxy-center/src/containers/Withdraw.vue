@@ -16,12 +16,14 @@
 		<div class="weui-cells weui-cells_form">
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">提现金额</label>
+					<label class="weui-label">
+						<span class="required">*</span> 提现金额
+					</label>
 				</div>
 				<div class="weui-cell__bd">
 					<input
 					 v-model.number="form.amount"
-					 @blur="verifyAmount"
+					 @blur="verifyamount(false)"
 					 class="weui-input"
 					 type="number"
 					 placeholder="单次最少提现10元"
@@ -44,7 +46,9 @@
 			</div>
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">账号</label>
+					<label class="weui-label">
+						<span class="required">*</span> 账号
+					</label>
 				</div>
 				<div class="weui-cell__bd">
 					<input
@@ -57,7 +61,9 @@
 			</div>
 			<div class="weui-cell">
 				<div class="weui-cell__hd">
-					<label class="weui-label">姓名</label>
+					<label class="weui-label">
+						<span class="required">*</span> 姓名
+					</label>
 				</div>
 				<div class="weui-cell__bd">
 					<input
@@ -94,7 +100,7 @@ export default {
 	},
 
 	methods: {
-		verifyAmount(isSubmit = false) {
+		verifyamount(isSubmit) {
 			const amount = this.form.amount;
 			let isPass = false;
 			if (isSubmit && !amount) {
@@ -214,6 +220,10 @@ export default {
 		border-radius: 20px;
 		background-color: #468cfe;
 	}
+}
+.required {
+	line-height: 1;
+	color: red;
 }
 </style>
 
