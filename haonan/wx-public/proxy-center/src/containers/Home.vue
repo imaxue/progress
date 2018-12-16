@@ -103,11 +103,12 @@ export default {
 	},
 
 	created() {
+		const authorizationCode = this.$cookies.get('authorizationCode');
 		this.isShowLoading = true;
 		this.$http
 			.all([
 				this.$http.get("/api/agentCenter/survery"),
-				this.$http.get("/api/auth/userInfo")
+				this.$http.get(`/api/auth/userInfo?code=${authorizationCode}`)
 			])
 			.then(response => {
 				this.isShowLoading = false;
