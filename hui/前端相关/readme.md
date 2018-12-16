@@ -380,3 +380,38 @@ git push origin v${cver}
 注释这两句 就好了
 
 ```
+
+```
+有意思的代码  如何让下式成立
+if(a == 1 && a == 2 && a == 3){
+    console.log("我走进来了");
+}
+
+<!--答案1:-->
+var a = {num:0};
+a.valueOf = function(){
+    return ++a.num
+}
+
+<!--答案2：-->
+var num = 1;
+function a(){
+    return num++;
+}
+if(a() == 1 && a() == 2 && a() == 3){
+    console.log("我走进来了");
+}
+
+<!--答案3:-->
+
+var num = 0;
+Function.prototype.toString = function(){
+	return ++num;
+}
+function a(){}
+
+<!--答案4:-->
+var  a = {[Symbol.toPrimitive]: ((i) => () => ++i) (0)};
+
+
+```
