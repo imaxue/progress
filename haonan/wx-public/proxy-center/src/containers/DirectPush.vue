@@ -1,8 +1,16 @@
 <template>
 	<div class="weui-cells">
-		<div class="weui-cell" v-for=" (item,index) of items" :key="`key${index}`"  @click ="copy(item)">
+		<div
+		 class="weui-cell"
+		 v-for=" (item,index) of items"
+		 :key="`key${index}`"
+		 @click="copy(item)"
+		>
 			<div class="weui-cell__hd ">
-				<img class="icon" src="/static/images/icon.jpeg">
+				<img
+				 class="icon"
+				 :src="item.headImage"
+				>
 			</div>
 			<div class="weui-cell__bd">
 				<p class="iconName">{{item.name}}</p>
@@ -22,9 +30,9 @@ export default {
 	name: "List",
 	data() {
 		return {
-			items:[],
+			items: [],
 			isShowLoading: false
-		}
+		};
 	},
 	created() {
 		this.isShowLoading = true;
