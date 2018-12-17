@@ -38,3 +38,18 @@ Observer 生产者 ，用来推送数据
 Iterator 是消费者，用来处理数据
 
 Observable 则是这两者的结合，有其各自的特点
+
+
+
+##### 冷 observable
+
+> 两个订阅者得到两份完全相同的副本
+
+```
+let stream = Rx.Observable.of(1,2,3)
+sream.subscribe() // 1,2,3
+sream.subscribe() // 1,2,3
+```
+
+##### 热订阅者只能收到它开始订阅的值
+

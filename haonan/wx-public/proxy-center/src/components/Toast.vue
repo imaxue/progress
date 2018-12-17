@@ -16,9 +16,7 @@ export default {
 
 	data() {
 		return {
-			msg: "",
 			closed: false,
-			duration: 1500,
 			isShowToast: false
 		};
 	},
@@ -42,9 +40,11 @@ export default {
 	},
 
 	mounted() {
-		setTimeout(() => {
-			this.closed = true;
-		}, this.duration);
+		if (this.duration !== 0) {
+			setTimeout(() => {
+				this.closed = true;
+			}, this.duration * 1000);
+		}
 	}
 };
 </script>
@@ -69,6 +69,6 @@ export default {
 	font-size: 14px;
 	z-index: 5000;
 	color: #fff;
-	background-color: hsla(0, 0%, 7%, .7);
+	background-color: hsla(0, 0%, 7%, 0.7);
 }
 </style>
