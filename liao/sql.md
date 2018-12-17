@@ -35,3 +35,5 @@ left join shop_service_goods on
 left join shop_goods on (shop_service_goods.gid = shop_goods.gid)
 where shop_service.merchant_id = 0
 ```
+
+
