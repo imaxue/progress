@@ -79,6 +79,7 @@ export default {
 
 	data() {
 		return {
+			openid: this.$cookies.get("openid"),
 			nowYear: new Date().getFullYear(),
 			info: {},
 			isShowLoading: false,
@@ -96,6 +97,11 @@ export default {
 		},
 		setUserInfo(result) {
 			this.userInfo = result;
+			// 取到openid后缓存起来，用于以后请求用户信息
+			if (!this.openid) {
+				this.$cookies.set("openid", result.openid);
+				this.$http.defaults.headers["open-id"] = result.openid;
+			}
 		},
 		setInfo(result) {
 			this.info = result;
@@ -103,12 +109,16 @@ export default {
 	},
 
 	created() {
-		const authorizationCode = this.$cookies.get('authorizationCode');
+		const authorizationCode = this.$cookies.get("authorizationCode");
 		this.isShowLoading = true;
 		this.$http
 			.all([
 				this.$http.get("/server/api/agentCenter/survery"),
-				this.$http.get(`/server/api/auth/userInfo?code=${authorizationCode}`)
+				this.$http.get(
+					`/server/api/auth/userInfo?code=${
+						this.openid ? "" : authorizationCode
+					}`
+				)
 			])
 			.then(response => {
 				this.isShowLoading = false;

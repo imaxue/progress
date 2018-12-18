@@ -82,8 +82,10 @@ router.beforeEach((to, from, next) => {
           $toast('系统问题，请您稍后再试!', 0)
       }
     } else {
-      // 往cookie里存一个全局标识，标识用户已经进行了授权
-      Vue.prototype.$cookies.set("authorizationCode", code)
+      // 把code存到cookie里，用于第一次获取用户信息使用
+      Vue.prototype.$cookies.set('authorizationCode', code)
+      // 重置openid
+      Vue.prototype.$cookies.set('openid', '')
     }
   }
 
