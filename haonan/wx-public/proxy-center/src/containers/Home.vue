@@ -3,7 +3,7 @@
 		<div class="top">
 			<div class="titleBlue"></div>
 			<div class="titleWhite">
-				<img :src="userInfo.headimgurl">
+				<img :src="userInfo.headImgUrl">
 				<div class="name">{{userInfo.nickname}}</div>
 				<div class="time">
 					<span>注册时间：{{info.flowTime}}</span>
@@ -19,7 +19,7 @@
 						<div class="weui-grid__icon">
 							<img src="/static/images/price.png">
 						</div>
-						<p class="weui-grid__label">我的佣金1</p>
+						<p class="weui-grid__label">我的佣金</p>
 						<p class="weui-grid__label red">{{info.commission}} 元</p>
 					</div>
 					<div
@@ -116,8 +116,7 @@ export default {
 					const url = res.config.url;
 					if (url === "/server/api/agentCenter/survery") {
 						this.handleResponse(res, this.setInfo);
-					}
-					if (url === "/server/api/auth/userInfo") {
+					} else {
 						this.handleResponse(res, this.setUserInfo);
 					}
 				}
