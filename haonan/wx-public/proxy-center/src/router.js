@@ -4,7 +4,6 @@ import Home from 'src/containers/Home'
 import Withdraw from 'src/containers/Withdraw'
 import WithdrawHistory from 'src/containers/WithdrawHistory'
 import DirectPush from 'src/containers/DirectPush'
-import CopyDemo from 'src/containers/CopyDemo'
 
 Vue.use(Router)
 
@@ -35,11 +34,6 @@ const router = new Router({
       component: DirectPush
     },
     {
-      path: '/copydemo',
-      name: 'copydemo',
-      component: CopyDemo
-    },
-    {
       path: '*',
       redirect: '/index'
     }
@@ -61,7 +55,7 @@ function urlArgs() {
   return args
 }
 
-const hitErrorCode = code => [10003, 10004, 10005, 10006, 10009, 10010, 10011, 10012, 10013, 10015, 10016].findIndex(item => item === code) !== -1
+const hitErrorCode = code => ['10003', '10004', '10005', '10006', '10009', '10010', '10011', '10012', '10013', '10015', '10016'].findIndex(item => item === code)
 
 router.beforeEach((to, from, next) => {
   // 用户在公众号授权中间页点击按钮同意授权
@@ -71,18 +65,17 @@ router.beforeEach((to, from, next) => {
   // 这样的使用$route.query是获取不到参数的，需要使用window.location原生解析
   let code = urlArgs().code
   if (code) {
-    code = Number(code)
     // 有可能是错误的code
-    if (hitErrorCode(code)) {
+    if (hitErrorCode(code) !== -1) {
       const $toast = Vue.prototype.$toast
       switch (code) {
-        case 10004:
+        case '10004':
           $toast('此公众号被封禁!', 0)
           break
-        case 10006:
+        case '10006':
           $toast('请先关注此公众号!', 0)
           break
-        case 10009:
+        case '10009':
           $toast('您的操作太频繁了，请稍后再试!', 0)
           break
         default:
@@ -90,7 +83,7 @@ router.beforeEach((to, from, next) => {
       }
     } else {
       // 往cookie里存一个全局标识，标识用户已经进行了授权
-      Vue.prototype.$cookies.set("authorizationCode", +code)
+      Vue.prototype.$cookies.set("authorizationCode", code)
     }
   }
 
@@ -101,7 +94,7 @@ router.beforeEach((to, from, next) => {
   } else {
     // 没授权过，请求数据，获取公众号授权中间页地址并跳转
     Vue.prototype.$http
-      .get(`/api/auth/url?url=${origin}/&state=${''}`)
+      .get(`/server/api/auth/url?url=${location.href}/&state=${''}`)
       .then(({ data }) => {
         if (data.code === 200) {
           window.location.href = data.result

@@ -37,7 +37,7 @@ export default {
 	created() {
 		this.isShowLoading = true;
 		this.$http
-			.get("/api/agentCenter/firstAgent")
+			.get("/server/api/agentCenter/firstAgent")
 			// 解构response
 			.then(({ data }) => {
 				this.isShowLoading = false;
@@ -57,10 +57,10 @@ export default {
 	},
 	methods: {
 		copySuccess(e) {
-			alert("微信号码复制成功");
+			this.$toast("微信号码复制成功!");
 		},
 		copyFail(e) {
-			alert("微信号码复制失败");
+			this.$toast("微信号码复制失败!");
 		},
 		copy(item) {
 			this.$copyText(item.name).then(this.copySuccess, this.copyFail);

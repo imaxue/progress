@@ -37,7 +37,7 @@ export default {
 	created() {
 		this.isShowLoading = true;
 		this.$http
-			.post("/api/agentCenter/getCashOutLog")
+			.post("/server/api/agentCenter/getCashOutLog")
 			.then(({ data }) => {
 				this.isShowLoading = false;
 				return data;
@@ -58,7 +58,7 @@ export default {
 				this.$toast("服务器开小差了!");
 			});
 	}
-	
+
 };
 </script>
 

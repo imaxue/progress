@@ -145,7 +145,7 @@ export default {
 		withdraw() {
 			this.isShowLoading = true;
 			this.$http
-				.post("/api/agentCenter/cashOut", this.form)
+				.post("/server/api/agentCenter/cashOut", this.form)
 				.then(({ data }) => {
 					this.isShowLoading = false;
 					return data;

@@ -19,7 +19,7 @@
 						<div class="weui-grid__icon">
 							<img src="/static/images/price.png">
 						</div>
-						<p class="weui-grid__label">我的佣金</p>
+						<p class="weui-grid__label">我的佣金1</p>
 						<p class="weui-grid__label red">{{info.commission}} 元</p>
 					</div>
 					<div
@@ -107,17 +107,17 @@ export default {
 		this.isShowLoading = true;
 		this.$http
 			.all([
-				this.$http.get("/api/agentCenter/survery"),
-				this.$http.get(`/api/auth/userInfo?code=${authorizationCode}`)
+				this.$http.get("/server/api/agentCenter/survery"),
+				this.$http.get(`/server/api/auth/userInfo?code=${authorizationCode}`)
 			])
 			.then(response => {
 				this.isShowLoading = false;
 				for (const res of response) {
 					const url = res.config.url;
-					if (url === "/api/agentCenter/survery") {
+					if (url === "/server/api/agentCenter/survery") {
 						this.handleResponse(res, this.setInfo);
 					}
-					if (url === "/api/auth/userInfo") {
+					if (url === "/server/api/auth/userInfo") {
 						this.handleResponse(res, this.setUserInfo);
 					}
 				}
