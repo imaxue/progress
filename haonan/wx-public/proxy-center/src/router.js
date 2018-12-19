@@ -58,6 +58,13 @@ function urlArgs() {
 const hitErrorCode = code => ['10003', '10004', '10005', '10006', '10009', '10010', '10011', '10012', '10013', '10015', '10016'].findIndex(item => item === code)
 
 router.beforeEach((to, from, next) => {
+  // 如果已经有openId了，则证明已经授权过了，不需要再去走下面的逻辑了
+  const openId = Vue.prototype.$cookies.get('openId')
+  if (openId) {
+    next()
+    return
+  }
+
   // 用户在公众号授权中间页点击按钮同意授权
   // 中间页重定向到项目地址，前端获取url中的code值
   // 这里需要注意，使用hash模式的路由，如http://www.hash.com/#/index
@@ -84,19 +91,12 @@ router.beforeEach((to, from, next) => {
     } else {
       // 把code存到cookie里，用于第一次获取用户信息使用
       Vue.prototype.$cookies.set('authorizationCode', code)
-      // 重置openid
-      Vue.prototype.$cookies.set('openid', '')
+      next()
     }
-  }
-
-  // 判断是否授权过，有可能以前授权过，二次进入页面，不需要再次授权
-  const authorizationCode = Vue.prototype.$cookies.get('authorizationCode')
-  if (authorizationCode) {
-    next()
   } else {
     // 没授权过，请求数据，获取公众号授权中间页地址并跳转
     Vue.prototype.$http
-      .get(`/server/api/auth/url?url=${location.href}/&state=${''}`)
+      .get(`/server/api/auth/url?url=${location.href}&state=${''}`)
       .then(({ data }) => {
         if (data.code === 200) {
           window.location.href = data.result

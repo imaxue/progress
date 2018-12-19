@@ -17,7 +17,9 @@ Vue.use(VueCookies)
 Vue.component('Loading', Loading)
 
 Vue.prototype.$toast = toast
-Vue.prototype.$http.defaults.headers['open-id'] = ''
+// 如果有openId，则设置到请求头上
+const openId = Vue.prototype.$cookies.get('openId')
+Vue.prototype.$http.defaults.headers['open-id'] = openId ? openId : ''
 
 Vue.config.productionTip = false
 

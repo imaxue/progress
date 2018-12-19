@@ -88,54 +88,53 @@ export default {
 	},
 
 	methods: {
-		handleResponse(res, cb) {
-			if (res.data.code === 200) {
-				cb(res.data.result);
-			} else {
-				this.$toast(res.data.message);
+		async getUserInfo() {
+			try {
+				// 第一次进来的时候只有code，如果本地有openid了，则说明已经授权过并且是第二次以上进入页面，用openid获取用户信息
+				const { data } = await this.$http.get(
+					`/server/api/auth/userInfo?code=${
+						this.openId
+							? ""
+							: this.$cookies.get("authorizationCode")
+					}`
+				);
+				if (data.code === 200) {
+					this.userInfo = data.result;
+					// 取到openid后缓存起来，用于以后请求用户信息
+					if (!this.openId) {
+						this.$cookies.set("openId", data.result.openId);
+						this.$http.defaults.headers["open-id"] = data.result.openId;
+					}
+				} else {
+					this.$toast(data.message);
+				}
+			} catch (e) {
+				this.isShowLoading = false;
+				this.$toast("服务器开小差了!");
 			}
 		},
-		setUserInfo(result) {
-			this.userInfo = result;
-			// 取到openid后缓存起来，用于以后请求用户信息
-			if (!this.openId) {
-				this.$cookies.set("openId", result.openId);
-				this.$http.defaults.headers["open-id"] = result.openId;
+		async getInfo() {
+			try {
+				const { data } = await this.$http.get(
+					"/server/api/agentCenter/survery"
+				);
+				this.isShowLoading = false;
+				if (data.code === 200) {
+					this.info = data.result;
+				} else {
+					this.$toast(data.message);
+				}
+			} catch (e) {
+				this.isShowLoading = false;
+				this.$toast("服务器开小差了!");
 			}
-		},
-		setInfo(result) {
-			this.info = result;
 		}
 	},
 
-	created() {
-		const authorizationCode = this.$cookies.get("authorizationCode");
+	async created() {
 		this.isShowLoading = true;
-		this.$http
-			.all([
-				this.$http.get("/server/api/agentCenter/survery"),
-				this.$http.get(
-					`/server/api/auth/userInfo?code=${
-						// 如果本地有openid了，则说明已经授权过并且是第二次以上进入页面，用openid获取用户信息
-						this.openId ? "" : authorizationCode
-					}`
-				)
-			])
-			.then(response => {
-				this.isShowLoading = false;
-				for (const res of response) {
-					const url = res.config.url;
-					if (url === "/server/api/agentCenter/survery") {
-						this.handleResponse(res, this.setInfo);
-					} else {
-						this.handleResponse(res, this.setUserInfo);
-					}
-				}
-			})
-			.catch(() => {
-				this.isShowLoading = false;
-				this.$toast("服务器开小差了!");
-			});
+		await this.getUserInfo();
+		await this.getInfo();
 	}
 };
 </script>
