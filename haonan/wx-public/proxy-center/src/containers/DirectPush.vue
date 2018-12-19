@@ -2,11 +2,11 @@
 	<div class="weui-cells">
 		<div
 		 class="weui-cell"
-		 v-for=" (item,index) of items"
+		 v-for=" (item, index) of items"
 		 :key="`key${index}`"
 		 @click="copy(item)"
 		>
-			<div class="weui-cell__hd ">
+			<div class="weui-cell__hd">
 				<img
 				 class="icon"
 				 :src="item.headImage"
@@ -28,12 +28,14 @@
 <script>
 export default {
 	name: "List",
+
 	data() {
 		return {
 			items: [],
 			isShowLoading: false
 		};
 	},
+
 	created() {
 		this.isShowLoading = true;
 		this.$http
@@ -55,6 +57,7 @@ export default {
 				this.$toast("服务器开小差了!");
 			});
 	},
+
 	methods: {
 		copySuccess(e) {
 			this.$toast("微信号码复制成功!");

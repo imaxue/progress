@@ -79,7 +79,7 @@ export default {
 
 	data() {
 		return {
-			openid: this.$cookies.get("openid"),
+			openId: this.$cookies.get("openId"),
 			nowYear: new Date().getFullYear(),
 			info: {},
 			isShowLoading: false,
@@ -98,9 +98,9 @@ export default {
 		setUserInfo(result) {
 			this.userInfo = result;
 			// 取到openid后缓存起来，用于以后请求用户信息
-			if (!this.openid) {
-				this.$cookies.set("openid", result.openid);
-				this.$http.defaults.headers["open-id"] = result.openid;
+			if (!this.openId) {
+				this.$cookies.set("openId", result.openId);
+				this.$http.defaults.headers["open-id"] = result.openId;
 			}
 		},
 		setInfo(result) {
@@ -116,7 +116,8 @@ export default {
 				this.$http.get("/server/api/agentCenter/survery"),
 				this.$http.get(
 					`/server/api/auth/userInfo?code=${
-						this.openid ? "" : authorizationCode
+						// 如果本地有openid了，则说明已经授权过并且是第二次以上进入页面，用openid获取用户信息
+						this.openId ? "" : authorizationCode
 					}`
 				)
 			])

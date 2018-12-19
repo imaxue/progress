@@ -1,19 +1,12 @@
 <template>
 	<div id="app">
 		<router-view />
-		<loading :is-show-loading="isShowLoading" />
 	</div>
 </template>
 
 <script>
 export default {
-	name: "App",
-
-	data() {
-		return {
-			isShowLoading: false
-		};
-	}
+	name: "App"
 };
 </script>
 
