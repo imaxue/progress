@@ -404,3 +404,54 @@ function a(){}
 <!--答案4:-->
 var  a = {[Symbol.toPrimitive]: ((i) => () => ++i) (0)};
 ```
+
+```
+1楼防止班长偷窥
+
+2楼开始写代码
+
+<input
+	type="number"
+	max={100}
+	min={0}
+	name="visitCollectRatio"
+	value={this.state.settings.visitCollectRatio}
+	className="form-control"
+	onChange={this.onChangeHandler.bind(this, "visitCollectRatio")} />{__('%')}
+
+
+onChangeHandler(attr, event) {
+    let eventType = event.target.type, settings = _.clone(this.state.settings);
+
+    if (eventType === "number") {
+      // const value = _.parseInt(event.target.value);
+      const value = event.target.value.replace(/^0/g, '')
+      if ((attr === "actionCollectRatio" || attr === "visitCollectRatio") && (value > 100 || value < 0)) {
+        Warning("只能输入0到100之间的数据");
+      } else if (attr === "blockActivityThreshold" && value < 500) {
+        Warning("卡顿阈值不得小于 500 ms");
+      } else {
+		// if(_.isNaN(value)){	
+        if (value === '') {
+          settings[attr] = 0;
+        } else {
+          settings[attr] = value;
+        }
+      }
+    } else if (eventType === "checkbox") {
+      settings[attr] = event.target.checked;
+    }
+
+    if (!_.isEqual(settings, this.state.settings)) {
+      this.setState({
+        settings: settings
+      });
+    }
+  }
+
+一段简单的代码  但是在我修改前 用户界面会出现 输入框 032 这种现象 但是我注入的value 和 setState的值 却是32 不清楚什么原因  
+后来我就改成了一开始我不进行parseInt保留用户输入的值 然后只是去判断是否为空 这样确实不会出现 032这种现象 但是 settings的值就变成了 字符串的数字 就像这样  visitCollectRatio:'32' 所以 前端的解决办法是在发送请求的时候再一次进行一次parseInt 后台的解决办法就是 要他接受我字符串的数字 他进行一次转化
+
+
+
+```
