@@ -40,12 +40,14 @@
 							<img src="/static/images/cashDraw.png">
 						</div>
 						<p class="weui-grid__label">佣金提现</p>
+						<p class="weui-grid__label">&nbsp;</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
 							<img src="/static/images/secondTeam.png">
 						</div>
-						<p class="weui-grid__label">二级团队</p>
+						<p class="weui-grid__label">二级人数</p>
+						<p class="weui-grid__label">{{info.secondAgentNum}} 人</p>
 					</div>
 					<div class="weui-grid">
 						<div class="weui-grid__icon">
@@ -58,8 +60,24 @@
 						<div class="weui-grid__icon">
 							<img src="/static/images/teamSum.png">
 						</div>
-						<p class="weui-grid__label">团队总数</p>
+						<p class="weui-grid__label">团队总人数</p>
 						<p class="weui-grid__label">{{info.teamNum}} 人</p>
+					</div>
+
+					<div class="weui-grid">
+						<div class="weui-grid__icon">
+							<img src="/static/images/jintie.png">
+						</div>
+						<p class="weui-grid__label">推广注册补贴</p>
+						<p class="weui-grid__label red">{{info.totalRecord}} 元</p>
+					</div>
+
+					<div class="weui-grid" @click="helpClick()">
+						<div class="weui-grid__icon">
+							<img src="/static/images/helpWord.png">
+						</div>
+						<p class="weui-grid__label">帮助文档</p>
+						<p class="weui-grid__label">&nbsp;</p>
 					</div>
 				</div>
 			</div>
@@ -103,7 +121,8 @@ export default {
 					// 取到openid后缓存起来，用于以后请求用户信息
 					if (!this.openId) {
 						this.$cookies.set("openId", data.result.openId);
-						this.$http.defaults.headers["open-id"] = data.result.openId;
+						this.$http.defaults.headers["open-id"] =
+							data.result.openId;
 					}
 				} else {
 					this.$toast(data.message);
@@ -160,16 +179,16 @@ export default {
 	margin-bottom: 40px;
 	.titleBlue {
 		height: 80px;
-		background-color: #468cfe;
+		background-color: #000000;
 	}
 	.titleWhite {
 		background-color: white;
 		height: 120px;
 		margin: -30px 2%;
 		border-radius: 5px;
-		box-shadow: 0 5px 20px -7px #7babf7;
+		box-shadow: 0 5px 20px -7px #d0ad5f;
 		.name {
-			color: #10aeff;
+			color: #d0ad5f;
 			font-size: 14px;
 			text-align: center;
 			margin-top: -10px;
@@ -209,8 +228,8 @@ export default {
 				border: 0 none;
 			}
 		}
-		&:nth-child(5),
-		&:nth-child(6) {
+		&:nth-child(7),
+		&:nth-child(8) {
 			&:after {
 				border: 0 none;
 			}
@@ -218,8 +237,12 @@ export default {
 	}
 	.weui-grid__icon {
 		img {
-			background-color: #468cfe;
+			background-color: #d0ad5f;
+			border-radius: 50%;
 		}
 	}
+}
+.bottom {
+	margin: 20px 0;
 }
 </style>
