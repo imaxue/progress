@@ -455,3 +455,45 @@ onChangeHandler(attr, event) {
 
 
 ```
+
+
+```
+1楼给班长看
+
+2楼开始撸代码 
+
+
+写一个简单的继承方法  现场原因  我司有一个公共组件库 公共组件内右一个组件判断有问题 于是我要重写这个方法
+
+
+import '../../styles/modules/dashBoard.css'
+import React, {Component} from 'react'
+import {bindStores} from '../provider'
+import TimeStore from '../../stores/TimeStore'
+
+import {Select, Modal} from 'one-ui'
+import {Success, Warning, Info} from '../../publicComponents/Notify'
+
+// import {fetchaddwidgets, fetchGetallDashboard, fetchaddDashboard} from '../../actions/midashboard'
+
+import $ from 'jquery';
+import { setTimeout } from 'timers';
+
+class Selectchange extends Select {
+  constructor(props){
+    super(props);
+    this.state = {
+      ...this.props
+    };
+  }
+  fireChangeEvent(newState) {
+    if (this.props.onChange) {
+      this.props.onChange(this.props.multi ? newState.values : newState.values[0]);
+    }
+  }
+}
+
+就是Select组件内的fireChangeEvent方法 写一个例子 方便以后查阅
+
+
+```
