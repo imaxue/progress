@@ -71,8 +71,10 @@
 						<p class="weui-grid__label">推广注册补贴</p>
 						<p class="weui-grid__label red">{{info.popularRecord}} 元</p>
 					</div>
-
-					<div class="weui-grid" @click="helpClick()">
+					<div
+					 class="weui-grid"
+					 @click="helpLink"
+					>
 						<div class="weui-grid__icon">
 							<img src="/static/images/helpWord.png">
 						</div>
@@ -106,6 +108,9 @@ export default {
 	},
 
 	methods: {
+		helpLink() {
+			window.location.href = "https://shimo.im/docs/L0NVSElVxi4lR3kY";
+		},
 		async getUserInfo() {
 			try {
 				// 第一次进来的时候只有code，如果本地有openid了，则说明已经授权过并且是第二次以上进入页面，用openid获取用户信息
