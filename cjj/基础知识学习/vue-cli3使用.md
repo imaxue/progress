@@ -35,3 +35,28 @@ module.exports = {
   }
 }
 ```
+4. 开启gzip
+- 第一步 安装compression-webpack-plugin
+  ```shell
+  npm i -D compression-webpack-plugin
+  ```
+- 第二步 在vue.config.js中配置
+  ```javascript
+  module.exports = {
+    //...
+    configureWebpack: config => {
+      if (process.env.NODE_ENV === 'production') {
+        return {
+          plugins: [
+            /* gzip压缩 */
+            new CompressionPlugin({
+              test: /\.js$|\.html$|.\css/, // 匹配文件名
+              threshold: 10240, // 对超过10k的数据压缩
+              deleteOriginalAssets: false // 不删除源文件
+            })
+          ]
+        }
+      }
+    }
+  }
+  ```
