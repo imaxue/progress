@@ -69,7 +69,7 @@
 							<img src="/static/images/jintie.png">
 						</div>
 						<p class="weui-grid__label">推广注册补贴</p>
-						<p class="weui-grid__label red">{{info.totalRecord}} 元</p>
+						<p class="weui-grid__label red">{{info.popularRecord}} 元</p>
 					</div>
 
 					<div class="weui-grid" @click="helpClick()">
