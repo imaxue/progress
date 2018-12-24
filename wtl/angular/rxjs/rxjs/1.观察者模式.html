@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Producer {
+        constructor() {
+            this.listeners = [];
+        }
+        addListener(listener) {
+            if (typeof listener === 'function') {
+                this.listeners.push(listener)
+            } else {
+                throw new Error('listener 必须是 function')
+            }
+        }
+        removeListener(listener) {
+            this.listeners.splice(this.listeners.indexOf(listener), 1)
+        }
+        notify(message) {
+            this.listeners.forEach(listener => {
+                listener(message);
+            })
+        }
+    }
+
+    var egghead = new Producer();
+
+    function listener1(message) {
+        console.log(message + 'from listener1');
+    }
+
+    function listener2(message) {
+        console.log(message + 'from listener2');
+    }
+
+    egghead.addListener(listener1); // 注册监听
+    egghead.addListener(listener2);
+
+    egghead.notify('A new course!!') // 当某件事情方法时，执行
+</script>
+
+</html>

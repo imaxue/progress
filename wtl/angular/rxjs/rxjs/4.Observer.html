@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.1/Rx.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    let observable = Rx.Observable
+        .create(function (observer) {
+            observer.next('1');
+            observer.next('2');
+            observer.complete();
+            observer.next('不会执行');
+        })
+
+    // // 定义一个观察者，具备 next, error, complete 三个方法
+    let observer = {
+        next: function (value) {
+            console.log(value);
+        },
+        error: function (error) {
+            console.log(error)
+        },
+        complete: function () {
+            console.log('完成了')
+        }
+    }
+
+    // // 用我们定义好的观察者，来订阅这个 observable  
+    // observable.subscribe({
+    //     next: function (value) {
+    //         console.log(value);
+    //     },
+    //     error: function (error) {
+    //         console.log(error)
+    //     },
+    //     complete: function () {
+    //         console.log('完成了')
+    //     }
+    // })
+
+    observable.subscribe(
+        value => { console.log(value) },
+        error => { console.log(error) },
+        () => { console.log('完成了') }
+    )
+
+</script>
+
+</html>

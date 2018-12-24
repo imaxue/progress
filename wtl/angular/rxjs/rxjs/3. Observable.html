@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/@reactivex/rxjs@version/dist/global/Rx.js"> -->
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.1/Rx.js"></script>
+    </script>
+    <script>
+        // 1 创建一个Observable 同步
+        // var observable = Rx.Observable
+        //     .create(function(observer) {
+        //         observer.next('1'); 
+        //         observer.next('2');
+        //     })
+
+        // console.log('start');
+        // observable.subscribe(function(value) {
+        //     console.log(value);
+        // });
+        // console.log('end');
+
+
+        // 2 创建一个Observable 异步的
+        var observable = Rx.Observable
+            .create(function(observer) {
+                observer.next(1);
+                observer.next(2);
+                setTimeout(()=>{
+                    observer.next(3);
+                },1000)
+            })
+            console.log('start');
+            observable.subscribe((value)=>{
+                console.log(value)
+            })
+            console.log('end');
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
