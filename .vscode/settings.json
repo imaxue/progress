@@ -1,6 +1,0 @@
-{
-    "prettier.arrowParens": "always",
-    "prettier.disableLanguages": [],
-    "prettier.semi": true,
-    "prettier.tabWidth": 4,
-}
