@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.1/Rx.js"></script>
+</head>
+
+<body>
+    <!-- <div id="drag"></div> -->
+</body>
+<script>
+    // skip 顾名思义跳过 某些值
+    // let source = Rx.Observable.interval(1000)
+    // let ep = source.skip(3)
+    // Rx.Observable.interval(1000)
+    // .skip(1)
+    // .subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+    // source : ----0----1----2----3----4----5--
+    //                 skip(3)
+    // ep:      -------------------3----4----5--
+
+
+
+
+    // takeLast 取最后几个
+    // let source = Rx.Observable.interval(1000).take(6)
+    // let tl = source.takeLast(2);
+    // Rx.Observable.interval(1000)
+    // .take(6)
+    // .takeLast(2)
+    // .subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+    // source : ----0----1----2----3----4----5|
+    //            takeLast(2)
+    // tl:      ------------------------------(45)|
+
+
+
+    // last 和 takeLast(1) 是一样的 取最后一个
+    // let source = Rx.Observable.interval(1000).take(6);
+    // let last = source.last().subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+
+    // source : ----0----1----2----3----4----5|
+    //                 last()
+    // last:    ------------------------------(5)|
+
+
+    // concat 和 concatAll 类似
+    // let source = Rx.Observable.interval(1000).take(3); // 0 1 2
+    // let source1 = Rx.Observable.of(3); // 3
+    // let source2 = Rx.Observable.of(4,5,6); // 4 5 6
+    // let concatOb = source.concat(source2,source1);
+    // concatOb.subscribe(
+    //     (value) => {
+    //         console.log(value);
+    //     },
+    //     (error) => {
+    //         console.log(error);
+    //     },
+    //     () => {
+    //         console.log('完成了');
+    //     }
+    // )
+    // source : ----0----1----2|
+    // source1: (3)|
+    // source2: (456)|
+    //         concat()
+    // concatOb:----0----1----2(3456)|
+
+
+
+
+
+    // startWith  可以在 observable 的一开始添加要发送的元素
+    // let source  = Rx.Observable.interval(1000)
+    // .startWith('加进来的')
+    // .subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+    // source   : ----0----1----2----3--...
+    //             startWith(0)
+    // startWith: (0)----0----1----2----3--...
+
+
+
+
+    // merge 和 concat 类似 都是合并 Observable 但是操作起来是不一样的
+    // let source = Rx.Observable.interval(1000).take(6);
+    // let source1 = Rx.Observable.interval(10).take(3);
+    // let merge = source.merge(source1);
+    // merge.subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // )
+    // source   ----0----1----2----3----4----5|
+    // source1  --0--1--2|
+    //             merge()
+    // merge    --0-01--21----2----3----4----5|
+
+
+
+    // zip
+    //  zip 会取每个 observable 相同位置的元素并传入 callback，
+    // 也就是说每个 observable 的第 n 个元素会一起被传入 callback
+    // let source = Rx.Observable.interval(500).take(3);
+    // let source1 = Rx.Observable.interval(300).take(6);
+    // var example = source.zip(source1, (x, y) => x + y);
+    // example.subscribe({
+    //     next: (value) => { console.log(value); },
+    //     error: (err) => { console.log('Error: ' + err); },
+    //     complete: () => { console.log('complete'); }
+    // });
+    // zip 会等到 source 跟 source1 都送出了第一个元素，
+    // 再传入 callback，下次则等到 source 跟 source1 都送出了第二个元素再一起传入 callback
+    // source : ----0----1----2|
+    // newest : --0--1--2--3--4--5|
+    //     zip(source1, (x, y) => x + y)
+    // example: ----0----2----4|
+
+    // let source = Rx.Observable.from('hello');
+    // let source2 = Rx.Observable.interval(1000);
+    // let example = source.zip(source2, (x, y) => x);
+    // example.subscribe({
+    //     next: (value) => { console.log(value); },
+    //     error: (err) => { console.log('Error: ' + err); },
+    //     complete: () => { console.log('complete'); }
+    // });
+
+
+    
+    // withLatestFrom
+
+    // var source = Rx.Observable.from('hello').zip(Rx.Observable.interval(500), (x, y) => x);
+    // var source1 = Rx.Observable.from([0,1,1,0,0,1]).zip(Rx.Observable.interval(300), (x, y) => x);
+
+    // var example = source.withLatestFrom(source1, (x, y) => {
+    //     return y === 1 ? x.toUpperCase() : x;
+    // });
+
+    // example.subscribe({
+    //     next: (value) => { console.log(value); },
+    //     error: (err) => { console.log('Error: ' + err); },
+    //     complete: () => { console.log('complete'); }
+    // });
+
+    // withLatestFrom 会在 source 送出值的时候执行 callback，但请注意如果 source 送出值时 source1
+    //  之前没有送出过任何值 callback 仍然不会执行
+
+    // source   : ----h----e----l----l----o|
+    // source1   :--0--1--1--0--0--1|
+    //     withLatestFrom(source1, (x, y) =>  y === 1 ? x.toUpperCase() : x);
+    // example:   ----h----e----l----L----O|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // combineLatest
+    var source = Rx.Observable.interval(500).take(3);
+    var source1 = Rx.Observable.interval(300).take(6);
+
+    var example = source.combineLatest(source1, (x, y) => x + y);
+
+    example.subscribe({
+        next: (value) => { console.log(value); },
+        error: (err) => { console.log('Error: ' + err); },
+        complete: () => { console.log('complete'); }
+    });
+
+    // source : ----0----1----2|
+    // newest : --0--1--2--3--4--5|
+    //      combineLatest(source1, (x, y) => x + y);
+    // example: ----01--23-4--(56)--7|
+
+</script>
+
+</html>
