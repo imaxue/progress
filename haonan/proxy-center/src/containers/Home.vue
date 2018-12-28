@@ -191,7 +191,7 @@ export default {
 		height: 120px;
 		margin: -30px 2%;
 		border-radius: 5px;
-		box-shadow: 0 5px 20px -7px #d0ad5f;
+		box-shadow: 0 5px 20px -7px #000;
 		.name {
 			color: #d0ad5f;
 			font-size: 14px;

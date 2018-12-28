@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background-color: yellowgreen;
+            position: relative;
+        }
+
+        #drag {
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.1/Rx.js"></script>
+</head>
+
+<body>
+    <div id="drag"></div>
+</body>
+<script>
+    // 1.当鼠标在元素上按下左键时，开始监听鼠标的位置
+    // 2.当鼠标移动时，元素位置也发生变化
+    // 3.当鼠标左键松开时，结束监听鼠标移动
+    // 首先获取到drag元素
+    const dragDOM = document.getElementById('drag');
+    // 监听drag元素的鼠标按下事件
+    const mouseDown = Rx.Observable.fromEvent(dragDOM, 'mousedown');
+    // 监听body鼠标弹起事件
+    const mouseUp = Rx.Observable.fromEvent(document.body, 'mouseup');
+    // 监听body鼠标移动事件
+    const mouseMove = Rx.Observable.fromEvent(document.body, 'mousemove');
+    mouseDown
+        .map(e => mouseMove.takeUntil(mouseUp))
+        .concatAll()
+        .map(event => ({ x: event.clientX, y: event.clientY }))
+        .subscribe((e) => {
+            // console.log(e)
+            dragDOM.style.top = e.y + 'px';
+            dragDOM.style.left = e.x + 'px';
+        })
+    // mouseDown
+    //     .map(event => mouseMove.takeUntil(mouseUp)) 
+    //     // 鼠标按下监听鼠标移动事件，鼠标移动在什么时候结束呢 在鼠标弹起的时候 这时候用到了 takeUntil
+    //     .concatAll()
+    //     // 然后将这些事件流转化成一个流
+    //     .map(event => ({ x: event.clientX, y: event.clientY }))
+    //     // 得到 坐标
+    //     .subscribe(pos => {
+    //         dragDOM.style.left = pos.x + 'px';
+    //         dragDOM.style.top = pos.y + 'px';
+    //     })
+</script>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.1/Rx.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    let ob = Rx.Observable.interval(1000);
+    // ob.subscribe((v)=>{
+        // console.log('old',v)
+    // })
+    // map 操作符
+
+
+    // let newob = ob.map(x => x + 1); 
+    // ob:    -----0-----1-----2-----3--...
+    //         map(x => x + 1)
+    // newob: -----1-----2-----3-----4--...
+    // newob.subscribe(
+        // v => { console.log('new',v) },
+        // e => { console.log(e) },
+        // () => { console.log('complete') }
+    // );
+
+    // mapTo
+    // Rx.Observable.interval(1000)
+    // .mapTo(2)
+    // .subscribe(
+    //     value => {
+    //         console.log(value);
+    //     }
+    // )
+    // ob:    -----0-----1-----2-----3--...
+    //         mapTo(2)
+    // newob: -----2-----2-----2-----2--...
+
+    // filter
+    // Rx.Observable.interval(1000)
+    // .filter(x => x % 2 === 0)
+    // .subscribe(
+    //     (value) => {
+    //         console.log(value)
+    //     }
+    // )
+
+    // take 
+    // 去前几个数据
+    // Rx.Observable.interval(1000)
+    // .take(3)
+    // .subscribe(
+    //     v => {
+    //         console.log(v);
+    //     }
+    // )
+
+    // first 
+    // 取第一个数据
+    // console.log(ob)
+    // Rx.Observable.of(1,2,3).take(3).last().subscribe(
+    //     v => {
+    //         console.log(v)
+    //     }
+    // )
+
+
+    // takeUntil
+    // 它发出源 Observable 的值，然后直到第二个 Observable (即 notifier )发出项，它便完成。
+    // 这句话的意思就是当某个事件发生了，第一个Observable也就完成了
+    // let clicks = Rx.Observable.fromEvent(document, 'click');
+    // let result = Rx.Observable.interval(1000).takeUntil(clicks);
+    // result.subscribe({
+    //     next: (value) => { console.log(value); },
+    //     error: (err) => { console.log('Error: ' + err); },
+    //     complete: () => { console.log('complete'); }
+    // });
+
+    // ob :     -----0-----1-----2------3--
+    // click  : ----------------------c----
+    //                 takeUntil(click)
+    // result:  -----0-----1-----2----|
+
+    // cancatAll
+    // 通过顺序地连接内部 Observable，将高阶 Observable 转化为一阶 Observable 。
+    // 也就是 将多维 Observable 转化成一维的Observable
+//   Rx.Observable.fromEvent(document, 'click')
+//   .map(e => Rx.Observable.of(Math.random()))
+//   .concatAll()
+//   .subscribe({
+//         next: (value) => { 
+//             console.log(value); 
+//         },
+//         error: (err) => { console.log('Error: ' + err); },
+//         complete: () => { console.log('complete'); }
+//     });
+    // let arr = [];
+    // let click = document.addEventListener('click',function(e){
+    //     // arr.push(e);
+    //     consle
+    // })
+
+    // click  : ------c------------c--------
+    //     map(e => Rx.Observable.of(1,2,3))
+    // source : ------o------------o--------
+    //                \            \
+    //              (123)|       (123)|
+
+    //                concatAll()
+    // example: ------(123)--------(123)------------
+
+    // cancatAll 类似 JS concat 将两个数组合并向后插入
+    // 会处理 source 先发出来的 observable，必须等到这个 observable 结束，
+    // 才会再处理下一个 source 发出来的 observable
+    // let obs1 = Rx.Observable.interval(1000).take(5);
+    // let obs2 = Rx.Observable.interval(500).take(2);
+    // let obs3 = Rx.Observable.interval(2000).take(1);
+
+    // let source = Rx.Observable.of(obs1, obs2, obs3);
+
+    // let example = source.concatAll();
+
+    // example.subscribe({
+    //     next: (value) => { console.log(value); },
+    //     error: (err) => { console.log('Error: ' + err); },
+    //     complete: () => { console.log('complete'); }
+    // });
+
+    // source : (o1                 o2      o3)|
+    //             \                  \       \
+    //          --0--1--2--3--4|   -0-1|   ----0|
+    //             concatAll()        
+    // example: --0--1--2--3--4-0-1----0|
+
+
+
+</script>
+
+</html>
