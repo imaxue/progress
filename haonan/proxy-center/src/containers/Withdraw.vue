@@ -3,7 +3,7 @@
 		<div class="money">
 			<div class="price">
 				<img
-				 src="/static/images/price.png"
+				 src="/static/images/price-gold.png"
 				 alt="price"
 				>
 				<span>0.00</span>
@@ -178,7 +178,7 @@ export default {
 .money {
 	padding: 20px;
 	text-align: center;
-	background-color: #468cfe;
+	background-color: #000;
 }
 .price {
 	margin-bottom: 10px;
@@ -188,15 +188,15 @@ export default {
 	}
 	span {
 		font-size: 32px;
-		color: #fff;
+		color: #d0ad5f;
 	}
 }
 .history {
 	display: inline-block;
 	padding: 0 25px;
-	border: 1px solid #fff;
+	border: 1px solid #d0ad5f;
 	border-radius: 10px;
-	color: #fff;
+	color: #d0ad5f;
 }
 .alipay {
 	text-align: right;
@@ -216,9 +216,9 @@ export default {
 	p {
 		padding: 10px 5px;
 		text-align: center;
-		color: #fff;
+		color: #d0ad5f;
 		border-radius: 20px;
-		background-color: #468cfe;
+		background-color: #000;
 	}
 }
 .required {

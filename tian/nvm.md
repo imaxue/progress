@@ -10,10 +10,6 @@ proxy: none
 node_mirror: http://npm.taobao.org/mirrors/node/
 npm_mirror: https://npm.taobao.org/mirrors/npm/
 
-作者：紫月凌枫
-链接：https://www.jianshu.com/p/0d591ad6d60d
-來源：简书
-简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
 ```
 
 ### 第二步 安装nvm环境变量
