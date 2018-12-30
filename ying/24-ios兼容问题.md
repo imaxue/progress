@@ -10,6 +10,6 @@ https://blog.csdn.net/freshlover/article/details/43735273
 
 # iphoneX 适配客户端H5页面的方法教程
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+> <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 http://www.cnblogs.com/WQLong/p/7778368.html
