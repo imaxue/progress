@@ -1,0 +1,76 @@
+ # js模块化编程
+
+> 因为有了模块，我们就可以更方便地使用别人的代码，想要什么功能，就加载什么模块。但是，这样做有一个前提，那就是大家必须以同样的方式编写模块，否则你有你的写法，我有我的写法，岂不是乱了套！
+
+## CommonJS
+
+CommonJS API定义很多普通应用程序（主要指非浏览器的应用）使用的API，从而填补了这个空白。它的终极目标是提供一个类似Python，Ruby和Java标准库。这样的话，开发者可以使用CommonJS API编写应用程序，然后这些应用可以运行在不同的JavaScript解释器和不同的主机环境中。
+在兼容CommonJS的系统中，你可以使用JavaScript开发以下程序：
+ 
+1. 服务器端JavaScript应用程序
+2. 命令行工具
+3. 图形界面应用程序
+4. 混合应用程序（如，Titanium或Adobe AIR）
+
+node.js的模块系统，就是参照CommonJS规范实现的。在CommonJS中，有一个全局性方法require()，用于加载模块。假定有一个数学模块math.js，就可以像下面这样加载。
+
+```js
+var math = require('math');
+```
+然后，就可以调用模块提供的方法：
+```js
+　　var math = require('math');
+      math.add(2,3); // 5
+```
+
+CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}
+require()用来引入外部模块；exports对象用于导出当前模块的方法或变量，唯一的导出口；module对象就代表模块本身。
+
+原理浏览器不兼容CommonJS的根本原因，在于缺少四个Node.js环境的变量。
+ 
++ module
++ exports
++ require
++ global
+
+只要能够提供这四个变量，浏览器就能加载 CommonJS 模块。
+
+## AMD
+
+基于commonJS规范的nodeJS出来以后，服务端的模块概念已经形成，很自然地，大家就想要客户端模块。而且最好两者能够兼容，一个模块不用修改，在服务器和浏览器都可以运行。但是，由于一个重大的局限，使得CommonJS规范不适用于浏览器环境。
+
+```js
+　　var math = require('math');
+　　math.add(2, 3);
+```
+
+第二行math.add(2, 3)，在第一行require('math')之后运行，因此必须等math.js加载完成。也就是说，如果加载时间很长，整个应用就会停在那里等。您会注意到 `require 是同步的`。
+这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于"假死"状态。
+ 
+因此，浏览器端的模块，不能采用"同步加载"（synchronous），只能采用"异步加载"（asynchronous）。这就是AMD规范诞生的背景。
+ 
+CommonJS是主要为了JS在后端的表现制定的，他是不适合前端的，AMD(异步模块定义)出现了，它就主要为前端JS的表现制定规范。
+AMD是"Asynchronous Module Definition"的缩写，意思就是"异步模块定义"。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。
+
+AMD比较适合浏览器环境。目前，主要有两个Javascript库实现了AMD规范：require.js和curl.js。
+
+AMD模块的写法
+
+```js
+　　// math.js
+　　define(function (){
+　　　　var add = function (x,y){
+　　　　　　return x+y;
+　　　　};
+　　　　return {
+
+　　　　　　add: add
+　　　　};
+　　});
+```
+
+# CMD
+
+虽然CMD与AMD蛮像的，但区别还是挺明显的，官方非官方都有阐述和理解
+
+SeaJS对模块的态度是懒执行, 而RequireJS对模块的态度是预执行
