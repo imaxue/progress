@@ -6,7 +6,7 @@
 				 src="/static/images/price-gold.png"
 				 alt="price"
 				>
-				<span>0.00</span>
+				<span>{{totalAmount}}</span>
 			</div>
 			<p
 			 class="history"
@@ -91,6 +91,7 @@ export default {
 		return {
 			isVerifyPass: true,
 			isShowLoading: false,
+			totalAmount: "0.00",
 			form: {
 				amount: "",
 				payName: "",
@@ -100,6 +101,26 @@ export default {
 	},
 
 	methods: {
+		getTotalAmount() {
+			this.isShowLoading = true;
+			this.$http
+				.post("/server/api/agentCenter/getTotalAmount")
+				.then(({ data }) => {
+					this.isShowLoading = false;
+					return data;
+				})
+				.then(({ code, result }) => {
+					if (data.code === 200) {
+						this.totalAmount = data.result;
+					} else {
+						this.$toast(data.message);
+					}
+				})
+				.catch(() => {
+					this.isShowLoading = false;
+					this.$toast("服务器开小差了!");
+				});
+		},
 		verifyamount(isSubmit) {
 			const amount = this.form.amount;
 			let isPass = false;
@@ -150,7 +171,7 @@ export default {
 					this.isShowLoading = false;
 					return data;
 				})
-				.then(data => {
+				.then(({ code }) => {
 					if (data.code === 200) {
 						this.$toast("信息提交成功,请等待工作人员审核!");
 					} else {
@@ -162,6 +183,10 @@ export default {
 					this.$toast("服务器开小差了!");
 				});
 		}
+	},
+
+	created() {
+		this.getTotalAmount();
 	}
 };
 </script>
