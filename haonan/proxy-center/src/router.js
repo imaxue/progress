@@ -58,8 +58,6 @@ function urlArgs() {
 const hitErrorCode = code => ['10003', '10004', '10005', '10006', '10009', '10010', '10011', '10012', '10013', '10015', '10016'].findIndex(item => item === code)
 
 router.beforeEach((to, from, next) => {
-  next()
-  return
   // 如果已经有openId了，则证明已经授权过了，不需要再去走下面的逻辑了
   const openId = Vue.prototype.$cookies.get('openId')
   if (openId) {
