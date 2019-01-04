@@ -497,3 +497,128 @@ class Selectchange extends Select {
 
 
 ```
+
+
+```
+首先推荐一款react 多行文本省略组件text-ellipsis
+
+然后推荐一款 vue tooltips 插件 v-tooltip
+
+然后我不想写了  但是我怕班长骂我 还有廖神 不过廖神最近抑郁了
+
+一个很好的公共组件
+
+
+export class NoticeContainer extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      notices: _notices
+    }
+    this._onChange = this._onChange.bind(this)
+  }
+  _onChange(){
+    this.setState({
+      notices: _notices
+    })
+  }
+  componentDidMount(){
+    noticeStore.addChangeListener(this._onChange)
+  }
+  componentWillUnmount(){
+    noticeStore.removeChangeListener(this._onChange)
+  }
+  close(notice){
+
+  }
+  render(){
+    return (
+      <div className="notice-list" style={{zIndex: 9999}}>
+        <ul>
+          {
+            this.state.notices.map(function(notice){
+              return (
+                <Notice
+                  ref={notice.$id}
+                  key={notice.$id}
+                  id={notice.$id}
+                  autoClose={notice.autoClose}
+                  noticeType={notice.noticeType}
+                >
+                  {notice.children}
+                </Notice>
+              )
+            }, this)
+          }
+        </ul>
+      </div>
+    )
+  }
+}
+class Notice extends React.Component{
+  constructor(props){
+    super(props);
+    this.close = this.close.bind(this)
+  }
+  close(){
+    if(this.timer){
+      clearTimeout(this.timer)
+    }
+    if(this.animating){
+      return ;
+    }
+    var id = this.props.id;
+    this.animating = true
+    $(this.refs.root).fadeOut(function(){
+      this.animating = false
+      noticeStore.remove(id)
+    })
+  }
+  componentDidMount(){
+    var _this = this
+    if(this.props.autoClose){
+      this.timer = setTimeout(function(){
+        _this.close()
+      }, 3 * 1000)
+    }
+  }
+  componentWillUnmount(){
+    if(this.timer){
+      clearTimeout(this.timer)
+    }
+  }
+  render(){
+    var noticeType;
+    switch(this.props.noticeType){
+    case 'success':
+      noticeType = 'notice-success';
+      break;
+    case 'info':
+      noticeType = 'notice-info';
+      break;
+    case 'warning':
+      noticeType = 'notice-warning';
+      break;
+    case 'error':
+      noticeType = 'notice-error';
+      break;
+    default:
+      break;
+    }
+    return (
+      <li ref="root">
+        <div className={cx('notice', noticeType)}>
+          <a className="iconfont close" href="javascript:;" onClick={this.close}>&#xe64a;</a>
+          <div className="notice-inner">
+            {_.isFunction(this.props.children) ? this.props.children(this) : this.props.children}
+          </div>
+        </div>
+      </li>
+    )
+  }
+}
+
+
+alert 弹窗
+
+```
