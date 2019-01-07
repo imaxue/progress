@@ -31,3 +31,25 @@
     git remote show origin // 这一步将显示远程分支的信息，从中可以看到已经被删除的分支情况，而且会给出移除操作的方法，也就是下一步的命令
     git remote prune origin // 移除已删除的远程分支
   ```
+
+- git仓库完整迁移
+  + 方式一： 
+    1. 从原地址克隆裸版本库
+        ```shell
+        git clone --bare git://192.168.xx.xx/xxx.git
+        ```
+    2. 在目标服务器上建立一个新的仓库
+    3. 以镜像推送的方式上传代码到新的仓库中（确保新的git服务器上添加了公钥）
+        ```shell
+        git push --mirror git@192.168.xx.xx/new_project.git
+        ```
+      这种方式可以保留原版本库中的所有内容
+  + 方式二：直接切换远程仓库地址
+    ```shell
+      git remote set-url origin remote_git_address
+    ```
+    直接删除原有的仓库并关联新仓库
+    ```shell
+    git remote rm origin
+    git remote add origin remote_git_address
+    ```
