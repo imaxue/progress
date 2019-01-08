@@ -110,13 +110,13 @@ export default {
 					return data;
 				})
 				.then(({ code, result }) => {
-					if (data.code === 200) {
-						this.totalAmount = data.result;
+					if (code === 200) {
+						this.totalAmount = result;
 					} else {
 						this.$toast(data.message);
 					}
 				})
-				.catch(() => {
+				.catch((error) => {
 					this.isShowLoading = false;
 					this.$toast("服务器开小差了!");
 				});
