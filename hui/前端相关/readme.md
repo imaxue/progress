@@ -622,3 +622,32 @@ class Notice extends React.Component{
 alert 弹窗
 
 ```
+
+```
+写一个始终保持全屏的样式
+
+
+onWindowResize(){
+	const initWindowWidth = 1920;
+	const initWindowHeight = 1080;
+	const curWindowWidth =  document.body.clientWidth;
+	const curWindowHeight = document.body.clientHeight;
+
+	const scaleX = curWindowWidth/initWindowWidth;
+	const scaleY = curWindowHeight/initWindowHeight;
+	document.querySelector("youid").style.transform = 'scale('+scleX+','+scaleY+')'；
+
+}
+
+
+组件加载的时候
+
+this.onWindowResize();
+window.addEventListener('resize',()=>{
+	this.onWindowResize()
+})
+
+
+
+
+```
