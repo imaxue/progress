@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>页面布局的4种方式</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+  html,
+  * {
+    margin: 0;
+    padding: 0
+  }
+
+  .layout {
+    margin: 5px 0;
+  }
+
+  .layout acticle div {
+    min-height: 100px;
+    color: #fff
+  }
+</style>
+
+<body>
+  <div>
+    注意语义化
+  </div>
+  <div>
+    每个高度的优缺点，flot需要清除浮动，兼容好，绝对定位快捷，布局已经脱离文档流，子元素也脱离文档流，导致可使用性比较差，flex比较完美，改善了前两种的缺点。、
+    table兼容性好，三个布局当某个单元格高度调整，其他的也会改变，网格布局：代码简洁
+  </div>
+
+  <div>
+    如果高度未知，哪个不能用了呢？float不改动不能使用【浮动的基本原理：当超出后没有遮挡就自动流出，解决：创建bfc】，绝对定位超出，flex,table布局是没用问题的
+  </div>
+  <section class="layout float">
+    <style>
+      .layout.float .left {
+        float: left;
+        width: 300px;
+        background: #f00;
+      }
+
+      .layout.float .right {
+        float: right;
+        width: 300px;
+        background: #0f0;
+      }
+
+      .layout.float .center {
+        background: #00f;
+      }
+    </style>
+    <acticle class="left-right-center">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">中间浮动</div>
+    </acticle>
+  </section>
+  <section class="layout absolute">
+    <style>
+      .layout.absolute .left-right-center>div {
+        position: absolute;
+      }
+
+      .layout.absolute .left {
+        left: 0;
+        width: 300px;
+        background: #f00
+      }
+
+      .layout.absolute .right {
+        right: 0;
+        width: 300px;
+        background: #0f0;
+      }
+
+      .layout.absolute .center {
+        left: 300px;
+        right: 300px;
+        background: #00f;
+      }
+    </style>
+    <acticle class="left-right-center">
+      <div class="left"></div>
+      <div class="center">中间绝对定位</div>
+      <div class="right"></div>
+    </acticle>
+  </section>
+  <section class="layout flexbox">
+    <style>
+      .layout.flexbox {
+        margin-top: 150px;
+      }
+
+      .layout.flexbox .left-right-center {
+        display: flex;
+      }
+
+      .layout.flexbox .left {
+        width: 300px;
+        background: #f00
+      }
+
+      .layout.flexbox .right {
+        width: 300px;
+        background: #0f0;
+      }
+
+      .layout.flexbox .center {
+        flex: 1;
+        background: #00f;
+      }
+    </style>
+    <acticle class="left-right-center">
+      <div class="left"></div>
+      <div class="center">中间</div>
+      <div class="right"></div>
+    </acticle>
+  </section>
+  <section class="layout table">
+    <style>
+      .layout.table .left-right-center {
+        width: 100%;
+        display: table;
+        height: 100px;
+      }
+
+      .layout.table .left-right-center>div {
+        display: table-cell;
+      }
+
+      .layout.table .left {
+        width: 300px;
+        background: #f00
+      }
+
+      .layout.table .right {
+        width: 300px;
+        background: #0f0;
+      }
+
+      .layout.table .center {
+        background: #00f;
+      }
+    </style>
+    <acticle class="left-right-center">
+      <div class="left"></div>
+      <div class="center">中间table</div>
+      <div class="right"></div>
+    </acticle>
+  </section>
+  <!-- 网格布局:原理-->
+  <section class="layout grid">
+    <style>
+      .layout.grid .left-right-center {
+        width: 100%;
+        display: grid;
+        /*声明网格布局 */
+        grid-template-rows: 100px;
+        /*行高 */
+        grid-template-columns: 300px auto 300px;
+        /*共三列，每列的宽度 */
+      }
+
+      .layout.grid .left-right-center>div {
+        display: table-cell;
+      }
+
+      .layout.grid .left {
+        background: #f00
+      }
+
+      .layout.grid .right {
+        background: #0f0;
+      }
+
+      .layout.grid .center {
+        background: #00f;
+      }
+    </style>
+    <acticle class="left-right-center">
+      <div class="left"></div>
+      <div class="center">中间网格布局：热点</div>
+      <div class="right"></div>
+    </acticle>
+  </section>
+</body>
+
+</html>
