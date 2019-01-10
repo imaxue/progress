@@ -16,7 +16,7 @@
 				<span :class="{
 					done: item.status === 3,
 					fail: item.status === 2
-				  }">{{item.status === 1 ? '审核中' : item.status === 2 ? '审核未通过' : '已到账（请至银行卡查收）'}}</span>
+				  }">{{item.status === 1 ? '审核中' : item.status === 2 ? '审核未通过' : '已到账（请至支付宝查收）'}}</span>
 			</li>
 		</ul>
 		<loading :is-show-loading="isShowLoading" />
