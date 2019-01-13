@@ -622,3 +622,53 @@ class Notice extends React.Component{
 alert 弹窗
 
 ```
+
+```
+写一个始终保持全屏的样式
+
+
+onWindowResize(){
+	const initWindowWidth = 1920;
+	const initWindowHeight = 1080;
+	const curWindowWidth =  document.body.clientWidth;
+	const curWindowHeight = document.body.clientHeight;
+
+	const scaleX = curWindowWidth/initWindowWidth;
+	const scaleY = curWindowHeight/initWindowHeight;
+	document.querySelector("youid").style.transform = 'scale('+scleX+','+scaleY+')'；
+
+}
+
+
+组件加载的时候
+
+this.onWindowResize();
+window.addEventListener('resize',()=>{
+	this.onWindowResize()
+})
+
+
+
+
+```
+
+```
+出现场景  现在需要紧急发版 基于上一个版本添加一个小功能  但是这个版本的开发的都不要上线 
+利用git tag 
+
+首先查找git tag 查找上一个tag号
+然后git checkout -b mi-ui-5.4.6.6 tags/mi-ui-5.4.6.6   创建切换到以tag版本号为主的新分支
+
+然后添加新功能 照常开发 照常push 发版
+
+
+```
+
+
+
+
+
+
+
+
+

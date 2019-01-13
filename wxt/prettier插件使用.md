@@ -1,7 +1,7 @@
 # prettier插件使用
 > 错误：Insert `⏎`  prettier/prettier  
 > 原因：因为prettier配置和编辑器prettier配置冲突导致的，在rules中配置掉就可以了  
-> 方案：修改eslint配置文件的rules配置
+> 方案：修改eslint配置文件的rules配置 [把error改成warn]
 ```json
 {
     tabWidth: 4,
