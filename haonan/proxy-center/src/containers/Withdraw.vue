@@ -116,7 +116,8 @@ export default {
 						this.$toast(data.message);
 					}
 				})
-				.catch((error) => {
+				.catch((e) => {
+					console.log("/agentCenter/getTotalAmount:", e);
 					this.isShowLoading = false;
 					this.$toast("服务器开小差了!");
 				});
@@ -178,7 +179,8 @@ export default {
 						this.$toast(data.message);
 					}
 				})
-				.catch(() => {
+				.catch((e) => {
+					console.log("/agentCenter/cashOut:", e);
 					this.isShowLoading = false;
 					this.$toast("服务器开小差了!");
 				});
