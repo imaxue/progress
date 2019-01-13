@@ -109,11 +109,11 @@ export default {
 					this.isShowLoading = false;
 					return data;
 				})
-				.then(({ code, result }) => {
+				.then(({ code, result, message }) => {
 					if (code === 200) {
 						this.totalAmount = result;
 					} else {
-						this.$toast(data.message);
+						this.$toast(message);
 					}
 				})
 				.catch((e) => {
@@ -172,11 +172,11 @@ export default {
 					this.isShowLoading = false;
 					return data;
 				})
-				.then(({ code }) => {
-					if (data.code === 200) {
+				.then(({ code, message }) => {
+					if (code === 200) {
 						this.$toast("信息提交成功,请等待工作人员审核!");
 					} else {
-						this.$toast(data.message);
+						this.$toast(message);
 					}
 				})
 				.catch((e) => {

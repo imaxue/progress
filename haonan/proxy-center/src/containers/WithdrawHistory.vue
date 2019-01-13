@@ -43,17 +43,17 @@ export default {
 				return data;
 			})
 			// 解构response
-			.then(data => {
+			.then(({ code, message, result }) => {
 				// 200表示请求成功并正确返回数据
-				if (data.code === 200) {
-					this.historys = data.result;
+				if (code === 200) {
+					this.historys = result;
 				} else {
 					// 请求成功但数据错误抛出报错信息
-					this.$toast(data.message);
+					this.$toast(message);
 				}
 			})
 			// 接口未通使用catch捕获，统一抛出错误
-			.catch((e) => {
+			.catch(e => {
 				console.log("/agentCenter/getCashOutLog:", e);
 				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
