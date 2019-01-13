@@ -2,12 +2,14 @@
 
 ### 一、概念
 
-Express／koa里有个中间件（middleware）的概念。所谓中间件，就是在收到请求后和发送响应之前这个阶段执行的一些函数。
+> Express／koa里有个中间件（middleware）的概念。所谓中间件，就是在收到请求后和发送响应之前这个阶段执行的一些函数。
 
 要在一条路由的处理链上插入中间件，可以使用express对象的use方法。该方法原型如下：
+
 ```
 app.use([path,] function [, function...])
 ```
+
 当app.use没有提供path参数时，路径默认为“/”。
 
 当你为某个路径安装了中间件，则当以该路径为基础的路径被访问时，都会应用该中间件。比如你为“/abcd”设置了中间件，那么“/abcd/xxx”被访问时也会应用该中间件。
@@ -31,7 +33,7 @@ app.use([path,] function [, function...])
 
 4、中间件和路由处理器的参数中都有回调函数，这个函数有2,3,4个参数
 
-      如果有两个参数就是req和res；
+      如果有两个参数就是req和res；
 
       如果有三个参数就是req,res和next
 
@@ -46,7 +48,7 @@ app.use([path,] function [, function...])
 
 ### 三、koa提供的中间件：
 
-No.1 koa-router
+#### No.1、 koa-router
 
 路由是Web框架必不可少的基础功能，koa.js为了保持自身的精简，并没有像Express.js自带了路由功能，
 
@@ -56,7 +58,7 @@ No.1 koa-router
 
 其他可选路由中间件：koa-route, koa-joi-router, koa-trie-router
 
-No.2 koa-bodyparser
+#### No.2、 koa-bodyparser
 
 koa.js并没有内置Request Body的解析器，当我们需要解析请求体时需要加载额外的中间件，
 
@@ -64,38 +66,37 @@ koa.js并没有内置Request Body的解析器，当我们需要解析请求体�
 
 但不支持form-data的请求体，需要借助 formidable 这个库，也可以直接使用 koa-body 或 koa-better-body
 
-No.3 koa-views
+#### No.3、 koa-views
 
 koa-views对需要进行视图模板渲染的应用是个不可缺少的中间件，支持ejs, nunjucks等众多模板引擎。
 
-No.4 koa-static
+#### No.4、 koa-static
 
 Node.js除了处理动态请求，也可以用作类似Nginx的静态文件服务，在本地开发时特别方便，可用于加载前端文件或后端Fake数据，可结合 koa-compress 和 koa-mount 使用。
 
-No.5 koa-session
+#### No.5、 koa-session
 
 HTTP是无状态协议，为了保持用户状态，我们一般使用Session会话，koa-session提供了这样的功能，
 
 既支持将会话信息存储在本地Cookie，也支持存储在如Redis, MongoDB这样的外部存储设备。
 
-No.6 koa-jwt
+#### No.6、 koa-jwt
 
 随着网站前后端分离方案的流行，越来越多的网站从Session Base转为使用Token Base，JWT(Json Web Tokens)作为一个开放的标准被很多网站采用，koa-jwt这个中间件使用JWT认证HTTP请求。
 
-No.7 koa-helmet
-
+#### No.7、 koa-helmet
 
 网络安全得到越来越多的重视，helmet 通过增加如Strict-Transport-Security, X-Frame-Options, X-Frame-Options等HTTP头提高Express应用程序的安全性，koa-helmet为koa程序提供了类似的功能，参考Node.js安全清单。
 
-No.8 koa-compress
+#### No.8、 koa-compress
 
 当响应体比较大时，我们一般会启用类似Gzip的压缩技术减少传输内容，koa-compress提供了这样的功能，可根据需要进行灵活的配置。
 
-No.9 koa-logger
+#### No.9、 koa-logger
 
 koa-logger提供了输出请求日志的功能，包括请求的url、状态码、响应时间、响应体大小等信息，对于调试和跟踪应用程序特别有帮助，koa-bunyan-logger 提供了更丰富的功能。
 
-No.10 koa-convert
+#### No.10、 koa-convert
 
 对于比较老的使用Generate函数的koa中间件(< koa2)，官方提供了一个灵活的工具可以将他们转为基于Promise的中间件供Koa2使用，同样也可以将新的基于Promise的中间件转为旧式的Generate中间件。
 
@@ -103,7 +104,7 @@ No.10 koa-convert
 四、根据业务具体封装中间件：
 
 ```
-创建middlerware文件夹
+1、创建middlerware文件夹
 
 比如我们要实现加载所有的api请求的路由，可以这么封装: load-api-routes.ts
 
@@ -133,6 +134,7 @@ api.use((ctx, next) => {
 });
 
 // 加载所有路由
+
 export default (app: Koa) => {
     flatten(readdirRecursivelySync(join(__dirname, "..", "api")))
         .map((item: any) => item.replace(join(__dirname, ".."), ".."))
@@ -158,7 +160,7 @@ export default function(obj: { [key: string]: any }) {
 
 ```
 
-在node服务中，index.ts文件中这样引入
+2、在node服务中，index.ts文件中这样引入
 
 ```
 import { createServer } from "http";
