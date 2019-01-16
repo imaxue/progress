@@ -52,7 +52,8 @@ export default {
 				}
 			})
 			// 接口未通使用catch捕获，统一抛出错误
-			.catch(e => {
+			.catch((e) => {
+				console.log("/agentCenter/firstAgent:", e);
 				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
 			});

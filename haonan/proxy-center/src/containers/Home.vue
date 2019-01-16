@@ -63,15 +63,14 @@
 						<p class="weui-grid__label">团队总人数</p>
 						<p class="weui-grid__label">{{info.teamNum}} 人</p>
 					</div>
-
-					<div class="weui-grid">
+					<!-- <div class="weui-grid">
 						<div class="weui-grid__icon">
 							<img src="/static/images/jintie.png">
 						</div>
 						<p class="weui-grid__label">推广注册补贴</p>
 						<p class="weui-grid__label red">{{info.popularRecord}} 元</p>
-					</div>
-					<div
+					</div> -->
+					<!-- <div
 					 class="weui-grid"
 					 @click="helpLink"
 					>
@@ -80,7 +79,7 @@
 						</div>
 						<p class="weui-grid__label">帮助文档</p>
 						<p class="weui-grid__label">&nbsp;</p>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -133,6 +132,7 @@ export default {
 					this.$toast(data.message);
 				}
 			} catch (e) {
+				console.log("/auth/userInfo:", e);
 				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
 			}
@@ -149,6 +149,7 @@ export default {
 					this.$toast(data.message);
 				}
 			} catch (e) {
+				console.log("/agentCenter/survery:", e);
 				this.isShowLoading = false;
 				this.$toast("服务器开小差了!");
 			}

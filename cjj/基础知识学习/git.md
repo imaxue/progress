@@ -53,3 +53,13 @@
     git remote rm origin
     git remote add origin remote_git_address
     ```
+
+- 删除本地和远程分支
+  - 删除本地分支
+    ```shell
+      git branch -d <branchName>
+    ```
+  - 删除远程分支
+    ```shell
+      git push origin --delete <branchName>
+    ```
