@@ -664,6 +664,23 @@ window.addEventListener('resize',()=>{
 
 ```
 
+```
+一个 把对象转化成url挂载参数的方法
+
+mapOBJ(obj){
+    var geturl = '?';
+    if(typeof(obj) === 'undefined' || obj == null || typeof(obj) !== 'object'){
+      return '';
+    }else{
+      Object.keys(obj).forEach(function(key){
+        geturl += `${key}=${obj[key]}&`;
+      });
+    }
+    return geturl.substr(0, geturl.length - 1);
+  }
+
+```
+
 
 
 
