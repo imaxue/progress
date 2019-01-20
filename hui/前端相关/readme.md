@@ -681,6 +681,23 @@ mapOBJ(obj){
 
 ```
 
+```
+移动端适配 怒抄之
+
+1.先设置header里面的meta标签：
+
+<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+
+2.在header写上<script>标签
+
+
+ <script type="text/javascript">
+ 　　document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+ </script>
+
+640是设计稿的宽度  
+
+```
 
 
 
