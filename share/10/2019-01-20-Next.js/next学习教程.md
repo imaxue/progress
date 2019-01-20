@@ -1,6 +1,6 @@
-# Learn Next.js
-
 [TOC]
+
+# Learn Next.js
 
 # 一、入门
 
