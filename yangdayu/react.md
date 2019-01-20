@@ -39,3 +39,81 @@
         	}
     	}
 	}
+
+
+##### Composition组合组件
+###### props.children
+
+	function FancyBorder(props) {
+		return (
+    	<div className={'FancyBorder FancyBorder-' + props.color}>
+      		{props.children}
+      	</div>
+      	);
+      }
+	render(){	
+		return <FancyBorder color="blue">
+      		<h1 className="Dialog-title">
+        		Welcome
+      		</h1>
+	</FancyBorder>
+	}
+
+> props.left 也可是dom
+
+	function SplitPane(props) {
+		return (
+    		<div className="SplitPane">
+      		<div className="SplitPane-left">
+        		{props.left}
+      		</div>
+      		<div className="SplitPane-right">
+        	{props.right}
+      		</div>
+    	</div>
+    	);
+    }
+
+	function App() {
+		return (
+    		<SplitPane
+      	left={
+        	<Contacts />
+      	}
+      	right={
+        	<Chat />
+      	} />
+      );
+    }
+
+
+> return  an Array of elements
+
+	render(){
+		return [
+    		<li key="a">first</li>,
+    		<li key="b">second</li>,
+    		<li key="c">third</li>,
+    		<li key="d">four</li>        
+    	]
+    }
+
+
+> callback回调函数 作为 props.children,可传参！！！ props.children也可以是函数
+			
+	function Repeat(props) {
+		let items = [];	
+		for (let i = 0; i < props.numTimes; i++) {
+    		items.push(props.children(i));	
+    	}
+    	return <div>{items}</div>;
+    }
+
+
+	function ListOfTenThings() {
+		return (
+    		<Repeat numTimes={10}>
+      		{(index) => <div key={index}>This is item {index} in the list</div>}
+    		</Repeat>
+    	);
+    }

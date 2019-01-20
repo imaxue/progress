@@ -109,14 +109,15 @@ export default {
 					this.isShowLoading = false;
 					return data;
 				})
-				.then(({ code, result }) => {
+				.then(({ code, result, message }) => {
 					if (code === 200) {
 						this.totalAmount = result;
 					} else {
-						this.$toast(data.message);
+						this.$toast(message);
 					}
 				})
-				.catch((error) => {
+				.catch((e) => {
+					console.log("/agentCenter/getTotalAmount:", e);
 					this.isShowLoading = false;
 					this.$toast("服务器开小差了!");
 				});
@@ -171,14 +172,15 @@ export default {
 					this.isShowLoading = false;
 					return data;
 				})
-				.then(({ code }) => {
-					if (data.code === 200) {
+				.then(({ code, message }) => {
+					if (code === 200) {
 						this.$toast("信息提交成功,请等待工作人员审核!");
 					} else {
-						this.$toast(data.message);
+						this.$toast(message);
 					}
 				})
-				.catch(() => {
+				.catch((e) => {
+					console.log("/agentCenter/cashOut:", e);
 					this.isShowLoading = false;
 					this.$toast("服务器开小差了!");
 				});

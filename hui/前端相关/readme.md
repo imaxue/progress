@@ -651,3 +651,41 @@ window.addEventListener('resize',()=>{
 
 
 ```
+
+```
+出现场景  现在需要紧急发版 基于上一个版本添加一个小功能  但是这个版本的开发的都不要上线 
+利用git tag 
+
+首先查找git tag 查找上一个tag号
+然后git checkout -b mi-ui-5.4.6.6 tags/mi-ui-5.4.6.6   创建切换到以tag版本号为主的新分支
+
+然后添加新功能 照常开发 照常push 发版
+
+
+```
+
+```
+一个 把对象转化成url挂载参数的方法
+
+mapOBJ(obj){
+    var geturl = '?';
+    if(typeof(obj) === 'undefined' || obj == null || typeof(obj) !== 'object'){
+      return '';
+    }else{
+      Object.keys(obj).forEach(function(key){
+        geturl += `${key}=${obj[key]}&`;
+      });
+    }
+    return geturl.substr(0, geturl.length - 1);
+  }
+
+```
+
+
+
+
+
+
+
+
+
