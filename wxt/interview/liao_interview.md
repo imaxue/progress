@@ -23,14 +23,12 @@
 - ES6新增API
 - let const区别
 - promise介绍，
-- 概述event loop，和node里的区别
+- 概述event loop
 - 手写一个promise实现
 - async await的实现
 - 写个简单正则，零宽断言介绍
 - polyfill优缺点
 - for of 和forEach优缺点
-- proxy
-- 迭代器
 - ...运算符和深拷贝几种实现
 
 
@@ -108,13 +106,7 @@
 - 几种本地存储的区别
 - 本地数据库
 - pwa实现方法
-## node
-- 中间件原理，各框架实现区别
-- 并发问题
-- XSS
-- request请求
-- 事件循环
-- rpc
+
 ## Git
 - merge和rebase区别
 - git常用命令
