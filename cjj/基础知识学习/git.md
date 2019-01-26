@@ -63,3 +63,12 @@
     ```shell
       git push origin --delete <branchName>
     ```
+
+- stash存储。包含未跟踪的文件
+  ```shell
+    git stash save -u --<stashName>
+  ```
+- 从develop分支拉取到当前分支
+  ```shell
+    git pull --tags origin develop
+  ```
