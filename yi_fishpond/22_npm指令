@@ -1,0 +1,102 @@
+# 指令分析
+> package.json里面
+
+```js
+"dev": "node build/dev-server.js",
+
+"build": "node build/build.js",
+```
+
+意思：运行”npm run dev”的时候执行的是build/dev-server.js文件，
+
+运行”npm run build”的时候执行的是build/build.js文件。
+
+## build文件夹分析
+build/dev-server.js
+npm run dev 执行的文件build/dev-server.js文件，执行了：
+
+检查node和npm的版本
+引入相关插件和配置
+创建express服务器和webpack编译器
+配置开发中间件（webpack-dev-middleware）和热重载中间件（webpack-hot-middleware）
+挂载代理服务和中间件
+配置静态资源
+启动服务器监听特定端口（8080）
+自动打开浏览器并打开特定网址（localhost:8080）
+
+说明： express服务器提供静态文件服务，不过它还使用了http-proxy-middleware，一个http请求代理的中间件。前端开发过程中需要使用到后台的API的话，可以通过配置proxyTable来将相应的后台请求代理到专用的API服务器。
+
+build/webpack.base.conf.js
+dev-server依赖的webpack配置是webpack.dev.conf.js文件，
+
+测试环境下使用的是webpack.prod.conf.js
+
+webpack.dev.conf.js中又引用了webpack.base.conf.js
+
+webpack.base.conf.js主要完成了下面这些事情：
+
+1. 配置webpack编译入口
+2. 配置webpack输出路径和命名规则
+3. 配置模块resolve规则
+4. 配置不同类型模块的处理规则
+这个配置里面只配置了.js、.vue、图片、字体等几类文件的处理规则，如果需要处理其他文件可以在module.rules里面配置。
+
+build/webpack.dev.conf.js
+在webpack.base.conf的基础上增加完善了开发环境下面的配置，主要包括下面几件事情：
+
+将hot-reload相关的代码添加到entry chunks
+合并基础的webpack配置
+使用styleLoaders
+配置Source Maps
+配置webpack插件
+
+build/check-versions.js和build/dev-client.js
+最后是build文件夹下面两个比较简单的文件，
+
+dev-client.js似乎没有使用到，代码也比较简单，这里不多讲。
+
+check-version.js完成对node和npm的版本检测
+
+build/utils.js和build/vue-loader.conf.js
+
+webpack配置文件中使用到了utils.js和vue-loader.conf.js这两个文件，utils主要完成下面3件事：
+
+## 配置静态资源路径
+生成cssLoaders用于加载.vue文件中的样式
+生成styleLoaders用于加载不在.vue文件中的单独存在的样式文件
+
+
+vue-loader.conf则只配置了css加载器以及编译css之后自动添加前缀。
+
+build/build.js
+构建环境下的配置，
+
+build.js主要完成下面几件事：
+
+loading动画
+删除创建目标文件夹
+webpack编译
+输出信息
+
+build/webpack.prod.conf.js
+
+构建的时候用到的webpack配置来自webpack.prod.conf.js，该配置同样是在webpack.base.conf基础上的进一步完善。主要完成下面几件事情：
+
+合并基础的webpack配置
+使用styleLoaders
+配置webpack的输出
+配置webpack插件
+gzip模式下的webpack插件配置
+webpack-bundle分析
+说明： webpack插件里面多了丑化压缩代码以及抽离css文件等插件。
+
+config文件夹分析
+config/index.js
+
+config文件夹下最主要的文件就是index.js了，
+
+在这里面描述了开发和构建两种环境下的配置，前面的build文件夹下也有不少文件引用了index.js里面的配置。
+
+config/dev.env.js、config/prod.env.js和config/test.env.js
+
+这三个文件就简单设置了环境变量而已，没什么特别的。
