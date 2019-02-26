@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     gulpSync = require('gulp-sync')(gulp),
+    plumber = require('gulp-plumber'),
     base64 = require('gulp-base64'),
     browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer')({
@@ -10,14 +11,14 @@ var gulp = require('gulp'),
         ]
     }),
     postcss = require('gulp-postcss'),
-    stylus = require('gulp-stylus'),
+    sass = require('gulp-sass'),
     changed = require('gulp-changed'),
     fileinclude = require('gulp-file-include'),
     rename = require('gulp-rename'),
     del = require('del'),
     uglify = require("gulp-uglify"),
     csso = require('gulp-csso'),
-    htmlMinify = require('gulp-html-minify'),
+    // htmlMinify = require('gulp-html-minify'),
     imagemin = require('gulp-imagemin'),
     rev = require('gulp-rev'),
     revCollector = require('gulp-rev-collector'),
@@ -39,15 +40,23 @@ gulp.task('clean', function () {
 gulp.task('config', function () {
     if (env === 'development') {
         return gulp.src('config/config.dev.js')
-            .pipe(rename({
-                basename: 'config'
-            }))
+            .pipe(
+                rename(
+                    {
+                        basename: 'config'
+                    }
+                )
+            )
             .pipe(gulp.dest(devDir + '/js'))
     } else {
         return gulp.src('config/config.prod.js')
-            .pipe(rename({
-                basename: 'config'
-            }))
+            .pipe(
+                rename(
+                    {
+                        basename: 'config'
+                    }
+                )
+            )
             .pipe(gulp.dest(prodDir + '/js'))
     }
 });
@@ -55,6 +64,7 @@ gulp.task('config', function () {
 gulp.task('html', function () {
     if (env === 'development') {
         return gulp.src('app/*.html')
+            .pipe(plumber())
             .pipe(fileinclude())
             .pipe(gulp.dest(devDir))
             .pipe(browserSync.stream())
@@ -68,17 +78,24 @@ gulp.task('html', function () {
 
 gulp.task('css', function () {
     if (env === 'development') {
-        return gulp.src('app/css/**/*.styl')
-            .pipe(changed(devDir + '/css'))
-            .pipe(stylus())
+        return gulp.src('app/css/**/*.scss')
+            .pipe(plumber())
+            .pipe(
+                changed(
+                    devDir + '/css',
+                    {
+                        extension: '.css'
+                    }
+                )
+            )
+            .pipe(sass())
             .pipe(postcss([autoprefixer]))
             .pipe(base64())
             .pipe(gulp.dest(devDir + '/css'))
             .pipe(browserSync.stream())
     } else {
-        return gulp.src('app/css/**/*.styl')
-            .pipe(changed(devDir + '/css'))
-            .pipe(stylus())
+        return gulp.src('app/css/**/*.scss')
+            .pipe(sass())
             .pipe(postcss([autoprefixer]))
             .pipe(base64())
             .pipe(csso())
@@ -92,6 +109,7 @@ gulp.task('css', function () {
 gulp.task('imgs', function () {
     if (env === 'development') {
         return gulp.src('app/imgs/**/*.*')
+            .pipe(plumber())
             .pipe(gulp.dest(devDir + '/imgs'))
     } else {
         return gulp.src('app/imgs/**/*.*')
@@ -106,6 +124,7 @@ gulp.task('imgs', function () {
 gulp.task('js', function () {
     if (env === 'development') {
         return gulp.src('app/js/**/*.js')
+            .pipe(plumber())
             .pipe(gulp.dest(devDir + '/js'))
             .pipe(browserSync.stream())
     } else {
@@ -131,7 +150,7 @@ gulp.task('browserSync', function () {
 
 gulp.task('watch', function () {
     gulp.watch('app/**/*.html', ['html']);
-    gulp.watch('app/css/**/*.styl', ['css']);
+    gulp.watch('app/css/**/*.scss', ['css']);
     gulp.watch('app/imgs/**/*.*', ['imgs']);
     gulp.watch('app/js/**/*.js', ['js'])
 });
