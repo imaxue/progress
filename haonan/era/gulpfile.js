@@ -22,6 +22,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     rev = require('gulp-rev'),
     revCollector = require('gulp-rev-collector'),
+    path = require('path'),
     //开发环境编译输出地址
     devDir = 'DEV',
     //生产环境编译输出地址
@@ -40,23 +41,15 @@ gulp.task('clean', function () {
 gulp.task('config', function () {
     if (env === 'development') {
         return gulp.src('config/config.dev.js')
-            .pipe(
-                rename(
-                    {
-                        basename: 'config'
-                    }
-                )
-            )
+            .pipe(rename({
+                basename: 'config'
+            }))
             .pipe(gulp.dest(devDir + '/js'))
     } else {
         return gulp.src('config/config.prod.js')
-            .pipe(
-                rename(
-                    {
-                        basename: 'config'
-                    }
-                )
-            )
+            .pipe(rename({
+                basename: 'config'
+            }))
             .pipe(gulp.dest(prodDir + '/js'))
     }
 });
@@ -65,7 +58,9 @@ gulp.task('html', function () {
     if (env === 'development') {
         return gulp.src('app/*.html')
             .pipe(plumber())
-            .pipe(fileinclude())
+            .pipe(fileinclude({
+                basepath: path.join(__dirname, 'app/public-fragment/')
+            }))
             .pipe(gulp.dest(devDir))
             .pipe(browserSync.stream())
     } else {
@@ -152,7 +147,7 @@ gulp.task('watch', function () {
     gulp.watch('app/**/*.html', ['html']);
     gulp.watch('app/css/**/*.scss', ['css']);
     gulp.watch('app/imgs/**/*.*', ['imgs']);
-    gulp.watch('app/js/**/*.js', ['js'])
+    gulp.watch('app/js/**/*.js', ['js']);
 });
 
 gulp.task('hash', function () {
