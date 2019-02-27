@@ -699,7 +699,18 @@ mapOBJ(obj){
 
 ```
 
+```
+写了一个css阴影的动态效果 然后某些人的电脑出现了字体模糊的效果 
 
+钉一个解决办法
+
+出现原因transform: translate(-50%, -50%)
+写上transform：translateZ(0)
+
+或者在发生文字模糊的地方加上transform: translate3d(0,0,0)，解决文字模糊以及的问题。
+
+
+```
 
 
 
