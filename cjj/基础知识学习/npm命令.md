@@ -7,3 +7,5 @@
   + 全局安装： ``npm install -g xxx``
 
 - 查看全局安装的插件：``npm list -g --depth 0``
+
+- 升级全局安装的包： ``npm update -g xxx``
