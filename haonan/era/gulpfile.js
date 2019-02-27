@@ -44,28 +44,30 @@ gulp.task('config', function () {
             .pipe(rename({
                 basename: 'config'
             }))
-            .pipe(gulp.dest(devDir + '/js'))
+            .pipe(gulp.dest(devDir + '/js/public'))
     } else {
         return gulp.src('config/config.prod.js')
             .pipe(rename({
                 basename: 'config'
             }))
-            .pipe(gulp.dest(prodDir + '/js'))
+            .pipe(gulp.dest(prodDir + '/js/public'))
     }
 });
 
 gulp.task('html', function () {
     if (env === 'development') {
-        return gulp.src('app/*.html')
+        return gulp.src('app/html/pages/*.html')
             .pipe(plumber())
             .pipe(fileinclude({
-                basepath: path.join(__dirname, 'app/public-fragment/')
+                basepath: path.join(__dirname, 'app/html/public/')
             }))
             .pipe(gulp.dest(devDir))
             .pipe(browserSync.stream())
     } else {
-        return gulp.src('app/*.html')
-            .pipe(fileinclude())
+        return gulp.src('app/html/pages/*.html')
+            .pipe(fileinclude({
+                basepath: path.join(__dirname, 'app/html/public/')
+            }))
             // .pipe(htmlMinify())
             .pipe(gulp.dest(prodDir))
     }

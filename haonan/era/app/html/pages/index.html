@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>首页</title>
+    @@loop('head-link.html', [
+    { "name": "reset" },
+    { "name": "head" },
+    { "name": "footer" }
+    ])
+    <link rel="stylesheet" href="css/pages/index/index.css">
+</head>
+
+<body>
+    <div class="container">
+        @@include('head.html')
+        @@include('../../index-children.html')
+        @@include('footer.html')
+    </div>
+    @@loop('public-script.html', [
+    { "name": "jQuery" },
+    { "name": "config" }
+    ])
+    <script src="js/pages/index/index.js"></script>
+</body>
+
+</html>
