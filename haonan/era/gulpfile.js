@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     gulpSync = require('gulp-sync')(gulp),
+    plumber = require('gulp-plumber'),
     base64 = require('gulp-base64'),
     browserSync = require('browser-sync'),
     autoprefixer = require('autoprefixer')({
@@ -10,17 +11,18 @@ var gulp = require('gulp'),
         ]
     }),
     postcss = require('gulp-postcss'),
-    stylus = require('gulp-stylus'),
+    sass = require('gulp-sass'),
     changed = require('gulp-changed'),
     fileinclude = require('gulp-file-include'),
     rename = require('gulp-rename'),
     del = require('del'),
     uglify = require("gulp-uglify"),
     csso = require('gulp-csso'),
-    htmlMinify = require('gulp-html-minify'),
+    // htmlMinify = require('gulp-html-minify'),
     imagemin = require('gulp-imagemin'),
     rev = require('gulp-rev'),
     revCollector = require('gulp-rev-collector'),
+    path = require('path'),
     //开发环境编译输出地址
     devDir = 'DEV',
     //生产环境编译输出地址
@@ -42,25 +44,30 @@ gulp.task('config', function () {
             .pipe(rename({
                 basename: 'config'
             }))
-            .pipe(gulp.dest(devDir + '/js'))
+            .pipe(gulp.dest(devDir + '/js/public'))
     } else {
         return gulp.src('config/config.prod.js')
             .pipe(rename({
                 basename: 'config'
             }))
-            .pipe(gulp.dest(prodDir + '/js'))
+            .pipe(gulp.dest(prodDir + '/js/public'))
     }
 });
 
 gulp.task('html', function () {
     if (env === 'development') {
-        return gulp.src('app/*.html')
-            .pipe(fileinclude())
+        return gulp.src('app/html/pages/*.html')
+            .pipe(plumber())
+            .pipe(fileinclude({
+                basepath: path.join(__dirname, 'app/html/public/')
+            }))
             .pipe(gulp.dest(devDir))
             .pipe(browserSync.stream())
     } else {
-        return gulp.src('app/*.html')
-            .pipe(fileinclude())
+        return gulp.src('app/html/pages/*.html')
+            .pipe(fileinclude({
+                basepath: path.join(__dirname, 'app/html/public/')
+            }))
             // .pipe(htmlMinify())
             .pipe(gulp.dest(prodDir))
     }
@@ -68,17 +75,24 @@ gulp.task('html', function () {
 
 gulp.task('css', function () {
     if (env === 'development') {
-        return gulp.src('app/css/**/*.styl')
-            .pipe(changed(devDir + '/css'))
-            .pipe(stylus())
+        return gulp.src('app/css/**/*.scss')
+            .pipe(plumber())
+            .pipe(
+                changed(
+                    devDir + '/css',
+                    {
+                        extension: '.css'
+                    }
+                )
+            )
+            .pipe(sass())
             .pipe(postcss([autoprefixer]))
             .pipe(base64())
             .pipe(gulp.dest(devDir + '/css'))
             .pipe(browserSync.stream())
     } else {
-        return gulp.src('app/css/**/*.styl')
-            .pipe(changed(devDir + '/css'))
-            .pipe(stylus())
+        return gulp.src('app/css/**/*.scss')
+            .pipe(sass())
             .pipe(postcss([autoprefixer]))
             .pipe(base64())
             .pipe(csso())
@@ -92,6 +106,7 @@ gulp.task('css', function () {
 gulp.task('imgs', function () {
     if (env === 'development') {
         return gulp.src('app/imgs/**/*.*')
+            .pipe(plumber())
             .pipe(gulp.dest(devDir + '/imgs'))
     } else {
         return gulp.src('app/imgs/**/*.*')
@@ -106,6 +121,7 @@ gulp.task('imgs', function () {
 gulp.task('js', function () {
     if (env === 'development') {
         return gulp.src('app/js/**/*.js')
+            .pipe(plumber())
             .pipe(gulp.dest(devDir + '/js'))
             .pipe(browserSync.stream())
     } else {
@@ -131,9 +147,9 @@ gulp.task('browserSync', function () {
 
 gulp.task('watch', function () {
     gulp.watch('app/**/*.html', ['html']);
-    gulp.watch('app/css/**/*.styl', ['css']);
+    gulp.watch('app/css/**/*.scss', ['css']);
     gulp.watch('app/imgs/**/*.*', ['imgs']);
-    gulp.watch('app/js/**/*.js', ['js'])
+    gulp.watch('app/js/**/*.js', ['js']);
 });
 
 gulp.task('hash', function () {

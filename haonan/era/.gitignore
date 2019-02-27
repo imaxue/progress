@@ -1,8 +1,7 @@
 node_modules/
-dist/
 npm-debug.log*
 debug.log*
 .vscode/
 .idea/
-dev/
-dist/
+DEV/
+DIST/
