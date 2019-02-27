@@ -1,6 +1,13 @@
 @import './var.scss';
-.container {
+.base-container {
     width: 100%;
     height: 100%;
-    font-size: $base-font;
+    padding-top: 120px;
+    box-sizing: border-box;
+}
+
+.base-content {
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
 }

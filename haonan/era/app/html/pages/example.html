@@ -10,17 +10,19 @@
     @@loop('head-link.html', [
     { "name": "reset" },
     { "name": "global" },
-    { "name": "head" },
+    { "name": "header" },
     { "name": "footer" }
     ])
     <link rel="stylesheet" href="css/pages/example/index.css">
 </head>
 
 <body>
-    <div class="container">
-        @@include('head.html')
-        @@include('../../example-content.html')
-        @@include('footer.html')
+    @@include('header.html')
+    <div class="base-container">
+        <div class="base-content">
+            @@include('../../example-content.html')
+            @@include('footer.html')
+        </div>
     </div>
     @@loop('public-script.html', [
     { "name": "jQuery" },
