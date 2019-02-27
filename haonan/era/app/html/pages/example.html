@@ -6,27 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
-    <title>首页</title>
+    <title>example</title>
     @@loop('head-link.html', [
     { "name": "reset" },
     { "name": "global" },
     { "name": "head" },
     { "name": "footer" }
     ])
-    <link rel="stylesheet" href="css/pages/index/index.css">
+    <link rel="stylesheet" href="css/pages/example/index.css">
 </head>
 
 <body>
     <div class="container">
         @@include('head.html')
-        @@include('../../index-content.html')
+        @@include('../../example-content.html')
         @@include('footer.html')
     </div>
     @@loop('public-script.html', [
     { "name": "jQuery" },
     { "name": "config" }
     ])
-    <script src="js/pages/index/bundle.js"></script>
+    <script src="js/pages/example/bundle.js"></script>
 </body>
 
 </html>
