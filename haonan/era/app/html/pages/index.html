@@ -9,6 +9,7 @@
     <title>首页</title>
     @@loop('head-link.html', [
     { "name": "reset" },
+    { "name": "global" },
     { "name": "head" },
     { "name": "footer" }
     ])
@@ -18,7 +19,7 @@
 <body>
     <div class="container">
         @@include('head.html')
-        @@include('../../index-children.html')
+        @@include('../../index-content.html')
         @@include('footer.html')
     </div>
     @@loop('public-script.html', [
