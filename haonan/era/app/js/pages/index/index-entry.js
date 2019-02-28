@@ -1,5 +1,5 @@
 var browserify = require('./browserify')
 $(function () {
-    console.log('index!')
+    console.log('index')
     browserify()
 })
