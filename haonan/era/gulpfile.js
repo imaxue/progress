@@ -46,7 +46,7 @@ gulp.task('pages-js', pagesJs);
 gulp.task('browserSync', function () {
     browserSync({
         port: 9090,
-        open: false,
+        open: true,
         notify: false,
         server: {
             baseDir: devDir
@@ -72,5 +72,4 @@ gulp.task('delRev', function () {
 });
 
 gulp.task('dev', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'public-js', 'pages-js'], 'browserSync', 'watch']));
-// gulp.task('build', gulpSync.sync(['clean', 'config', ['imgs', 'css', 'public-js', 'pages-js'], 'html', 'hash', 'delRev']));
-gulp.task('build', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'public-js', 'pages-js']]));
+gulp.task('build', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'public-js', 'pages-js'], 'hash', 'delRev']));
