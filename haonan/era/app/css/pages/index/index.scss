@@ -1,3 +1,14 @@
-.index {
-    height: 100%;
+.left-container {
+    height: 100px;
+    margin-right: 455px;
+    background-color: pink;
+}
+
+.right-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 455px;
+    height: 100px;
+    background-color: green;
 }

@@ -1,5 +1,5 @@
 function browserify() {
-    console.log('browserify-index!')
+    console.log('browserify-index')
 }
 
 module.exports = browserify

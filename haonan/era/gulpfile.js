@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     rename = require('gulp-rename'),
     del = require('del'),
-    rev = require('gulp-rev'),
     revCollector = require('gulp-rev-collector');
 
 var taskHtml = require('./tasks/html'),

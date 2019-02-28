@@ -19,6 +19,7 @@ function dir(dirName) {
 }
 
 function development() {
+    console.log('html')
     return g.pipe(plumber())
         .pipe(fileinclude({
             basepath: dir('app/html/public')
