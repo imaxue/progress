@@ -1,13 +1,24 @@
 @import './var.scss';
+@import './company.scss';
+@import 'utils.scss';
+body {
+  background-color: #f9f9f9;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 1200px;
+}
+
 .base-container {
-    width: 100%;
-    height: 100%;
-    padding-top: 120px;
-    box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding-top: 120px;
+  box-sizing: border-box;
 }
 
 .base-content {
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
 }

@@ -1,0 +1,42 @@
+@import './var.scss';
+.user-side {
+  margin-right: 20px;
+  width: 450px;
+  &__card {
+    margin-bottom: 20px;
+    height: 380px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #fff;
+    overflow: hidden;
+  }
+  &__avatar {
+    margin: 40px auto 33px;
+    $width: 150px;
+    width: $width;
+    height: $width;
+    background-color: #e8e8e8;
+  }
+  &__username {
+    font-size: 22px;
+    color: $font-color-primary;
+  }
+  &__menu {
+    padding-bottom: 133px;
+    background-color: #fff;
+    text-align: center;
+    .menu-item {
+      font-size: 20px;
+      opacity: .3;
+      &.active {
+        background-color: #f7f7f7;
+        opacity: 1;
+      }
+      a {
+        display: block;
+        padding: 20px 0;
+        color: $font-color-regular;
+      }
+    }
+  }
+}

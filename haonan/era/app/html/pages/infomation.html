@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>企业资料</title>
+    @@loop('head-link.html', [
+    { "name": "reset" },
+    { "name": "global" },
+    { "name": "header" },
+    { "name": "footer" }
+    ])
+    <link rel="stylesheet" href="css/pages/infomation/index.css">
+</head>
+
+<body>
+    @@include('header.html')
+    <div class="base-container">
+        <div class="base-content">
+          <div class="wrapper clearfix">
+            @@include('company.html')
+            @@include('../../infomation-content.html')
+            @@include('footer.html')
+          </div>
+        </div>
+    </div>
+    @@loop('public-script.html', [
+    { "name": "jQuery" },
+    { "name": "config" }
+    ])
+    <script src="js/pages/user/bundle.js"></script>
+</body>
+
+</html>

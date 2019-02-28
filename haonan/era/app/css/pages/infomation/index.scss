@@ -1,0 +1,20 @@
+@import '../../../css/public/var.scss';
+.infomation {
+  background-color: #fff;
+  color: $font-color-info;
+  font-size: 20px;
+  &-company {
+    padding: 35px 30px;
+    width: 730px;
+    box-sizing: border-box;
+    & > li {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #bbb;
+    }
+  }
+  .label {
+    color: $font-color-secondary;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
