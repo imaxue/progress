@@ -192,7 +192,7 @@ gulp.task('pages-js', function (cb) {
 gulp.task('browserSync', function () {
     browserSync({
         port: 9090,
-        open: true,
+        open: false,
         notify: false,
         server: {
             baseDir: devDir

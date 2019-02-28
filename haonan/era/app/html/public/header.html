@@ -1,3 +1,92 @@
 <header class="header">
-    <h1>header</h1>
+    <div class="header-container">
+        <!-- logo -->
+        <img src="" alt="logo" class="header-logo">
+        <!-- 导航 -->
+        <ul class="header-nav-list">
+            <li>
+                <nav href="/" class="header-nav">
+                    <a href="/">
+                        <div class="header-nav-title">首页</div>
+                        @@if (page === "index") {
+                        <div class="header-nav-en active">Home</div>
+                        }
+                        @@if (page !== "index") {
+                        <div class="header-nav-en">Home</div>
+                        }
+                    </a>
+                </nav>
+            </li>
+            <li>
+                <nav class="header-nav">
+                    <a href="/design.html">
+                        <div class="header-nav-title">设计公司</div>
+                        @@if (page === "design") {
+                        <div class="header-nav-en active">ENTERPRISE</div>
+                        }
+                        @@if (page !== "design") {
+                        <div class="header-nav-en">ENTERPRISE</div>
+                        }
+                    </a>
+                </nav>
+            </li>
+            <li>
+                <nav class="header-nav">
+                    <a href="/news.html">
+                        <div class="header-nav-title">寻求报道</div>
+                        @@if (page === "news") {
+                        <div class="header-nav-en active">NEWS REPORT</div>
+                        }
+                        @@if (page !== "news") {
+                        <div class="header-nav-en">NEWS REPORT</div>
+                        }
+                    </a>
+                </nav>
+            </li>
+            <li>
+                <nav class="header-nav">
+                    <a href="/activity.html">
+                        <div class="header-nav-title">最新活动</div>
+                        @@if (page === "activity") {
+                        <div class="header-nav-en active">RECENT ACTIVITY</div>
+                        }
+                        @@if (page !== "activity") {
+                        <div class="header-nav-en">RECENT ACTIVITY</div>
+                        }
+                    </a>
+                </nav>
+            </li>
+            <li>
+                <nav class="header-nav">
+                    <a href="/infomation.html">
+                        <div class="header-nav-title">行业资讯</div>
+                        @@if (page === "infomation") {
+                        <div class="header-nav-en active">INFORMATION</div>
+                        }
+                        @@if (page !== "infomation") {
+                        <div class="header-nav-en">INFORMATION</div>
+                        }
+                    </a>
+                </nav>
+            </li>
+            <li>
+                <nav class="header-nav">
+                    <a href="/download.html">
+                        <div class="header-nav-title">下载</div>
+                        @@if (page === "download") {
+                        <div class="header-nav-en active">DOWNLOAD</div>
+                        }
+                        @@if (page !== "download") {
+                        <div class="header-nav-en">DOWNLOAD</div>
+                        }
+                    </a>
+                </nav>
+            </li>
+        </ul>
+        <!-- 按钮 -->
+        <div class="header-btns">
+            <span>登录</span>
+            <span>注册</span>
+        </div>
+    </div>
 </header>

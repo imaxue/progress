@@ -17,7 +17,9 @@
 </head>
 
 <body>
-    @@include('header.html')
+    @@include('header.html', {
+    "page": "example"
+    })
     <div class="base-container">
         <div class="base-content">
             @@include('../../example-content.html')
