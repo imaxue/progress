@@ -139,53 +139,19 @@ gulp.task('public-js', function () {
     }
 });
 
-gulp.task('pages-js', function (cb) {
+gulp.task('pages-js', function () {
     if (env === 'development') {
-        glob('app/js/pages/**/**-entry.js', {}, function (err, files) {
-            if (err) return cb(err);
-            function bundle(b, destPath) {
-                return function () {
-                    b.bundle()
-                        .pipe(source('bundle.js'))
-                        .pipe(buffer())
-                        .pipe(sourcemaps.init({
-                            loadMaps: true
-                        }))
-                        .pipe(sourcemaps.write())
-                        .pipe(gulp.dest(destPath))
-                        .pipe(browserSync.stream())
-                }
-            }
-            files.forEach(function (file) {
-                var destPath = devDir + file.match(/\/[js/pages/].*(?=\/)/)[0];
-                var b = browserify({
-                    entries: file,
-                    cache: {},
-                    packageCache: {},
-                    plugin: [watchify]
-                })
-                b.on('update', bundle(b, destPath));
-                bundle(b, destPath)();
-            });
-            cb();
-        })
+        return gulp.src('app/js/pages/**/*.js')
+            .pipe(plumber())
+            .pipe(gulp.dest(devDir + '/js/pages'))
+            .pipe(browserSync.stream())
     } else {
-        glob('app/js/pages/**/**-entry.js', {}, function (err, files) {
-            if (err) return cb(err);
-            files.forEach(function (file) {
-                var destPath = file.match(/\/[js/pages/].*(?=\/)/)[0];
-                browserify(file)
-                    .bundle()
-                    .pipe(source('bundle.js'))
-                    .pipe(buffer())
-                    .pipe(uglify())
-                    .pipe(rev())
-                    .pipe(gulp.dest(prodDir + destPath))
-                    .pipe(rev.manifest())
-                    .pipe(gulp.dest(prodDir + '/rev' + destPath))
-            });
-            cb();
-        })
+        return gulp.src('app/js/pages/**/*.js')
+            .pipe(uglify())
+            .pipe(rev())
+            .pipe(gulp.dest(prodDir + '/js/pages'))
+            .pipe(rev.manifest())
+            .pipe(gulp.dest(prodDir + '/rev/js'))
     }
 });
 
@@ -204,7 +170,7 @@ gulp.task('watch', function () {
     gulp.watch('app/**/*.html', ['html']);
     gulp.watch('app/css/**/*.scss', ['css']);
     gulp.watch('app/imgs/**/*.*', ['imgs']);
-    // gulp.watch('app/js/pages/**/*.js', ['pages-js']);
+    gulp.watch('app/js/pages/**/*.js', ['pages-js']);
     gulp.watch('app/js/public/**/*.js', ['public-js']);
 });
 
