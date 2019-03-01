@@ -18,13 +18,11 @@
 
 <body>
     @@include('header.html', {
-        "page": "index"
+    "page": "index"
     })
     <div class="base-container">
-        <div class="base-content">
-            @@include('../../index-content.html')
-            @@include('footer.html')
-        </div>
+        @@include('../../index-content.html')
+        @@include('footer.html')
     </div>
     @@loop('public-script.html', [
     { "name": "jQuery" },

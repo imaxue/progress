@@ -3,14 +3,18 @@
     top: 0;
     left: 0;
     width: 100%;
+    min-width: 1200px;
     height: 120px;
+    padding: 28px 10px;
+    box-sizing: border-box;
     background-color: #fff;
+    z-index: 1;
 }
 
 .header-container {
-    width: 1200px;
-    height: 100%;
-    margin: 28px auto 0;
+    overflow: hidden;
+    max-width: 1364px;
+    margin: 0 auto;
 }
 
 .header-logo {
@@ -20,9 +24,13 @@
     margin-right: 100px;
 }
 
-.header-nav-list {
-    margin-top: 11.5px;
+.header-left {
     float: left;
+}
+
+.header-nav-list {
+    float: left;
+    margin-top: 11.5px;
     li {
         float: left;
         &:nth-child(1) {

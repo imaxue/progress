@@ -1,19 +1,46 @@
+.footer {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-navigation-list-container {
+    overflow: hidden;
+}
+
 .footer-navigation-list {
     float: left;
+    width: 20%;
+}
+
+.footer-navigation-item {
+    margin-bottom: 15px;
+    color: rgba(0, 0, 0, .54);
+    &:first-child {
+        margin-bottom: 40px;
+        a {
+            font-size: 20px;
+        }
+    }
+    a {
+        font-size: 14px;
+        color: rgba(0, 0, 0, .54);
+    }
 }
 
 .footer-cooperation-list {
-    overflow: hidden;
-    li {
-        float: left;
-        font-size: 13px;
-    }
+    margin: 30px 0 20px 0;
     a {
+        font-size: 14px;
         color: #B3B3B3;
     }
 }
 
-.copy-right {
+.footer-copy-right {
     font-size: 12px;
     color: #B3B3B3;
+    .statistics-logo {
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+    }
 }
