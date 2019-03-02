@@ -1,0 +1,68 @@
+@import './extract.scss';
+.left-ranking-container {
+    .ranking-item {
+        height: 107px;
+        padding: 16px 0;
+        border-bottom: $list-border-bottom;
+        img {
+            float: left;
+            width: 107px;
+            height: 107px;
+            margin-right: 15px;
+        }
+        .ranking-company-info-container {
+            float: left;
+            height: 100%;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .ranking-company-name {
+            font-size: 28px;
+            color: rgba(5, 16, 39, 1);
+        }
+        .ranking-company-other-info {
+            margin-top: 41px;
+        }
+        .ranking-company-target {
+            font-size: 18px;
+            color: rgba(42, 51, 63, 1);
+        }
+        .ranking-company-address {
+            margin-left: 30px;
+            color: #B3B3B3;
+        }
+        .ranking-info-container {
+            float: right;
+            height: 100%;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .ranking-company-label {
+            span {
+                margin-right: 18px;
+                color: rgba(5, 16, 39, 1);
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        .ranking-data {
+            margin-top: 51px;
+            >div {
+                display: inline-block;
+                &+div {
+                    margin-left: 21px;
+                }
+                img {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 4px;
+                }
+                span {
+                    font-size: 13px;
+                    color: #B3B3B3;
+                }
+            }
+        }
+    }
+}
