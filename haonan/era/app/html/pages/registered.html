@@ -11,7 +11,7 @@
     { "name": "global" },
     { "name": "header" }
     ])
-    <link rel="stylesheet" href="css/pages/registered/index.css">
+    <link rel="stylesheet" href="css/pages/registered.css">
 </head>
 
 <body>
@@ -22,7 +22,8 @@
         @@include('../../registered-content.html')
     </div>
     @@loop('public-script.html', [
-    { "name": "jQuery" }
+    { "name": "jQuery" },
+    { "name": "public" }
     ])
     <script>
         $(function () {

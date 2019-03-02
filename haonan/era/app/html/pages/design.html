@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录</title>
+    <meta name="renderer" content="webkit">
+    <title>设计公司</title>
     @@loop('head-link.html', [
     { "name": "reset" },
     { "name": "global" },
     { "name": "header" }
     ])
-    <link rel="stylesheet" href="css/pages/login.css">
+    <link rel="stylesheet" href="css/pages/index/index.css">
 </head>
 
 <body>
     @@include('header.html', {
-    "page": ""
+    "page": "index"
     })
     <div class="base-container">
-        @@include('../../login-content.html')
+        @@include('../../design-content.html')
     </div>
     @@loop('public-script.html', [
     { "name": "jQuery" },
