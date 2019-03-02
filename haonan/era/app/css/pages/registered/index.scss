@@ -1,0 +1,107 @@
+@import '../../public/mixins.scss';
+@include login-registered-form-base;
+.registered-container {
+    width: 935px;
+    padding: 183px 0 123px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.registered-guide {
+    overflow: hidden;
+    padding-bottom: 54px;
+    >div {
+        float: left;
+        width: 50%;
+        text-align: center;
+    }
+}
+
+.registered-enterprise {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background-color: rgba(227, 227, 227, 1);
+    }
+}
+
+.registered-title {
+    margin-bottom: 40px;
+    font-size: 36px;
+    color: rgba(51, 51, 51, 1);
+}
+
+.registered-target {
+    width: 144px;
+    margin: 0 auto 167px;
+    font-size: 18px;
+    color: rgba(51, 51, 51, 1);
+}
+
+.start-registered {
+    width: 184px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    border: 1px solid rgba(166, 166, 166, 1);
+    border-radius: 3px;
+    text-align: center;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0);
+    a {
+        color: rgba(5, 16, 39, 1);
+        &:visited {
+            color: rgba(5, 16, 39, 1);
+        }
+    }
+}
+
+.go-to-login-or-registered {
+    text-align: center;
+}
+
+.registered-personal-container {
+    width: 935px;
+    padding: 60px 0 65px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+}
+
+.registered-personal-title {
+    height: 71px;
+    line-height: 71px;
+    margin-bottom: 35px;
+    font-size: 36px;
+    color: rgba(51, 51, 51, 1);
+}
+
+.registered-personal-target {
+    margin-bottom: 45px;
+    font-size: 18px;
+    color: rgba(53, 53, 53, 1);
+}
+
+.registered-personal-qrcode {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 45px;
+}
+
+.registered-personal-system-logo {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.registered-personal-introduction {
+    margin-top: 44px;
+    font-size: 14px;
+    color: rgba(116, 119, 125, 1);
+}

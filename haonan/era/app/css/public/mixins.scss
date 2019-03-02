@@ -13,7 +13,7 @@
     .form-container {
         width: 700px;
         padding-bottom: 70px;
-        margin: 0 auto;
+        margin: 0 auto 20px;
         text-align: center;
         background-color: #fff;
     }
@@ -34,6 +34,11 @@
             text-align: left;
             font-size: 18px;
             color: rgba(116, 119, 125, 1);
+            &.required {
+                span {
+                    color: rgba(229, 28, 35, 1);
+                }
+            }
         }
         input {
             width: 100%;
@@ -65,8 +70,8 @@
         .forget-password {
             margin-top: 10px;
             text-align: right;
+            font-size: 14px;
             a {
-                font-size: 14px;
                 color: rgba(116, 119, 125, 1);
                 a:visited {
                     color: rgba(116, 119, 125, 1);
@@ -99,6 +104,11 @@
     .go-to-login-or-registered {
         font-size: 14px;
         color: rgba(116, 119, 125, 1);
-        cursor: pointer;
+        a {
+            color: rgba(116, 119, 125, 1);
+            &:visited {
+                color: rgba(116, 119, 125, 1);
+            }
+        }
     }
 }
