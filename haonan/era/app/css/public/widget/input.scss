@@ -1,0 +1,12 @@
+@import '../var.scss';
+.input {
+  border-radius: $border-radius-default;
+  border: 1px solid $border-color-base;
+  overflow: hidden;
+  & > input {
+    padding: 10px;
+    border: 0 none;
+    outline: none;
+    font-size: 14px;
+  }
+}

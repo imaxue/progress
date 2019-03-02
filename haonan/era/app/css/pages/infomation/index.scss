@@ -1,13 +1,14 @@
 @import '../../../css/public/var.scss';
 @import '../../../css/public/mixins.scss';
 .infomation {
+  width: 730px;
   $font-size: 20px;
-  background-color: #fff;
   color: $font-color-info;
   font-size: $font-size;
+  background-color: #fff;
   &-company {
+    display: none;
     padding: 35px 30px;
-    width: 730px;
     box-sizing: border-box;
   }
   &-list {
@@ -46,6 +47,54 @@
     }
     img {
       height: 100px;
+    }
+  }
+  &-edit {
+    padding: 33px 31px;
+    .upload-button {
+      position: relative;
+      margin-bottom: 23px;
+      padding: 10px 36px;
+      &__input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+    }
+    .form {
+      &-item {
+        &__label {
+          display: inline-block;
+          margin-bottom: 13px;
+          font-size: 18px;
+          color: $font-color-regular;
+          &.is-important {
+            color: $color-danger;
+          }
+          &.is-required {
+            &:before {
+              content: "*";
+              display: inline;
+              color: $color-danger;
+            }
+          }
+        }
+        .tips {
+          margin: 8px 0;
+          font-size: 14px;
+          color: #adadad;
+        }
+      }
+      &--inline {
+        @include clearfix;
+        & > .form-item {
+          float: left;
+        }
+      }
+    }
+    .companyname {
+      width: 300px;
     }
   }
 }
