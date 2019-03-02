@@ -68,20 +68,27 @@
 .header-btns {
     float: right;
     margin-top: 11px;
-    span {
+    nav {
         display: inline-block;
         width: 90px;
         height: 40px;
         line-height: 40px;
         border-radius: 4px;
         background-color: rgba(255, 255, 255, 0);
-        color: rgba(42, 51, 63, 1);
         font-size: 13px;
         text-align: center;
         border: 1px solid rgba(166, 166, 166, 1);
-        cursor: pointer;
         &:first-child {
             margin-right: 17px;
+        }
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: rgba(42, 51, 63, 1);
+            &:visited {
+                color: rgba(42, 51, 63, 1);
+            }
         }
     }
 }

@@ -1,10 +1,104 @@
 @mixin clearfix() {
-  &:before,
-  &:after {
-    content: '';
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin login-registered-form-base {
+    .form-container {
+        width: 700px;
+        padding-bottom: 70px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #fff;
+    }
+    .form-title {
+        height: 154px;
+        line-height: 154px;
+        font-size: 36px;
+        color: rgba(51, 51, 51, 1);
+        border-bottom: 1px solid rgba(242, 242, 242, 1);
+    }
+    .form-content {
+        width: 360px;
+        padding-top: 40px;
+        margin: 0 auto;
+        text-align: left;
+        .label {
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 18px;
+            color: rgba(116, 119, 125, 1);
+        }
+        input {
+            width: 100%;
+            height: 40px;
+            padding-left: 10px;
+            border: 1px solid rgba(227, 227, 227, 1);
+            border-radius: 3px;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 0px 0px rgba(215, 215, 215, 1);
+            vertical-align: middle;
+        }
+        .verification-code-input {
+            width: 220px;
+        }
+        .verification-code-submit {
+            display: inline-block;
+            width: 133px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid rgba(227, 227, 227, 1);
+            border-radius: 3px;
+            box-sizing: border-box;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(16, 16, 16, .5);
+            cursor: pointer;
+        }
+        .forget-password {
+            margin-top: 10px;
+            text-align: right;
+            a {
+                font-size: 14px;
+                color: rgba(116, 119, 125, 1);
+                a:visited {
+                    color: rgba(116, 119, 125, 1);
+                }
+            }
+        }
+    }
+    .form-item {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &.forget-password {
+            margin-bottom: 0;
+        }
+    }
+    .form-submit {
+        width: 360px;
+        height: 50px;
+        margin: 40px auto 17px;
+        line-height: 50px;
+        border: 1px solid rgba(166, 166, 166, 1);
+        border-radius: 3px;
+        text-align: center;
+        font-size: 18px;
+        color: rgba(5, 16, 39, 1);
+        background-color: rgba(255, 255, 255, 0);
+        cursor: pointer;
+    }
+    .go-to-login-or-registered {
+        font-size: 14px;
+        color: rgba(116, 119, 125, 1);
+        cursor: pointer;
+    }
 }
