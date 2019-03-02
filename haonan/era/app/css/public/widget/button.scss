@@ -1,0 +1,14 @@
+@import '../var.scss';
+$button-color-default: #101010;
+.btn {
+  display: inline-block;
+  font-size: initial;
+  line-height: 1;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-default;
+  color: $button-color-default;
+  cursor: pointer;
+  &--large {
+    padding: 13px 34px;
+  }
+}
