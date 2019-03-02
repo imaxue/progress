@@ -1,20 +1,51 @@
 @import '../../../css/public/var.scss';
+@import '../../../css/public/mixins.scss';
 .infomation {
+  $font-size: 20px;
   background-color: #fff;
   color: $font-color-info;
-  font-size: 20px;
+  font-size: $font-size;
   &-company {
     padding: 35px 30px;
     width: 730px;
     box-sizing: border-box;
+  }
+  &-list {
     & > li {
-      padding-bottom: 20px;
+      margin-bottom: 21px;
       border-bottom: 1px solid #bbb;
     }
   }
   .label {
+    $label-size: 16px;
     color: $font-color-secondary;
+    font-size: $label-size;
+    line-height: (24px/$label-size);
+    & + div {
+      margin-top: 3px;
+      margin-bottom: 19px;
+      line-height: (29px/$font-size);
+    }
+  }
+  &-intro {
+    @include clearfix;
     font-size: 16px;
-    line-height: 1.5;
+    &__inner {
+      padding-bottom: 40px;
+    }
+    &__num {
+      margin-bottom: 13px;
+      float: right;
+      font-size: 13px;
+      color: #999;
+    }
+  }
+  &-cover {
+    &__inner {
+      overflow: hidden;
+    }
+    img {
+      height: 100px;
+    }
   }
 }

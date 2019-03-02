@@ -83,14 +83,14 @@ gulp.task('css', function () {
     if (env === 'development') {
         return gulp.src('app/css/**/*.scss')
             .pipe(plumber())
-            .pipe(
-                changed(
-                    devDir + '/css',
-                    {
-                        extension: '.css'
-                    }
-                )
-            )
+            // .pipe(
+            //     changed(
+            //         devDir + '/css',
+            //         {
+            //             extension: '.css'
+            //         }
+            //     )
+            // )
             .pipe(sass())
             .pipe(postcss([autoprefixer]))
             .pipe(base64())
