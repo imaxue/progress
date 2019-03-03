@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>寻求报道</title>
+    @@loop('head-link.html', [
+    { "name": "reset" },
+    { "name": "global" },
+    { "name": "header" },
+    { "name": "footer" }
+    ])
+    <link rel="stylesheet" href="css/pages/news.css">
+</head>
+
+<body>
+    @@include('header.html', {
+    "page": "news"
+    })
+    <div class="base-container">
+        @@include('../../news-content.html')
+    </div>
+    @@loop('public-script.html', [
+    { "name": "jQuery" },
+    { "name": "public" }
+    ])
+    <script src="js/pages/news.js"></script>
+    <script>
+        $(function () {
+            // js逻辑
+        });
+    </script>
+</body>
+
+</html>

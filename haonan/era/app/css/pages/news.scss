@@ -1,0 +1,42 @@
+.news-container {
+    width: 1200px;
+    margin: 30px auto 0;
+    h1 {
+        margin-bottom: 50px;
+        font-size: 36px;
+        font-weight: bold;
+        color: rgba(20, 33, 60, 1);
+    }
+    .find-report {
+        margin-bottom: 104px;
+        text-align: center;
+    }
+    .find-report-picture {
+        margin-bottom: 66px;
+        img {
+            width: 258px;
+            height: 258px;
+            &+img {
+                margin-left: 46px;
+            }
+        }
+    }
+    .find-report-label-container {
+        >div {
+            margin-bottom: 20px;
+        }
+    }
+    .find-report-label {
+        margin-right: 5px;
+        color: rgba(113, 121, 138, 1);
+        &:not(:last-child) {
+            &:after {
+                content: "|";
+                margin-left: 5px;
+            }
+        }
+    }
+    .case-show {
+        margin-bottom: 104px;
+    }
+}
