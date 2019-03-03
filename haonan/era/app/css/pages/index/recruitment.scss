@@ -50,6 +50,21 @@
         box-sizing: border-box;
         font-size: 14px;
         color: rgba(202, 202, 202, 1);
+        &::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            font-size: 14px;
+            color: rgba(202, 202, 202, 1);
+        }
+        &::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            font-size: 14px;
+            color: rgba(202, 202, 202, 1);
+        }
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            font-size: 14px;
+            color: rgba(202, 202, 202, 1);
+        }
     }
     .position-subscription-submit {
         height: 45px;

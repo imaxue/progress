@@ -9,3 +9,11 @@
 .clearfix {
   @include clearfix;
 }
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
