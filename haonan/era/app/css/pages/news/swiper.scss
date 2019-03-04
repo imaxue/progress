@@ -1,0 +1,76 @@
+.news-swiper {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.news-swiper .swiper-container {
+    padding-bottom: 60px;
+}
+
+.news-swiper .swiper-slide {
+    width: 520px;
+    height: 408px;
+    background: #fff;
+    box-shadow: 0 8px 30px #ddd;
+}
+
+.news-swiper .swiper-slide img {
+    display: block;
+}
+
+.news-swiper .swiper-slide p {
+    line-height: 98px;
+    padding-top: 0;
+    text-align: center;
+    color: #636363;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.news-swiper .swiper-pagination {
+    width: 100%;
+    bottom: 20px;
+}
+
+.news-swiper .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 5px;
+    border: 3px solid #fff;
+    background-color: #d5d5d5;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+.news-swiper .swiper-pagination-bullets .swiper-pagination-bullet-active {
+    border: 3px solid #00aadc;
+    background-color: #fff;
+}
+
+.news-swiper .swiper-button-prev {
+    left: -30px;
+    width: 45px;
+    height: 45px;
+    background: url(/imgs/public/placeholder.png) no-repeat;
+    background-position: 0 0;
+    background-size: 100%;
+}
+
+.news-swiper .swiper-button-prev:hover {
+    background-position: 0 -46px;
+    background-size: 100%
+}
+
+.news-swiper .swiper-button-next {
+    right: -30px;
+    width: 45px;
+    height: 45px;
+    background: url(/imgs/public/placeholder.png) no-repeat;
+    background-position: 0 -93px;
+    background-size: 100%;
+}
+
+.news-swiper .swiper-button-next:hover {
+    background-position: 0 -139px;
+    background-size: 100%
+}
