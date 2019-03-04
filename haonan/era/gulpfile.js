@@ -1,11 +1,5 @@
 var gulp = require('gulp'),
     gulpSync = require('gulp-sync')(gulp),
-    glob = require('glob'),
-    browserify = require('browserify'),
-    watchify = require('watchify'),
-    sourcemaps = require('gulp-sourcemaps'),
-    source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
     plumber = require('gulp-plumber'),
     base64 = require('gulp-base64'),
     browserSync = require('browser-sync'),
@@ -18,7 +12,6 @@ var gulp = require('gulp'),
     }),
     postcss = require('gulp-postcss'),
     sass = require('gulp-sass'),
-    changed = require('gulp-changed'),
     fileinclude = require('gulp-file-include'),
     rename = require('gulp-rename'),
     del = require('del'),
@@ -83,14 +76,6 @@ gulp.task('css', function () {
     if (env === 'development') {
         return gulp.src('app/css/**/*.scss')
             .pipe(plumber())
-            // .pipe(
-            //     changed(
-            //         devDir + '/css',
-            //         {
-            //             extension: '.css'
-            //         }
-            //     )
-            // )
             .pipe(sass())
             .pipe(postcss([autoprefixer]))
             .pipe(base64())
@@ -124,32 +109,17 @@ gulp.task('imgs', function () {
     }
 });
 
-gulp.task('public-js', function () {
+gulp.task('js', function () {
     if (env === 'development') {
-        return gulp.src('app/js/public/**/*.js')
+        return gulp.src('app/js/**/*.js')
             .pipe(plumber())
-            .pipe(gulp.dest(devDir + '/js/public'))
+            .pipe(gulp.dest(devDir + '/js'))
             .pipe(browserSync.stream())
     } else {
-        return gulp.src('app/js/public/**/*.js')
-            .pipe(rev())
-            .pipe(gulp.dest(prodDir + '/js/public'))
-            .pipe(rev.manifest())
-            .pipe(gulp.dest(prodDir + '/rev/js/public'))
-    }
-});
-
-gulp.task('pages-js', function () {
-    if (env === 'development') {
-        return gulp.src('app/js/pages/**/*.js')
-            .pipe(plumber())
-            .pipe(gulp.dest(devDir + '/js/pages'))
-            .pipe(browserSync.stream())
-    } else {
-        return gulp.src('app/js/pages/**/*.js')
+        return gulp.src('app/js/**/*.js')
             .pipe(uglify())
             .pipe(rev())
-            .pipe(gulp.dest(prodDir + '/js/pages'))
+            .pipe(gulp.dest(prodDir + '/js'))
             .pipe(rev.manifest())
             .pipe(gulp.dest(prodDir + '/rev/js'))
     }
@@ -170,8 +140,7 @@ gulp.task('watch', function () {
     gulp.watch('app/**/*.html', ['html']);
     gulp.watch('app/css/**/*.scss', ['css']);
     gulp.watch('app/imgs/**/*.*', ['imgs']);
-    gulp.watch('app/js/pages/**/*.js', ['pages-js']);
-    gulp.watch('app/js/public/**/*.js', ['public-js']);
+    gulp.watch('app/js/**/*.js', ['js']);
 });
 
 gulp.task('hash', function () {
@@ -184,5 +153,5 @@ gulp.task('delRev', function () {
     del.sync([prodDir + '/rev'])
 });
 
-gulp.task('dev', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'public-js', 'pages-js'], 'browserSync', 'watch']));
-gulp.task('build', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'public-js', 'pages-js'], 'hash', 'delRev']));
+gulp.task('dev', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'js'], 'browserSync', 'watch']));
+gulp.task('build', gulpSync.sync(['clean', 'config', ['imgs', 'html', 'css', 'js'], 'hash', 'delRev']));
