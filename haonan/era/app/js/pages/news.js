@@ -4,28 +4,24 @@ $(function () {
         slidesPerView: 'auto',
         centeredSlides: true,
         loop: true,
-        loopedSlides: 5,
-        autoplay: false,
-        // navigation: {
-        //     nextEl: '.swiper-button-next',
-        //     prevEl: '.swiper-button-prev',
-        // },
+        autoplay: true,
+        // slideToClickedSlide: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
         },
         on: {
-            progress: function (progress) {
+            progress: function () {
                 for (i = 0; i < this.slides.length; i++) {
-                    var slide = this.slides.eq(i);
-                    var slideProgress = this.slides[i].progress;
-                    modify = 1;
+                    var slide = this.slides.eq(i),
+                        slideProgress = this.slides[i].progress,
+                        modify = 1;
                     if (Math.abs(slideProgress) > 1) {
                         modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
                     }
-                    translate = slideProgress * modify * 260 + 'px';
-                    scale = 1 - Math.abs(slideProgress) / 5;
-                    zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+                    var translate = slideProgress * modify * 260 + 'px',
+                        scale = 1 - Math.abs(slideProgress) / 5,
+                        zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
                     slide.transform('translateX(' + translate + ') scale(' + scale + ')');
                     slide.css('zIndex', zIndex);
                     slide.css('opacity', 1);
