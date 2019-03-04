@@ -16,6 +16,9 @@
     width: $width;
     height: $width;
     background-color: #e8e8e8;
+    img {
+      width: 100%;
+    }
   }
   &__username {
     font-size: 22px;
