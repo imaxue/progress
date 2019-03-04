@@ -1,10 +1,11 @@
 $(function () {
+    // swiper相关
     new Swiper('#newsSwiper .swiper-container', {
         watchSlidesProgress: true,
         slidesPerView: 'auto',
         centeredSlides: true,
         loop: true,
-        autoplay: true,
+        autoplay: false,
         // slideToClickedSlide: true,
         pagination: {
             el: '.swiper-pagination',
@@ -37,5 +38,15 @@ $(function () {
                 }
             }
         }
+    });
+
+    // 遮罩相关
+    $('.news-video-dialog .dialog-close').click(function () {
+        $('body').css('overflow', 'auto');
+        $('.news-video-dialog').fadeOut('fast');
+    });
+    $('.news-swiper .swiper-slide').click(function () {
+        $('.news-video-dialog').fadeIn('fast');
+        $('body').css('overflow', 'hidden');
     });
 });

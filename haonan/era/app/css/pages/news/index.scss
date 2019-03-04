@@ -41,3 +41,34 @@
         margin-bottom: 104px;
     }
 }
+
+.news-video-dialog {
+    .dialog-container {
+        width: 780px;
+    }
+    .dialog-title {
+        position: relative;
+        height: 50px;
+        padding-left: 20px;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(16, 16, 16, 1);
+    }
+    .dialog-close {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translate(-50%, -50%);
+        opacity: .7;
+        font-style: normal;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    video {
+        width: 100%;
+        height: 450px;
+    }
+}
