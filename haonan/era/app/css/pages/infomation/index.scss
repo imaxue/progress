@@ -64,8 +64,9 @@
     }
     .form {
       &-item {
+        margin-bottom: 30px;
         &__label {
-          display: inline-block;
+          display: block;
           margin-bottom: 13px;
           font-size: 18px;
           color: $font-color-regular;
@@ -93,8 +94,27 @@
         }
       }
     }
+    .preview {
+      display: inline-block;
+    }
     .companyname {
       width: 300px;
+    }
+    .address {
+      margin-right: 50px;
+      .select {
+        width: 90px;
+      }
+    }
+    .company-desc {
+      margin-right: 40px;
+      .select {
+        width: 180px;
+      }
+    }
+    .textarea {
+      width: 670px;
+      height: 131px;
     }
   }
 }
