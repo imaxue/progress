@@ -2,10 +2,19 @@
   <div class="user-side__card">
     <div class="user-side__avatar"><img src="imgs/public/placeholder.png" alt=""></div>
     <div class="user-side__username">时机北京科技有限公司</div>
+    <div class="user-side__status">
+      <div class="is-unverified">未认证</div>
+      <div class="is-verified">
+        <span>已认证</span>
+        <span class="text-bold" style="margin-right: 30px;">✔</span>
+        <span style="margin-right: 27px;">⊙5.9万</span>
+        <span>♥25</span>
+      </div>
+    </div>
   </div>
   <div class="user-side__menu">
     <ul class="menu-wrapper">
-      <li class="menu-item active">
+      <li class="menu-item @@if (context.active === 'infomation') {active}">
         <a href="/infomation.html">企业资料</a>
       </li>
       <li class="menu-item">

@@ -24,6 +24,17 @@
     font-size: 22px;
     color: $font-color-primary;
   }
+  &__status {
+    font-size: 18px;
+    .is-unverified {
+      margin-top: 47px;
+    }
+    .is-verified {
+      display: none;
+      margin-top: 50px;
+      color: #565656;
+    }
+  }
   &__menu {
     padding-bottom: 133px;
     background-color: #fff;

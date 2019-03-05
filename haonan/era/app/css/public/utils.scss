@@ -17,3 +17,9 @@
 .fr {
   float: right;
 }
+
+.text {
+  &-bold {
+    font-weight: bold!important;
+  }
+}
