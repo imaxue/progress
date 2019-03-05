@@ -12,14 +12,27 @@
     .find-report {
         margin-bottom: 104px;
     }
-    .find-report-picture {
+    .find-report-picture-container {
         margin-bottom: 66px;
+        text-align: center;
+    }
+    .find-report-picture {
+        display: inline-block;
+        >div {
+            float: left;
+            &+div {
+                margin-left: 46px;
+            }
+        }
+        span {
+            display: block;
+            font-size: 14px;
+            color: #71798A;
+        }
         img {
             width: 258px;
             height: 258px;
-            &+img {
-                margin-left: 46px;
-            }
+            margin-bottom: 20px;
         }
     }
     .find-report-label-container {
