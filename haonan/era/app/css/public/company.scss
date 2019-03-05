@@ -1,7 +1,64 @@
 @import './var.scss';
+@import './mixins.scss';
+.company {
+  &__side {
+    float: left;
+    width: 450px;
+  }
+  &__main {
+    float: left;
+    width: 1200px - 450px;
+    $font-size: 20px;
+    color: $font-color-info;
+    font-size: $font-size;
+    background-color: #fff;
+    .label {
+      $label-size: 16px;
+      color: $font-color-secondary;
+      font-size: $label-size;
+      line-height: (24px/$label-size);
+      & + div {
+        margin-top: 3px;
+        margin-bottom: 19px;
+        line-height: (29px/$font-size);
+      }
+    }
+    .form {
+      &-item {
+        margin-bottom: 30px;
+        &__label {
+          display: block;
+          margin-bottom: 13px;
+          font-size: 18px;
+          color: $font-color-regular;
+          &.is-important {
+            color: $color-danger;
+          }
+          &.is-required {
+            &:before {
+              content: "*";
+              display: inline;
+              color: $color-danger;
+            }
+          }
+        }
+        .tips {
+          margin: 8px 0;
+          font-size: 14px;
+          color: #adadad;
+        }
+      }
+      &--inline {
+        @include clearfix;
+        & .form-item {
+          float: left;
+        }
+      }
+    }
+  }
+}
 .user-side {
   margin-right: 20px;
-  width: 450px;
   &__card {
     margin-bottom: 20px;
     height: 380px;

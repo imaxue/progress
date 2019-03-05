@@ -1,0 +1,42 @@
+@import '../../../css/public/var.scss';
+@import '../../../css/public/mixins.scss';
+.company-news {
+  padding: 66px 41px 383px 32px;
+  &__title {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: $font-color-info;
+  }
+  &__example {
+    display: block;
+    margin-bottom: 21px;
+    padding-bottom: 21px;
+    border-bottom: 1px solid $border-color-base;
+    font-size: 14px;
+    color: $font-color-message;
+    & > span {
+      margin-left: 20px;
+      color: $color-input-placeholder;
+    }
+  }
+  .form {
+    padding-right: 160px;
+  }
+  .input-long {
+    width: 514px;
+  }
+  .links {
+    span {
+      margin-right: 9px;
+      &.active {
+        color: #4395ff;
+      }
+    }
+  }
+  .outside {
+    display: none;
+  }
+  .btn-add {
+    padding: 11px 33px;
+  }
+}
