@@ -6,27 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="renderer" content="webkit">
-  <title>企业资讯</title>
+  <title>企业服务</title>
   @@loop('head-link.html', [
   { "name": "reset" },
   { "name": "global" },
   { "name": "header" },
   { "name": "footer" }
   ])
-  <link rel="stylesheet" href="/css/pages/account/news.css">
+  <link rel="stylesheet" href="/css/pages/account/project.css">
 </head>
 
 <body>
   @@include('header.html', {
-  "page": "news"
+  "page": "project"
   })
   <div class="base-container">
     <div class="wrapper clearfix">
       <div class="company__side">
-        @@include('company.html', { "active": "news"})
+        @@include('company.html', { "active": "project"})
       </div>
       <div class="company__main">
-        @@include('../../account/news-content.html')
+        @@include('../../account/project-content.html')
       </div>
       @@include('footer.html')
     </div>
@@ -35,7 +35,7 @@
   { "name": "jQuery" },
   { "name": "config" }
   ])
-  <script src="js/pages/account/news.js"></script>
+  <script src="/js/pages/account/project.js"></script>
 </body>
 
 </html>
