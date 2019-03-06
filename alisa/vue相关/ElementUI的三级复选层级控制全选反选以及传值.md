@@ -449,6 +449,7 @@ js部分:
 后面想用递归优化上面的三层循环,代码如下:
 
 ```
-
+ var dataArr = [];
+        this.role.menuIds=this.digui(this.Mydata,dataArr)
 ```
 
