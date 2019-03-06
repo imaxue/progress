@@ -55,7 +55,7 @@ gulp.task('config', function () {
 
 gulp.task('html', function () {
     if (env === 'development') {
-        return gulp.src('app/html/pages/*.html')
+        return gulp.src('app/html/pages/**/*.html')
             .pipe(plumber())
             .pipe(fileinclude({
                 basepath: path.join(__dirname, 'app/html/public/')
@@ -63,7 +63,7 @@ gulp.task('html', function () {
             .pipe(gulp.dest(devDir))
             .pipe(browserSync.stream())
     } else {
-        return gulp.src('app/html/pages/*.html')
+        return gulp.src('app/html/pages/**/*.html')
             .pipe(fileinclude({
                 basepath: path.join(__dirname, 'app/html/public/')
             }))

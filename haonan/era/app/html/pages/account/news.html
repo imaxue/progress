@@ -13,7 +13,7 @@
   { "name": "header" },
   { "name": "footer" }
   ])
-  <link rel="stylesheet" href="css/pages/company-news/index.css">
+  <link rel="stylesheet" href="/css/pages/account/news.css">
 </head>
 
 <body>
@@ -23,10 +23,10 @@
   <div class="base-container">
     <div class="wrapper clearfix">
       <div class="company__side">
-        @@include('company.html', { "active": "company-news"})
+        @@include('company.html', { "active": "news"})
       </div>
       <div class="company__main">
-        @@include('../../company-news-content.html')
+        @@include('../../account/news-content.html')
       </div>
       @@include('footer.html')
     </div>
@@ -35,7 +35,7 @@
   { "name": "jQuery" },
   { "name": "config" }
   ])
-  <script src="js/pages/user/bundle.js"></script>
+  <script src="js/pages/account/news.js"></script>
 </body>
 
 </html>

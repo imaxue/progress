@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>企业服务</title>
+  @@loop('head-link.html', [
+  { "name": "reset" },
+  { "name": "global" },
+  { "name": "header" },
+  { "name": "footer" }
+  ])
+  <link rel="stylesheet" href="/css/pages/account/service.css">
+</head>
+
+<body>
+  @@include('header.html', {
+  "page": "infomation"
+  })
+  <div class="base-container">
+    <div class="wrapper clearfix">
+      <div class="company__side">
+        @@include('company.html', { "active": "service"})
+      </div>
+      <div class="company__main">
+        @@include('../../account/service-content.html')
+      </div>
+      @@include('footer.html')
+    </div>
+  </div>
+  @@loop('public-script.html', [
+  { "name": "jQuery" },
+  { "name": "config" }
+  ])
+  <script src="/js/pages/account/service.js"></script>
+</body>
+
+</html>
