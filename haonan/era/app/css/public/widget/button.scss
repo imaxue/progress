@@ -1,5 +1,5 @@
 @import '../var.scss';
-$button-color-default: #101010;
+$button-color-default: $font-color-message;
 .btn {
   display: inline-block;
   font-size: initial;

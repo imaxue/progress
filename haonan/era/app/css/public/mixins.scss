@@ -16,6 +16,7 @@
         margin: 0 auto 20px;
         text-align: center;
         background-color: #fff;
+        box-shadow: 0px 2px 6px 1px rgba(140, 140, 140, 0.1);
     }
     .form-title {
         height: 154px;
@@ -102,6 +103,7 @@
         cursor: pointer;
     }
     .go-to-login-or-registered {
+        text-align: center;
         font-size: 14px;
         color: rgba(116, 119, 125, 1);
         a {

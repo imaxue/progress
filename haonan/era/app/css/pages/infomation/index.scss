@@ -1,11 +1,6 @@
 @import '../../../css/public/var.scss';
 @import '../../../css/public/mixins.scss';
 .infomation {
-  width: 730px;
-  $font-size: 20px;
-  color: $font-color-info;
-  font-size: $font-size;
-  background-color: #fff;
   &-company {
     display: none;
     padding: 35px 30px;
@@ -17,17 +12,7 @@
       border-bottom: 1px solid #bbb;
     }
   }
-  .label {
-    $label-size: 16px;
-    color: $font-color-secondary;
-    font-size: $label-size;
-    line-height: (24px/$label-size);
-    & + div {
-      margin-top: 3px;
-      margin-bottom: 19px;
-      line-height: (29px/$font-size);
-    }
-  }
+  
   &-intro {
     @include clearfix;
     font-size: 16px;
@@ -60,38 +45,6 @@
         width: 0;
         height: 0;
         opacity: 0;
-      }
-    }
-    .form {
-      &-item {
-        margin-bottom: 30px;
-        &__label {
-          display: block;
-          margin-bottom: 13px;
-          font-size: 18px;
-          color: $font-color-regular;
-          &.is-important {
-            color: $color-danger;
-          }
-          &.is-required {
-            &:before {
-              content: "*";
-              display: inline;
-              color: $color-danger;
-            }
-          }
-        }
-        .tips {
-          margin: 8px 0;
-          font-size: 14px;
-          color: #adadad;
-        }
-      }
-      &--inline {
-        @include clearfix;
-        & .form-item {
-          float: left;
-        }
       }
     }
     .preview {

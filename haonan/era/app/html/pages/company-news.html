@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="renderer" content="webkit">
-  <title>企业资料</title>
+  <title>企业资讯</title>
   @@loop('head-link.html', [
   { "name": "reset" },
   { "name": "global" },
   { "name": "header" },
   { "name": "footer" }
   ])
-  <link rel="stylesheet" href="css/pages/infomation/index.css">
+  <link rel="stylesheet" href="css/pages/company-news/index.css">
 </head>
 
 <body>
@@ -23,10 +23,10 @@
   <div class="base-container">
     <div class="wrapper clearfix">
       <div class="company__side">
-        @@include('company.html', { "active": "infomation"})
+        @@include('company.html', { "active": "company-news"})
       </div>
       <div class="company__main">
-        @@include('../../infomation-content.html')
+        @@include('../../company-news-content.html')
       </div>
       @@include('footer.html')
     </div>
