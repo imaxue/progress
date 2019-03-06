@@ -449,7 +449,27 @@ js部分:
 后面想用递归优化上面的三层循环,代码如下:
 
 ```
- var dataArr = [];
+digui: function (data, dataArr) {
+        if (data) {
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].checked == true) { //如果二级对应的是选中状态
+              dataArr.push(data[i].id);//把二级选中对应的id放进数组
+              var data = data[i].children;
+              this.digui(data, dataArr)
+            }
+          }
+          return dataArr
+        }
+
+      },
+```
+
+调用递归的代码如下:需要传参1.一个需要遍历取id的数组,2一个存放取出来id的空数组
+
+代码如下:
+
+```js
+var dataArr = [];
         this.role.menuIds=this.digui(this.Mydata,dataArr)
 ```
 
