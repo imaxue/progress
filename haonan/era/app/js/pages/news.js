@@ -5,7 +5,7 @@ $(function () {
         centerMode: true,
         slidesToShow: 1,
         centerPadding: '120px',
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 3000,
         draggable: false
     });
