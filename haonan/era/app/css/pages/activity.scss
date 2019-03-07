@@ -17,13 +17,17 @@
     }
     .activity-info {
         padding: 22px;
+        background-color: #fff;
     }
     .activity-title {
         font-size: 20px;
         color: #051027;
     }
     .activity-content {
-        margin-top: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 15px;
         color: #74777D;
     }
 }
