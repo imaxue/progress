@@ -20,6 +20,8 @@ $ pwd
 
 * pwd当前操作的目录
 
+
+
   >
 
 > 2. 第二步，通过`git init`命令把这个目录变成Git可以管理的仓库：
@@ -120,3 +122,4 @@ index d8036c1..013b5bc 100644
 > > >
 > > > [](https://blog.csdn.net/bianliuzhu/article/details/81905343)
 
+然而我这样操作之后并没有提交成功,明天再继续!!!!!!!!!!
