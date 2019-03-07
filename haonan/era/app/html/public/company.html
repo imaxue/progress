@@ -1,6 +1,6 @@
 <div class="user-side">
   <div class="user-side__card">
-    <div class="user-side__avatar"><img src="imgs/public/placeholder.png" alt=""></div>
+    <div class="user-side__avatar"><img src="/imgs/public/placeholder.png" alt=""></div>
     <div class="user-side__username">时机北京科技有限公司</div>
     <div class="user-side__status">
       <div class="is-unverified">未认证</div>
@@ -14,23 +14,23 @@
   </div>
   <div class="user-side__menu">
     <ul class="menu-wrapper">
-      <li class="menu-item @@if (context.active === 'infomation') {active}">
-        <a href="/infomation.html">企业资料</a>
+      <li class="menu-item @@if (context.active === 'profile') {active}">
+        <a href="/account/profile.html">企业资料</a>
       </li>
-      <li class="menu-item">
-        <a href="/info">企业服务</a>
+      <li class="menu-item @@if (context.active === 'service') {active}">
+        <a href="/account/service.html">企业服务</a>
       </li>
-      <li class="menu-item">
-        <a href="/info">企业项目</a>
+      <li class="menu-item @@if (context.active === 'project') {active}">
+        <a href="/account/project.html">企业项目</a>
       </li>
-      <li class="menu-item">
-        <a href="/info">招聘职位</a>
+      <li class="menu-item @@if (context.active === 'jobs') {active}">
+        <a href="/account/jobs.html">招聘职位</a>
       </li>
-      <li class="menu-item">
-        <a href="/info">企业相册</a>
+      <li class="menu-item @@if (context.active === 'gallery') {active}">
+        <a href="/account/gallery.html">企业相册</a>
       </li>
-      <li class="menu-item">
-        <a href="/company-news.html">企业资讯</a>
+      <li class="menu-item @@if (context.active === 'news') {active}">
+        <a href="/account/news.html">企业资讯</a>
       </li>
     </ul>
   </div>

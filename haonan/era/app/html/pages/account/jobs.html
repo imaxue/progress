@@ -6,27 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="renderer" content="webkit">
-  <title>企业资讯</title>
+  <title>招聘职位</title>
   @@loop('head-link.html', [
   { "name": "reset" },
   { "name": "global" },
   { "name": "header" },
   { "name": "footer" }
   ])
-  <link rel="stylesheet" href="css/pages/company-news/index.css">
+  <link rel="stylesheet" href="/css/pages/account/jobs.css">
 </head>
 
 <body>
   @@include('header.html', {
-  "page": "infomation"
+  "page": "jobs"
   })
   <div class="base-container">
     <div class="wrapper clearfix">
       <div class="company__side">
-        @@include('company.html', { "active": "company-news"})
+        @@include('company.html', { "active": "jobs"})
       </div>
       <div class="company__main">
-        @@include('../../company-news-content.html')
+        @@include('../../account/jobs-content.html')
       </div>
       @@include('footer.html')
     </div>
@@ -35,7 +35,7 @@
   { "name": "jQuery" },
   { "name": "config" }
   ])
-  <script src="js/pages/user/bundle.js"></script>
+  <script src="/js/pages/account/jobs.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,19 @@
+@import '../../font/iconfont.css';
+
+*[class^=era-icon-],
+*[class*= era-icon-] {
+  font-family: era !important;
+  font-size: inherit;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.era-icon {
+  &--left {
+    margin-right: 5px;
+  }
+  &--right {
+    margin-left: 5px;
+  }
+}
