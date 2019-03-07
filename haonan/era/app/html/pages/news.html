@@ -9,12 +9,13 @@
     <title>寻求报道</title>
     @@loop('head-link.html', [
     { "name": "reset" },
-    { "name": "Swiper" },
     { "name": "global" },
     { "name": "header" },
     { "name": "footer" }
     ])
-    <link rel="stylesheet" href="css/pages/news/index.css">
+    <link href="https://cdn.bootcss.com/slick-carousel/1.9.0/slick-theme.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/slick-carousel/1.9.0/slick.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/pages/news.css">
 </head>
 
 <body>
@@ -26,9 +27,9 @@
     </div>
     @@loop('public-script.html', [
     { "name": "jQuery" },
-    { "name": "Swiper" },
     { "name": "public" }
     ])
+    <script src="https://cdn.bootcss.com/slick-carousel/1.9.0/slick.js"></script>
     <script src="js/pages/news.js"></script>
     <script>
         $(function () {
