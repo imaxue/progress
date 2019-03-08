@@ -48,21 +48,23 @@
         }
         .ranking-data {
             margin-top: 51px;
+            i {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 20px;
+                color: #B3B3B3;
+            }
             >div {
                 display: inline-block;
                 &+div {
                     margin-left: 21px;
                 }
-                img {
-                    width: 20px;
-                    height: 20px;
-                    margin-right: 4px;
-                }
-                span {
-                    vertical-align: middle;
-                    font-size: 13px;
-                    color: #B3B3B3;
-                }
+            }
+            span {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 13px;
+                color: #B3B3B3;
             }
         }
     }
