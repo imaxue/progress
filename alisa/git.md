@@ -1,6 +1,3 @@
----
-
----
 
 1.参考网址 [](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000)
 
@@ -19,8 +16,6 @@ $ pwd
 * cd 切换到哪个目录
 
 * pwd当前操作的目录
-
-
 
   >
 
@@ -122,4 +117,112 @@ index d8036c1..013b5bc 100644
 > > >
 > > > [](https://blog.csdn.net/bianliuzhu/article/details/81905343)
 
-然而我这样操作之后并没有提交成功,明天再继续!!!!!!!!!!
+####  版本回退()
+
+* `git log`命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是`append GPL`，上一次是`add distributed`，最早的一次是`wrote a readme file`。
+
+  ```
+  $ git log
+  commit 5dc971c5aaed54c55ff5bca8aeb1a5ecb6b0744c
+  Author: alisa <alisawilliam@163.com>
+  Date:   Thu Mar 7 09:49:44 2019 +0800
+  
+      lll
+  
+  commit 084c225d9fe96476041648d371fc8de46fc9191f
+  Author: alisa <alisawilliam@163.com>
+  Date:   Thu Mar 7 09:44:48 2019 +0800
+  
+      gaile
+  
+  commit 23eab2c374cbbfcd21bd3f114a9f85eec7a1c82c
+  Author: alisa <alisawilliam@163.com>
+  Date:   Wed Mar 6 16:42:22 2019 +0800
+  
+      wrote a readme file
+  
+  ```
+> `git log`命令显示从最近到最远的提交日志，我们可以看到3次提交. 
+> 如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数：
+* $ git log --pretty=oneline
+```
+$ git log --pretty=oneline
+5dc971c5aaed54c55ff5bca8aeb1a5ecb6b0744c lll
+084c225d9fe96476041648d371fc8de46fc9191f gaile
+23eab2c374cbbfcd21bd3f114a9f85eec7a1c82c wrote a readme file
+```
+>> 注意:我好几次把oneline打成了online,命令报错
+
+#### 上面通过git log我们看到目前提交了三个版本的提交记录,分别的111   gaile  wrote a readme file,利用git reset命令回退到上一个版本
+#### 上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+```
+$ git reset --hard HEAD^
+HEAD is now at 084c225 gaile
+```
+> 通过cat readme.txt命令查看文件内容,果然回退到上一个版本了.
+* cat 命令查看文件内容
+> 此时再通过git log命令查看版本号,发现最新的lll版本已经不见了
+> 好比你从21世纪坐时光穿梭机来到了19世纪，想再回去已经回不去了，肿么办？
+
+> 办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到个
+> append GPL的commit id是1094adb...，于是就可以指定回到未来的某个版本：
+```
+$ git reset --hard 5dc97
+HEAD is now at 5dc971c lll
+```
+>> --hard 后面就是你通过git log --pretty=oneline得到的版本号的前五位数字
+>>接下来可以git log 看一下是否有回退到有lll的版本号
+```
+$ git log
+commit 5dc971c5aaed54c55ff5bca8aeb1a5ecb6b0744c
+Author: alisa <alisawilliam@163.com>
+Date:   Thu Mar 7 09:49:44 2019 +0800
+
+    lll
+
+commit 084c225d9fe96476041648d371fc8de46fc9191f
+Author: alisa <alisawilliam@163.com>
+Date:   Thu Mar 7 09:44:48 2019 +0800
+
+    gaile
+
+commit 23eab2c374cbbfcd21bd3f114a9f85eec7a1c82c
+Author: alisa <alisawilliam@163.com>
+Date:   Wed Mar 6 16:42:22 2019 +0800
+
+    wrote a readme file
+
+```
+或者
+```
+$ git log --pretty=oneline
+5dc971c5aaed54c55ff5bca8aeb1a5ecb6b0744c lll
+084c225d9fe96476041648d371fc8de46fc9191f gaile
+23eab2c374cbbfcd21bd3f114a9f85eec7a1c82c wrote a readme file
+
+```
+这样我们发现lll的版本号又回来了哈.
+>>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能>>会找到多个版本号，就无法确定是哪一个了。
+然后再cat readme.txt看看内容回来了么
+```
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software.
+
+```
+>>反反复复回退,忘记之前的命令,Git提供了一个命令git reflog用来记录你的每一次命令：
+```
+$ git reflog
+5dc971c HEAD@{0}: reset: moving to 5dc97
+084c225 HEAD@{1}: reset: moving to HEAD^
+5dc971c HEAD@{2}: commit: lll
+084c225 HEAD@{3}: commit: gaile
+23eab2c HEAD@{4}: commit (initial): wrote a readme file
+
+```
+小结:
+HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
+
+穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+
+要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
