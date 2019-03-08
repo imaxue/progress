@@ -1,9 +1,12 @@
 @import '../var.scss';
 .select {
     display: inline-block;
+    line-height: 1;
+    font-size: initial;
     border-radius: $border-radius-default;
     border: 1px solid $border-color-base;
     overflow: hidden;
+    vertical-align: middle;
     &>select {
         padding: 10px;
         width: 100%;
