@@ -96,12 +96,16 @@
         <div class="form-item">
           <label class="form-item__label is-required is-important">公司属性</label>
           <div class="form-item__input">
-            <div class="select" style="min-width: 180px;">
-              <select name="" id="">
-                <option value="">请选择</option>
-                <option value="">民营</option>
-                <option value="">国营</option>
-              </select>
+            <div class="select-form">
+              <div class="select">
+                  请选择
+                  <i></i>
+                  <!-- 下拉列表 -->
+                  <div class="select-options">
+                      <div class="select-option">民营</div>
+                      <div class="select-option">国营</div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -109,63 +113,99 @@
       <div class="form-item address">
         <label class="form-item__label is-required">地区</label>
         <div class="form-item__input">
-          <div class="select">
-            <select name="" id="">
-              <option value="">地区</option>
-            </select>
+          <div class="select-form">
+            <div class="select">
+                地区
+                <i></i>
+                <!-- 下拉列表 -->
+                <div class="select-options">
+                </div>
+            </div>
           </div>
-          <div class="select">
-            <select name="" id="">
-              <option value="">省</option>
-            </select>
+          <div class="select-form">
+            <div class="select">
+                省
+                <i></i>
+                <!-- 下拉列表 -->
+                <div class="select-options">
+                </div>
+            </div>
           </div>
-          <div class="select">
-            <select name="" id="">
-              <option value="">市</option>
-            </select>
+          <div class="select-form">
+            <div class="select">
+                市
+                <i></i>
+                <!-- 下拉列表 -->
+                <div class="select-options">
+                </div>
+            </div>
           </div>
-          <div class="select">
-            <select name="" id="">
-              <option value="">区</option>
-            </select>
+          <div class="select-form">
+            <div class="select">
+                区
+                <i></i>
+                <!-- 下拉列表 -->
+                <div class="select-options">
+                </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="form-item">
         <label class="form-item__label is-required is-important">成立时间</label>
-        <div class="select">
-          <select name="" id="">
-            <option value="">年份</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              年份
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
-        <div class="select">
-          <select name="" id="">
-            <option value="">月份</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              月份
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
       </div>
       <div class="form-item company-desc">
         <label class="form-item__label is-required">公司规模</label>
-        <div class="select">
-          <select name="" id="">
-            <option value="">请选择</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              请选择
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
       </div>
       <div class="form-item company-desc">
         <label class="form-item__label is-required">所在行业</label>
-        <div class="select">
-          <select name="" id="">
-            <option value="">请选择</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              请选择
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
       </div>
       <div class="form-item company-desc">
         <label class="form-item__label is-required">公司关键词</label>
-        <div class="select">
-          <select name="" id="">
-            <option value="">请选择</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              请选择
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
       </div>
       <div class="form-item">
@@ -208,15 +248,23 @@
       </div>
       <div class="form-item" style="width: 100%;">
         <label class="form-item__label is-required is-important">营业期限</label>
-        <div class="select">
-          <select name="" id="">
-            <option value="">年份</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              年份
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
-        <div class="select">
-          <select name="" id="">
-            <option value="">月份</option>
-          </select>
+        <div class="select-form">
+          <div class="select">
+              月份
+              <i></i>
+              <!-- 下拉列表 -->
+              <div class="select-options">
+              </div>
+          </div>
         </div>
       </div>
       <div class="form-item">
@@ -237,7 +285,17 @@
       </div>
     </form>
     <div style="margin: 217px auto 89px;;text-align: center;">
-      <div class="btn btn--large">提交</div>
+      <div class="btn btn--large submit">提交</div>
+    </div>
+  </div>
+</div>
+
+<div class="dialog-cover submit--success">
+  <div class="dialog-container">
+    <div class="dialog__header">您的企业资料已提交</div>
+    <div class="dialog__body">
+      <p>将在1-3个工作日内完成审核</p>
+      <div class="btn btn--large confirm">确定</div>
     </div>
   </div>
 </div>

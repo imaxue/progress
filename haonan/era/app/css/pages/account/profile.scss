@@ -48,6 +48,16 @@
         opacity: 0;
       }
     }
+    .select-form {
+      display: inline-block;
+      .select {
+        min-width: 90px;
+        width: auto;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+      }
+    }
     .preview {
       display: inline-block;
     }
@@ -56,9 +66,6 @@
     }
     .address {
       margin-right: 50px;
-      .select {
-        width: 90px;
-      }
     }
     .company-desc {
       margin-right: 40px;
@@ -70,5 +77,26 @@
       width: 670px;
       height: 131px;
     }
+  }
+}
+
+.submit--success {
+  text-align: center;
+  background-color: rgba(#000, .5);
+  .dialog {
+    &-container {
+      padding: 70px 135px 90px;
+    }
+    &__header {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    &__body {
+      color: $font-color-secondary;
+      font-size: 16px;
+    }
+  }
+  .confirm {
+    margin-top: 60px;
   }
 }

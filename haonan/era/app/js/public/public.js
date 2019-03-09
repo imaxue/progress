@@ -34,4 +34,8 @@ $(function () {
         e.stopPropagation();
         $(this).slideUp('fast');
     });
+    // 已认证与未认证切换
+    var isValide = true
+    $('.is-verified').toggle(isValide)
+    $('.is-unverified').toggle(!isValide)
 });

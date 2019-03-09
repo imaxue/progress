@@ -90,6 +90,17 @@
       display: none;
       margin-top: 50px;
       color: #565656;
+      font-size: 16px;
+      span {
+        vertical-align: middle;
+      }
+      .era-icon-checked {
+        color: #3897f0;
+      }
+      .era-icon-heart,
+      .era-icon-look {
+        font-size: 26px;
+      }
     }
   }
   &__menu {
