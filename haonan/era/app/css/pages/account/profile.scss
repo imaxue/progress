@@ -80,12 +80,13 @@
   }
 }
 
-.submit--success {
+.profile-dialog {
   text-align: center;
   background-color: rgba(#000, .5);
   .dialog {
     &-container {
-      padding: 70px 135px 90px;
+      padding: 74px 0 95px;
+      width: 700px;
     }
     &__header {
       margin-bottom: 20px;
@@ -98,5 +99,15 @@
   }
   .confirm {
     margin-top: 60px;
+  }
+  &.invalid {
+    .dialog {
+      &__header {
+        margin-bottom: 40px;
+      }
+      &__body {
+        color: $font-color-regular;
+      }
+    }
   }
 }
