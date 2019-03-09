@@ -25,7 +25,16 @@
     }
     .form {
       &-item {
+        position: relative;
         margin-bottom: 30px;
+        label.error {
+          position: absolute;
+          left: 0;
+          top: 100%;
+          white-space: nowrap;
+          color: $color-danger;
+          font-size: 14px;
+        }
         &__label {
           display: block;
           margin-bottom: 13px;
