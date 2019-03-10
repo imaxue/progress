@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
-    <title>报告下载</title>
+    <title>资讯详情</title>
     @@loop('head-link.html', [
     { "name": "reset" },
     { "name": "global" },
     { "name": "header" },
     { "name": "footer" }
     ])
-    <link rel="stylesheet" href="/css/pages/reports.css">
+    <link rel="stylesheet" href="/css/pages/news-detail.css">
 </head>
 
 <body>
     @@include('header.html', {
-    "page": "reports"
+    "page": "news-detail"
     })
     <div class="base-container">
         <div class="wrapper">
-            @@include('../../reports-content.html')
+            @@include('../../news-detail-content.html')
         </div>
     </div>
     @@loop('public-script.html', [
     { "name": "jQuery" },
     { "name": "public" }
     ])
-    <script src="/js/pages/reports.js"></script>
+    <script src="/js/pages/news-detail.js"></script>
 </body>
 
 </html>
