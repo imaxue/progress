@@ -42,3 +42,18 @@ body {
 img {
     border-radius: 3px;
 }
+
+.image-placeholder {
+    position: relative;
+    min-height: 50px;
+    background-color: #e8e8e8;
+    color: #8d9ea7;
+    text-align: center;
+    font-size: 24px;
+    line-height: 50px;
+    &:before {
+        content: "\e622";
+        font-family: era!important;
+        font-size: inherit;
+    }
+}

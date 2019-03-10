@@ -18,91 +18,97 @@
 // }
 
 .select-form {
-    margin-bottom: 22px;
-    >div {
-        float: left;
+  margin-bottom: 22px;
+  > div {
+    float: left;
+  }
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  .select {
+    position: relative;
+    width: 150px;
+    height: 45px;
+    line-height: 43px;
+    padding-left: 10px;
+    border: 1px solid rgba(187, 187, 187, 1);
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: rgba(86, 86, 86, 1);
+    background-color: #fff;
+    cursor: pointer;
+    & + .select {
+      margin-left: 14px;
     }
-    .select {
-        position: relative;
-        width: 150px;
-        height: 45px;
-        line-height: 43px;
-        padding-left: 10px;
-        border: 1px solid rgba(187, 187, 187, 1);
-        border-radius: 3px;
-        box-sizing: border-box;
-        color: rgba(86, 86, 86, 1);
-        background-color: #fff;
-        cursor: pointer;
-        &+.select {
-            margin-left: 14px;
-        }
-        >i {
-            position: absolute;
-            top: 50%;
-            right: 5px;
-            transform: translate(0, -50%);
-            width: 8px;
-            height: 8px;
-            &:after {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 0;
-                height: 0;
-                border-left: 4px solid transparent;
-                border-right: 4px solid transparent;
-                border-top: 8px solid rgba(173, 173, 173, 1);
-            }
-        }
-    }
-    .select-options {
-        display: none;
+    > i {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translate(0, -50%);
+      width: 8px;
+      height: 8px;
+      &:after {
+        content: '';
         position: absolute;
-        top: 50px;
-        left: -1px;
-        width: 150px;
-        border: 1px solid rgba(187, 187, 187, 1);
-        border-radius: 3px;
-        box-sizing: border-box;
-        background-color: #fff;
-        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 8px solid rgba(173, 173, 173, 1);
+      }
     }
-    .select-option {
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        font-size: 14px;
-        color: rgba(86, 86, 86, 1);
-        border-bottom: 1px solid rgba(242, 242, 242, 1);
-        &:last-child {
-            border-bottom: 0 none;
-        }
+  }
+  .select-options {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: -1px;
+    width: 150px;
+    border: 1px solid rgba(187, 187, 187, 1);
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #fff;
+    z-index: 2000;
+  }
+  .select-option {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(86, 86, 86, 1);
+    border-bottom: 1px solid rgba(242, 242, 242, 1);
+    &:last-child {
+      border-bottom: 0 none;
     }
-    .select-search {
-        width: 216px;
-        height: 45px;
-        line-height: 43px;
-        padding-left: 10px;
-        margin-left: 14px;
-        border: 1px solid rgba(187, 187, 187, 1);
-        border-radius: 3px;
-        box-sizing: border-box;
-        &::-webkit-input-placeholder {
-            font-size: 16px;
-            /* WebKit, Blink, Edge */
-            color: rgba(136, 136, 136, 1);
-        }
-        &::-moz-placeholder {
-            font-size: 16px;
-            /* Mozilla Firefox 19+ */
-            color: rgba(136, 136, 136, 1);
-        }
-        &:-ms-input-placeholder {
-            font-size: 16px;
-            /* Internet Explorer 10-11 */
-            color: rgba(136, 136, 136, 1);
-        }
+  }
+  .select-search {
+    width: 216px;
+    height: 45px;
+    line-height: 43px;
+    padding-left: 10px;
+    margin-left: 14px;
+    border: 1px solid rgba(187, 187, 187, 1);
+    border-radius: 3px;
+    box-sizing: border-box;
+    &::-webkit-input-placeholder {
+      font-size: 16px;
+      /* WebKit, Blink, Edge */
+      color: rgba(136, 136, 136, 1);
     }
+    &::-moz-placeholder {
+      font-size: 16px;
+      /* Mozilla Firefox 19+ */
+      color: rgba(136, 136, 136, 1);
+    }
+    &:-ms-input-placeholder {
+      font-size: 16px;
+      /* Internet Explorer 10-11 */
+      color: rgba(136, 136, 136, 1);
+    }
+  }
 }
