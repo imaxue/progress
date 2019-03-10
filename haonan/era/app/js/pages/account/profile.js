@@ -9,15 +9,7 @@ $(function () {
   var $doc = $(document)
   var profile = {
     state: {
-      isValid: false,
-      params: {
-        file: '',
-        fullname: '',
-        region: '',
-        province: '',
-        city: '',
-        town: ''
-      }
+      isValid: false
     },
 
     // 初始化
@@ -42,24 +34,55 @@ $(function () {
         rules: {
           file: {
             required: true,
-            accept: 'image/*'
+            accept: 'image/png,image/jpg,image/jpeg,image/bmp'
           },
           fullname: {
             required: true,
             maxlength: 30
+          },
+          intro: {
+            required: true,
+            maxlength: 200
+          },
+          license: {
+            required: true,
+            accept: 'image/png,image/jpg,image/jpeg,image/bmp'
           }
         },
         messages: {
-          file: '请上传头像',
+          file: {
+            required: '请上传头像',
+            accept: '仅支持jpg/png/bmp格式'
+          },
           fullname: {
             required: '请输入公司全称',
             maxlength: '最多输入30个字'
           },
+          abbr: '请填写公司简称',
           prop: '请选择公司属性',
           region: '请选择地区',
           province: '请选择省份',
           city: '请选择城市',
           town: '请选择地区',
+          year: '请选择成立年份',
+          month: '请选择成立月份',
+          scale: '请选择公司规模',
+          industry: '请选择所在行业',
+          keywords: '请选择关键词',
+          intro: {
+            required: '请填写公司介绍',
+            maxlength: '最多200字'
+          },
+          size: '请输入主页图尺寸',
+          size1: '请输入公司封面图尺寸',
+          code: '请填写注册号',
+          name: '请填写代表姓名',
+          expire_year: '请选择年份',
+          expire_month: '请选择月份',
+          license: {
+            required: '请上传营业执照',
+            accept: '仅支持jpg/png/bmp格式'
+          }
         }
       })
     },
@@ -86,7 +109,6 @@ $(function () {
         var name = $el.prop('name')
         $this.children('.select__label').html(params.label)
         $el.val(params.value)
-        _this.state.params[name] = params.value
       })
     },
 

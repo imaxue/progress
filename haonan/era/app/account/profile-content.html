@@ -89,7 +89,7 @@
           <label class="form-item__label is-required">公司简称</label>
           <div class="form-item__input">
             <div class="input">
-              <input type="text" name="abbr" class="form-item__inner company-abbr" placeholder="如：小米、大疆、阿里巴巴">
+              <input type="text" name="abbr" class="form-item__inner company-abbr" placeholder="如：小米、大疆、阿里巴巴" required>
             </div>
           </div>
         </div>
@@ -162,51 +162,56 @@
           <div class="select">
               <span class="select__label">年份</span>
               <i></i>
+              <input type="text" name="year" required>
               <!-- 下拉列表 -->
               <div class="select-options">
               </div>
+            </div>
           </div>
-        </div>
-        <div class="select-form">
-          <div class="select">
+          <div class="select-form">
+            <div class="select">
               <span class="select__label">月份</span>
               <i></i>
+              <input type="text" name="month" required>
               <!-- 下拉列表 -->
               <div class="select-options">
               </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-item company-desc">
-        <label class="form-item__label is-required">公司规模</label>
-        <div class="select-form">
-          <div class="select">
+        <div class="form-item company-desc">
+          <label class="form-item__label is-required">公司规模</label>
+          <div class="select-form">
+            <div class="select">
               <span class="select__label">请选择</span>
               <i></i>
+              <input type="text" name="scale" required>
               <!-- 下拉列表 -->
               <div class="select-options">
               </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-item company-desc">
-        <label class="form-item__label is-required">所在行业</label>
-        <div class="select-form">
-          <div class="select">
+        <div class="form-item company-desc">
+          <label class="form-item__label is-required">所在行业</label>
+          <div class="select-form">
+            <div class="select">
               <span class="select__label">请选择</span>
               <i></i>
+              <input type="text" name="industry" required>
               <!-- 下拉列表 -->
               <div class="select-options">
               </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-item company-desc">
-        <label class="form-item__label is-required">公司关键词</label>
-        <div class="select-form">
-          <div class="select">
+        <div class="form-item company-desc">
+          <label class="form-item__label is-required">公司关键词</label>
+          <div class="select-form">
+            <div class="select">
               <span class="select__label">请选择</span>
               <i></i>
+              <input type="text" name="keywords" required>
               <!-- 下拉列表 -->
               <div class="select-options">
               </div>
@@ -222,24 +227,36 @@
       </div>
       <div class="form-item">
         <label class="form-item__label is-required">公司主页及封面图片</label>
-        <div class="form-item__input">
-            <div class="input" style="margin-right: 22px;">
-              <input type="text" name="size" class="form-item__inner" placeholder="主页图尺寸（1440*456）">
-            </div>
-            <div class="input">
-              <input type="text" name="size1" class="form-item__inner" placeholder="公司封面图尺寸（450*290）">
-            </div>
-            <div class="preivew-wrap">
-              <div class="preview" style="margin-right: 20px;width: 200px;height: 100px;"></div>
-              <div class="preview" style="width: 140px;height: 100px;"></div>
+        <div class="form-item__input clearfix">
+          <div class="form-item" style="margin-right: 22px;">
+            <div class="form-item__input">
+              <div class="input" style="width: 199px;">
+                <input type="text" name="size" class="form-item__inner" required placeholder="主页图尺寸（1440*456）">
+              </div>
             </div>
           </div>
+          <div class="form-item">
+            <div class="form-item__input">
+              <div class="input">
+                <input type="text" name="size1" class="form-item__inner" required placeholder="公司封面图尺寸（450*290）">
+              </div>
+            </div>
+          </div>
+          <div class="preview-wrap">
+            <div class="preview" style="margin-right: 20px;width: 200px;height: 100px;">
+              <span class="era-icon-photo"></span>
+            </div>
+            <div class="preview" style="width: 140px;height: 100px;">
+              <span class="era-icon-photo"></span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="form-item">
         <label class="form-item__label is-required is-important">注册号</label>
         <div class="form-item__input">
           <div class="input" style="width: 420px;">
-            <input type="text" name="code" class="form-item__inner" placeholder="如无可填写统一社会信用编码">
+            <input type="text" name="code" class="form-item__inner" required placeholder="如无可填写统一社会信用编码">
           </div>
         </div>
       </div>
@@ -247,7 +264,7 @@
         <label class="form-item__label is-required is-important">代表姓名</label>
         <div class="form-item__input">
           <div class="input" style="width: 300px;">
-            <input type="text" name="name" class="form-item__inner" placeholder="请填写法人/经营者代表姓名">
+            <input type="text" name="name" class="form-item__inner" required placeholder="请填写法人/经营者代表姓名">
           </div>
         </div>
       </div>
@@ -257,14 +274,16 @@
           <div class="select">
               <span class="select__label">年份</span>
               <i></i>
+              <input type="text" name="expire_year" required>
               <!-- 下拉列表 -->
               <div class="select-options">
               </div>
+            </div>
           </div>
-        </div>
-        <div class="select-form">
-          <div class="select">
+          <div class="select-form">
+            <div class="select">
               <span class="select__label">月份</span>
+              <input type="text" name="expire_month" required>
               <i></i>
               <!-- 下拉列表 -->
               <div class="select-options">
@@ -280,13 +299,22 @@
             <input class="upload-button__input" name="license" type="file">
           </label>
           <div class="preview-wrap">
-            <div class="preview" style="width: 301px;height: 150px;"></div>
+            <div class="preview" style="width: 301px;height: 150px;">
+              <span class="era-icon-photo" style="line-height: 150px;"></span>
+            </div>
           </div>
           <div class="tips">请确认以上内容的准确性，信息有误则审核不通过。</div>
         </div>
       </div>
       <div class="form-item" style="width: 100%;">
         <label class="form-item__label is-required">企业第三方信息</label>
+        <div class="form-item__input third-party">
+          <span class="era-icon-wechart"></span>
+          <span class="era-icon-weibo"></span>
+          <span class="era-icon-txweibo"></span>
+          <span class="era-icon-twitter"></span>
+          <span class="era-icon-facebook"></span>
+        </div>
       </div>
     </form>
     <div style="margin: 217px auto 89px;;text-align: center;">

@@ -67,6 +67,15 @@
     }
     .preview {
       display: inline-block;
+      background-color: #e8e8e8;
+      text-align: center;
+      &-wrap {
+        margin-top: 13px;
+      }
+      .era-icon-photo {
+        color: #8d9ea7;
+        line-height: 100px;
+      }
     }
     .companyname {
       width: 300px;
@@ -83,6 +92,13 @@
     .textarea {
       width: 670px;
       height: 131px;
+    }
+    .third-party {
+      color: #d5d5d5;
+      font-size: 24px;
+      span {
+        margin-right: 22px;
+      }
     }
   }
 }
