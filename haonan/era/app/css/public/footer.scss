@@ -26,6 +26,12 @@
         font-size: 14px;
         color: rgba(0, 0, 0, .54);
     }
+    i {
+        font-size: 20px;
+        &+i {
+            margin-left: 15px;
+        }
+    }
 }
 
 .footer-cooperation-list {
@@ -39,9 +45,12 @@
 .footer-copy-right {
     font-size: 12px;
     color: #B3B3B3;
-    .statistics-logo {
-        width: 20px;
-        height: 20px;
-        margin-left: 20px;
+    span {
+        vertical-align: middle;
+    }
+    i {
+        margin-left: 10px;
+        vertical-align: middle;
+        font-size: 20px;
     }
 }

@@ -1,0 +1,129 @@
+.design-detail-banner {
+    position: relative;
+    width: 100%;
+    height: 456px;
+    margin-bottom: 41px;
+    .front {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 1200px;
+        height: 100%;
+        z-index: 1;
+    }
+    .back-blur {
+        display: block;
+        width: 100%;
+        height: 100%;
+        filter: blur(3px);
+    }
+}
+
+.design-detail-container {
+    width: 1200px;
+    margin: 0 auto;
+    .detail-top {
+        margin-bottom: 20px;
+    }
+    .design-company-logo {
+        float: left;
+        width: 130px;
+        height: 130px;
+        margin-right: 19px;
+    }
+    .design-company-top {
+        padding: 20px 0 0 149px;
+        margin-bottom: 30px;
+    }
+    .design-company-title {
+        font-size: 32px;
+        color: #333;
+    }
+    .design-company-label {
+        float: right;
+        font-size: 18px;
+        color: #71798A;
+        &+.design-company-label {
+            margin-right: 14px;
+        }
+    }
+    .design-company-slogan {
+        margin-right: 56px;
+        font-size: 18px;
+        color: #333;
+    }
+    .design-company-address {
+        margin-right: 40px;
+        color: #2A333F;
+    }
+    .design-company-data {
+        color: #1B2B4F;
+        span {
+            vertical-align: middle;
+        }
+        i {
+            vertical-align: middle;
+            font-size: 26px;
+        }
+        .era-icon-heart {
+            margin-left: 26px;
+        }
+    }
+    .detail-introduction {
+        margin-bottom: 30px;
+        line-height: 30px;
+        font-size: 18px;
+        color: #717171;
+    }
+    .detail-tabs {
+        width: 100%;
+        margin-bottom: 47px;
+    }
+    .detail-tab {
+        float: left;
+        width: 20%;
+        text-align: center;
+        span {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 12px;
+            font-size: 24px;
+            color: #74777D;
+            cursor: pointer;
+        }
+        &.active {
+            span {
+                color: #051027;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #737373;
+                }
+            }
+        }
+    }
+    .detail-content {
+        margin-bottom: 82px;
+    }
+    .to-understanding-more {
+        margin-bottom: 100px;
+        text-align: center;
+        span {
+            color: #74777D;
+            vertical-align: middle;
+        }
+        i {
+            vertical-align: middle;
+            font-size: 24px;
+            color: #D5D5D5;
+            &+i {
+                margin-left: 22px;
+            }
+        }
+    }
+}
