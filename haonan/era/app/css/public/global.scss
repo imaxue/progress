@@ -27,8 +27,31 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, .6);
     z-index: 999;
+}
+
+.dialog-title {
+    position: relative;
+    height: 50px;
+    padding-left: 20px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(16, 16, 16, 1);
+}
+
+.dialog-close {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translate(-50%, -50%);
+    opacity: .7;
+    font-style: normal;
+    cursor: pointer;
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .dialog-container {

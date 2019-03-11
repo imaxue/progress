@@ -78,7 +78,6 @@
     }
     .detail-tabs {
         width: 100%;
-        margin-bottom: 47px;
     }
     .detail-tab {
         float: left;
@@ -109,9 +108,14 @@
     }
     .detail-content {
         margin-bottom: 82px;
+        >div {
+            &:not(:first-child) {
+                display: none;
+            }
+        }
     }
     .to-understanding-more {
-        margin-bottom: 100px;
+        margin: 100px auto;
         text-align: center;
         span {
             color: #74777D;
@@ -125,5 +129,225 @@
                 margin-left: 22px;
             }
         }
+    }
+    .recruitment-info-container {
+        margin-top: 47px;
+        >div {
+            float: left;
+        }
+    }
+    .recruitment-info {
+        border-radius: 3px;
+        text-align: center;
+        box-shadow: 0px 1px 4px 0px rgba(242, 242, 242, 1);
+        width: 280px;
+        height: 180px;
+        margin: 0 20px 20px 0;
+        background-color: #fff;
+        &:nth-child(3n) {
+            margin-left: 0;
+        }
+    }
+    .recruitment-job-name {
+        margin: 45px 0 50px 0;
+        font-size: 20px;
+        color: #1B2B4F;
+    }
+    .recruitment-view {
+        color: #74777D;
+        cursor: pointer;
+    }
+    .company-project-label-container {
+        line-height: 30px;
+        margin: 22px 0 42px 0;
+    }
+    .company-project-label {
+        float: left;
+        font-size: 14px;
+        color: #A6A6A6;
+        cursor: pointer;
+        &.active {
+            color: #2A333F;
+        }
+        &+.company-project-label {
+            margin-left: 20px;
+        }
+    }
+    .company-project-picture {
+        img {
+            float: left;
+            width: 280px;
+            height: 180px;
+            margin: 0 20px 20px 0;
+            &:nth-child(3n) {
+                margin-left: 0;
+            }
+        }
+    }
+    .company-service-container {
+        margin-top: 47px;
+    }
+    .company-service {
+        float: left;
+        width: 380px;
+        height: 180px;
+        border-radius: 3px;
+        margin: 0 18px 18px 0;
+        box-shadow: 0px 1px 4px 0px rgba(242, 242, 242, 1);
+        background-color: #fff;
+    }
+    .company-service-title {
+        margin: 30px 0 20px 0;
+        text-align: center;
+        font-size: 20px;
+        color: #1B2B4F;
+    }
+    .company-service-info {
+        padding: 0 43px;
+        line-height: 24px;
+        font-size: 14px;
+        color: #74777D;
+    }
+    .company-album-container {
+        margin-top: 22px;
+    }
+    .company-album-check {
+        margin-bottom: 40px;
+        text-align: center;
+        span {
+            color: #A6A6A6;
+            cursor: pointer;
+            &.active {
+                color: #2A333F;
+            }
+            &+span {
+                margin-left: 20px;
+            }
+        }
+    }
+    .company-album-list {
+        display: none;
+        &[type="album-personnel"] {
+            display: block;
+        }
+    }
+    .company-album-item {
+        float: left;
+        position: relative;
+        width: 280px;
+        height: 180px;
+        margin: 0 20px 20px 0;
+        background-color: pink;
+        &:nth-child(3n) {
+            margin-left: 0;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .company-news-container {
+        padding: 30px 30px 45px 34px;
+        margin-top: 48px;
+        background-color: #fff;
+    }
+    .company-news-item {
+        margin-bottom: 17px;
+    }
+    .company-news-item-title {
+        float: left;
+        color: #353535;
+    }
+    .company-news-item-time {
+        float: right;
+        font-size: 14px;
+        color: #B3B3B3;
+    }
+    .company-news-view-all {
+        width: 80px;
+        height: 35px;
+        line-height: 35px;
+        margin-top: 35px;
+        border-radius: 3px;
+        color: rgba(27, 43, 79, 1);
+        font-size: 14px;
+        text-align: center;
+        border: 1px solid rgba(227, 227, 227, 1);
+        cursor: pointer;
+    }
+}
+
+.download-app-dialog {
+    >div {
+        width: 60%;
+        border-radius: 3px;
+        text-align: center;
+    }
+    .dialog-title {
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(16, 16, 16, 1);
+    }
+    .dialog-close {
+        font-size: 30px;
+    }
+    .check-system {
+        margin-bottom: 50px;
+        .system-name {
+            float: left;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            font-size: 26px;
+            color: #2A333F;
+            cursor: pointer;
+            &:first-child {
+                padding-right: 80px;
+                text-align: right;
+            }
+            &:last-child {
+                padding-left: 80px;
+                text-align: left;
+            }
+            &.active {
+                span {
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 1px;
+                        background-color: #2A333F;
+                    }
+                }
+            }
+            span {
+                position: relative;
+                display: inline-block;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    .qrcode {
+        display: block;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 50px;
+        &.android {
+            display: none;
+        }
+    }
+    .tips {
+        margin-bottom: 20px;
+        color: #2A333F;
+    }
+    .slogan {
+        margin-bottom: 50px;
+        color: #2A333F;
     }
 }
