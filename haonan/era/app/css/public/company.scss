@@ -12,6 +12,14 @@
     color: $font-color-info;
     font-size: $font-size;
     background-color: #fff;
+    * {
+      box-sizing: border-box;
+    }
+    .select-form {
+      input {
+        opacity: 0;
+      }
+    }
     .label {
       $label-size: 16px;
       color: $font-color-secondary;
