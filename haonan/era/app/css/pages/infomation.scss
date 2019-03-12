@@ -3,6 +3,7 @@
 .infomation-container {
     width: 1200px;
     margin: 0 auto;
+    padding-bottom: 140px;
     .infomation-banner {
         display: block;
         width: 100%;
@@ -21,8 +22,8 @@
         line-height: 18px;
         li {
             float: left;
-            margin-left: 40px;
             &:not(:first-child) {
+                margin-left: 40px;
                 cursor: pointer;
             }
         }
@@ -153,7 +154,7 @@
         width: 350px;
         height: 50px;
         line-height: 50px;
-        margin: 54px auto 140px;
+        margin: 54px auto;
         border: 1px solid rgba(213, 213, 213, 1);
         border-radius: 3px;
         font-size: 20px;
