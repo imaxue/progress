@@ -231,15 +231,37 @@
             display: block;
         }
     }
-    .company-album-item {
+    .company-album-item-container {
         float: left;
-        position: relative;
         width: 280px;
         height: 180px;
         margin: 0 20px 20px 0;
-        background-color: pink;
         &:nth-child(3n) {
             margin-left: 0;
+        }
+    }
+    .company-album-item {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: pink;
+        .company-album-item-cover {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .6);
+            p {
+                margin-top: 10px;
+                text-align: center;
+                color: #fff;
+                &:first-child {
+                    margin-top: 67px;
+                    font-size: 18px;
+                }
+            }
         }
         img {
             display: block;
