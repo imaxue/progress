@@ -10,6 +10,56 @@
   .article {
     margin: 0 auto;
     width: 900px;
+    &__header {
+      margin-top: 40px;
+      margin-bottom: 28px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #bbb;
+    }
+    &-title {
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+    &-subtitle {
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+    &-desc {
+      font-size: 12px;
+      color: #b3b3b3;
+      .era-icon-look {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+      span {
+        margin-right: 20px;
+        vertical-align: middle;
+      }
+    }
+    &-section {
+      margin-top: 26px;
+      margin-bottom: 40px;
+      font-size: 16px;
+      p {
+        margin: 20px 0;
+      }
+    }
+    .section-title {
+      position: relative;
+      width: 90px;
+      font-size: 18px;
+      text-align: center;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 60%;
+        background-color: #ffe100;
+        z-index: -1;
+      }
+    }
   }
   .article-score {
     font-size: 35px;

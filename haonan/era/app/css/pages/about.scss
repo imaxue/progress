@@ -1,0 +1,14 @@
+.about {
+  margin: 0 auto;
+  width: 900px;
+  color: #101010;
+  font-size: 16px;
+  &-title {
+    margin: 50px 0 33px;
+    font-size: 36px;
+    text-align: center;
+  }
+  p {
+    margin: 50px 0;
+  }
+}
