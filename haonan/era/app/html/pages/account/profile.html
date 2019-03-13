@@ -28,12 +28,13 @@
       <div class="company__main">
         @@include('../../account/profile-content.html')
       </div>
-      @@include('footer.html')
     </div>
   </div>
   @@loop('public-script.html', [
   { "name": "jQuery" },
-  { "name": "config" }
+  { "name": "public" },
+  { "name": "jquery.validate.min" },
+  { "name": "additional-methods.min" }
   ])
   <script src="/js/pages/account/profile.js"></script>
 </body>

@@ -65,17 +65,14 @@
     .company-data-pageviews {
         float: left;
         >span {
+            margin-left: 12px;
             display: inline-block;
             vertical-align: middle;
         }
-        &:before {
-            content: "";
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            margin-right: 14px;
+        i {
+            font-size: 18px;
+            color: rgba(173, 173, 173, 1);
             vertical-align: middle;
-            background-image: url('/imgs/public/placeholder.png');
         }
     }
     .company-data-pageviews-ago {

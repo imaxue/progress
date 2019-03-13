@@ -1,3 +1,4 @@
+@import 'var.scss';
 @import 'mixins.scss';
 
 @each $pos in left, right {
@@ -21,5 +22,39 @@
 .text {
   &-bold {
     font-weight: bold!important;
+  }
+  &-bolder {
+    font-weight: 900!important;
+  }
+}
+
+/* 评分 */
+.score {
+  color: $color-danger;
+  @for $i from 1 through 5 {
+    .score-item:before {
+      content: "\e7df";
+      font-family: era;
+    }
+    &-#{$i} {
+      .score-item:nth-child(-n+#{$i}) {
+        &:before {
+          content: "\e86a";
+        }
+      }
+      &.is-half {
+        .score-item:nth-child(#{$i + 1}) {
+          position: relative;
+          &:after {
+            content: "\e86a";
+            font-family: era;
+            position: absolute;
+            left: 0;
+            width: 0.5em;
+            overflow: hidden;
+          }
+        }
+      }
+    }
   }
 }

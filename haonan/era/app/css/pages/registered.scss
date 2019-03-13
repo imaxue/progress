@@ -70,6 +70,14 @@
     text-align: center;
     background-color: #fff;
     box-shadow: 0px 2px 6px 1px rgba(140, 140, 140, 0.1);
+    i {
+        font-size: 25px;
+        color: #E3E3E3;
+        cursor: pointer;
+        &+i {
+            margin-left: 24px;
+        }
+    }
 }
 
 .registered-personal-title {

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="renderer" content="webkit">
-  <title>企业服务</title>
+  <title>企业相册</title>
   @@loop('head-link.html', [
   { "name": "reset" },
   { "name": "global" },
@@ -28,12 +28,11 @@
       <div class="company__main">
         @@include('../../account/gallery-content.html')
       </div>
-      @@include('footer.html')
     </div>
   </div>
   @@loop('public-script.html', [
   { "name": "jQuery" },
-  { "name": "config" }
+  { "name": "public" }
   ])
   <script src="/js/pages/account/gallery.js"></script>
 </body>

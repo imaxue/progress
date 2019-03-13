@@ -48,17 +48,40 @@
         opacity: 0;
       }
     }
+    .select-form {
+      position: relative;
+      display: inline-block;
+      input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+      .select {
+        min-width: 90px;
+        width: auto;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+      }
+    }
     .preview {
       display: inline-block;
+      background-color: #e8e8e8;
+      text-align: center;
+      &-wrap {
+        margin-top: 13px;
+      }
+      .era-icon-photo {
+        color: #8d9ea7;
+        line-height: 100px;
+      }
     }
     .companyname {
       width: 300px;
     }
     .address {
       margin-right: 50px;
-      .select {
-        width: 90px;
-      }
     }
     .company-desc {
       margin-right: 40px;
@@ -69,6 +92,45 @@
     .textarea {
       width: 670px;
       height: 131px;
+    }
+  }
+  .third-party {
+    color: #d5d5d5;
+    font-size: 24px;
+    span {
+      margin-right: 22px;
+    }
+  }
+}
+
+.profile-dialog {
+  text-align: center;
+  background-color: rgba(#000, .5);
+  .dialog {
+    &-container {
+      padding: 74px 0 95px;
+      width: 700px;
+    }
+    &__header {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    &__body {
+      color: $font-color-secondary;
+      font-size: 16px;
+    }
+  }
+  .confirm {
+    margin-top: 60px;
+  }
+  &.invalid {
+    .dialog {
+      &__header {
+        margin-bottom: 40px;
+      }
+      &__body {
+        color: $font-color-regular;
+      }
     }
   }
 }

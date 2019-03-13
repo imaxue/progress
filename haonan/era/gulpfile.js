@@ -144,7 +144,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('hash', function () {
-    return gulp.src([prodDir + '/rev/**/*.json', prodDir + '/*.html'])
+    return gulp.src([prodDir + '/rev/**/*.json', prodDir + '/**/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest(prodDir))
 });
