@@ -1,4 +1,3 @@
-
 1.参考网址 [](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000)
 
 操作步骤:
@@ -94,6 +93,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 * `git status`命令可以让我们时刻掌握**仓库**当前的状态
 * `git diff`顾名思义就是查看difference(查看我们更改了哪些内容)
+	注意git diff只有在提交之前查看才有效果,否则,没有任何效果.
 
 ```
 $ git diff
@@ -116,6 +116,15 @@ index d8036c1..013b5bc 100644
 > > > 我在输入git commit的时候忘记输入-m以及修改备注了,然后进入vim 模式的处理可以参考以下网址解决
 > > >
 > > > [](https://blog.csdn.net/bianliuzhu/article/details/81905343)
+> > >
+> > * 在没有#号的一行输入修改了哪些内容
+> > * 按下ESC键,输入冒号,此时光标在最下方,然后输入wq回车,回到主页面
+> > ```
+> > $ git commit
+> > [master (root-commit) fa997c9]  new file:   readme.txt 我是第一次提交的内容:
+> > 1 file changed, 1 insertion(+)
+> > create mode 100644 readme.txt
+> > ```
 
 ####  版本回退()
 
@@ -222,7 +231,20 @@ $ git reflog
 ```
 小结:
 HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。
-
 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
 
 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
+## 概念:
+## 工作区（Working Directory）
+>> 就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区：
+## 版本库（Repository）
+>> 工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+>> Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有 Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
+![](C:\Users\ADMINI~1\AppData\Local\Temp\1552444785139.png)
+>> 我们把文件往Git版本库里添加的时候，是分两步执行的：
+>> 第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
+>> 第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
+>> 因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git >> commit就是往master分支上提交更改。
+>> 简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+
