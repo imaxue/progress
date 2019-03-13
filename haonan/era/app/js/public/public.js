@@ -21,7 +21,8 @@ $(function () {
     $doc.on('click', function (e) {
         $('.select').has('.select-options:visible').each(function () {
             if (!this.contains(e.target)) {
-                $(this).children('.select-options').slideUp()
+                $(this).find('i').removeClass('is-reverse');
+                $(this).children('.select-options').slideUp('fast')
             }
         })
     });
@@ -29,6 +30,7 @@ $(function () {
     $('.select').click(function (e) {
         // 把其他的先收起
         $('.select').not(this).find('.select-options').slideUp('fast');
+        $(this).find('i').addClass('is-reverse');
         // 只展示当前的
         var $option = $(this).children('.select-options')
         if ($option.get(0).contains(e.target)) return
@@ -40,12 +42,10 @@ $(function () {
         var $this = $(this)
         var value = $this.attr('data-value')
         var $parent = $this.closest('.select-options')
+        $(this).find('i').removeClass('is-reverse');
         $parent.slideUp('fast');
         $this.closest('.select').trigger('selected', { label: $this.html(), value: value })
-
     })
-    $('.select-options').on('click', function (e) {
-    });
     // 已认证与未认证切换
     var isValide = true
     $('.is-verified').toggle(isValide)
