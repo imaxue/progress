@@ -50,3 +50,11 @@ VM291:4 (6) [0, 1, 2, 3, 4, 5]
 function hasKey(object, key) {
   return Object.prototype.hasOwnProperty.call(object, key);
 }
+
+function isFunction(what) {
+  return typeof what === "function";
+}
+
+function isUndefined(what) {
+  return what === void 0;
+}
