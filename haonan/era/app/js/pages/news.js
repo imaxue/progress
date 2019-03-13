@@ -15,9 +15,9 @@ $(function () {
         $('.news-video-dialog').fadeOut('fast');
     });
     $('.news-video-container').click(function () {
-        var videoSrc = $(this).find('video').attr('src')
-        $('.news-video-dialog video').attr('src', videoSrc);
+        var videoSrc = $(this).find('img').attr('video-src');
         $('.news-video-dialog').fadeIn('fast');
         $('body').css('overflow', 'hidden');
+        $('.news-video-dialog video').attr('src', videoSrc);
     });
 });
