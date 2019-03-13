@@ -130,9 +130,8 @@ $(function () {
       var _this = this
       $('.select').on('selected', function (e, params) {
         var $this = $(this)
-        var $el = $this.children('input')
+        var $el = $this.children('input[name]')
         if (!$el) return
-        var name = $el.prop('name')
         $el.val(params.value)
       })
     },

@@ -49,17 +49,10 @@
       }
     }
     .select-form {
-      position: relative;
       display: inline-block;
-      input {
-        position: absolute;
-        width: 0;
-        height: 0;
-        opacity: 0;
-      }
+      width: auto;
       .select {
-        min-width: 90px;
-        width: auto;
+        width: 90px;
         height: 36px;
         line-height: 36px;
         font-size: 14px;
