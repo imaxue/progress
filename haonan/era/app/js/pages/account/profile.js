@@ -133,7 +133,6 @@ $(function () {
         var $el = $this.children('input')
         if (!$el) return
         var name = $el.prop('name')
-        $this.children('.select__label').html(params.label)
         $el.val(params.value)
       })
     },

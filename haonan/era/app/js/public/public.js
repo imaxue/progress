@@ -40,11 +40,14 @@ $(function () {
     $doc.on('click', '.select-option', function (e) {
         e.stopPropagation();
         var $this = $(this)
+        var label = $this.html()
         var value = $this.attr('data-value')
         var $parent = $this.closest('.select-options')
         $(this).find('i').removeClass('is-reverse');
         $parent.slideUp('fast');
-        $this.closest('.select').trigger('selected', { label: $this.html(), value: value })
+        var $select = $this.closest('.select')
+        $select.find('input[readonly]').val(label)
+        $select.trigger('selected', { label: label, value: value })
     })
     // 已认证与未认证切换
     var isValide = true

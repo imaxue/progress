@@ -15,8 +15,12 @@
     * {
       box-sizing: border-box;
     }
-    .select-form {
-      input {
+    .select {
+      input[required] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        outline: none;
         opacity: 0;
       }
     }
