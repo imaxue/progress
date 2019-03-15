@@ -180,5 +180,21 @@
 		分组查询 ...GROUP BY... / ...GROUP BY...HAVING... 
 		SELECT TNo,CONUT(*) AS C_Num FROM TC GROUP BY TNo
 	    SELECT TNo,CONUT(*) AS C_Num FROM TC GROUP BY TNo HAVING (COUNT(*)>=2)
-	    降序排列 ...WHERE...ORDER BY...
+	    降序排列 ...WHERE...ORDER BY...默认升序(...DESC 降序)
+	    连接查询结构 利用JOIN进行连接，应有ON与之对应(ON 条件)
+	    外连接查询：符合条件的直接返回到结果中，不符合的列直接填上NULL返回到结果中
+	    	SELECT S.No,SN,CN,Score 
+	    	FROM S 
+	    	LEFT OUTER JOIN C 
+	    	ON C.CNo=SC.CNo
+	    	LEFT OUTER JOIN SC 
+	    	ON S.SNo = SC.SNo
+	    
+		多表查询
+		SELECT T.TNo,TN,CNo FROM T,TC WHERE (T.TNo=TC.TNo) AND (TN='刘伟')
+		合并查询 UNION 会自动将重复的数据删除
+		SELECT SNo,SUM(Score) FROM SC WHERE (SNo='S1') GROUP BY SNo UNION SELECT SNo FROM SC WHERE (SNo = 'S5') GROUP BY SNo
+		查询结果存到表中 SELECT...INTO...FROM...
+		SELLECT SNo INTO Cal_Table FROM SC GROUP BY SNo
+
 	
