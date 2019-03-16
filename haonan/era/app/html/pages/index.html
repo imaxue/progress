@@ -28,7 +28,15 @@
     ])
     <script>
         $(function () {
-            // js逻辑
+            $('.ranking-heart i').click(function () {
+                if ($(this).hasClass('era-icon-heart1')) {
+                    $(this).removeClass('era-icon-heart1');
+                    $(this).addClass('era-icon-heart2 active');
+                } else {
+                    $(this).removeClass('era-icon-heart2 active');
+                    $(this).addClass('era-icon-heart1');
+                }
+            });
         });
     </script>
 </body>

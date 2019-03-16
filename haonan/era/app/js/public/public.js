@@ -13,7 +13,8 @@ $(function () {
     });
     // 点击“退出登录”
     $('#logout').click(function () {
-        $('#headerCompanyMenu').hide();
+        $('#headerCompany').hide();
+        $('#headerBtns').show();
     });
 
     // 下拉框

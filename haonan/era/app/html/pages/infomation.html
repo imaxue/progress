@@ -28,10 +28,12 @@
     { "name": "jQuery" },
     { "name": "public" }
     ])
-    <script src="/js/pages/infomation.js"></script>
     <script>
         $(function () {
-            // js逻辑
+            $('.infomation-option-list li').click(function () {
+                $(this).siblings().not('.infomation-option-label').css('color', '#74777D');
+                $(this).css('color', '#4395FF');
+            });
         });
     </script>
 </body>

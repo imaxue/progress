@@ -28,10 +28,13 @@
     { "name": "jQuery" },
     { "name": "public" }
     ])
-    <script src="/js/pages/design.js"></script>
     <script>
         $(function () {
-            // js逻辑
+            // 分页切换效果
+            $('.pagination-item').click(function () {
+                $('.pagination-item').removeClass('active');
+                $(this).addClass('active');
+            });
         });
     </script>
 </body>

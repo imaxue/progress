@@ -75,5 +75,14 @@
                 color: #B3B3B3;
             }
         }
+        .ranking-heart {
+            i {
+                font-size: 20px;
+                cursor: pointer;
+                &.active {
+                    color: #ff0e00;
+                }
+            }
+        }
     }
 }
