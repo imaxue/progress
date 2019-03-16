@@ -1,5 +1,13 @@
 @import './extract.scss';
 .left-ranking-container {
+    .list-title {
+        height: 88px;
+        line-height: 88px;
+    }
+    .click-view-more {
+        height: 66px;
+        line-height: 66px;
+    }
     .ranking-item {
         height: 107px;
         padding: 16px 0;
