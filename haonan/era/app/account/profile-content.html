@@ -14,11 +14,11 @@
       <li class="row">
         <div class="col col-12">
           <label class="label">地区</label>
-          <div>浙江省   杭州市   上城区</div>
+          <div>浙江省 杭州市 上城区</div>
         </div>
         <div class="col col-12">
           <label class="label">成立时间</label>
-          <div>2016年   6月</div>
+          <div>2016年 6月</div>
         </div>
       </li>
       <li class="row">
@@ -32,12 +32,14 @@
         </div>
         <div class="col col-8">
           <label class="label">公司关键词</label>
-          <div>建筑  景观  园林</div>
+          <div>建筑 景观 园林</div>
         </div>
       </li>
       <li class="infomation-intro">
         <label class="label">公司介绍</label>
-        <div class="infomation-intro__inner">企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容。企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍。</div>
+        <div class="infomation-intro__inner">
+          企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容。企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍内容企业自我介绍。
+        </div>
         <span class="infomation-intro__num">158/200</span>
       </li>
       <li class="row infomation-cover">
@@ -45,21 +47,21 @@
           <label class="label">主页图片及封面图片</label>
           <div class="row">
             <div class="col col-14 infomation-cover">
-              <img src="#" alt="">
+              <img src="#" alt="" />
             </div>
             <div class="col col-10 infomation-cover">
-              <img src="#" alt="">
+              <img src="#" alt="" />
             </div>
           </div>
         </div>
         <div class="col col-11">
           <label class="label">企业第三方信息</label>
           <div class="third-party">
-              <span class="era-icon-wechart"></span>
-              <span class="era-icon-weibo"></span>
-              <span class="era-icon-txweibo"></span>
-              <span class="era-icon-twitter"></span>
-              <span class="era-icon-facebook"></span>
+            <span class="era-icon-wechart" id="wechat"></span>
+            <span class="era-icon-weibo" title="weibo.com"></span>
+            <span class="era-icon-txweibo" title="xxx.com"></span>
+            <span class="era-icon-twitter" title="yyy.com"></span>
+            <span class="era-icon-facebook" title="aaa.com"></span>
           </div>
         </div>
       </li>
@@ -75,17 +77,24 @@
           <div class="form-item__input">
             <label class="btn upload-button">
               <span class="upload-button-inner">上传图片</span>
-              <input class="upload-button__input" name="file" type="file">
+              <input class="upload-button__input" name="file" type="file" />
             </label>
             <p class="tips">只支持 jpg、jpeg、bmp、png</p>
             <p class="tips">大小不超过5M，建议尺寸150×150</p>
           </div>
         </div>
         <div class="form-item">
-          <label class="form-item__label is-required is-important">公司全称</label>
+          <label class="form-item__label is-required is-important"
+            >公司全称</label
+          >
           <div class="form-item__input">
             <div class="input">
-              <input type="text" name="fullname" class="form-item__inner companyname" placeholder="请填写公司全称，最多30个字">
+              <input
+                type="text"
+                name="fullname"
+                class="form-item__inner companyname"
+                placeholder="请填写公司全称，最多30个字"
+              />
             </div>
           </div>
         </div>
@@ -95,23 +104,31 @@
           <label class="form-item__label is-required">公司简称</label>
           <div class="form-item__input">
             <div class="input">
-              <input type="text" name="abbr" class="form-item__inner company-abbr" placeholder="如：小米、大疆、阿里巴巴" required>
+              <input
+                type="text"
+                name="abbr"
+                class="form-item__inner company-abbr"
+                placeholder="如：小米、大疆、阿里巴巴"
+                required
+              />
             </div>
           </div>
         </div>
         <div class="form-item">
-          <label class="form-item__label is-required is-important">公司属性</label>
+          <label class="form-item__label is-required is-important"
+            >公司属性</label
+          >
           <div class="form-item__input">
             <div class="select-form">
               <div class="select">
-                <input type="text" name="prop" required>
-                  <input type="text" readonly placeholder="请选择"/>
-                  <i class="era-icon-xiala"></i>
-                  <!-- 下拉列表 -->
-                  <div class="select-options">
-                      <div class="select-option" data-value="1">民营</div>
-                      <div class="select-option" data-value="2">国营</div>
-                  </div>
+                <input type="text" name="prop" required />
+                <input type="text" readonly placeholder="请选择" />
+                <i class="era-icon-xiala"></i>
+                <!-- 下拉列表 -->
+                <div class="select-options">
+                  <div class="select-option" data-value="1">民营</div>
+                  <div class="select-option" data-value="2">国营</div>
+                </div>
               </div>
             </div>
           </div>
@@ -122,112 +139,109 @@
         <div class="form-item__input">
           <div class="select-form">
             <div class="select">
-              <input type="text" name="region" required>
-                <input type="text" readonly placeholder="地区"/>
-                <i class="era-icon-xiala"></i>
-                <!-- 下拉列表 -->
-                <div class="select-options">
-                </div>
-              </div>
-            </div>
-            <div class="select-form">
-              <div class="select">
-                <input type="text" name="province" required>
-                <input type="text" readonly placeholder="省"/>
-                <i class="era-icon-xiala"></i>
-                <!-- 下拉列表 -->
-                <div class="select-options">
-                </div>
-              </div>
-            </div>
-            <div class="select-form">
-              <div class="select">
-                <input type="text" name="city" required>
-                <input type="text" readonly placeholder="市"/>
-                <i class="era-icon-xiala"></i>
-                <!-- 下拉列表 -->
-                <div class="select-options">
-                </div>
+              <input type="text" name="region" required />
+              <input type="text" readonly placeholder="地区" />
+              <i class="era-icon-xiala"></i>
+              <!-- 下拉列表 -->
+              <div class="select-options"></div>
             </div>
           </div>
           <div class="select-form">
             <div class="select">
-              <input type="text" name="town" required>
-                <input type="text" readonly placeholder="区"/>
-                <i class="era-icon-xiala"></i>
-                <!-- 下拉列表 -->
-                <div class="select-options">
-                </div>
+              <input type="text" name="province" required />
+              <input type="text" readonly placeholder="省" />
+              <i class="era-icon-xiala"></i>
+              <!-- 下拉列表 -->
+              <div class="select-options"></div>
+            </div>
+          </div>
+          <div class="select-form">
+            <div class="select">
+              <input type="text" name="city" required />
+              <input type="text" readonly placeholder="市" />
+              <i class="era-icon-xiala"></i>
+              <!-- 下拉列表 -->
+              <div class="select-options"></div>
+            </div>
+          </div>
+          <div class="select-form">
+            <div class="select">
+              <input type="text" name="town" required />
+              <input type="text" readonly placeholder="区" />
+              <i class="era-icon-xiala"></i>
+              <!-- 下拉列表 -->
+              <div class="select-options"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="form-item">
-        <label class="form-item__label is-required is-important">成立时间</label>
+        <label class="form-item__label is-required is-important"
+          >成立时间</label
+        >
         <div class="select-form">
           <div class="select">
-            <input type="text" name="year" required>
-              <input type="text" readonly placeholder="年份"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
-            </div>
-          </div>
-          <div class="select-form">
-            <div class="select">
-              <input type="text" name="month" required>
-              <input type="text" readonly placeholder="月份"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
-            </div>
+            <input type="text" name="year" required />
+            <input type="text" readonly placeholder="年份" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
           </div>
         </div>
-        <div class="form-item company-desc">
-          <label class="form-item__label is-required">公司规模</label>
-          <div class="select-form">
-            <div class="select">
-              <input type="text" name="scale" required>
-              <input type="text" readonly placeholder="请选择"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
-            </div>
+        <div class="select-form">
+          <div class="select">
+            <input type="text" name="month" required />
+            <input type="text" readonly placeholder="月份" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
           </div>
         </div>
-        <div class="form-item company-desc">
-          <label class="form-item__label is-required">所在行业</label>
-          <div class="select-form">
-            <div class="select">
-              <input type="text" name="industry" required>
-              <input type="text" readonly placeholder="请选择"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
-            </div>
+      </div>
+      <div class="form-item company-desc">
+        <label class="form-item__label is-required">公司规模</label>
+        <div class="select-form">
+          <div class="select">
+            <input type="text" name="scale" required />
+            <input type="text" readonly placeholder="请选择" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
           </div>
         </div>
-        <div class="form-item company-desc">
-          <label class="form-item__label is-required">公司关键词</label>
-          <div class="select-form">
-            <div class="select">
-              <input type="text" name="keywords" required>
-              <input type="text" readonly placeholder="请选择"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
+      </div>
+      <div class="form-item company-desc">
+        <label class="form-item__label is-required">所在行业</label>
+        <div class="select-form">
+          <div class="select">
+            <input type="text" name="industry" required />
+            <input type="text" readonly placeholder="请选择" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-item company-desc">
+        <label class="form-item__label is-required">公司关键词</label>
+        <div class="select-form">
+          <div class="select">
+            <input type="text" name="keywords" required />
+            <input type="text" readonly placeholder="请选择" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
           </div>
         </div>
       </div>
       <div class="form-item">
         <label class="form-item__label is-required">公司介绍</label>
         <div class="textarea show-num">
-          <textarea name="intro" id="" placeholder="请填写公司介绍，最多200字"></textarea>
+          <textarea
+            name="intro"
+            id=""
+            placeholder="请填写公司介绍，最多200字"
+          ></textarea>
           <span class="textarea__num"><span>0</span><span>/200</span></span>
         </div>
       </div>
@@ -237,19 +251,34 @@
           <div class="form-item" style="margin-right: 22px;">
             <div class="form-item__input">
               <div class="input" style="width: 199px;">
-                <input type="text" name="size" class="form-item__inner" required placeholder="主页图尺寸（1440*456）">
+                <input
+                  type="text"
+                  name="size"
+                  class="form-item__inner"
+                  required
+                  placeholder="主页图尺寸（1440*456）"
+                />
               </div>
             </div>
           </div>
           <div class="form-item">
             <div class="form-item__input">
               <div class="input">
-                <input type="text" name="size1" class="form-item__inner" required placeholder="公司封面图尺寸（450*290）">
+                <input
+                  type="text"
+                  name="size1"
+                  class="form-item__inner"
+                  required
+                  placeholder="公司封面图尺寸（450*290）"
+                />
               </div>
             </div>
           </div>
           <div class="preview-wrap">
-            <div class="preview" style="margin-right: 20px;width: 200px;height: 100px;">
+            <div
+              class="preview"
+              style="margin-right: 20px;width: 200px;height: 100px;"
+            >
               <span class="era-icon-photo"></span>
             </div>
             <div class="preview" style="width: 140px;height: 100px;">
@@ -262,38 +291,52 @@
         <label class="form-item__label is-required is-important">注册号</label>
         <div class="form-item__input">
           <div class="input" style="width: 420px;">
-            <input type="text" name="code" class="form-item__inner" required placeholder="如无可填写统一社会信用编码">
+            <input
+              type="text"
+              name="code"
+              class="form-item__inner"
+              required
+              placeholder="如无可填写统一社会信用编码"
+            />
           </div>
         </div>
       </div>
       <div class="form-item">
-        <label class="form-item__label is-required is-important">代表姓名</label>
+        <label class="form-item__label is-required is-important"
+          >代表姓名</label
+        >
         <div class="form-item__input">
           <div class="input" style="width: 300px;">
-            <input type="text" name="name" class="form-item__inner" required placeholder="请填写法人/经营者代表姓名">
+            <input
+              type="text"
+              name="name"
+              class="form-item__inner"
+              required
+              placeholder="请填写法人/经营者代表姓名"
+            />
           </div>
         </div>
       </div>
       <div class="form-item" style="width: 100%;">
-        <label class="form-item__label is-required is-important">营业期限</label>
+        <label class="form-item__label is-required is-important"
+          >营业期限</label
+        >
         <div class="select-form">
           <div class="select">
-            <input type="text" name="expire_year" required>
-              <input type="text" readonly placeholder="年份"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
-            </div>
+            <input type="text" name="expire_year" required />
+            <input type="text" readonly placeholder="年份" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
           </div>
-          <div class="select-form">
-            <div class="select">
-              <input type="text" name="expire_month" required>
-              <input type="text" readonly placeholder="月份"/>
-              <i class="era-icon-xiala"></i>
-              <!-- 下拉列表 -->
-              <div class="select-options">
-              </div>
+        </div>
+        <div class="select-form">
+          <div class="select">
+            <input type="text" name="expire_month" required />
+            <input type="text" readonly placeholder="月份" />
+            <i class="era-icon-xiala"></i>
+            <!-- 下拉列表 -->
+            <div class="select-options"></div>
           </div>
         </div>
       </div>
@@ -302,7 +345,7 @@
         <div class="form-item__input">
           <label class="btn upload-button">
             <span class="upload-button-inner">上传营业执照</span>
-            <input class="upload-button__input" name="license" type="file">
+            <input class="upload-button__input" name="license" type="file" />
           </label>
           <div class="preview-wrap">
             <div class="preview" style="width: 301px;height: 150px;">
@@ -315,11 +358,33 @@
       <div class="form-item" style="width: 100%;">
         <label class="form-item__label is-required">企业第三方信息</label>
         <div class="form-item__input third-party">
-          <span class="era-icon-wechart"></span>
-          <span class="era-icon-weibo"></span>
-          <span class="era-icon-txweibo"></span>
-          <span class="era-icon-twitter"></span>
-          <span class="era-icon-facebook"></span>
+          <span class="era-icon-wechart" data-class="wechat-upload"></span>
+          <span class="era-icon-weibo" data-class="input-wrap"></span>
+          <span class="era-icon-txweibo" data-class="input-wrap"></span>
+          <span class="era-icon-twitter" data-class="input-wrap"></span>
+          <span class="era-icon-facebook" data-class="input-wrap"></span>
+          <div class="third-party__edit">
+            <div class="wechat-upload">
+              <label class="form-item__label">微信二维码</label>
+              <div class="form-item__input">
+                <label class="btn upload-button">
+                  <span class="upload-button-inner">上传图片</span>
+                  <input class="upload-button__input" name="file" type="file" />
+                </label>
+                <p class="tips">只支持 jpg、jpeg、bmp、png</p>
+                <p class="tips">大小不超过1M，建议尺寸258×258</p>
+              </div>
+            </div>
+            <div class="input-wrap">
+              <div class="input"><input type="text" name="weibo"></div>
+              <label class="checkbox is-round">
+                <div class="checkbox__input">
+                  <input type="checkbox" name="checked" class="checkbox__original">
+                  <span class="checkbox__inner"></span>
+                </div>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </form>

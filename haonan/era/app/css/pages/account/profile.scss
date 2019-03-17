@@ -3,14 +3,13 @@
 @import '../../../css/public/mixins.scss';
 .infomation {
   &-company {
-    display: none;
     padding: 35px 30px;
     box-sizing: border-box;
   }
   &-list {
     & > li {
       margin-bottom: 21px;
-      border-bottom: 1px solid #bbb;
+      border-bottom: 1px solid $border-color-base;
     }
   }
   
@@ -36,6 +35,7 @@
     }
   }
   &-edit {
+    display: none;
     padding: 33px 31px;
     .upload-button {
       position: relative;
@@ -125,5 +125,19 @@
         color: $font-color-regular;
       }
     }
+  }
+}
+
+.third-party__edit {
+  margin-top: 40px;
+  display: none;
+  & > div {
+    display: none;
+  }
+}
+
+.input-wrap {
+  .input {
+    width: 400px;
   }
 }

@@ -14,7 +14,7 @@
       margin-top: 40px;
       margin-bottom: 28px;
       padding-bottom: 30px;
-      border-bottom: 1px solid #bbb;
+      border-bottom: 1px solid $border-color-base;
     }
     &-title {
       margin-bottom: 20px;
@@ -74,6 +74,9 @@
       .era-icon-wechart {
         font-size: 26px;
         color: #c3c2c1;
+      }
+      .share-wrap {
+        margin-top: 42px;
       }
       .share {
         margin: 10px 0;
@@ -180,5 +183,17 @@
         font-size: 13px;
       }
     }
+  }
+}
+
+.era-tooltip {
+  width: 100px;
+  font-size: 12px;
+  color: #74777d;
+  img {
+    width: 100%;
+  }
+  p {
+    margin: 10px 0!important;
   }
 }

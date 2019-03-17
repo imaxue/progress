@@ -158,4 +158,24 @@ $(function () {
     }
   }
   profile.init()
+
+  // 二维码提示
+
+  var instance = new Tooltip($('#wechat'), {
+    placement: 'bottom',
+    title: '<div class="era-tooltip"><img class="img-wechat" src="/imgs/code.png" alt=""></div>',
+    html: true,
+    trigger: 'hover'
+  })
+  instance.show().hide()
+  $('.third-party').on('click', 'span', function () {
+    var $this = $(this)
+    var className = $this.attr('data-class')
+    var $edit = $('.third-party .third-party__edit')
+    $edit.show()
+    if (className) {
+      $edit.children().hide()
+      $('.' + className).show()
+    }
+  })
 })

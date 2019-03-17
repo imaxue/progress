@@ -16,4 +16,7 @@ $button-color-default: $font-color-message;
   &--medium {
     padding: 11px 32px;
   }
+  &:hover {
+    background-color: rgba(#000, .01);
+  }
 }
