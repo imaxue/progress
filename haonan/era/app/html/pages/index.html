@@ -37,6 +37,27 @@
                     $(this).addClass('era-icon-heart1');
                 }
             });
+
+            // 滚动加载数据
+            var isCanGetListData = true;
+            $(window).scroll(function () {
+                if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+                    if (isCanGetListData) {
+                        $.ajax({
+                            url: '',
+                            type: 'get',
+                            success: function () {
+                                $('.left-container').append(
+                                )
+                            }
+                        });
+                        isCanGetListData = false;
+                        setTimeout(function () {
+                            isCanGetListData = true;
+                        }, 200);
+                    }
+                }
+            });
         });
     </script>
 </body>

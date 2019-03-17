@@ -46,6 +46,7 @@
 }
 
 .start-registered {
+    display: block;
     width: 184px;
     height: 50px;
     line-height: 50px;
@@ -54,12 +55,13 @@
     border-radius: 3px;
     text-align: center;
     font-size: 18px;
+    color: rgba(5, 16, 39, 1);
     background-color: rgba(255, 255, 255, 0);
-    a {
+    &:visited {
         color: rgba(5, 16, 39, 1);
-        &:visited {
-            color: rgba(5, 16, 39, 1);
-        }
+    }
+    &:hover {
+        background-color: rgba(#000, .01);
     }
 }
 

@@ -31,5 +31,8 @@
         font-size: 14px;
         color: rgba(5, 16, 39, 1);
         cursor: pointer;
+        &:hover {
+            background-color: rgba(#000, .01);
+        }
     }
 }

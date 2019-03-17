@@ -75,5 +75,8 @@
         font-size: 14px;
         color: rgba(53, 53, 53, 1);
         cursor: pointer;
+        &:hover {
+            background-color: rgba(#000, .01);
+        }
     }
 }
