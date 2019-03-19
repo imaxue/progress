@@ -67,6 +67,9 @@
             font-size: 14px;
             color: rgba(16, 16, 16, .5);
             cursor: pointer;
+            &:hover {
+                background-color: rgba(#000, .01);
+            }
         }
         .forget-password {
             margin-top: 10px;
@@ -101,6 +104,9 @@
         color: rgba(5, 16, 39, 1);
         background-color: rgba(255, 255, 255, 0);
         cursor: pointer;
+        &:hover {
+            background-color: rgba(#000, .01);
+        }
     }
     .go-to-login-or-registered {
         text-align: center;

@@ -34,6 +34,53 @@
                 $(this).siblings().not('.infomation-option-label').css('color', '#74777D');
                 $(this).css('color', '#4395FF');
             });
+
+            $('.view-more').click(function () {
+                $.ajax({
+                    url: '',
+                    type: 'get',
+                    success: function () {
+                        $('#mostRated').append(
+                            '<div class="recommend-list-item">' +
+                            '<div class="recommend-date">' +
+                            '2018-10-12' +
+                            '<span class="week">星期五</span>' +
+                            '<span class="week--en">Friday</span>' +
+                            '</div>' +
+                            '<div class="recommend-wrap clearfix">' +
+                            '<div class="recommend-image">' +
+                            '<img src="http://temp.im/260x150" alt="新闻图片">' +
+                            '</div>' +
+                            '<div class="recommend-content">' +
+                            '<a href="/news-detail.html">' +
+                            '<div class="recommend-content__title">你的流量，变现了吗？</div>' +
+                            '</a>' +
+                            '<p class="recommend-content__main">' +
+                            '增长黑客只是更加精准的武器，它永远取代不了走心的品牌和产品在用户心中产生的涟漪啊打发阿斯蒂芬大师傅啊增长黑客只是更加精准的武器，它永远取代不了走心的品牌和产品在用...' +
+                            '</p>' +
+                            '<div class="recommend-content-bottom">' +
+                            '<span class="score score-5 is-half">' +
+                            '<span class="score-item"></span>' +
+                            '<span class="score-item"></span>' +
+                            '<span class="score-item"></span>' +
+                            '<span class="score-item"></span>' +
+                            '<span class="score-item"></span>' +
+                            '</span>' +
+                            '<span class="score-num">9.6分</span>' +
+                            '<span class="era-icon-look"></span>' +
+                            '<span class="look-num">1750</span>' +
+                            '<span class="era-logo"></span>' +
+                            '<span class="company-name">反重力国际教育科技有限公司</span>' +
+                            '<span class="company-label">建筑</span>' +
+                            '<span class="company-label">室内设计</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                    }
+                });
+            });
         });
     </script>
 </body>
