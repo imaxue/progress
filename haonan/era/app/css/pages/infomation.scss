@@ -88,6 +88,9 @@
                 margin-bottom: 15px;
                 font-size: 22px;
                 color: #2a333f;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
             &__main {
                 line-height: 25px;

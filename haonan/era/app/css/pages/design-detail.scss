@@ -289,6 +289,9 @@
     .company-news-item-title {
         float: left;
         color: #353535;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     .company-news-item-time {
         float: right;

@@ -22,12 +22,15 @@
     .recruitment-company-name {
         font-size: 18px;
         color: rgba(5, 16, 39, 1);
+        &:hover {
+            text-decoration: underline;
+        }
     }
     .recruitment-jd {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        margin-top: 4px;
+        margin-top: 10px;
         color: rgba(42, 51, 63, 1);
     }
     .position-subscription {

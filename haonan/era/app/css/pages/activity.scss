@@ -24,9 +24,28 @@
         padding: 22px;
         background-color: #fff;
     }
+    .activity-title-container {
+        height: 25px;
+        line-height: 25px;
+    }
     .activity-title {
         font-size: 20px;
         color: #051027;
+        span {
+            float: right;
+            width: 60px;
+            height: 25px;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            &.ing {
+                background-color: #ff6800;
+            }
+            &.close {
+                background-color: #cacaca;
+            }
+        }
     }
     .activity-content {
         overflow: hidden;

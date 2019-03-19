@@ -27,6 +27,9 @@
         .ranking-company-name {
             font-size: 28px;
             color: rgba(5, 16, 39, 1);
+            &:hover {
+                text-decoration: underline;
+            }
         }
         .ranking-company-other-info {
             margin-top: 41px;
