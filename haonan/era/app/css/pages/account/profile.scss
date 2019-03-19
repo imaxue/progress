@@ -91,7 +91,14 @@
     color: #d5d5d5;
     font-size: 24px;
     span {
+      display: inline-block;
       margin-right: 22px;
+      cursor: pointer;
+      transition: all .2s ease;
+      &:hover {
+        color: darken($color: #d5d5d5, $amount: 10);
+        transform: translateY(-2px);
+      }
     }
   }
 }
