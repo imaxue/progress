@@ -47,13 +47,7 @@
                             url: '',
                             type: 'get',
                             success: function () {
-                                $('.left-container').append(
-                                    '<div class="left-ranking-container">' +
-                                    '<h1 class="list-title">' +
-                                    '<span>月排行</span>' +
-                                    '<span>Month Ranking</span>' +
-                                    '</h1>' +
-                                    '<ul>' +
+                                $('.left-ranking-container.month ul').append(
                                     '<li class="ranking-item">' +
                                     '<img src="http://temp.im/107x107" alt="公司logo">' +
                                     '<div class="ranking-company-info-container">' +
@@ -198,12 +192,7 @@
                                     '</div>' +
                                     '</div>' +
                                     '</div>' +
-                                    '</li>' +
-                                    '</ul>' +
-                                    '<nav class="click-view-more">' +
-                                    '<a href="./design.html">点击查看更多</a>' +
-                                    '</nav>' +
-                                    '</div>'
+                                    '</li>'
                                 )
                             }
                         });
