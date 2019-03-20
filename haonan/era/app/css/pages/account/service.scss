@@ -18,7 +18,7 @@
     padding: 30px 20px 20px;
     height: 200px;
     color: $font-color-message;
-    border: 1px solid $border-color-light;
+    border: 1px solid $border-color-base;
     border-radius: ($border-radius-default/2);
     &__header {
       position: relative;
@@ -50,7 +50,7 @@
     width: $width;
     height: $width;
     line-height: $width;
-    border: 1px solid $border-color-light;
+    border: 1px solid $border-color-base;
     text-align: center;
     font-size: 60px;
     color: $border-color-base;
@@ -59,7 +59,7 @@
   &-edit {
     display: none;
     padding: 30px 40px 20px 20px;
-    border: 1px solid $border-color-light;
+    border: 1px solid $border-color-base;
     border-radius: $border-radius-default;
     .input {
       width: 100%;
