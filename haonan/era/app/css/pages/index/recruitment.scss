@@ -79,7 +79,8 @@
         color: rgba(53, 53, 53, 1);
         cursor: pointer;
         &:hover {
-            background-color: rgba(#000, .01);
+            border-color: transparent;
+            background-color: #fff470;
         }
     }
 }
