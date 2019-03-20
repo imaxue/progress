@@ -125,6 +125,12 @@
             .company-name {
                 margin-right: 62px;
                 font-size: 13px;
+                &:visited {
+                    color: #000;
+                }
+                &:hover {
+                    text-decoration: underline;
+                }
             }
             .company-label {
                 width: 53px;
