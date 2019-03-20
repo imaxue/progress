@@ -80,6 +80,9 @@
         font-size: 13px;
         text-align: center;
         border: 1px solid rgba(166, 166, 166, 1);
+        &:hover {
+            background-color: #fff470;
+        }
         &:first-child {
             margin-right: 17px;
         }
@@ -90,9 +93,6 @@
             color: rgba(42, 51, 63, 1);
             &:visited {
                 color: rgba(42, 51, 63, 1);
-            }
-            &:hover {
-                background-color: #fff470;
             }
         }
     }
