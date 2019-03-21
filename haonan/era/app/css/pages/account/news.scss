@@ -66,7 +66,12 @@
   white-space: nowrap;
   .prev-btn,
   .next-btn {
+    font-size: 20px;
     cursor: pointer;
+    vertical-align: middle;
+    &:hover {
+      color: #1890ff;
+    }
   }
   .number {
     display: inline-block;
@@ -76,7 +81,11 @@
     line-height: 20px;
     text-align: center;
     border-radius: 4px;
+    vertical-align: middle;
     cursor: pointer;
+    &:not(.active):hover {
+      color: #1890ff;
+    }
     &.active {
       color: #fff;
       background-color: #1890ff;
