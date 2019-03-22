@@ -15,16 +15,15 @@
 
 .footer-navigation-item {
     margin-bottom: 15px;
-    color: rgba(0, 0, 0, .54);
+    font-size: 14px;
+    color: rgba(0, 0, 0, .64);
     &:first-child {
         margin-bottom: 40px;
-        a {
-            font-size: 20px;
-        }
+        font-size: 20px;
+        color: rgba(0, 0, 0, .94);
     }
     a {
-        font-size: 14px;
-        color: rgba(0, 0, 0, .54);
+        color: inherit;
         &:hover {
             text-decoration: underline;
         }
@@ -45,13 +44,19 @@
     margin: 30px 0 20px 0;
     a {
         font-size: 14px;
-        color: #B3B3B3;
+    }
+}
+
+.footer-cooperation-list,
+.footer-copy-right {
+    color: rgba(0, 0, 0, .44);
+    a {
+        color: inherit;
     }
 }
 
 .footer-copy-right {
     font-size: 12px;
-    color: #B3B3B3;
     span {
         vertical-align: middle;
     }
