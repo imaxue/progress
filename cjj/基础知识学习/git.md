@@ -81,7 +81,7 @@
   ```
   /logs/*.log
   ```
-  如果是要移除掉整个目录
+  如果是要移除掉整个目录下的文件
   ```shell
-    git rm --cached /logs/* -r
+    git rm --cached /logs -r
   ```
