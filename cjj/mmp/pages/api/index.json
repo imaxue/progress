@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "menu": "../../components/menu/index",
-    "get-user-info": "../../components/getUserInfo/index"
-  }
-}
