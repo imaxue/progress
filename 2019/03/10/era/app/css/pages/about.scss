@@ -1,0 +1,17 @@
+.about {
+  margin: 0 auto;
+  width: 900px;
+  color: #71798a;
+  font-size: 16px;
+  line-height: 26px;
+  &-title {
+    margin: 50px 0 33px;
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    color: #14213c;
+  }
+  p {
+    margin: 50px 0;
+  }
+}

@@ -1,0 +1,86 @@
+@import './extract.scss';
+.right-recruitment-container {
+    padding: 0 22px 26px;
+    box-shadow: 0px 1px 4px 0px rgba(242, 242, 242, 1);
+    border: 1px solid rgba(255, 255, 255, 0);
+    .recruitment-item {
+        height: 60px;
+        padding: 20px 0;
+        border-bottom: $list-border-bottom;
+        img {
+            width: 60px;
+            height: 60px;
+            margin-right: 44px;
+            vertical-align: middle;
+        }
+    }
+    .recruitment-info {
+        display: inline-block;
+        width: 275px;
+        vertical-align: middle;
+    }
+    .recruitment-company-name {
+        font-size: 18px;
+        color: rgba(5, 16, 39, 1);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .recruitment-jd {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-top: 10px;
+        color: rgba(42, 51, 63, 1);
+    }
+    .position-subscription {
+        padding-top: 32px;
+    }
+    .position-subscription-title {
+        margin-bottom: 15px;
+        font-size: 18px;
+        span {
+            font-weight: bold;
+        }
+    }
+    .position-subscription-input {
+        width: 100%;
+        height: 45px;
+        padding-left: 10px;
+        margin-bottom: 13px;
+        border: 1px solid rgba(202, 202, 202, 1);
+        border-radius: 3px;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: rgba(202, 202, 202, 1);
+        &::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            font-size: 14px;
+            color: rgba(202, 202, 202, 1);
+        }
+        &::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            font-size: 14px;
+            color: rgba(202, 202, 202, 1);
+        }
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            font-size: 14px;
+            color: rgba(202, 202, 202, 1);
+        }
+    }
+    .position-subscription-submit {
+        height: 45px;
+        line-height: 45px;
+        border: 1px solid rgba(53, 53, 53, 1);
+        border-radius: 3px;
+        text-align: center;
+        font-size: 14px;
+        color: rgba(53, 53, 53, 1);
+        cursor: pointer;
+        &:hover {
+            border-color: transparent;
+            background-color: #fff470;
+        }
+    }
+}

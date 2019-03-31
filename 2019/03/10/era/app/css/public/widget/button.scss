@@ -1,0 +1,23 @@
+@import '../var.scss';
+$button-color-default: $font-color-message;
+.btn {
+  display: inline-block;
+  font-size: initial;
+  line-height: 1;
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-default;
+  color: $button-color-default;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  &--large {
+    padding: 13px 34px;
+  }
+  &--medium {
+    padding: 11px 32px;
+  }
+  &:hover {
+    border-color: transparent;
+    background-color: #fff470;
+  }
+}

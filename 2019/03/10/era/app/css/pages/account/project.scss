@@ -1,0 +1,124 @@
+/* 企业项目 */
+@import '../../../css/public/var.scss';
+@import '../../../css/public/mixins.scss';
+
+.project {
+  padding: 39px 50px;
+  * {
+    box-sizing: border-box;
+  }
+  .select-form {
+    display: inline-block;
+    margin-right: 30px;
+    .select {
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+    }
+  }
+  .btn {
+    &-add {
+      width: 100%;
+    }
+    &-addtag {
+      background-color: #f2f2f2;
+      vertical-align: top;
+    }
+  }
+  &-tags {
+    margin-top: 32px;
+  }
+  &-list {
+    margin: 0 -7px;
+    &-item {
+      margin-bottom: 20px;
+      padding: 0 7px;
+      height: 200px;
+      overflow: hidden;
+      &__wrap {
+        position: relative;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .toolbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+    background-color: rgba(#080808, .2);
+    text-align: right;
+    color: #fff;
+    span {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.add-image,
+.add-tags {
+  background-color: rgba(#000, .5);
+  text-align: center;
+  * {
+    box-sizing: border-box;
+  }
+  .input {
+    margin-right: 10px;
+    width: 120px;
+  }
+  .dialog-container {
+    padding: 30px 40px;
+    min-width: 620px;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  &-list {
+    margin: 30px -10px;
+    font-size: 16px;
+    text-align-last: left;
+    &-item {
+      margin-bottom: 15px;
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+  }
+  &__button {
+    width: 200px;
+  }
+  &__delete {
+    line-height: 40px;
+    vertical-align: top;
+  }
+  .upload-button {
+    position: relative;
+    margin-bottom: 23px;
+    padding: 10px 36px;
+    &__input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
+  .select {
+    width: 100%;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    &-form {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+.add-image {
+  text-align: left;
+}

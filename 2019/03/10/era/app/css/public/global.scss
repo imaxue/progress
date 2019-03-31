@@ -1,0 +1,96 @@
+@import './var.scss';
+@import './company.scss';
+@import './utils.scss';
+@import './widget/index.scss'; // 控件
+@import './font.scss';
+body {
+    min-width: 1200px;
+    background-color: #f9f9f9;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.base-container {
+    // 内容区最大1420
+    max-width: 1440px;
+    padding-top: 142px;
+    margin: 0 auto;
+}
+
+.dialog-cover {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 999;
+}
+
+.dialog-title {
+    position: relative;
+    height: 50px;
+    padding-left: 20px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(16, 16, 16, 1);
+}
+
+.dialog-close {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translate(-50%, -50%);
+    opacity: .7;
+    font-style: normal;
+    cursor: pointer;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.dialog-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+}
+
+img {
+    border-radius: 3px;
+}
+
+.image-placeholder {
+    position: relative;
+    min-height: 50px;
+    background-color: #e8e8e8;
+    color: #8d9ea7;
+    text-align: center;
+    font-size: 24px;
+    line-height: 50px;
+    &:before {
+        content: "\e622";
+        font-family: era!important;
+        font-size: inherit;
+    }
+}
+
+.era-tooltip {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 1px 4px 0 rgba(#000, .2)
+}
+
+.link {
+    &:hover {
+        text-decoration: underline;
+    }
+}
