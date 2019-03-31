@@ -1,9 +1,7 @@
 # JUST DO IT笔记记录
 
 ## 规范
-* 每周更新一次，记录自己的学习心得或者是相关技术，如果是单纯的md，最好是用readme.md命名
-* 每次分享的内容, 放到share下面, 方便有需要的人自取
-* 如果觉得写的比较优秀的，请放到下边的大目录里，方便访问
+[2019 规范](https://github.com/imaxue/progress/blob/master/The%202019%20rule.md)
 
 ## 目录
 
@@ -95,6 +93,7 @@
 - [flex布局学习小游戏](http://flexboxfroggy.com/) -- liao
 - [手机调试和抓包](https://github.com/wuchangming/spy-debugger) -- peng
 - [词云制作](https://wordart.com/) -- xue
+- [charles破解](https://www.zzzmode.com/mytools/charles/) --xue
 
 ### 服务端知识
 

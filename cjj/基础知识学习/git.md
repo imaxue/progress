@@ -72,3 +72,16 @@
   ```shell
     git pull --tags origin develop
   ```
+
+- 已经提交的文件如果加入到gitignore里面。比如要移除logs目录下的log文件
+  ```shell
+    git rm --cached logs/xxx.log
+  ```
+  然后更新.gitignore文件
+  ```
+  /logs/*.log
+  ```
+  如果是要移除掉整个目录下的文件
+  ```shell
+    git rm --cached /logs -r
+  ```

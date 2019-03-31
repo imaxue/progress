@@ -88,3 +88,9 @@ img {
     border-radius: 4px;
     box-shadow: 1px 1px 4px 0 rgba(#000, .2)
 }
+
+.link {
+    &:hover {
+        text-decoration: underline;
+    }
+}

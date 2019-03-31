@@ -88,10 +88,17 @@
     }
   }
   .third-party {
-    color: #d5d5d5;
+    color: #d9d9d9;
     font-size: 24px;
     span {
+      display: inline-block;
       margin-right: 22px;
+      cursor: pointer;
+      transition: all .2s ease;
+      &:hover {
+        color: #b3b3b3;
+        transform: translateY(-2px);
+      }
     }
   }
 }

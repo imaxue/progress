@@ -72,7 +72,8 @@
             vertical-align: middle;
             font-size: 26px;
         }
-        .era-icon-heart {
+        .era-icon-heart1 {
+            font-size: 20px;
             margin-left: 26px;
         }
     }
@@ -288,6 +289,9 @@
     .company-news-item-title {
         float: left;
         color: #353535;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     .company-news-item-time {
         float: right;

@@ -207,29 +207,40 @@
         background-color: #f5f7fa;
     }
     .select-search {
-        width: 216px;
-        height: 40px;
-        line-height: 38px;
-        padding-left: 10px;
+        position: relative;
         margin-left: 14px;
-        border: 1px solid #dcdfe6;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-size: 14px;
-        &::-webkit-input-placeholder {
-            font-size: 14px;
-            /* WebKit, Blink, Edge */
+        i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translate(0, -50%);
             color: #c0c4cc;
         }
-        &::-moz-placeholder {
+        input {
+            width: 216px;
+            height: 40px;
+            line-height: 38px;
+            padding-left: 10px;
+            padding-right: 30px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            box-sizing: border-box;
             font-size: 14px;
-            /* Mozilla Firefox 19+ */
-            color: #c0c4cc;
-        }
-        &:-ms-input-placeholder {
-            font-size: 14px;
-            /* Internet Explorer 10-11 */
-            color: #c0c4cc;
+            &::-webkit-input-placeholder {
+                font-size: 14px;
+                /* WebKit, Blink, Edge */
+                color: #c0c4cc;
+            }
+            &::-moz-placeholder {
+                font-size: 14px;
+                /* Mozilla Firefox 19+ */
+                color: #c0c4cc;
+            }
+            &:-ms-input-placeholder {
+                font-size: 14px;
+                /* Internet Explorer 10-11 */
+                color: #c0c4cc;
+            }
         }
     }
 }

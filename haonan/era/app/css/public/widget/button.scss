@@ -17,6 +17,7 @@ $button-color-default: $font-color-message;
     padding: 11px 32px;
   }
   &:hover {
-    background-color: rgba(#000, .01);
+    border-color: transparent;
+    background-color: #fff470;
   }
 }

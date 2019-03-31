@@ -1,4 +1,10 @@
 @import './extract.scss';
+.left-no-data {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #B3B3B3;
+}
 .left-ranking-container {
     .list-title {
         height: 88px;
@@ -27,6 +33,9 @@
         .ranking-company-name {
             font-size: 28px;
             color: rgba(5, 16, 39, 1);
+            &:hover {
+                text-decoration: underline;
+            }
         }
         .ranking-company-other-info {
             margin-top: 41px;

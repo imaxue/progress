@@ -88,6 +88,9 @@
                 margin-bottom: 15px;
                 font-size: 22px;
                 color: #2a333f;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
             &__main {
                 line-height: 25px;
@@ -122,6 +125,12 @@
             .company-name {
                 margin-right: 62px;
                 font-size: 13px;
+                &:visited {
+                    color: #000;
+                }
+                &:hover {
+                    text-decoration: underline;
+                }
             }
             .company-label {
                 width: 53px;
@@ -162,5 +171,9 @@
         color: rgba(42, 51, 63, 1);
         background-color: rgba(255, 255, 255, 1);
         cursor: pointer;
+        &:hover {
+            border-color: transparent;
+            background-color: #fff470;
+        }
     }
 }

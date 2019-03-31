@@ -61,7 +61,8 @@
         color: rgba(5, 16, 39, 1);
     }
     &:hover {
-        background-color: rgba(#000, .01);
+        border-color: transparent;
+        background-color: #fff470;
     }
 }
 

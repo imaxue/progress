@@ -1,8 +1,0 @@
-var arr = ['阿雪', '廖神', '老黄', '老郭', '娇娇', '老白', '雪婷']
-var fmt = function (str) {
-  return arr[Math.floor(Math.random() * arr.length)] + str
-}
-
-module.exports = {
-  fmt: fmt
-}
