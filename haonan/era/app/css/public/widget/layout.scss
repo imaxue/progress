@@ -1,0 +1,14 @@
+@import '../mixins.scss';
+
+.row {
+  @include clearfix;
+}
+
+.col {
+  float: left;
+  @for $i from 1 through 24 {
+    &-#{$i} {
+      width: 100% / 24 * $i;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+/* 招聘职位 */
+@import '../../../css/public/var.scss';
+@import '../../../css/public/mixins.scss';
+
+.gallery {
+  padding: 50px;
+  * {
+    box-sizing: border-box;
+  }
+  .upload-button {
+    position: relative;
+    margin-bottom: 23px;
+    margin-right: 23px;
+    padding: 10px 36px;
+    &__input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
+  .tabs {
+    &__header {
+      @include clearfix;
+      text-align: center;
+      &-item {
+        display: inline-block;
+        margin: 0 25px;
+        padding: 8px 10px;
+        cursor: pointer;
+        &.is-active {
+          border-bottom: 2px solid #9d9d9d;
+        }
+      }
+    }
+    &__body {
+      padding: 27px 0;
+    }
+    &__content + .tabs__content {
+      display: none;
+    }
+  }
+  .tips {
+    margin-left: 23px;
+    line-height: 40px;
+    vertical-align: top;
+  }
+  &-list {
+    margin: 0 -7px;
+    &-item {
+      margin-bottom: 15px;
+      padding: 0 7px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  &-wrapper {
+    position: relative;
+    .toolbox {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 8px;
+      width: 100%;
+      font-size: 16px;
+      background-color: rgba(#000, .3);
+      text-align: right;
+      color: #fff;
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.add-image {
+  background-color: rgba(#000, .5);
+  * {
+    box-sizing: border-box;
+  }
+  .input {
+    margin-right: 10px;
+    width: 100%;
+  }
+  .dialog-container {
+    padding: 30px 40px;
+    min-width: 620px;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  &-list {
+    margin: 30px -10px;
+    font-size: 16px;
+    text-align-last: left;
+    &-item {
+      margin-bottom: 15px;
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+  }
+  &__button {
+    width: 200px;
+  }
+  &__delete {
+    line-height: 40px;
+    vertical-align: top;
+  }
+  .upload-button {
+    position: relative;
+    margin-bottom: 23px;
+    padding: 10px 36px;
+    &__input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
+  .select {
+    width: 100%;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    &-form {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}

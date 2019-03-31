@@ -1,0 +1,74 @@
+@import 'var.scss';
+@import 'mixins.scss';
+
+@each $pos in left, right {
+  .pull-#{$pos} {
+    float: $pos !important;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.text {
+  &-bold {
+    font-weight: bold !important;
+  }
+  &-bolder {
+    font-weight: 900 !important;
+  }
+}
+
+/* 评分 */
+.score {
+  color: $color-danger;
+  .score-item {
+    position: relative;
+    &:before {
+      content: '\e7df';
+      font-family: era;
+    }
+  }
+  &-0 {
+    &.is-half {
+      .score-item:nth-child(1) {
+        &:after {
+          content: '\e86a';
+          font-family: era;
+          position: absolute;
+          left: 0;
+          width: 0.5em;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  @for $i from 1 through 5 {
+    &-#{$i} {
+      .score-item:nth-child(-n+#{$i}):before {
+        content: "\e86a";
+      }
+      &.is-half {
+        .score-item:nth-child(#{$i + 1}) {
+          &:after {
+            content: '\e86a';
+            font-family: era;
+            position: absolute;
+            left: 0;
+            width: 0.5em;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}

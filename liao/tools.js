@@ -45,3 +45,16 @@ var red = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
 console.log(red)
 VM291:4 (6) [0, 1, 2, 3, 4, 5]
     
+
+// 判断是否有key
+function hasKey(object, key) {
+  return Object.prototype.hasOwnProperty.call(object, key);
+}
+
+function isFunction(what) {
+  return typeof what === "function";
+}
+
+function isUndefined(what) {
+  return what === void 0;
+}

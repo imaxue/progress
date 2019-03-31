@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>企业资料</title>
+  @@loop('head-link.html', [
+  { "name": "reset" },
+  { "name": "global" },
+  { "name": "header" },
+  { "name": "footer" }
+  ])
+  <link rel="stylesheet" href="/css/pages/account/profile.css">
+</head>
+
+<body>
+  @@include('header.html', {
+  "page": "profile"
+  })
+  <div class="base-container">
+    <div class="wrapper clearfix">
+      <div class="company__side">
+        @@include('company.html', { "active": "profile"})
+      </div>
+      <div class="company__main">
+        @@include('../../account/profile-content.html')
+      </div>
+    </div>
+  </div>
+  @@loop('public-script.html', [
+  { "name": "jQuery" },
+  { "name": "public" },
+  { "name": "jquery.validate.min" },
+  { "name": "additional-methods.min" }
+  ])
+  <script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tooltip.js@1.3.1/dist/umd/tooltip.min.js"></script>
+  <script src="/js/pages/account/profile.js"></script>
+</body>
+
+</html>

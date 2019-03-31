@@ -664,8 +664,53 @@ window.addEventListener('resize',()=>{
 
 ```
 
+```
+一个 把对象转化成url挂载参数的方法
+
+mapOBJ(obj){
+    var geturl = '?';
+    if(typeof(obj) === 'undefined' || obj == null || typeof(obj) !== 'object'){
+      return '';
+    }else{
+      Object.keys(obj).forEach(function(key){
+        geturl += `${key}=${obj[key]}&`;
+      });
+    }
+    return geturl.substr(0, geturl.length - 1);
+  }
+
+```
+
+```
+移动端适配 怒抄之
+
+1.先设置header里面的meta标签：
+
+<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+
+2.在header写上<script>标签
 
 
+ <script type="text/javascript">
+ 　　document.documentElement.style.fontSize = document.documentElement.clientWidth / 640*100 + 'px';
+ </script>
+
+640是设计稿的宽度  
+
+```
+
+```
+写了一个css阴影的动态效果 然后某些人的电脑出现了字体模糊的效果 
+
+钉一个解决办法
+
+出现原因transform: translate(-50%, -50%)
+写上transform：translateZ(0)
+
+或者在发生文字模糊的地方加上transform: translate3d(0,0,0)，解决文字模糊以及的问题。
+
+
+```
 
 
 

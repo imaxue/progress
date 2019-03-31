@@ -1,0 +1,40 @@
+@import '../var.scss';
+.input {
+  display: inline-block;
+  border-radius: $border-radius-default;
+  border: 1px solid $border-color-base;
+  overflow: hidden;
+  vertical-align: middle;
+  & > input {
+    padding: 10px;
+    width: 100%;
+    border: 0 none;
+    outline: none;
+    font-size: 14px;
+  }
+}
+
+.textarea {
+  border: 1px solid $border-color-base;
+  border-radius: $border-radius-default;
+  overflow: hidden;
+  & > textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: 0 none;
+    outline: none;
+    font-size: 14px;
+  }
+  &.show-num {
+    position: relative;
+    padding-bottom: 42px;
+    .textarea__num {
+      position: absolute;
+      right: 9px;
+      bottom: 8px;
+      font-size: 13px;
+      color: #999;
+    }
+  }
+}

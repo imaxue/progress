@@ -63,3 +63,25 @@
     ```shell
       git push origin --delete <branchName>
     ```
+
+- stash存储。包含未跟踪的文件
+  ```shell
+    git stash save -u --<stashName>
+  ```
+- 从develop分支拉取到当前分支
+  ```shell
+    git pull --tags origin develop
+  ```
+
+- 已经提交的文件如果加入到gitignore里面。比如要移除logs目录下的log文件
+  ```shell
+    git rm --cached logs/xxx.log
+  ```
+  然后更新.gitignore文件
+  ```
+  /logs/*.log
+  ```
+  如果是要移除掉整个目录下的文件
+  ```shell
+    git rm --cached /logs -r
+  ```
