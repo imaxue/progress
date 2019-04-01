@@ -712,6 +712,169 @@ mapOBJ(obj){
 
 ```
 
+```
+说出来你们可能不信 我其实是写了笔记的 还是ts的学习笔记 但是不知道怎么了  他就不见了  初步怀疑是办公室有鬼 偷摸改我代码了 
+
+恩（d(･｀ω´･d*)）认真脸
+
+首先我们用那个啥啥学习法  （忘记了） 反正是一个很牛逼的学习法
+
+1  首先选定一个知识点  （TypeScript）
+
+2 然后假设我们要讲解这个知识点
+
+3 如果我们讲解的过程中出现问题重新回顾一下知识点
+
+4 让你讲的越来越容易懂
+
+OK -------黑喂狗
+
+首先 什么是ts  个人理解就是一个给js提供了很多扩展方法的工具 
+
+官方说法 
+JavaScript 的一个超集，扩展了 JavaScript 的语法。
+TypeScript 是 JavaScript 的超集，扩展了 JavaScript 的语法，因此现有的 JavaScript 代码可与 TypeScript 一起工作无需任何修改，TypeScript 通过类型注解提供编译时的静态类型检查。
+
+TypeScript 可处理已有的 JavaScript 代码，并只对其中的 TypeScript 代码进行编译。
+
+那么他多了那些东西呢？
+
+Class类  
+接口 Interfaces 
+模块 Modules 
+类型注解 Type annotations 
+(我就看了这么多)
+
+好了  文档看完  还是自己摸有意思
+
+下载  $ npm install -g typescript
+
+然后 我们可以创建一个ts后缀的文件  然后我们可以用 tsc去编译他
+
+例如我们可以 创建一个  xiaohuihui.ts  
+
+然后我们命令行执行 tsc xiaohuihui.ts  
+
+编译成功后 就会在同样的目录下生成一个同名的js文件 
+
+好了基本我们了解了以后  我们开始第一步  hello world
+
+开始写一个index.html  
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<title>TypeScript</title>
+</head> 
+<body> 
+    <script src="hello.js"></script>
+</body> 
+</html>
+
+然后 我们创建一个hello.ts  里面写一句
+
+console.log('hello world TypeScript!');
+
+编译他 tsc hello.ts
+
+然后我们可以看到console  完美 ok  完结撒花
+
+好吧 现在我们可以编译 并且运行了  那么就可以开始试试那些ts多的方法了 
+
+类型注解
+
+其实就是给传值规定类型 
+
+例如
+function Add(left: number, right: number): number {
+    return left + right;
+}
+我给left/right规定他只能传number （其实你传其他也行 只是报WARNING并不会影响你运行 对于我这种从不看WARNING的人简直是一种打击）
+
+
+第二个
+
+接口 Interfaces 
+
+个人理解 他其实就是把一个对象里面的值都规定了一下类型、、、
+
+写一个Interfaces.ts
+
+interface Shape {
+    name: string;
+    width: number;
+    height: number;
+    color?: string;
+}
+ 
+function area(shape : Shape) {
+    var area = shape.width * shape.height;
+    return "I'm " + shape.name + " with area " + area + " cm squared";
+}
+ 
+console.log( area( {name: "rectangle", width: 30, height: 15} ) );
+console.log( area( {name: "square", width: 30, height: 30, color: "blue"} ) );
+
+然后 把index.html里面引入改成Interfaces.js
+
+看一眼console ok
+
+第三个 
+
+Class类  
+
+不知道是不是因为我一直接触react的原因啊 我一直就是写class 
+
+class XXX extends React.Component emmm
+
+来一个ts类
+
+class Student {
+    fullName: string;
+    constructor(public firstName, public middleInitial, public lastName) {
+        this.fullName = firstName + " " + middleInitial + " " + lastName;
+    }
+}
+
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+function greeter(person : Person) {
+    return "Hello, " + person.firstName + " " + person.lastName;
+}
+
+let user = new Student("Jane", "M.", "User");
+
+document.body.innerHTML = greeter(user);
+
+注意的是，在构造函数的参数上使用public等同于创建了同名的成员变量。
+
+运行tsc OK
+
+
+然后 模块 Modules 
+
+这个我一直没看懂 
+
+因为我觉得 他就是把我单独写的ts变成js然后引入了index
+
+但是我们写项目本身一直都是这么做的  我们写react也是编译成js 然后按需加载
+
+
+
+
+
+
+
+
+
+
+
+```
+
 
 
 
