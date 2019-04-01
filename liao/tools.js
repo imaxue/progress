@@ -58,3 +58,11 @@ function isFunction(what) {
 function isUndefined(what) {
   return what === void 0;
 }
+// 判断字符长度
+getBLen = function(str) {  
+    if (str == null) return 0;  
+    if (typeof str != "string"){  
+        str += "";  
+    }  
+    return str.replace(/[^\x00-\xff]/g,"01").length;  
+}  
