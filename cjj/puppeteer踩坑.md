@@ -59,3 +59,13 @@
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
   ```
+
+- ssl证书过期导致页面抓取失败
+```javascript
+const puppeteer = require('puppeteer')
+puppeteer.launch({
+  executablePath: 'google-chrome',
+  arg: ['--no-sandbox', '--disable-setuid-sandbox'],
+  ignoreHTTPSErrors: true // 忽略https证书过期错误
+})
+``
