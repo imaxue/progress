@@ -19,3 +19,14 @@ JavaScript 的类型分为两种：原始数据类型（Primitive data types）�
 ```javascript
   const n: number = 1
 ```
+
+
+## tips
+1. 如何声明一个window对象上的新属性<自定义属性>
+```typescript
+declare global {
+  interface Window {
+    newProperty: any;
+  }
+}
+```
