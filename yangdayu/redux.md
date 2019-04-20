@@ -172,4 +172,43 @@
 		}
 
 
+
+#### redux 的 中间件
+
+		const enhancer = compose(
+    		// 应用中间件到store中
+    		applyMiddleware(reduxPromiseMiddleware(), funActionThunk, thunk)
+		)
+		const store = createStore(reducer, initialState, enhancer)
+		
+* redux-thunk: 处理异步action。
+> 在dispatch一个action之前，去判断action是否是一个函数，如果是函数，那么就执行这个函数
+		
+		function createThunkMiddleware(extraArg){
+		    return ({dispatch, getState}) => next => action => {
+		        if (typeof action === 'function') {
+		            return action(dispatch, getState, extraArg)
+		        }
+		        return next(action);
+		    }
+		}
+		
+* redux-actions: 简化redux的使用
+> 如handleActions
+
+		import {handleActions} from 'redux-actions';
+		import * as T from './actionTypes';
+		
+		const initialState = {
+		    btnText: '按钮'
+		}
+		const pageMainReducer = handleActions({
+		    [T.CHANGE_BTN_TEXT]: {
+		        next(state, action){return {...state, btnText: action.payload}},
+		        throw(state){return state}
+		    }
+		},initialState);
+		
+
+
 		
