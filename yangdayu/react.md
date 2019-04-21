@@ -270,3 +270,119 @@
           	}
     	}
 	}
+
+
+##### react.lazy()
+
+> 如果在APP组件渲染完，Home模块还没有被加载完成，可以使用加载指示器为此组件做优雅降级，react提供<Suspense fallback={}>, fallback属性接受任何在组件加载过程中想展示的React元素
+
+			import { BrowserRoute as Router, Route, Switch } from 'react-router-dom';
+			import React, { Suspense, lazy } from 'react';
+
+			const Home = lazy(() => import('./routes/Home')); // 引入的内容只支持默认导出export default
+			const About = lazy(() => import('./routes/About'));
+
+			const App = () => (
+			<Router>
+				<Suspense fallback={<div>loading</div>}>
+				<Switch>
+					<Route component={Home} path='/' exact/>
+					<Route component={About} path='/about'/>
+				</Switch>
+				</Suspense>
+			</Router>
+			)
+
+
+##### 错误边界：可以捕获子组件树任何位置的JavaScript错误
+
+ > 使用static getDerivedStateFromError(error)渲染备用UI，使用componentDidCatch(error,info)打印错误信息
+
+			class extends React.Component{
+			static getDerivedStateFormError(err){
+				return {hasErr: true}
+			}
+			componentDidCatch(err, info){
+				logErrInfo(err, info)
+			}
+			render(){
+				if(this.state.hasErr){
+				return <h1>something went wrong</h1>
+				}
+				return this.props.children;
+			}
+			}
+
+
+##### State Hook: 提供了可以在函数式组件中使用state等其他react特性，在class组件中无效
+
+			import { useState } from 'react';
+			const Example = () => {
+			const [count, setCount] = useState(0)
+
+			return(
+				<div>
+				<p>you clicked {count} times</p>
+				<button onClick={
+					() => setCount(count +1)
+				}></button>
+				</div>
+			)
+			}
+
+
+##### Effect Hook
+
+> 可以在函数组件中执行副操作(在组件每次渲染后执行某些造作)，是componentDidMount,componentDidUpdate,componentWillUnmount的组合
+
+
+			import React, { useState, useEffect } from 'react';
+
+			function Example() {
+			const [count, setCount] = useState(0);
+
+			useEffect(() => {
+				document.title = `you clicked ${count} times`;
+			})
+
+			return (
+				<div>
+				<p>You clicked {count} times</p>
+				<button onClick={() => setCount(count + 1)}>
+					Click me
+				</button>
+				</div>
+			);
+			}
+
+> 如果你的 effect 返回一个函数，React 将会在执行清除操作时调用它。相当于componentWillUnmount
+
+			import React, { useState, useEffect } from 'react';
+			function FriendStatus(props) {
+			const [isOnline, setIsOnline] = useState(null);
+
+			useEffect(() => {
+				function handleStatusChange(status) {
+				setIsOnline(status.isOnline);
+				}
+
+				ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+				// Specify how to clean up after this effect:
+				return function cleanup() {
+				ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+				};
+			});
+
+			if (isOnline === null) {
+				return 'Loading...';
+			}
+			return isOnline ? 'Online' : 'Offline';
+			}
+
+> effect每次渲染后都执行 的性能优化，
+> 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。
+> 这就告诉 React, effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。
+
+			useEffect(() => {
+			document.title = `You clicked ${count} times`;
+			}, [count]); // 仅在 count 更改时更新
