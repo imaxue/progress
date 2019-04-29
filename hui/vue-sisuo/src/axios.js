@@ -120,5 +120,6 @@ axios.install = (Vue) => {
     axiosGet(url, { params, ...options })
 
   Vue.prototype.$http = Vue.prototype.axios = axios
+  
 }
 export default axios
