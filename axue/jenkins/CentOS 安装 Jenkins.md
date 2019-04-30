@@ -23,6 +23,9 @@ OpenJDK Runtime Environment (build 1.8.0_201-b09)
 OpenJDK 64-Bit Server VM (build 25.201-b09, mixed mode)
 ```
 ## 安装 Jenkins
+
+> 不同平台的安装方式可以参考[文档](<https://jenkins.io/zh/doc/book/installing/>)
+
 1. 下载 Jenkins 安装包
 ```shell
 # wget -c https://pkg.jenkins.io/redhat-stable/jenkins-2.164.1-1.1.noarch.rpm

@@ -712,6 +712,418 @@ mapOBJ(obj){
 
 ```
 
+```
+说出来你们可能不信 我其实是写了笔记的 还是ts的学习笔记 但是不知道怎么了  他就不见了  初步怀疑是办公室有鬼 偷摸改我代码了 
+
+恩（d(･｀ω´･d*)）认真脸
+
+首先我们用那个啥啥学习法  （忘记了） 反正是一个很牛逼的学习法
+
+1  首先选定一个知识点  （TypeScript）
+
+2 然后假设我们要讲解这个知识点
+
+3 如果我们讲解的过程中出现问题重新回顾一下知识点
+
+4 让你讲的越来越容易懂
+
+OK -------黑喂狗
+
+首先 什么是ts  个人理解就是一个给js提供了很多扩展方法的工具 
+
+官方说法 
+JavaScript 的一个超集，扩展了 JavaScript 的语法。
+TypeScript 是 JavaScript 的超集，扩展了 JavaScript 的语法，因此现有的 JavaScript 代码可与 TypeScript 一起工作无需任何修改，TypeScript 通过类型注解提供编译时的静态类型检查。
+
+TypeScript 可处理已有的 JavaScript 代码，并只对其中的 TypeScript 代码进行编译。
+
+那么他多了那些东西呢？
+
+Class类  
+接口 Interfaces 
+模块 Modules 
+类型注解 Type annotations 
+(我就看了这么多)
+
+好了  文档看完  还是自己摸有意思
+
+下载  $ npm install -g typescript
+
+然后 我们可以创建一个ts后缀的文件  然后我们可以用 tsc去编译他
+
+例如我们可以 创建一个  xiaohuihui.ts  
+
+然后我们命令行执行 tsc xiaohuihui.ts  
+
+编译成功后 就会在同样的目录下生成一个同名的js文件 
+
+好了基本我们了解了以后  我们开始第一步  hello world
+
+开始写一个index.html  
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<title>TypeScript</title>
+</head> 
+<body> 
+    <script src="hello.js"></script>
+</body> 
+</html>
+
+然后 我们创建一个hello.ts  里面写一句
+
+console.log('hello world TypeScript!');
+
+编译他 tsc hello.ts
+
+然后我们可以看到console  完美 ok  完结撒花
+
+好吧 现在我们可以编译 并且运行了  那么就可以开始试试那些ts多的方法了 
+
+类型注解
+
+其实就是给传值规定类型 
+
+例如
+function Add(left: number, right: number): number {
+    return left + right;
+}
+我给left/right规定他只能传number （其实你传其他也行 只是报WARNING并不会影响你运行 对于我这种从不看WARNING的人简直是一种打击）
+
+
+第二个
+
+接口 Interfaces 
+
+个人理解 他其实就是把一个对象里面的值都规定了一下类型、、、
+
+写一个Interfaces.ts
+
+interface Shape {
+    name: string;
+    width: number;
+    height: number;
+    color?: string;
+}
+ 
+function area(shape : Shape) {
+    var area = shape.width * shape.height;
+    return "I'm " + shape.name + " with area " + area + " cm squared";
+}
+ 
+console.log( area( {name: "rectangle", width: 30, height: 15} ) );
+console.log( area( {name: "square", width: 30, height: 30, color: "blue"} ) );
+
+然后 把index.html里面引入改成Interfaces.js
+
+看一眼console ok
+
+第三个 
+
+Class类  
+
+不知道是不是因为我一直接触react的原因啊 我一直就是写class 
+
+class XXX extends React.Component emmm
+
+来一个ts类
+
+class Student {
+    fullName: string;
+    constructor(public firstName, public middleInitial, public lastName) {
+        this.fullName = firstName + " " + middleInitial + " " + lastName;
+    }
+}
+
+interface Person {
+    firstName: string;
+    lastName: string;
+}
+
+function greeter(person : Person) {
+    return "Hello, " + person.firstName + " " + person.lastName;
+}
+
+let user = new Student("Jane", "M.", "User");
+
+document.body.innerHTML = greeter(user);
+
+注意的是，在构造函数的参数上使用public等同于创建了同名的成员变量。
+
+运行tsc OK
+
+
+然后 模块 Modules 
+
+这个我一直没看懂 
+
+因为我觉得 他就是把我单独写的ts变成js然后引入了index
+
+但是我们写项目本身一直都是这么做的  我们写react也是编译成js 然后按需加载
+
+
+```
+
+this指向的一些问题
+
+#首先了解一下函数调用
+
+函数调用三种方法（ES5）：
+
++ func(p1, p2)
++ obj.child.method(p1, p2)
++ func.call(context, p1, p2) // 先不讲 apply
+
+
+第三中调用形式才是正确的调用形式，其他两种都是语法糖，可以等价的变换：
+
+```
+// 称此代码为「转换代码」
+func(p1, p2) 等价于
+func.call(undefined, p1, p2)
+ 
+obj.child.method(p1, p2) 等价于
+obj.child.method.call(obj.child, p1, p2)
+// 第二个等价举例
+var obj = {
+  foo: function(){
+    console.log(this)
+  }
+}
+obj.foo()
+// 等价于
+obj.foo.call(obj)
+```
+
+所以，this 就是你 call 一个函数时，传入的 context。
+
+如果你的函数调用形式不是 call 形式，请按照「转换代码」将其转换为 call 形式。
+
+
+默认绑定规则：this绑定给window;
+
+在严格模式下，默认绑定规则会把this绑定undefined上；
+
+```
+function foo() {
+	console.log( this.a );
+}
+var a = 2;
+(function(){
+	"use strict";
+	foo(); //2
+})();
+
+```
+> 这里有一个微妙但是非常重要的细节，虽然 this 的绑定规则完全取决于调用位置，但是只有 foo()运行在非 严格模式下时，默认绑定才能绑定到全局对象；	严格模式下调用foo()不会影响默认绑定规则;
+
+```
+function foo() {
+	"use strict";
+	console.log( this.a );
+}
+var a = 2;
+foo(); //undefined
+```
+> 无论函数是在哪个作用域中被调用,只要是独立调用则就会按默认绑定规则被绑定到全局对象或者undefined上。
+
+##隐式绑定的规则：
+
+this给离函数最近的那个对象；
+
+判断函数调用位置是否有上下文对象，或者说是否被某个对象拥有或者包含；
+```
+//隐式绑定的规则是调用位置是否有上下文对象，或者说是否被某个对象拥有或者包含
+//当函数引用有上下文对象时，隐式绑定规则会把函数调用中的 this 绑定到这个上下文对象
+function foo() {
+	console.log( this.a );//2
+}
+var obj = {
+	a: 2,
+	foo: foo
+};
+obj.foo(); //会打印出2
+```
+> 当函数引用有上下文对象时，隐式绑定规则会把函数调用中的 this 绑定到这个上下文对象；
+> 对象属性引用链中只有最顶层或者说最后一层会影响调用位置；
+
+```
+//对象属性引用链中只有最顶层或者说最后一层会影响调用位置
+function foo() {
+	console.log( this.a );
+}
+var obj2 = {
+	a: 42,
+	foo: foo
+};
+var obj1 = {
+	a: 2,
+	obj2: obj2
+};
+obj1.obj2.foo(); //42
+```
+##隐式丢失
+将函数通过隐式调用的形式赋值给一个变量；
+```
+注意：经典面试题，这是一个隐式丢失：
+function foo() {
+	console.log( this.a );//oops, global
+}
+var a = "oops, global"; 
+var obj = {
+
+	a: 2,
+	foo: foo
+};
+var bar = obj.foo; //把obj.foo赋予别名bar，造成了隐式丢失，因为只是把foo()函数赋给了bar，而bar与obj对象则毫无关系
+bar(); 
+
+//等价于
+var a = "oops, global"; 
+var bar = function foo(){
+    console.log( this.a );
+}
+bar();//oops, global
+```
+将函数通过隐式调用的形式进行传参；
+```
+var a = 0;
+function foo(){
+    console.log(this.a);
+};
+function bar(fn){
+    fn();
+}
+var obj = {
+    a : 2,
+    foo:foo
+}
+//把obj.foo当作参数传递给bar函数时，有隐式的函数赋值fn=obj.foo。与上例类似，只是把foo函数赋给了fn，而fn与obj对象则毫无关系。
+bar(obj.foo);//0
+
+//等价于
+var a = 0;
+function bar(fn){
+    fn();
+}
+bar(function foo(){
+    console.log(this.a);
+});
+```
+内置函数：内置函数与上例类似，也会造成隐式丢失
+```
+var a = 0;
+function foo(){
+    console.log(this.a);
+};
+var obj = {
+    a : 2,
+    foo:foo
+}
+setTimeout(obj.foo,100);//0
+
+//等价于
+var a = 0;
+setTimeout(function foo(){
+    console.log(this.a);
+},100);//0
+```
+##正规/显式绑定：call()、apply()、bind()
+通过call()、apply()、bind()方法把对象绑定到this上，是我们常用的绑定方法 我写react就一直用bind(this)。
+```
+//普通对象的属性查找 
+function foo(a,b) {
+	console.log( this.a,a,b );
+}
+var obj = {
+	a:2
+};
+foo.call( obj,"a","b"); //2 a b
+foo.apply(obj,["a","b"])//2 a b
+```
+显式绑定规则：call，apply和bind指定的对象（第一个参数）；
+硬绑定：硬绑定是显式绑定的一个变种，使this不能再被修改。它有一个包裹函数，有一个目标函数的显示调用（bind，返回只是一个函数）；可以用来解决隐式丢失。
+
+```
+//	我们来看看这个显式绑定变种到底是怎样工作的。我们创建了函数 bar() ，并在它的内部手动调用了 foo.call(obj) ，因此强制把 foo 的 this 绑定到了 obj 。无论之后如何调用函数 bar ，它总会手动在 obj 上调用 foo 。这种绑定是一种显式的强制绑定，因此我们称之为硬绑定。
+function foo() {
+	console.log( this.a );
+}
+var a =1;
+var obj = {a:2};
+var obj_test = {a:"test"};
+var bar = function() {
+	console.log( this.a );
+	foo.call( obj );};
+bar(); // 1 2
+setTimeout( bar, 1000 ); // 1 2
+bar.call( obj_test ); //test  2   
+//硬绑定的bar不可能再修改它的this(指的是foo中的this)
+
+//硬绑定的典型应用场景就是创建一个包裹函数，传入所有的参数并返回接收到的所有值
+	function foo(arg1,arg2) {
+		console.log( this.a,arg1,arg2);
+		return this.a + arg1;
+	}
+	var obj = {a:2};
+	var bar = function() {
+		return foo.apply( obj, arguments);
+	};
+	var b = bar(3,2); // 2 3 2
+	console.log( b ); // 5
+```
+##new绑定
+```
+//3. 这个新对象会绑定到函数调用的 this 。
+function foo(a) {
+	this.a = a;
+}
+var bar = new foo(2);
+console.log( bar.a ); // 2		
+//使用 new 来调用 foo(..) 时，我们会构造一个新对象并把它绑定到 foo(..) 调用中的 this 上。 new 是最
+//后一种可以影响函数调用时 this 绑定行为的方法，我们称之为 new 绑定。	
+```
+###箭头函数
+- 箭头函数：this的绑定和作用域有关。如果在当前的箭头函数作用域中找不到变量，就向上一级作用域里去找。
+- 箭头函数内部的 this 是词法作用域，由上下文确定，此作用域称作 Lexical this ，在代码运行前就可以确定。没有其他大佬可以覆盖。
+- 这样的好处就是方便让回调函数的this使用当前的作用域，不怕引起混淆。所以对于箭头函数，只要看它在哪里创建的就行。
+
+```
+function foo() {
+	 setTimeout(() => {
+	    console.log('id:', this.id); //id: 42
+	  }, 100);
+}
+var id = 21;
+foo.call({ id: 42 })
+
+// 再举个栗子
+var returnThis = () => this
+returnThis() // window
+new returnThis() // TypeError
+var boss1 = {
+  name: 'boss1',
+  returnThis () {
+    var func = () => this
+    return func()
+  }
+}
+returnThis.call(boss1) // still window
+var boss1returnThis = returnThis.bind(boss1)
+boss1returnThis() // still window
+boss1.returnThis() // boss1
+var boss2 = {
+  name: 'boss2',
+  returnThis: boss1.returnThis
+}
+boss2.returnThis() // boss2
+```
+
+
+
+
 
 
 
