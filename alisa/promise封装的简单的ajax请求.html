@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise封装的ajax的post请求</title>
+</head>
+<body>
+<script>
+    const getJSON = function(url,param) {
+        let imsUrl="http://t-ims.yu500.com";
+        const promise = new Promise(function(resolve, reject){
+            const handler = function() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status === 200) {
+                    resolve(this.response);
+                } else {
+                    reject(new Error(this.statusText));
+                }
+            };
+            const client = new XMLHttpRequest();
+            client.open("POST", imsUrl+url);
+            client.onreadystatechange = handler;
+            client.responseType = "json";
+            client.setRequestHeader("Accept", "application/json");
+            client.send(param);
+            console.log(param)
+
+        });
+
+        return promise;
+    };
+
+
+    // 生成一个Promise对象的数组
+    const promises = ["op", "hiApprovalDeploy", "role"].map(function (id) {
+        return getJSON( "/"+id + "/list",JSON.stringify({
+            empCode: "null",
+            empId: "ed3e051643604548b14840141451d599",
+            empName: "system",
+            groupId: "63003aa9ccd641dc916e4b4ee8389736",
+            isDeleted: "2",
+            name: null,
+            page: 1,
+            pageSize: 10,
+            systemType: 2,
+            token: "7EA28C8BA86EBB1F21D7BC696BD730605859E4D33962E6F48875660D4B2E16C4"}));
+    });
+
+    Promise.all(promises).then(function (posts) {
+        console.log(posts)//打印所有返回值的数组
+        // ...
+    }).catch(function(reason){
+        alert(reason)//捕获报错的错误信息原因
+        // ...
+    });
+</script>
+
+</body>
+</html>
+
