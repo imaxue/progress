@@ -44,7 +44,7 @@ window.onerror = function(msg,url,line,col,error){
         }
         //把data上报到后台！
     },0);
- 
-    return true;
+ // 返回true，控制台不显示错误信息，false则显示
+    return false;
 };
 ```
