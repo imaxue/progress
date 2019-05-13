@@ -51,8 +51,9 @@ server {
 当匹配到/customer/straightcustomer/download时，使用crmtest处理，到upstream就匹配到crmtest.aty.sohuno.com，这里直接转换成IP进行转发了。假如crmtest.aty.sohuno.com是在另一台nginx下配置的，ip为10.22.10.116，则$proxy_host则对应为10.22.10.116。此时相当于设置了Host为10.22.10.116。如果想让Host是crmtest.aty.sohuno.com，则进行如下设置：
 
  
-
+```
 proxy_set_header Host crmtest.aty.sohuno.com;
+```
 如果不想改变请求头“Host”的值，可以这样来设置：
 ```
  proxy_set_header Host       $http_host;
