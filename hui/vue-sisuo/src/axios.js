@@ -80,7 +80,11 @@ axios.install = (Vue) => {
           // localStorage.removeItem('token')
           // localStorage.removeItem('token-admin')
           // router.push({ path: `/${params.lang}/login`, query: { redirect: path } })
-          window.location.href='/login.html'
+          // window.location.href='/login.html'
+          Message({
+            type: 'error',
+            message: error.message
+          })
         } else {
           if (error.message) {
             Message({
@@ -105,11 +109,11 @@ axios.install = (Vue) => {
     return Promise.reject(error)
   })
 
-  // if (process.env.NODE_ENV !== 'production') {
-  //   axios.defaults.baseURL = process.env.VUE_APP_MOCK === 'mock'
-  //     ? process.env.VUE_APP_MOCK_URL || '/mock'
-  //     : process.env.VUE_APP_BASE_URL || ''
-  // }
+  // 开发环境地址
+  if (process.env.NODE_ENV !== 'production') {
+    axios.defaults.baseURL = '/api'
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+  }
 
   axios.defaults.withCredentials = true
 
@@ -120,6 +124,5 @@ axios.install = (Vue) => {
     axiosGet(url, { params, ...options })
 
   Vue.prototype.$http = Vue.prototype.axios = axios
-  
 }
 export default axios

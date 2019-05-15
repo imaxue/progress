@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
-    "element-ui": "^2.7.2",
+    "element-ui": "^2.8.2",
     "jquery": "^3.4.0",
     "jquery.terminal": "^2.4.1",
     "vue": "^2.6.10",
@@ -24,6 +24,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "filemanager-webpack-plugin": "^2.0.5",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.21"
