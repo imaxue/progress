@@ -5,9 +5,9 @@
 
 
 - 20180415
-liao: vue生命周期+路由权限控制
+> liao: vue生命周期+路由权限控制
 - 20180527
-xue: react项目创建webpack配置
+>xue: react项目创建webpack配置
 - 20180701
 bai：插件介绍
 jiao：脚本创建项目
