@@ -81,6 +81,9 @@ sudo nginx -s reload
 nginx -s stop
 # 看进程命令
 ps aux|grep ‘nginx' 
+kill -QUIT 主进程号     ：从容停止Nginx
+kill -TERM 主进程号     ：快速停止Nginx
+pkill -9 nginx          ：强制停止Nginx
 ```
 
 
