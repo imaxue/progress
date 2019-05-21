@@ -1,0 +1,11 @@
+#### node-sass安装失败问题
+- 被墙引起的安装失败
+  - npm config set registry http://registry.npm.taobao.org/   #####淘宝源
+  - npm config set registry https://registry.npmjs.org/       #####官网源
+  - npm install --save node-sass --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+  - 多git clone 试试几次！！！
+- 电脑没装python引起的安装失败
+  - Python安装与环境变量的配置链接
+  - https://www.cnblogs.com/huangbiquan/p/7784533.html
+- windows环境下未安装Visual Stutio导致失败
+  - 安装Visual Stutio

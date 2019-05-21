@@ -31,7 +31,7 @@ Your branch is ahead of 'origin/master' by 12 commits.
 nothing to commit, working tree clean
 ```
 上面的意思就是你有12个commit，需要push到远程master上 
-执行下面命令即可
+执行下面命令即可 
 ```
      git push origin master
 ```
