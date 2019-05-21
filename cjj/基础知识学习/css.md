@@ -36,3 +36,30 @@ css颜色可以使用以下方式来描述：
   }
 }
 ```
+
+# 矩阵动画
+- tansform
+  三维矩阵
+  $x' = a_1x\ +\ b_1y\ +\ c_1z$
+  $y' = a_2x\ +\ b_2y\ +\ c_2z$
+  $z' = a_3x\ +\ b_3y\ +\ c_3z$
+  平面 2D 变换采用的矩阵形式。将z轴置为一个常数；惯例上是直接取 0 0 1 来设置。
+  $\begin{matrix}a&c&e\\b&d&f\\0&0&1\end{matrix}$
+  具体变换方式
+  $\begin{bmatrix}a&c&e\\b&d&f\\0&0&1\end{bmatrix} · \begin{bmatrix}x\\y\\z\end{bmatrix} = \begin{bmatrix}ax+cy+e\\bx+dy+f\\\ 0+\ 0\ +\ 1\end{bmatrix}$ 
+  示例
+  ```
+    // matrix(a,b,c,d,e,f)
+
+    transform: translate(dx, dy);
+    transform: matrix(1 0 0 1 dx dy);
+
+    transform: scale(x, y);
+    transform: matrix(x 0 0 y 0 0);
+
+    transform: rotate(θ);
+    transform: matrix(cosθ sinθ -sinθ cosθ 0 0);
+
+    transform: skew(θx,θy)
+    transform: matrix(1 tanθx tanθy 1 0 0)
+  ```
