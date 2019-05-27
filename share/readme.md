@@ -45,3 +45,8 @@
 ### 20190421
 - liao: ast层面看性能优化，错误日志上报
 - xue: jinkens+docker
+
+### 20190526
+- bai: flutter
+- haonan: webRTC
+- 算法
