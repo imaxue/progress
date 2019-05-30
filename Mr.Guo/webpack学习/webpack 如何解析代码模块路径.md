@@ -18,3 +18,15 @@ webpack 中有一个很关键的模块 enhanced-resolve 就是处理依赖模块
 查找当前文件目录下，父级目录及以上目录下的 node_modules 文件夹，看是否有对应名称的模块
 - 解析绝对路径(不建议使用)   
 直接查找对应路径的文件
+
+在webpack配置中，和模块路径解析相关的配置都在 resolve 字段下：
+
+```js
+  module.exports = {
+    resolve: {
+      // ...
+    }
+  }
+```
+
+## 常用的一些配置
