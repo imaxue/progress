@@ -1,74 +1,87 @@
 <template>
-  <div class="base-table__wrapper">
-    <el-table
-      :data="data"
-      :max-height="tableHeight"
-      v-loading="loading"
-      v-bind="$attrs"
-      v-on="$listeners"
-      class="base-table"
-      ref="table"
-    >
-      <div class="data-empty" slot="empty">
-        <slot name="empty">
-          <span>暂无数据</span>
-        </slot>
-      </div>
-      <el-table-column
-        v-if="checked"
-        type="selection"
-        width="55"
-      />
-      <el-table-column
-        v-for="item in columns"
-        v-bind="Object.assign({}, columnOptions, item)"
-        :key="item.prop"
+  <div :class="['base-table', { 'border-hide': borderHide }]">
+    <div class="base-table__wrapper">
+      <el-table
+        :data="data"
+        :max-height="limitTableHeight ? tableHeight : maxHeight"
+        tooltip-effect="light"
+        v-loading="loading"
+        v-bind="$attrs"
+        v-on="$listeners"
+        class="base-table__inner"
+        ref="table"
+        :border="false"
+        :cell-class-name="borderHide ? 'border-hide' : ''"
+        :highlight-current-row="true"
       >
-        <nest-column
-          v-if="item.columns"
-          :columns="item.columns"
+        <div
+          class="data-empty"
+          slot="empty"
         >
-          <v-cell
-            slot-scope="scope"
-            v-bind="Object.assign({}, scope, item)"
+          <slot name="empty">
+            <span>暂无数据</span>
+          </slot>
+        </div>
+        <!-- 默认table-column插槽 -->
+        <slot/>
+        <!-- 遍历columns -->
+        <el-table-column
+          v-for="{ align = 'center', header, columns: cols = [], ...attrs } in columns"
+          v-bind="Object.assign({ showOverflowTooltip: true }, columnOptions, attrs)"
+          :align="align"
+          :key="attrs.prop"
+        >
+          <template
+            v-if="header"
+            v-slot:header="scope"
+          >
+            <slot
+              v-if="header && $scopedSlots[header]"
+              :name="header"
+              v-bind="scope"
+              :row="attrs"
+            />
+          </template>
+          <nest-column
+            v-if="cols.length > 0"
+            :columns="cols"
+            :options="columnOptions"
             :empty-text="emptyText"
+            :empty-value="_emptyValue"
+            v-bind="Object.assign({ popoverOptions }, attrs)"
           />
-        </nest-column>
-        <v-cell
-          v-bind="Object.assign({ popoverOptions }, scope, item)"
-          slot-scope="scope"
-          :empty-text="emptyText"
-        />
-      </el-table-column>
-    </el-table>
-    <div
+          <template
+            v-if="!attrs.formatter && !attrs.type"
+            #default="scope"
+          >
+            <v-cell
+              v-if="cols.length === 0"
+              v-bind="Object.assign({ popoverOptions }, scope, attrs)"
+              :empty-text="emptyText"
+              :empty-value="_emptyValue"
+            />
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <el-pagination
       v-if="pagination"
-      class="clearfix"
-      style="padding: 10px"
+      v-bind="pageAttrs"
+      style="padding: 12px 0"
+      :current-page="query[pageAttrs.page]"
+      :page-size="query[pageAttrs.size]"
+      :total="total"
+      layout="slot, total, sizes, ->, prev, pager, next"
+      @size-change="handleChange({ [pageAttrs.size]: $event })"
+      @current-change="handleChange({ [pageAttrs.page]: $event })"
       ref="page"
     >
-      <el-pagination
-        v-bind="pageAttrs"
-        :page-size="query.size"
-        :total="total"
-        layout="slot, total, sizes"
-        class="pull-left"
-        @size-change="handleChange({ size: $event })"
-      >
+      <template v-slot>
         <span
           class="el-pagination__total"
-        >显示第{{ startRow }}-{{ endRow }}条结果，</span>
-      </el-pagination>
-      <el-pagination
-        v-bind="pageAttrs"
-        :current-page="query.page"
-        :page-size="query.size"
-        :total="total"
-        layout="prev, pager, next"
-        class="pull-right"
-        @current-change="handleChange({ page: $event })"
-      ></el-pagination>
-    </div>
+        >显示第{{ query[pageAttrs.size] * (query[pageAttrs.page] - 1) + 1 }}-{{ query[pageAttrs.size] * query[pageAttrs.page] }}条结果，</span>
+      </template>
+    </el-pagination>
   </div>
 </template>
 
@@ -94,26 +107,24 @@ export default {
      * 列配置对象数组
      * @param { String } columns.label
      * @param { String } columns.prop
-     * @param { String } columns.slot slotName
+     * @param { String } columns.slotName
      * @param { Object } columns.map
      * @param { Array } columns.columns
      */
     columns: {
       type: Array,
-      required: true,
-      validator (value) {
-        return value.every(item => item.prop)
-      }
+      required: true
     },
     data: {
       type: Array,
-      required: true
+      default () {
+        return []
+      }
     },
     total: {
       type: Number,
       default: 0
     },
-    checked: Boolean,
     emptyText: {
       type: String,
       default: '-'
@@ -122,6 +133,7 @@ export default {
     pageOptions: Object,
     loading: Boolean,
     limitTableHeight: Boolean,
+    maxHeight: [String, Number],
     pagination: {
       type: Boolean,
       default: true
@@ -131,37 +143,43 @@ export default {
      * slot属性是必须的，其他属性将绑定到popover组件上
      * @param { String } popoverOptions.slot 提示信息插槽名
      */
-    popoverOptions: Object
+    popoverOptions: Object,
+    borderHide: Boolean,
+    emptyValue: null // 空值表
   },
 
   computed: {
     query: {
       get () {
+        const { page, size } = this.pageAttrs
         return Object.assign({
-          page: 1,
-          size: 5
+          [page]: 1,
+          [size]: 5
         }, this.value)
       },
       set (value) {
         this.$emit('input', value)
       }
     },
-    startRow () {
-      return this.query.size * (this.query.page - 1) + 1
-    },
-    endRow () {
-      return this.query.size * this.query.page
-    },
     pageAttrs () {
       return Object.assign({
         prevText: '上一页',
         nextText: '下一页',
-        pageSizes: [5, 10, 25, 50]
+        pageSizes: [5, 10, 25, 50],
+        page: 'page',
+        size: 'size'
       }, this.pageOptions)
     },
     tableHeight () {
       if (this.limitTableHeight) return window.innerHeight - this.height
       return undefined
+    },
+    _emptyValue () {
+      const values = [undefined, null]
+      if (Array.isArray(this.emptyValue)) {
+        return values.concat(this.emptyValue)
+      }
+      return values.concat([this.emptyValue])
     }
   },
 
@@ -180,38 +198,11 @@ export default {
       this.query = Object.assign(this.query, value)
     },
     setTableMaxHeight () {
-      let { table, page } = this.$refs
+      const { table, page } = this.$refs
       const { top = 0 } = table ? table.$el.getBoundingClientRect() : {}
-      const { height = 0 } = page ? page.getBoundingClientRect() : {}
+      const { height = 0 } = page ? page.$el.getBoundingClientRect() : {}
       this.height = top + height
     }
   }
 }
 </script>
-
-<style lang="stylus">
-.base-table
-  border-radius 4px
-  color color-text-regular
-  &__wrapper
-    .el-pagination
-      color color-text-secondary
-      .btn-prev
-      .btn-next
-        &:not(:disabled)
-          color @color
-    .el-pager
-      .number
-        margin 0 4px
-        padding 0
-        min-width $pager-item-size
-        height $pager-item-size
-        line-height @height
-        border 1px solid border-color-base
-        border-radius 4px
-        font-size 13px
-        font-weight normal
-        &.active
-          background-color color-primary
-          color: color-white
-</style>

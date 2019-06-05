@@ -4,26 +4,41 @@ export default {
   name: 'Cell',
 
   render (h, context) {
-    const { row, $index, prop, slotName, map, emptyText = '-', popoverOptions } = context.props
+    const {
+      row = {},
+      $index,
+      column = {},
+      prop,
+      slotName,
+      map,
+      emptyText = '-',
+      emptyValue,
+      popoverOptions,
+      cellClass
+    } = context.props
+    const className = typeof cellClass === 'function' ? cellClass(row) : (cellClass || '')
     const options = Object.assign({
       trigger: 'hover'
     }, popoverOptions)
-    let value = row[prop]
-    value = (map ? (map[value] || map.default) : value) || emptyText
+    let value = emptyText
+    if (typeof prop !== 'undefined') {
+      value = row[prop]
+      value = map ? (map[value] || map.default || value) : (emptyValue.includes(value) ? emptyText : value)
+    }
     const cellVm = () => {
       if (slotName) {
         const scopedSlot = context.parent.$scopedSlots[slotName]
-        if (scopedSlot) return scopedSlot({ prop, $index, row, value })
+        if (scopedSlot) return scopedSlot({ prop, $index, row, value, column })
       }
-      return <span>{value}</span>
+      return <span class={ className }>{ value }</span>
     }
     const { slot, ...attrs } = options
     const content = slot && context.parent.$scopedSlots[slot]
     if (content) {
       return (
-        <el-popover {...{ attrs }}>
-          {content({ prop, $index, row, value })}
-          <span slot="reference">{cellVm()}</span>
+        <el-popover { ...{ attrs } }>
+          { content({ prop, $index, row, value, column }) }
+          <span slot="reference" class={ className }>{ cellVm() }</span>
         </el-popover>
       )
     }

@@ -5,26 +5,40 @@ export default {
 
   render (h, context) {
     const { props } = context
-    const children = props.columns.map(({ label, prop, columns, ...data }) => {
-      const slots = columns && columns.length > 0
-        ? <nest-column data={columns}/>
-        : undefined
+    let { columns = [], options = {}, emptyText, emptyValue, ...attrs } = props
+    const children = columns.map((column) => {
+      const { label, prop, columns: cols = [], ...data } = column
+      const _attrs = { ...options, ...data }
+      const scoped = data.formatter ? {} : {
+        scopedSlots: {
+          default: (scope) => {
+            const _props = { ...attrs, ..._attrs, label, prop, ...scope }
+            return (<v-cell attrs={ _props } nest empty-text={ emptyText } empty-value={ emptyValue } />)
+          }
+        }
+      }
       return (
         <el-table-column
-          label={label}
-          prop={prop}
-          slot-scope={
-            {
-              default (props) {
-                return context.data.scopedSlots.default({ ...props, prop, ...data })
-              }
-            }
+          label={ label }
+          prop={ prop }
+          attrs={ _attrs }
+          {
+          ...scoped
           }
-          slot={slots}
-        />
+        >
+          {
+            cols.length > 0 && (<nest-column
+              columns={ cols }
+              empty-text={ emptyText }
+              empty-value={ emptyValue }
+              options={ options }
+              attrs={ data }
+            />)
+          }
+        </el-table-column>
       )
     })
     children.unshift(children.splice(-1))
-    return <div>{children}</div>
+    return <template>{ children }</template>
   }
 }
