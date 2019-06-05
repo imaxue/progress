@@ -98,7 +98,7 @@ webpack 会尝试给你依赖的路径添加上 extensions 字段所配置的后
       path.resolve(__dirname, 'node_modules'), // 指定当前目录下的 node_modules 优先查找
       'node_modules', // 如果有一些类库是放在一些奇怪的地方的，你可以添加自定义的路径或者目录
     ],
-  }
+  },
 ```
 
 这样配置在某种程度上可以简化模块的查找，提升构建速度。
