@@ -182,6 +182,9 @@ San
         require: string | array, 注入指令，并当做第四个参数
         compile: fn, 编译函数负责对模版DOM进行转换。
         link: fn 连接函数负责将作用域和DOM进行链接
+        link: function(scope, element, attrs){ 这里可以操作DOM }
+        // require: 'SomeController',
+        link: function(scope, element, attrs, someController){ 这里操作DOM，可以访问required指定的控制器 }
         })) 返回一个对象
         <span my-directives></span>
 
@@ -240,3 +243,25 @@ San
 * 销毁
 
 > 当一个$scope在视图中不在需要时，这个作用域将会清理和销毁自己。也可以使用$scope上叫做$destory()的方法来清理这个作用域。
+
+
+#### 路由
+> 通过$routeProvider 声明路由来实现这个功能。
+
+        angular.module('myApp', [])
+        .config(['$routeProvider', function($routeProvider) {
+                $routeProvider
+                .when('/',{
+                        templateUrl: 'view/home.html',
+                        controller: 'HomeController',
+                        resolve: {
+                                'data': ['$http', function($http){
+                                        function success(response){return response.data},
+                                        function error(reason){return false}
+                                }]
+                        }
+                })
+                .otherwise({
+                        redirectTo: '/'
+                })
+        }])
