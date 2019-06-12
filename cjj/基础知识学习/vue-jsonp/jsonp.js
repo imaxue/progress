@@ -1,7 +1,15 @@
 import Qs from 'qs'
-import { on, off, randomStr } from './utils'
+import { on, off, randomStr } from '@/utils'
 const VueJsonp = {}
-
+/**
+ * Jsonp
+ * @param {string} url url地址
+ * @param {object} params 参数
+ * @param {object} options 配置
+ * @param {string} options.callbackQuery jsonp函数名参数查询字段
+ * @param {string} options.jsonpCallback jsonp函数名
+ * @param {number} options.timeout 超时时间设置
+ */
 export function jsonp (url = '', params = {}, options = {}) {
   const { timeout, jsonpCallback, callbackQuery } = Object.assign({
     callbackQuery: 'callback',
