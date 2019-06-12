@@ -91,6 +91,48 @@
 
 ##### 过滤器filter
 > {{表达式 | 过滤器名}}、{{表达式  |  过滤器1  | 过滤器2  |  .. }} 、 {{ 表达式 | 过滤器:参数1:参数2:... }} 
+* currency 将一个数值格式化为货币格式
+
+* date
+> {{ today | date:'MMMM' }}
+
+* filter
+> {{ ['Ari', 'Lerner', 'Likes', 'To'] | filter: 'e' }}
+> <br/>['Lerner', 'Likes']
+
+* json: 将一个json或js对象转换成字符串
+> {{ {'name': 'Ari', 'City': 'San Francisco'} | json }}
+
+* limitTo: 根据传入的参数生成一个新的数组或字符串
+> {{ San Francisco is very cloudy | limitTo:3 }}
+San
+
+* lowercase
+
+* number:将数字格式化成文本，第二个参数可选，用来控制小数点后截取的位数。非数字则为空字符串
+> {{ 1234567 | number:2 }}
+1,234,567.00
+
+* orderBy: 用表达式对指定的数组进行排序,第二个参数设置为true可以将排序结果进行反转
+> {{ [{'name': 'Ari','status': 'awake'},{'name': 'Q','status':'sleeping'},{'name': 'Nate', 'status': 'awake'}] | orderBy: 'name':true}}
+
+[{'name': 'Q',},{'name': 'Nate',},{name: 'Ari'}]
+
+* uppercase
+
+* 自定义过滤器
+
+
+        angular.module('myApp.filters',[])
+        .filter('capitalize', function(){
+                if(input){
+                        return input[0].toUpperCase() + input.slice(1);
+                }
+        })
+
+        // use
+        {{ 'ginger loves dog treats' | lowercase | capitalize }}
+
 
 
 ##### 表单Forms
@@ -102,6 +144,19 @@
             <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
         </div>
 
+* 表单验证
+        
+        <input type='text' required ng-minlength='5' ng-maxlength='20' ng-pattern='[a-zA-Z]'
+                type='email' type='number' type='url'>
+
+* 控制变量
+
+        formName.inputFieldName.$pristine 未修改的
+        formName.inputFieldName.$dirty 修改的
+        formName.inputFieldName.$valid 合法的
+        formName.inputFieldName.$invalid 不合法的
+        formName.inputFieldName.$error 错误
+
 
 #### 指令 directives
 > 附加在HTML元素上的自定义标记，来附加某些操作DOM、改变DOM元素。
@@ -110,10 +165,57 @@
 * 创建指令（注册到module中）：
 
         module.directive('myDirectives', () => ({
-        restrict:'E',  // restrict定义使用指定的方式，默认使用属性的方式。’A’仅匹配属性名；‘E’仅匹配元素名；‘AE’即匹配属性名又匹配元素名
-        templateUrl:'.html'
+        restrict:'E',  // restrict定义使用指定的方式，默认使用属性的方式。’A’仅匹配属性名；‘E’仅匹配元素名；‘C'即类名；‘AE’即匹配属性名又匹配元素名
+        templateUrl:'.html',
+        replace: true, // 用自定义元素取代指令声明，而不是嵌套
+        scope:{
+                someProperty: '@', // 本地作用域绑定：将DOM中some-property属性的值复制给新的作用域对象的someProperty,
+                someProperty: '=', // 双向数据绑定
+                onSend:'&', 引用传递方法
+        },
+        scope:{}, // 如果scope为空对象，隔离作用域，就无法访问外部了，
+        scope: true, 会从父级作用域继承并创建一个新的作用域；默认为false
+        priority: 0, 优先级
+        terminal: true, 停止运行优先级比本指令低的，同级的还会被执行。
+        template: 字符串或函数，
+        transclude: true, 嵌入
+        require: string | array, 注入指令，并当做第四个参数
+        compile: fn, 编译函数负责对模版DOM进行转换。
+        link: fn 连接函数负责将作用域和DOM进行链接
+        link: function(scope, element, attrs){ 这里可以操作DOM }
+        // require: 'SomeController',
+        link: function(scope, element, attrs, someController){ 这里操作DOM，可以访问required指定的控制器 }
         })) 返回一个对象
         <span my-directives></span>
+
+* 内置指令
+
+        ng-disabled
+        ng-readonly
+        ng-checked
+        ng-selected
+        ng-href
+        ng-src
+        ng-app DOM元素被标记为$rootScope的起始点
+        ng-control 创建一个子作用域
+        ng-include
+        ng-switch
+        ng-view
+        ng-if
+        ng-repeat
+        ng-init
+        ng-bind
+        ng-clock <p ng-clock>{{greeting}}</p> 避免元素闪烁
+        ng-model
+        ng-show
+        ng-hidden
+        ng-change
+        ng-form
+        ng-submit
+        ng-click
+        ng-select
+        ng-class
+        ng-attr-(suffix) <svg><circle ng-attr-cx="{{cx}}"></circle></svg>
 
 
 ##### 动画Animations
@@ -122,3 +224,44 @@
 
 ##### 特性：
 > 容错性 ： 在undefined或null上调用a.b.c()时，会返回undefined，而不是报错！！
+
+
+#### $scope的生命周期
+
+* 创建
+
+> 在创建控制器或指令时，会创建一个新的作用域
+
+* 链接
+
+> 开始运行时，$scope对象和函数都会附加链接到视图中。这些作用域都会注册当ag应用上下文中发生变化时需要运行的函数。<br>被称为$watch函数，ag通过这些函数获知何时启动事件循环。
+
+* 更新
+
+> 每个子作用域都执行自己的脏值检测，每个监控函数都会检查变化，$scope便会触发指定的回调函数
+
+* 销毁
+
+> 当一个$scope在视图中不在需要时，这个作用域将会清理和销毁自己。也可以使用$scope上叫做$destory()的方法来清理这个作用域。
+
+
+#### 路由
+> 通过$routeProvider 声明路由来实现这个功能。
+
+        angular.module('myApp', [])
+        .config(['$routeProvider', function($routeProvider) {
+                $routeProvider
+                .when('/',{
+                        templateUrl: 'view/home.html',
+                        controller: 'HomeController',
+                        resolve: {
+                                'data': ['$http', function($http){
+                                        function success(response){return response.data},
+                                        function error(reason){return false}
+                                }]
+                        }
+                })
+                .otherwise({
+                        redirectTo: '/'
+                })
+        }])
