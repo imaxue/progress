@@ -85,3 +85,12 @@
   ```shell
     git rm --cached /logs -r
   ```
+
+- 放弃工作区的所有修改。注意此命令没有确认步骤，将直接清空本地修改
+  ``` shell
+  git checkout --.
+  ```
+  或者
+    ``` shell
+    git checkout .
+    ```
