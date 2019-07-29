@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      const PENDING = 'pending'
+      const FULFILLED = 'fulfilled'
+      const REJECTED = 'rejected'
+      const isFunction = t => typeof t === 'function'
+      function resolutionProcedure (_promise, target, resolve, reject) {
+          if (_promise === target) return reject(new Error('Error'))
+          // 如果执行resolve或者reject返回的是一个promise
+          if (target instanceof MyPromise) {
+            if (target.status === PENDING) {
+              // 此处为了最终确认value的值，需要递归调用，并将值传给下一个then
+              target.then(value => {
+                resolutionProcedure(_promise, value, resolve, reject)
+              }, reject)
+            } else {
+              target.then(resolve, reject)
+            }
+            return
+          }
+          let called = false
+          // 引用类型，需要判断是否有then方法
+          if (target !== null && (typeof target === 'object' || isFunction(target))) {
+            try {
+              const then = target.then
+              if (isFunction(then)) {
+                then.call(target, v => {
+                  if (called) return
+                  called = true
+                  resolutionProcedure(_promise, v, resolve, reject)
+                }, err => {
+                  if (called) return
+                  called = true
+                  reject(err)
+                })
+              } else {
+                resolve(target)
+              }
+            } catch (error) {
+              if (called) return
+              called = true
+              reject(error)
+            }
+          } else {
+            resolve(target)
+          }
+        }
+      class MyPromise {
+        constructor(excutor) {
+          // 状态标记
+          this.status = PENDING
+
+          // 执行结果
+          this.value = undefined
+
+          // 当状态为pending时缓存then回调
+          this.onFulfilledCallbacks = []
+          this.onRejectedCallbacks = []
+
+          this.resolve = value => {
+            if (value instanceof MyPromise) {
+              return value.then(this.resolve, this.reject)
+            }
+            setTimeout(() => {
+              if (this.status === PENDING) {
+                this.status = FULFILLED
+                this.value = value
+                this.onFulfilledCallbacks.forEach(cb => cb())
+              }
+            })
+          }
+
+          this.reject = reason => {
+            setTimeout(() => {
+              if (this.status === PENDING) {
+                this.status = REJECTED
+                this.value = reason
+                this.onRejectedCallbacks.forEach(cb => cb())
+              }
+            })
+          }
+
+          try {
+            excutor(this.resolve, this.reject)
+          } catch (error) {
+            this.reject(error)
+          }
+        }
+
+        then(onResolve, onReject) {
+          onResolve = isFunction(onResolve) ? onResolve : v => v
+          onReject = isFunction(onReject) ? onReject : function (r) {
+            throw r
+          }
+          const _promise = new MyPromise((resolve, reject) => {
+            const handler = fn => {
+              try {
+                resolutionProcedure(_promise, fn(this.value), resolve, reject)
+              } catch (error) {
+                reject(error)
+              }
+            }
+            if (this.status === PENDING) {
+              this.onFulfilledCallbacks.push(() => handler(onResolve))
+              this.onRejectedCallbacks.push(() => handler(onReject))
+            } else {
+              setTimeout(() => {
+                switch (this.status) {
+                  case FULFILLED:
+                    handler(onResolve)
+                    break;
+                    case REJECTED:
+                    handler(onReject)
+                  default:
+                    break;
+                }
+              })
+            }
+          })
+          return _promise
+        }
+
+        catch (onReject) {
+          return this.then(null, onReject)
+        }
+
+        finally (callback) {
+          return this.then(callback, callback)
+        }
+
+        all (entries) {
+          if (Array.isArray(entries)) {
+            if (entries.length === 0) return new this((resolve) => resolve([]))
+            const result = []
+            let index = 0
+            return new this((resolve, reject) => {
+              entries.forEach(item => {
+                this.resolve(item).then(data => {
+                  result.push(data)
+                  index++
+                  if (index === entries.length) {
+                    resolve(result)
+                  }
+                }, reject)
+              })
+            })
+          }
+          return new this((_, reject) => reject(new Error('You must pass an array to all.')))
+        }
+
+        race (entries) {
+          if (Array.isArray(entries)) {
+            return new this((resolve, reject) => {
+              for (let i = 0; i < entries.length; i++) {
+                this.resolve(entries[i]).then(resolve, reject)
+              }
+            })
+          }
+          return new this((_, reject) => reject(new Error('You must pass an array to race.')))
+        }
+
+        static resolve (object) {
+          if (object && typeof object === 'object' && object.constructor === this) return object
+          const promise = new this(() => {})
+          promise.resolve(object)
+          return promise
+        }
+
+        static reject (reason) {
+          const promise = new this(() => {})
+          promise.reject(object)
+          return promise 
+        }
+
+      }
+
+      // new MyPromise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     if (Math.random() > 0.5) {
+      //       resolve('resolve')
+      //     } else {
+      //       reject(new Error('发生了错误'))
+      //     }
+      //   }, 500)
+      // }).then(
+      //   res => {
+      //     console.log(res)
+      //     return 111
+      //   },
+      //   err => {
+      //     console.error(err)
+      //     return err
+      //   }
+      // ).then(d => {
+      //   console.log(d)
+      // })
+
+      Promise.resolve(1).finally(function () {
+        console.log(this)
+      })
+    </script>
+  </body>
+</html>

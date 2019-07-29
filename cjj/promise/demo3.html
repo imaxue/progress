@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      var PENDING = 'pending'
+      var FULFILLED = 'fulfilled'
+      var REJECTED = 'rejected'
+      function asap(cb) {
+        setTimeout(cb)
+      }
+
+      function setDefault(type, value, def) {
+        return typeof value === type ? value : def
+      }
+
+      function setDefautFunction(value, def) {
+        return setDefault('function', value, def)
+      }
+
+      function MyPromise(resolver) {
+        this.status = PENDING
+        this.value = undefined
+        this.onFulfilledCallbacks = []
+        this.onRejectedCallbacks = []
+        var _this = this
+        this.resolve = function(value) {
+          if (value instanceof MyPromise) {
+            return value.then(_this.resolve, _this.reject)
+          }
+          asap(function() {
+            if (_this.status === PENDING) {
+              _this.status = FULFILLED
+              _this.value = value
+              _this.onFulfilledCallbacks.forEach(cb => cb())
+            }
+          })
+        }
+        this.reject = function(reason) {
+          asap(function() {
+            if (_this.status === PENDING) {
+              _this.status = REJECTED
+              _this.value = reason
+              _this.onRejectedCallbacks.forEach(cb => cb())
+            }
+          })
+        }
+        try {
+          resolver(this.resolve, this.reject)
+        } catch (reason) {
+          this.reject(reason)
+        }
+      }
+      
+      MyPromise.prototype.then = function(onResolve, onReject) {
+        var _onResolve = setDefautFunction(onResolve, function(value) {
+          return value
+        })
+        var _onReject = setDefautFunction(onReject, function(reason) {
+          throw reason
+        })
+        var _this = this
+        var promise = new MyPromise(function(resolve, reject) {
+          var handler = function(fn) {
+            try {
+              resolutionProcedure(promise, fn(_this.value), resolve, reject)
+            } catch (reason) {
+              reject(reason)
+            }
+          }
+          var resolveHandler = function () {
+            handler(_onResolve)
+          }
+          var rejectHandler = function () {
+            handler(_onReject)
+          }
+          switch (_this.status) {
+            case FULFILLED:
+              break
+              asap(resolveHandler)
+            case REJECTED:
+              asap(rejectHandler)
+              break
+            case PENDING:
+              _this.onFulfilledCallbacks.push(resolveHandler)
+              _this.onRejectedCallbacks.push(rejectHandler)
+              break
+            default:
+              break
+          }
+        })
+        return promise
+      }
+
+      MyPromise.prototype.catch = function (onReject) {
+        return this.then(null, onReject)
+      }
+
+      MyPromise.resolve = function (value) {
+        var Constructor = this
+        if (value && typeof value === 'object' && value.constructor === Constructor) return value
+        var promise = new Constructor(function () {})
+        promise.resolve(value)
+        return promise
+      }
+
+      MyPromise.reject = function (reason) {
+        var promise = new Constructor(function () {})
+        promise.reject(reason)
+        return promise
+      }
+
+      MyPromise.all = function (entries) {
+        var _this = this
+        if (Array.isArray(entries)) {
+          var len = entries.length
+          if (len === 0) return this.resolve([])
+          return new MyPromise(function (resolve, reject) {
+            var result = []
+            var num = 0
+            for (var i = 0; i < len; i++) {
+              _this.resolve(entries[i]).then(value => {
+                result.push(value)
+                num++
+                if (num === len) {
+                  resolve(result)
+                }
+              }, reject)
+            }
+          })
+        }
+      }
+
+      function resolutionProcedure (promise, target, resolve, reject) {
+        if (promise === target) return reject(new Error('error'))
+        if (target instanceof MyPromise) {
+          if (target.status === PENDING) {
+            target.then(function (value) {
+              resolutionProcedure(promise, value, resolve, reject)
+            }, reject)
+          } else {
+            target.then(resolve, reject)
+          }
+          return
+        }
+        var called = false
+        if (target !== null && (typeof target === 'object' || typeof target === 'function')) {
+          try {
+            var then = target.then
+            if (typeof then === 'function') {
+              then.call(target, function (value) {
+                if (called) return
+                called = true
+                resolutionProcedure(promise, value, resolve, reject)
+              }, function (reason) {
+                if (called) return
+                called = true
+                reject(reason)
+              })
+            } else {
+              resolve(target)
+            }
+          } catch (reason) {
+            if (called) return
+            called = true
+            reject(reason)
+          }
+        } else {
+          resolve(target)
+        }
+      }
+    </script>
+    <script>
+      new MyPromise(function (resolve, reject) {
+        setTimeout(() => {
+          resolve(1)
+        }, 500);
+      }).then(value => {
+        console.log(value)
+      }).catch(error => {
+        console.error(error)
+      })
+    </script>
+  </body>
+</html>

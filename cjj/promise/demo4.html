@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      const PENDING = 'pending'
+      const FULFILLED = 'fulfilled'
+      const REJECTED = 'rejected'
+      const isFunction = t => typeof t === 'function'
+
+      const asap = cb => setTimeout(cb)
+
+      const resolutionProcedure = (promise, target, resolve, reject) => {
+        if (promise === target) return reject(new Error('error'))
+        if (target instanceof MyPromise) {
+          if (target.status === PENDING) {
+            target.then(value => {
+              resolutionProcedure(promise, value, resolve, reject)
+            }, reject)
+          } else {
+            target.then(resolve, reject)
+          }
+          return
+        }
+        if (target !== null && (typeof target === 'object' || isFunction(target))) {
+          let called = false
+          try {
+            const { then } = target
+            if (isFunction(then)) {
+              then.call(target, (value) => {
+                if (called) return
+                called = true
+                resolutionProcedure(promise, value, resolve, reject)
+              }, reason => {
+                if (called) return
+                called = true
+                reject(reason)
+              })
+            } else {
+              resove(target)
+            }
+          } catch (reason) {
+            if (called) return
+            called = true
+            reject(reason)
+          }
+        } else {
+          resolve(target)
+        }
+      }
+
+      class MyPromise {
+        constructor (resolver) {
+          this.status = PENDING
+          this.value = undefined
+          this.onFulfilledCallbacks = []
+          this.onRejectedCallbacks = []
+          this.resolve = (value) => {
+            if (value instanceof MyPromise) {
+              return value.then(this.resolve, this.reject)
+            }
+            asap(() => {
+              if (this.status === PENDING) {
+                this.status = FULFILLED
+                this.value = value
+                this.onFulfilledCallbacks.forEach(cb => cb())
+              }
+            })
+          }
+          this.reject = reason => {
+            asap(() => {
+              if (this.status === PENDING) {
+                this.status = REJECTED
+                this.value = reason
+                this.onRejectedCallbacks.forEach(cb => cb())
+              }
+            })
+          }
+          try {
+            resolver(this.resolve, this.reject)
+          } catch (reason) {
+            this.reject(reason)
+          }
+        }
+
+        then (onResolve, onReject) {
+          onResolve = isFunction(onResolve) ? onResolve : v => v
+          onReject = isFunction(onReject) ? onReject : function (e) { throw e }
+          const promise = new MyPromise((resolve, reject) => {
+            const handler = fn => {
+              try {
+                resolutionProcedure(promise, fn(this.value), resolve, reject)
+              } catch (reason) {
+                reject(reason)
+              }
+            }
+
+            const resolveHandler = () => handler(onResolve)
+            const rejectHandler = () => handler(onReject)
+
+            switch (this.status) {
+              case PENDING:
+                this.onFulfilledCallbacks.push(resolveHandler)
+                this.onRejectedCallbacks.push(rejectHandler)
+                break;
+              case FULFILLED:
+                asap(resolveHandler)
+                break;
+              case REJECTED:
+                asap(rejectHandler)
+                break;
+              default:
+                break;
+            }
+          })
+          return promise
+        }
+
+        catch (onReject) {
+          return this.then(null, onReject)
+        }
+
+        finally (callback) {
+          return this.then(() => callback(), () => callback())
+        }
+
+        static resolve (object) {
+          if (object && typeof object === 'object' && object.constructor === this) return object
+          const p = new MyPromise(() => {})
+          p.resolve(object)
+          return p
+        }
+
+        static reject (reason) {
+          const p = new MyPromise(() => {})
+          p.reject(reason)
+          return p
+        }
+
+        static all (entries) {
+          if (Array.isArray(entries)) {
+            if (entries.length === 0) return this.resolve([])
+            return new MyPromise((resolve, reject) => {
+              const result = []
+              let n = 0
+              for (const item of entries) {
+                this.resolve(item).then(data => {
+                  result.push(data)
+                  n++
+                  if (n === entries.length) {
+                    resolve(result)
+                  }
+                }, reject)
+              }
+            })
+          }
+          return Promise.reject(new Error(`You must pass an array to all.`))
+        }
+      }
+      </script>
+  </body>
+</html>
