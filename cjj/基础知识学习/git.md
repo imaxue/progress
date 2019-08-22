@@ -94,3 +94,7 @@
     ``` shell
     git checkout .
     ```
+- 放弃工作区单个文件的修改
+``` shell
+  git checkout -- filepathname
+```
