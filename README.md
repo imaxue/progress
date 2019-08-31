@@ -1,9 +1,7 @@
 # JUST DO IT笔记记录
 
 ## 规范
-* 每周更新一次，记录自己的学习心得或者是相关技术，如果是单纯的md，最好是用readme.md命名
-* 每次分享的内容, 放到share下面, 方便有需要的人自取
-* 如果觉得写的比较优秀的，请放到下边的大目录里，方便访问
+[2019 规范](https://github.com/imaxue/progress/blob/master/The%202019%20rule.md)
 
 ## 目录
 
@@ -11,7 +9,7 @@
 
 - [数学（与或）](https://github.com/imaxue/progress/tree/master/axue/math)--xue
 - [JS基础（运算符，拷贝）](https://github.com/imaxue/progress/blob/master/share/3/%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF.pdf)--guo
-- [History API](https://github.com/imaxue/progress/blob/master/haonan/2018-7-22%20%E5%85%B3%E4%BA%8Eh5%20history%20api%E7%9A%84%E8%AE%A4%E8%AF%86.md)--haonan
+- [History API](https://github.com/imaxue/progress/blob/master/haonan/%E5%85%B3%E4%BA%8Eh5%20history%20api%E7%9A%84%E8%AE%A4%E8%AF%86.md)--haonan
 - [ios禁止缩放](https://github.com/imaxue/progress/blob/master/shangguan/ios%E7%A6%81%E6%AD%A2%E7%BC%A9%E6%94%BE.md)--shangguan
 - [H5调用相机](https://github.com/imaxue/progress/blob/master/tian/H5%E8%B0%83%E7%94%A8%E7%9B%B8%E6%9C%BA.md)--tian
 - [正则表达式简单学习](https://github.com/imaxue/progress/blob/master/tian/%E6%AD%A3%E5%88%99%E5%AD%A6%E4%B9%A0.md)--tian
@@ -93,6 +91,9 @@
 - [工具集](https://github.com/welefen/useful-tools)--peng
 - [正则校验工具](https://regexper.com/)--guo
 - [flex布局学习小游戏](http://flexboxfroggy.com/) -- liao
+- [手机调试和抓包](https://github.com/wuchangming/spy-debugger) -- peng
+- [词云制作](https://wordart.com/) -- xue
+- [charles破解](https://www.zzzmode.com/mytools/charles/) --xue
 
 ### 服务端知识
 

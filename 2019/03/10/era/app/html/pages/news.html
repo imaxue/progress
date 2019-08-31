@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>寻求报道</title>
+    @@loop('head-link.html', [
+    { "name": "reset" },
+    { "name": "global" },
+    { "name": "header" },
+    { "name": "footer" }
+    ])
+    <link href="https://cdn.bootcss.com/slick-carousel/1.9.0/slick-theme.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/slick-carousel/1.9.0/slick.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/pages/news.css">
+</head>
+
+<body>
+    @@include('header.html', {
+    "page": "news"
+    })
+    <div class="base-container">
+        @@include('../../news-content.html')
+    </div>
+    @@loop('public-script.html', [
+    { "name": "jQuery" },
+    { "name": "public" }
+    ])
+    <script src="https://cdn.bootcss.com/slick-carousel/1.9.0/slick.js"></script>
+    <script>
+        $('.news-carousel').slick({
+            arrows: false,
+            dots: true,
+            centerMode: true,
+            slidesToShow: 1,
+            centerPadding: '120px',
+            autoplay: true,
+            autoplaySpeed: 3000,
+            draggable: false
+        });
+        // 遮罩相关
+        $('.news-video-dialog .dialog-close').click(function () {
+            $('body').css('overflow', 'auto');
+            $('.news-video-dialog').fadeOut('fast');
+        });
+        $('.news-video-container').click(function () {
+            var videoSrc = $(this).find('img').attr('video-src');
+            $('.news-video-dialog').fadeIn('fast');
+            $('body').css('overflow', 'hidden');
+            $('.news-video-dialog video').attr('src', videoSrc);
+        });
+    </script>
+</body>
+
+</html>

@@ -23,3 +23,17 @@ let {activity_id = 1, pageSize = 15, page = 1} = params;
     // console.log(total[0])
     let list = await db.query(querysql);
 ```
+
+左联
+
+```sql
+select shop_service.service_id,shop_service.name,shop_service_goods.gid ,shop_service.merchant_id,
+shop_goods.name 
+from shop_service 
+left join shop_service_goods on 
+(shop_service.service_id = shop_service_goods.service_id) 
+left join shop_goods on (shop_service_goods.gid = shop_goods.gid)
+where shop_service.merchant_id = 0
+```
+
+

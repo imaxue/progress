@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // const map = new Map([
+    //   ['F', 'no'],
+    //   ['T', 'yes'],
+    // ]);
+    // for (let [key, value] of map.entries()) {
+    //   console.log(key, value);
+    // }
+
+    // map.forEach(function (value, key, map) {
+    //   console.log("Key: %s, Value: %s", key, value);
+    // });
+
+
+const map = new Map();
+map.set(1,"foo").set(2,"bar").set(3,"baz");
+console.log(map)
+const mapChangeObj = (map) => {
+     let obj = {};
+     for(let [k,v] of map) {
+         obj[k] = v;
+     }
+     return obj;
+}
+console.log(mapChangeObj(map));
+  </script>
+
+</body>
+
+</html>

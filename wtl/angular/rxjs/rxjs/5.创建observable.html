@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/rxjs/5.6.0-forward-compat.1/Rx.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // of 
+    // let ob = Rx.Observable.of(1,2)
+    // .subscribe(
+    //     v => { console.log(v) },
+    //     e => { console.log(e) },
+    //     () => { console.log('complete') }
+    // );
+
+
+    // from
+    // let ob  = Rx.Observable.from([1,2])
+    // let ob  = Rx.Observable.from('你好')
+    // let ob = Rx.Observable.from(new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve('111');
+    //     }, 3000)
+    // }))
+    // ob.subscribe(
+    //     v => { console.log('suss',v) },
+    //     e => { console.log('error',e) },
+    //     () => { console.log('complete') }
+    // );
+
+    // fromPromise
+    // let ob = Rx.Observable.fromPromise(new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         // resolve('111');
+    //         reject('aaa')
+    //     }, 3000)
+    // })).subscribe(
+    //     (resolve) => {
+    //         console.log('Resolve:', resolve)
+    //     },
+    //     (reject) => {
+    //         console.log('Reject:', reject)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+
+    // fromEvent
+    // let source = Rx.Observable.fromEvent(document, 'click');
+    // source.subscribe({
+    //     next: function (value) {
+    //         console.log(value)
+    //     },
+    //     complete: function () {
+    //         console.log('complete!');
+    //     },
+    //     error: function (error) {
+    //         console.log(error)
+    //     }
+    // });
+    
+    // interval
+    let ob = Rx.Observable.interval(1000).subscribe(
+        v => {
+            console.log('Value', v)
+        },
+        e => {
+            console.log('Error', e)
+        },
+        () => {
+            console.log('Completed')
+        }
+    );
+    setTimeout(() => {
+        ob.unsubscribe()
+    }, 5000);
+
+
+    // timer
+
+    // Rx.Observable.timer(1000, 2000).subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+
+    // Rx.Observable.timer(2000).subscribe(
+    //     v => {
+    //         console.log('Value', v)
+    //     },
+    //     e => {
+    //         console.log('Error', e)
+    //     },
+    //     () => {
+    //         console.log('Completed')
+    //     }
+    // );
+
+</script>
+
+</html>

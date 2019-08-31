@@ -1,0 +1,85 @@
+/* 招聘职位 */
+@import '../../../css/public/var.scss';
+@import '../../../css/public/mixins.scss';
+
+.jobs {
+  padding: 50px;
+  &-list {
+    font-size: 16px;
+    color: #565656;
+    &-item {
+      margin-bottom: 10px;
+      padding: 19px 20px;
+      border: 1px solid $border-color-base;
+      &__label {
+        font-size: 20px;
+      }
+      span {
+        vertical-align: middle;
+      }
+      &__edit {
+        margin-right: 15px;
+      }
+      &__edit,
+      &__delete {
+        cursor: pointer;
+      }
+    }
+  }
+  .jobs-add {
+    @extend .jobs-list-item;
+    color: #051027;
+    cursor: pointer;
+  }
+}
+
+.add-jobs {
+  background-color: rgba(#000, .5);
+  * {
+    box-sizing: border-box;
+  }
+  &__main {
+    padding: 30px 103px 0;
+    width: 730px;
+    max-height: 600px;
+    overflow: auto;
+  }
+  &__section {
+    margin-bottom: 35px;
+  }
+  &__title {
+    margin-bottom: 19px;
+    font-size: 20px;
+    color: #101010;
+    .subtitle {
+      font-size: 16px;
+      color: #7b7b7b;
+      line-height: 29px;
+    }
+  }
+  .select {
+    width: 100%;
+    font-size: 14px;
+    text-align: left;
+    &-form {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+  .row {
+    margin: 0 -7px;
+    .col {
+      padding: 0 7px;
+    }
+  }
+  .textarea {
+    padding: 17px 13px;
+    height: 210px;
+  }
+  .dialog-container {
+    text-align: center;
+    &__footer {
+      margin: 30px auto;
+    }
+  }
+}

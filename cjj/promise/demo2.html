@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const PENDING = 'pending'  
+    const RESOLVED = 'resolved'
+    const REJECTED = 'rejected'
+    const isFuction = t => typeof t === 'function'
+    const isObject = t => t !== null && typeof t === 'object' || typeof t === 'function'
+    const resolutionProceduer = (promise, target, resolve, reject) => {
+      if (promise === target) return reject(new Error('error'))
+      if (target instanceof MyPromise) {
+        if (target.status === PENDING) {
+          target.then(value => {
+            resolutionProceduer(promise, value, resolve, reject)
+          }, reject)
+        } else {
+          target.then(resolve, reject)
+        }
+        return
+      }
+      let called = false
+      if (isObject(target)) {
+        try {
+          const then = target.then
+          if (then) {
+            then.call(target, v => {
+              if (called) return
+              called = true
+              resolutionProceduer(promise, v, resolve, reject)
+            }, e => {
+              if (called) return
+              called = true
+              reject(e)
+            })
+          } else {
+            resolve(target)
+          }
+        } catch (reason) {
+          resolve(reason)
+        }
+      } else {
+        resolve(target)
+      }
+    }
+
+    class MyPromise {
+      constructor (resolver) {
+        this.status = PENDING
+        this.value = undefined
+        this.resolveCallbacks = []
+        this.rejectCallbacks = []
+
+        try {
+          resolver(this.resolve.bind(this), this.reject.bind(this))
+        } catch (reason) {
+          this.reject(reason)
+        }
+      }
+
+      asap (cb) {
+        setTimeout(() => {
+          cb()
+        })
+      }
+
+      resolve (value) {
+        if (value instanceof MyPromise) {
+          return value.then(this.resolve, this.reject)
+        }
+        this.asap(() => {
+          this.status = RESOLVED
+          this.value = value
+          this.resolveCallbacks.forEach(cb => cb())
+        })
+      }
+
+      reject (reason) {
+        this.asap(() => {
+          this.status = REJECTED
+          this.value = reason
+          this.rejectCallbacks.forEach(cb => cb())
+        })
+      }
+
+      then (onResolve, onReject) {
+        const _resolve = isFuction(onResolve) ? onResolve : v => v
+        const _reject = isFuction(onReject) ? onReject : function (r) { throw r }
+        const promise = new MyPromise((resolve, reject) => {
+          const handler = fn => {
+            try {
+              resolutionProceduer(promise, fn(this.value), resolve, reject)
+            } catch (error) {
+              reject(error)
+            }
+          }
+          const resolveHandler = () => handler(_resolve)
+          const rejectHandler = () => handler(_reject)
+          switch (this.status) {
+            case PENDING:
+              this.resolveCallbacks.push(resolveHandler)
+              this.rejectCallbacks.push(rejectHandler)
+              break;
+            case RESOLVED:
+              this.asap(resolveHandler)
+              break;
+            case REJECTED:
+              this.asap(rejectHandler)
+              break;
+            default:
+              break;
+          }
+        })
+        return promise
+      }
+
+      catch (onReject) {
+        return this.then(null, onReject)
+      }
+      static resolve (object) {
+        if (object && typeof object === 'object' && typeof object.constructor === this) return object
+        const promise = new MyPromise(() => {})
+        promise.resolve(object)
+        return promise
+      }
+      static reject (reason) {
+        const promise = new MyPromise(() => {})
+        promise.reject(reason)
+        return promise
+      }
+      static all (entries) {
+        if (Array.isArray(entries)) {
+          if (entries.length === 0) return this.resolve([])
+          return new MyPromise((resolve, reject) => {
+            const result = []
+            let num = 0
+            for (let item of entries) {
+              this.resolve(item).then(value => {
+                result.push(value)
+                num++
+                if (num === entries.length) {
+                  resolve(result)
+                }
+              }, reject)
+            }
+          })
+        }
+        return MyPromise.reject(new Error('You must pass an array to all.'))
+      }
+
+      static race (entries) {
+        if (Array.isArray(entries)) {
+          return new MyPromise((resolve, reject) => {
+            for (let item of entries) {
+              this.resolve(item).then(resolve, reject)
+            }
+          })
+        }
+        return MyPromise.reject(new Error('You must pass an array to race.'))
+      }
+    }
+
+    new MyPromise((resolve, reject) => {
+      resolve(function () {
+        throw new Error('error')
+      })
+    })
+    .then(value => value())
+    .catch(err => console.error(err))
+  </script>
+</body>
+</html>

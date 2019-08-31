@@ -1,0 +1,18 @@
+{
+    "/boss-product": {
+        "target": "http://xxx/xxx/xxx.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/boss-product": "/boss-product"
+        }
+    },
+      "/developer-center": {
+        "target": "http://xxx/xxx/xxx.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+          "^/developer-center": "/developer-center"
+        }
+      }
+}

@@ -1,0 +1,130 @@
+# webpack 定制前端开发环境
+
+> webpack 是一个现代 JavaScript 应用程序的静态模块打包工具。
+
+## 功能
+1. 代码转换
+2. 文件优化
+3. 代码分割
+4. 模块合并
+5. 自动刷新
+6. 代码校验
+7. 自动发布
+
+## webpack安装
+- 安装本地webpack
+- webpack webpack-cli -D
+
+# 分离代码文件
+
+- webpack 4.x 的 optimization
+
+```js
+module.exports = {
+  // ... webpack 配置
+
+  optimization: {
+    splitChunks: {
+      chunks: "all", // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
+    },
+  },
+}
+```
+
+公共类库
+```js
+module.exports = {
+  entry: {
+    vendor: ["react", "lodash", "angular", ...], // 指定公共使用的第三方类库
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: "initial",
+          test: "vendor",
+          name: "vendor", // 使用 vendor 入口作为公共部分
+          enforce: true,
+        },
+      },
+    },
+  },
+  // ... 其他配置
+}
+
+// 或者
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /react|angluar|lodash/, // 直接使用 test 来做路径匹配
+          chunks: "initial",
+          name: "vendor",
+          enforce: true,
+        },
+      },
+    },
+  },
+}
+
+// 或者
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: "initial",
+          test: path.resolve(__dirname, "node_modules") // 路径在 node_modules 目录下的都作为公共部分
+          name: "vendor", // 使用 vendor 入口作为公共部分
+          enforce: true,
+        },
+      },
+    },
+  },
+}
+```
+
+- webpack 3.x 的 CommonsChunkPlugin
+
+```js
+module.exports = {
+  // ...
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "commons", // 公共使用的 chunk 的名称
+      filename: "commons.js", // 公共 chunk 的生成文件名
+      minChunks: 3, // 公共的部分必须被 3 个 chunk 共享
+    }),
+  ],
+}
+```
+
+```js
+module.exports = {
+  entry: {
+    vendor: ['react', 'react-redux'], // 指定公共使用的第三方类库
+    app: './src/entry',
+    // ...
+  },
+  // ...
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor' // 使用 vendor 入口作为公共部分
+      filename: "vendor.js", 
+      minChunks: Infinity, // 这个配置会让 webpack 不再自动抽离公共模块
+    }),
+  ],
+}
+```
+
+
+## 按需加载模块
+
+```js
+// import 作为一个方法使用，传入模块名即可，返回一个 promise 来获取模块暴露的对象
+// 注释 webpackChunkName: "lodash" 可以用于指定 chunk 的名称，在输出文件时有用
+import(/* webpackChunkName: "lodash" */ 'lodash').then((_) => { 
+  console.log(_.lash([1, 2, 3])) // 打印 3
+})
+```

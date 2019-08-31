@@ -16,3 +16,47 @@
       }
       ```
       注意：通过vue ui运行对应的模式的话注意一定要将环境设置为``(unset)``，不然默认的``production``模式会覆盖掉你自定义的模式，同时记得在自定义模式中设置``NODE_ENV``，不然默认的NODE_ENV为``development``
+
+3. 配置多页面应用时，访问不同的页面返回的都是index页面的内容。此时需要在vue.config.js中做如下配置：
+```javascript
+// vue.config.js
+module.exports = {
+  pages: {
+    index: '.src/index.js',
+    otherpage: '.src/otherpage.js'
+  },
+  devServer: {
+    //...
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/subpage/, to: '/subpage.html' } // 页面路由指向特定的html文件
+      ]
+    }
+  }
+}
+```
+4. 开启gzip
+- 第一步 安装compression-webpack-plugin
+  ```shell
+  npm i -D compression-webpack-plugin
+  ```
+- 第二步 在vue.config.js中配置
+  ```javascript
+  module.exports = {
+    //...
+    configureWebpack: config => {
+      if (process.env.NODE_ENV === 'production') {
+        return {
+          plugins: [
+            /* gzip压缩 */
+            new CompressionPlugin({
+              test: /\.js$|\.html$|.\css/, // 匹配文件名
+              threshold: 10240, // 对超过10k的数据压缩
+              deleteOriginalAssets: false // 不删除源文件
+            })
+          ]
+        }
+      }
+    }
+  }
+  ```

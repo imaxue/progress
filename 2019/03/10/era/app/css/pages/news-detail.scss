@@ -1,0 +1,203 @@
+//* 报告下载 */
+@import '../../css/public/var.scss';
+@import '../../css/public/mixins.scss';
+
+.news-detail {
+  color: #101010;
+  * {
+    box-sizing: border-box;
+  }
+  .article {
+    margin: 0 auto;
+    width: 900px;
+    &__header {
+      margin-top: 40px;
+      margin-bottom: 28px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid $border-color-base;
+    }
+    &-title {
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+    &-subtitle {
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+    &-desc {
+      font-size: 12px;
+      color: #b3b3b3;
+      .era-icon-look {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+      span {
+        margin-right: 20px;
+        vertical-align: middle;
+      }
+    }
+    &-section {
+      margin-top: 26px;
+      margin-bottom: 40px;
+      color: #74777d;
+      font-size: 14px;
+      line-height: 25px;
+      p {
+        margin: 20px 0;
+      }
+    }
+    .section-title {
+      position: relative;
+      width: 100px;
+      font-size: 22px;
+      text-align: center;
+      color: #2a333f;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 60%;
+        background-color: #ffe100;
+        z-index: -1;
+      }
+    }
+  }
+  .article-score {
+    font-size: 35px;
+    &-wrap {
+      margin: 0 auto;
+      max-width: 300px;
+      text-align: center;
+      font-size: 18px;
+      p {
+        margin: 25px 0;
+      }
+      .era-icon-wechart {
+        font-size: 26px;
+        color: #c3c2c1;
+      }
+      .share-wrap {
+        margin-top: 42px;
+      }
+      .share {
+        margin: 10px 0;
+        color: #74777d;
+        font-size: 12px;
+      }
+      &.edit {
+        .score-result {
+          display: none;
+        }
+        .score-button {
+          .btn {
+            width: 100px;
+            padding: 10px 0;
+          }
+        }
+      }
+    }
+  }
+  .recommend {
+    margin: 0 auto;
+    width: 941px;
+    &__title {
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    &-list {
+      &-item {
+        display: block;
+        margin-bottom: 25px;
+        padding: 35px 22px 27px;
+        background-color: #fff;
+        color: #101010;
+      }
+    }
+    &-date {
+      margin-bottom: 23px;
+      padding-bottom: 17px;
+      color: $font-color-primary;
+      border-bottom: 1px solid #eaeaea;
+      font-size: 20px;
+      .week {
+        margin-left: 15px;
+        margin-right: 5px;
+        &--en {
+          font-size: 16px;
+          color: #74777d;
+        }
+      }
+    }
+    &-wrap {
+      @include clearfix;
+      .image-placeholder {
+        width: 260px;
+        height: 150px;
+        line-height: 150px;
+      }
+    }
+    &-image {
+      float: left;
+      margin-right: 46px;
+      width: 260px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    &-content {
+      &__title {
+        margin-bottom: 15px;
+        font-size: 22px;
+        color: #2a333f;
+      }
+      &__main {
+        margin-bottom: 40px;
+        font-size: 14px;
+        color: #74777d;
+        line-height: 25px;
+      }
+      .score-num {
+        margin: 0 18px 0 12px;
+        color: $color-danger;
+        font-size: 13px;
+      }
+      .era-icon-look {
+        margin-right: 6px;
+        font-size: 22px;
+        color: #b2b2b2;
+        vertical-align: middle;
+      }
+      .look-num {
+        margin-right: 45px;
+        font-size: 13px;
+      }
+      .era-logo {
+        display: inline-block;
+        margin-right: 15px;
+        width: 26px;
+        height: 26px;
+        border-radius: 100%;
+        background-color: #fed809;
+        vertical-align: middle;
+      }
+      .company-name {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.era-tooltip {
+  width: 100px;
+  font-size: 12px;
+  color: #74777d;
+  img {
+    width: 100%;
+  }
+  p {
+    margin: 10px 0!important;
+  }
+}

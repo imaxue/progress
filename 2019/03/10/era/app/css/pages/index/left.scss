@@ -1,0 +1,97 @@
+@import './extract.scss';
+.left-no-data {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #B3B3B3;
+}
+.left-ranking-container {
+    .list-title {
+        height: 88px;
+        line-height: 88px;
+    }
+    .click-view-more {
+        height: 66px;
+        line-height: 66px;
+    }
+    .ranking-item {
+        height: 107px;
+        padding: 16px 0;
+        border-bottom: $list-border-bottom;
+        img {
+            float: left;
+            width: 107px;
+            height: 107px;
+            margin-right: 15px;
+        }
+        .ranking-company-info-container {
+            float: left;
+            height: 100%;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .ranking-company-name {
+            font-size: 28px;
+            color: rgba(5, 16, 39, 1);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        .ranking-company-other-info {
+            margin-top: 41px;
+        }
+        .ranking-company-target {
+            font-size: 18px;
+            color: rgba(42, 51, 63, 1);
+        }
+        .ranking-company-address {
+            margin-left: 30px;
+            color: #B3B3B3;
+        }
+        .ranking-info-container {
+            float: right;
+            height: 100%;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .ranking-company-label {
+            span {
+                margin-right: 18px;
+                color: rgba(5, 16, 39, 1);
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        .ranking-data {
+            margin-top: 51px;
+            i {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 26px;
+                color: #B3B3B3;
+            }
+            >div {
+                display: inline-block;
+                &+div {
+                    margin-left: 21px;
+                }
+            }
+            span {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 14px;
+                color: #B3B3B3;
+            }
+        }
+        .ranking-heart {
+            i {
+                font-size: 20px;
+                cursor: pointer;
+                &.active {
+                    color: #ff0e00;
+                }
+            }
+        }
+    }
+}
