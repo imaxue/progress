@@ -9,3 +9,5 @@
 - 查看全局安装的插件：``npm list -g --depth 0``
 
 - 升级全局安装的包： ``npm update -g xxx``
+
+- 配置某npm包的镜像(以nod-sass淘宝镜像为例)： `` npm config set sass-binary-site http://npm.taobao.org/mirrors/node-sass ``
