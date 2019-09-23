@@ -76,3 +76,7 @@ puppeteer.launch({
   arg: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
 })
 ``
+
+- 本地开发时，如果不能翻墙。可以手动在淘宝镜像下载好文件。然后复制到`node_modules/puppeteer/.local-chromium/win64-641577/chrome-win`。
+
+- 使用`puppeteer-chromium-resolver`插件
