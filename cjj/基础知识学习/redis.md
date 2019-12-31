@@ -33,3 +33,29 @@ ps -ef | grep redis
 ./bin/redis-cli shutdown
 ps -ef | grep redis
 ```
+
+### Redis键（key）
+
+```bash
+# 删除key
+del key
+
+# 序列化给定的key并返回被序列化的值
+dump key
+
+# 查找是否存在key
+exists key
+# 存在返回1 不存在返回0
+
+# 转移key至其他数据库
+move key db
+
+# 设置过期时间(s)
+expire key seconds
+
+# 根据条件查找符合的key
+keys pattern
+
+# 获取key对应值的类型
+type key
+```
