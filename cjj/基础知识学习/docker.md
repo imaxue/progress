@@ -18,4 +18,4 @@
 - ``$ docker rm -f <容器 ID>`` 删除容器
 - ``$ docker rmi <容器 ID>`` 删除镜像
 - ``$ docker exec -it <容器 ID> /bin/bash`` 进入容器
-
+- ``$ docker cp xxx <容器 ID>:<path>`` 复制xxx文件至容器内path路径下
