@@ -83,3 +83,5 @@ enabled=1
 sudo yum makecache
 sudo yum install gitlab-ce
 ```
+
+[https://www.jianshu.com/p/45df58c55958](https://www.jianshu.com/p/45df58c55958)
