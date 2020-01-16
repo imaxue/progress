@@ -1,5 +1,13 @@
 ## eggjs学习记录
 
+### 初始化项目
+```bash
+$ mkdir showcase && cd showcase
+$ npm init egg --type=ts
+$ npm i
+$ npm run dev
+```
+
 ### 在helper中使用ctx
 ```typescript
 import { Context } from 'egg';
