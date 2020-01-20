@@ -75,8 +75,19 @@ puppeteer.launch({
   executablePath: 'google-chrome',
   arg: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
 })
-``
+```
 
 - 本地开发时，如果不能翻墙。可以手动在淘宝镜像下载好文件。然后复制到`node_modules/puppeteer/.local-chromium/win64-641577/chrome-win`。
 
 - 使用`puppeteer-chromium-resolver`插件
+
+
+centos7系统下防止安装chromium失败的解决方案：
+1. 全局安装chrome
+```bash
+yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+```
+2. 在代码中配置可执行文件的路径
+```javascript
+const browser = await puppeteer.launch({executablePath: '/usr/bin/google-chrome'})
+```
