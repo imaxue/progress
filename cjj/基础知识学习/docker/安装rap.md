@@ -87,3 +87,27 @@ docker-compose up -d
 docker-compose exec delos node scripts/updateSchema
 
 ```
+# 镜像升级
+- 拉取一下最新的镜像
+```bash
+docker-compose pull
+```
+- 暂停当前应用
+```bash
+docker-compose down
+```
+
+- 重新构建并启动
+```bash
+docker-compose up -d --build
+```
+
+- 有时表结构会发生变化，执行下面命令同步
+```bash
+docker-compose exec delos node scripts/updateSchema
+```
+
+- 清空不被使用的虚悬镜像
+```bash
+docker image prune -f
+```
