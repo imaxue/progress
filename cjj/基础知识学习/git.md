@@ -98,3 +98,18 @@
 ``` shell
   git checkout -- filepathname
 ```
+
+电脑蓝屏之后，重启电脑发现git提交不了代码了。所有的文件都变成了new.
+尝试查看分支
+```bash
+$ git branch -a
+fatal: Failed to resolve HEAD as a valid ref.
+```
+尝试查看提交纪录
+```bash
+$ git log
+fatal: your current branch appears to be broken
+```
+解决办法：
+- 从``.git\refs\heads\`` 目录下找到当前分支命名的文件，打开后应该能看到一串NUL
+- 从``.git\logs\refs\heads``目录下找到当前分支命名的文件，打开后找到最后一次commit的hashcode。将这个hashcode替换掉``.git\refs\heads\``目录下分支文件的内容并保存
