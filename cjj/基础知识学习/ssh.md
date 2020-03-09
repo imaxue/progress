@@ -13,3 +13,4 @@
     + 执行``ssh-keygen``,一路回车即可
   - 上传公钥到服务器
     + 执行``ssh-copy-id -p port user@remote``，可以让远程服务器记住公钥
+    + 执行``ssh-copy-id -i .ssh/id_rsa.pub user@remote``，可以让远程服务器记住公钥
