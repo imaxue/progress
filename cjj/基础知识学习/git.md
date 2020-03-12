@@ -113,3 +113,41 @@ fatal: your current branch appears to be broken
 解决办法：
 - 从``.git\refs\heads\`` 目录下找到当前分支命名的文件，打开后应该能看到一串NUL
 - 从``.git\logs\refs\heads``目录下找到当前分支命名的文件，打开后找到最后一次commit的hashcode。将这个hashcode替换掉``.git\refs\heads\``目录下分支文件的内容并保存
+
+- git本地配置多个ssh key账户
+  + 生成多个key，在执行ssh-keygen命令后不要一路回车，在第一步输入生成文件的名称
+  ```bash
+    ssh-keygen -t rsa -C "你的邮箱1@xxx.com"
+  ```
+  + 编辑``~/.ssh/config``文件
+    - linux下的config配置如下
+    ```vi
+      # gitee server one
+      Host gitee.com
+          HostName gitee.com
+          User git
+          PreferredAuthentications publickey
+          IdentityFile ~/.ssh/id_rsa
+      # gitee server two
+      Host gitee_two.com
+          HostName gitee.com
+          User git
+          PreferredAuthentications publickey
+          IdentityFile ~/.ssh/id_rsa_two
+    ```
+
+    - windows下的配置。需要注意``Host``字段要与实际的git地址（IP或者域名）对应
+    ```vi
+      #gitee server one
+      Host gitee.com
+          Hostname gitee.com
+          User git
+          PreferredAuthentications publickey
+          IdentityFile C:\\Users\\\admin\\.ssh\\id_rsa
+      #gitee server two
+      Host gitee_two.com
+          Hostname gitee.com
+          User git
+          PreferredAuthentications publickey
+          IdentityFile C:\\Users\\\admin\\.ssh\\id_rsa_two
+    ```
