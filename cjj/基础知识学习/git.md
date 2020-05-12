@@ -151,3 +151,9 @@ fatal: your current branch appears to be broken
           PreferredAuthentications publickey
           IdentityFile C:\\Users\\\admin\\.ssh\\id_rsa_two
     ```
+
+- 在github上发布静态页
+```bash
+# 将dist目录发布到gh-pages分支
+ git subtree push --prefix=dist origin gh-pages
+```
