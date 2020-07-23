@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clip</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 20px;
+      }
+      #actions {
+        padding-top: 20px;
+        padding-left: 20px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="actions">
+      <label for="cover">封面：<input type="file" name="cover" id="img1" /></label>
+      <label for="content">内容：<input type="file" name="content" id="img2" /></label>
+      <label><button id="btn" style="margin-right: 10px;">生成内容</button><button id="reset">重置</button></label>
+    </div>
+
+    <div id="stage"></div>
+    <script>
+      const getElement = (id) => document.getElementById(id)
+      const cover = getElement('img1')
+      const content = getElement('img2')
+      const images = []
+      let instance = null
+      const onchange = (e) => {
+        const [file] = e.target.files
+        if (!file) return
+        const fr = new FileReader()
+        fr.readAsDataURL(file)
+        fr.onload = (e) => {
+          images.push(e.target.result)
+        }
+      }
+      cover.onchange = onchange
+      content.onchange = onchange
+      getElement('reset').onclick = () => {
+        if (instance) {
+          instance.restore()
+        }
+      }
+      getElement('btn').onclick = function () {
+        stage.innerHTML = ''
+        if (images.length === 2) {
+          const [coverImg, content] = images
+          const htmlEl = document.documentElement
+          const { height } = getElement('actions').getBoundingClientRect()
+          instance = new ClipCanvas({
+            container: '#stage',
+            coverImg,
+            content,
+            width: htmlEl.clientWidth,
+          })
+        }
+        images.splice(0)
+      }
+      class ClipCanvas {
+        constructor(options) {
+          this.config = {
+            container: null,
+            width: 800,
+            height: 'auto',
+            coverImg: null,
+            coverColor: null,
+            content: null,
+            color: null,
+            fontSize: 16,
+            size: 10,
+          }
+          Object.assign(this.config, options)
+          this._init()
+          this._dragging = false
+          this._lastPoint = null
+        }
+
+        static isBase64(target) {
+          if (typeof target !== 'string') return false
+          if (/^data:image\/\w+;base64,(.+)/.test(target)) {
+            try {
+              atob(target.replace(RegExp.$1), '')
+              return true
+            } catch (error) {
+              return false
+            }
+          }
+          return false
+        }
+
+        static isURL(target) {
+          try {
+            new URL(target)
+            return true
+          } catch (error) {
+            return false
+          }
+        }
+
+        static getOffset(context) {
+          let offsetX = 0
+          let offsetY = 0
+          while (context) {
+            offsetX += context.offsetLeft
+            offsetY += context.offsetTop
+            context = context.offsetParent
+          }
+          return {
+            offsetX,
+            offsetY,
+          }
+        }
+
+        static getPoint(e, context) {
+          const { offsetX = 0, offsetY = 0 } = context || {}
+          const isMouse = /mouse/.test(e.type)
+          const ev = isMouse ? e : e.targetTouches[0]
+          return {
+            x: (ev.pageX || ev.clientX) - offsetX,
+            y: (ev.pageY || ev.clientY) - offsetY,
+          }
+        }
+
+        // 计算从鼠标移动开始到结束时点之间的距离
+        static distance(p1, p2) {
+          return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
+        }
+
+        // 计算从鼠标移动开始到结束时两点之间与x轴的夹角
+        static angle(p1, p2) {
+          return Math.atan2(p2.x - p1.x, p2.y - p1.y)
+        }
+
+        _init() {
+          const { container, width, height } = this.config
+          const cvs = document.createElement('canvas')
+          cvs.width = width
+          cvs.height = height
+          this.ctx = cvs.getContext('2d')
+          this.container = typeof container === 'string' ? document.querySelector(container) : document.body
+          this.cvs = cvs
+          this.container.appendChild(cvs)
+          // 绘制遮罩
+          this._drawCover((img, data) => {
+            this._cover = img
+            if (height === 'auto') {
+              this.config.height = this.cvs.height = data.height
+              this.restore()
+            }
+            // 设置内容
+            this._drawContent((err, fn) => {
+              if (err) throw err
+              // 此处添加涂抹相关逻辑
+              this._bindEvent(fn)
+            })
+          })
+        }
+
+        _setImageSize(img, offsetWidth) {
+          const { width, height } = img
+          const w = offsetWidth || width
+          const h = (w * height) / width
+          return {
+            width: w,
+            height: h,
+          }
+        }
+
+        _drawCover(callback) {
+          const { coverImg, coverColor } = this.config
+          if (coverImg) {
+            const img = this._loadImage(coverImg, (err, e) => {
+              if (err) return
+              const { width, height } = this._setImageSize(img, this.config.width)
+              this.ctx.drawImage(img, 0, 0, width, height)
+              callback(img, { width, height })
+            })
+          } else {
+            this.ctx.save()
+            this.ctx.fillStyle = coverColor || '#eee'
+            this.ctx.fillRect(0, 0, this.config.width, this.config.height)
+            this.ctx.restore()
+            callback()
+          }
+        }
+
+        _loadImage(src, callback) {
+          if (ClipCanvas.isBase64(src) || ClipCanvas.isURL(src)) {
+            const img = new Image()
+            img.src = src
+            if (callback) {
+              img.onload = (e) => callback(null, img)
+              img.onerror = (err) => callback(err)
+            }
+            return img
+          }
+          if (callback) {
+            callback()
+          }
+          return null
+        }
+
+        _drawText(text) {
+          const { color, fontSize = 16, width, height } = this.config
+          this.ctx.save()
+          this.ctx.font = `${fontSize}px Microsoft Yahei`
+          this.ctx.fillStyle = color || '#000'
+          const textLen = this.ctx.measureText(text).width
+          const x = (width - textLen) / 2
+          const y = (height - fontSize) / 2
+          this.ctx.fillText(text, x, y)
+          this.ctx.restore()
+        }
+
+        _drawContent(callback) {
+          const { content, width, height } = this.config
+          const img = this._loadImage(content, (err, e) => {
+            if (err) {
+              callback(err)
+            } else {
+              const handler = (x, y, size, cb) => {
+                this.clip(x, y, size, e || content, cb)
+              }
+              callback(null, handler)
+            }
+          })
+        }
+
+        _drawPath(e, context, callback) {
+          const lastPoint = this._lastPoint
+          if (!lastPoint) return
+          const point = ClipCanvas.getPoint(e, context)
+          const dist = ClipCanvas.distance(lastPoint, point)
+          const ang = ClipCanvas.angle(lastPoint, point)
+          const offset = 10
+          for (let i = 0; i < dist; i++) {
+            // this.ctx.globalCompositeOperation = 'destination-out'
+            callback(lastPoint.x + Math.sin(ang) * i - offset, lastPoint.y + Math.cos(ang) * i - offset)
+          }
+          this._lastPoint = point
+        }
+
+        _bindEvent(callback) {
+          const context = ClipCanvas.getOffset(this.cvs)
+          const startHandler = (e) => {
+            this._dragging = true
+            this._lastPoint = ClipCanvas.getPoint(e, context)
+          }
+          const moveHandler = (e) => {
+            if (this._dragging) {
+              e.preventDefault()
+              this._drawPath(e, context, (x, y) => callback(x, y, this.config.size))
+            }
+          }
+          const endHandler = (e) => {
+            this._dragging = false
+          }
+          this.cvs.addEventListener('mousedown', startHandler)
+          this.cvs.addEventListener('touchstart', startHandler)
+          this.cvs.addEventListener('mousemove', moveHandler)
+          this.cvs.addEventListener('touchmove', moveHandler, {
+            passive: false,
+          })
+          window.addEventListener('mouseup', endHandler)
+          window.addEventListener('touchend', endHandler)
+        }
+
+        clip(x, y, size, fill, callback) {
+          if (!fill) return
+          this.ctx.save()
+          this.ctx.beginPath()
+          this.ctx.arc(x, y, size, Math.PI * 2, false)
+          this.ctx.clip()
+          if (typeof fill === 'string') {
+            this.ctx.clearRect(0, 0, this.config.width, this.config.height)
+            this._drawText(fill)
+          } else {
+            const { width, height } = this._setImageSize(fill, this.config.width)
+            this.ctx.drawImage(fill, 0, 0, width, height)
+          }
+          callback && callback()
+          this.ctx.restore()
+        }
+
+        restore() {
+          if (this._cover) {
+            const { width, height } = this._setImageSize(this._cover, this.config.width)
+            this.ctx.drawImage(this._cover, 0, 0, width, height)
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

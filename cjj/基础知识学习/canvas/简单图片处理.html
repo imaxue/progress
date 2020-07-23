@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简单图片处理</title>
+    <style>
+      #cvs {
+        visibility: hidden;
+        position: absolute;
+        left: 100%;
+      }
+      #list li {
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" id="file" accept="image/*" />
+    <canvas id="cvs"></canvas>
+    <ul id="list"></ul>
+    <script>
+      const cvs = document.getElementById('cvs')
+      const ctx = cvs.getContext('2d')
+      const list = document.getElementById('list')
+      const input = document.getElementById('file')
+      const factory = (callback) => {
+        const result = ctx.getImageData(0, 0, cvs.width, cvs.height)
+        console.log(result)
+        const len = result.data.length / 4
+        for (let i = 0; i < len; i++) {
+          const colors = [result.data[i * 4], result.data[i * 4 + 1], result.data[i * 4 + 2], result.data[i * 4 + 3]]
+          const [r, g, b, a = colors[3]] = callback.apply(null, colors)
+          result.data[i * 4] = r
+          result.data[i * 4 + 1] = g
+          result.data[i * 4 + 2] = b
+          result.data[i * 4 + 3] = a
+        }
+        ctx.putImageData(result, 0, 0)
+      }
+      const opposite = () => factory((...args) => args.slice(0, 3).map((v) => 255 - v))
+      const decolourize = () =>
+        factory((r, g, b) => {
+          const grey = r * 0.3 + g * 0.59 + b * 0.011
+          return new Array(3).fill(grey)
+        })
+      const blackWhite = () =>
+        factory((r, g, b) => {
+          const grey = r * 0.3 + g * 0.59 + b * 0.011
+          return new Array(3).fill(grey > 120 ? 255 : 0)
+        })
+      const homochromatism = (type) => {
+        switch (type) {
+          case 'red':
+            factory((r) => [r, 0, 0])
+            break
+          case 'green':
+            factory((...args) => [0, args[1], 0])
+            break
+          case 'blue':
+            factory((...args) => [0, 0, args[2]])
+            break
+          default:
+            break
+        }
+      }
+      input.onchange = function (e) {
+        const file = e.target.files[0]
+        if (!file) return
+        const fr = new FileReader()
+        fr.readAsDataURL(file)
+        fr.onload = function () {
+          const img = new Image()
+          img.src = this.result
+          img.onload = function () {
+            const width = 500
+            const height = (width / img.width) * img.height
+            cvs.width = width
+            cvs.height = height
+            ctx.drawImage(img, 0, 0, width, height)
+            opposite()
+            outputImage()
+            ctx.drawImage(img, 0, 0, width, height)
+            decolourize()
+            outputImage()
+            ctx.drawImage(img, 0, 0, width, height)
+            homochromatism('red')
+            outputImage()
+            ctx.drawImage(img, 0, 0, width, height)
+            homochromatism('green')
+            outputImage()
+            ctx.drawImage(img, 0, 0, width, height)
+            homochromatism('blue')
+            outputImage()
+            ctx.drawImage(img, 0, 0, width, height)
+            blackWhite()
+            outputImage()
+            ctx.drawImage(img, 0, 0, width, height)
+            factory((r, g, b) => [r > 20 ? r - 20 : r, g, b])
+            outputImage()
+          }
+        }
+      }
+
+      function outputImage() {
+        const img = new Image()
+        img.src = cvs.toDataURL('img/jpg')
+        const li = document.createElement('li')
+        li.appendChild(img)
+        list.appendChild(li)
+      }
+    </script>
+  </body>
+</html>

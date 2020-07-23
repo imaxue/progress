@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>虚拟列表</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .v-list__item {
+        height: 60px;
+      }
+      .v-list__view {
+        height: 600px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="v-list">
+      <div class="v-list__view">
+        <ul class="v-list__inner"></ul>
+      </div>
+    </div>
+    <script>
+      const selector = (target) => document.querySelector(target)
+      const MAX_LEN = 10
+      const LI_HEIGHT = 60
+      const data = Array.from({ length: 10e4 }).map((_, i) => Math.random().toString(16).slice(2))
+      const list = selector('.v-list__inner')
+      const view = selector('.v-list__view')
+      const height = data.length * LI_HEIGHT
+      list.style.height = `${height}px`
+      view.style.height = `${MAX_LEN * LI_HEIGHT}px`
+      const addItems = (data, start) => {
+        const children = data.map((text) => `<li class="v-list__item">${text}</li>`)
+        const padding = start * LI_HEIGHT
+        list.style.paddingTop = `${padding}px`
+        list.innerHTML = children.join('')
+      }
+      let index = 0
+      addItems(data.slice(index, MAX_LEN + index), index)
+      view.addEventListener('scroll', function (e) {
+        const i = Math.min(data.length - MAX_LEN, Math.max(Math.floor(e.target.scrollTop / LI_HEIGHT), 0))
+        if (i != index) {
+          addItems(data.slice(i, MAX_LEN + i), i)
+          index = i
+        }
+      })
+    </script>
+  </body>
+</html>
