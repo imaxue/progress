@@ -31,6 +31,9 @@ $ docker run -d  -p 443:443 -p 80:80 -p 10022:22 -e "GITLAB_SHELL_SSH_PORT=10022
 4. 登录
     初次登录时会直接让重置管理员密码，之后使用root账户登录进行初始化的配置
 
+5. 注意事项
+    - 因为容器内gitlab的ssh服务默认是22端口，而宿主服务的22端口可能是被占用的。所以需要映射一下端口，上面的示例中使用的10022端口。在映射端口之后，也需要修改一个gitlab.rb配置文件中的`gitlab_rails['gitlab_shell_ssh_port']=10022`,然后执行`gitlab-ctl reconfigure`重新配置一下.之后登录或者刷新gitlab会发现，原来的ssh://git@192.168.1.xx/xxx/xxx.git变成了ssh://git@192.168.1.xx:10022/xxx/xxx.git
+
 gitlab常用命令：
 |命令功能 | 执行命令 |
 | :--: | :--: |
