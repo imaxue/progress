@@ -157,3 +157,6 @@ fatal: your current branch appears to be broken
 # 将dist目录发布到gh-pages分支
  git subtree push --prefix=dist origin gh-pages
 ```
+
+- stash
+  - `git stash push -u -m 'message'` 存储（包含未追踪）
