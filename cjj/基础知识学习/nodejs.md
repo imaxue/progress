@@ -35,3 +35,16 @@
 > npm ./node_modules/.bin/babel-node app.js
 ```
 ``transform-object-rest-spread``这个babel插件是支持扩展和剩余运算符的，可以不装
+
+- node连接mysql8.0报错：Client does not support authentication protocol的解决办法
+  + 授权远程连接
+  ```shell
+    mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'WITH GRANT OPTION; 
+    mysql>FLUSH PRIVILEGES;
+  ```
+  + 更改加密规则
+  ```shell
+    mysql>ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
+    mysql>ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+    mysql>FLUSH PRIVILEGES;
+  ```
