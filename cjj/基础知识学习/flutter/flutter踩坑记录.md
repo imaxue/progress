@@ -20,3 +20,56 @@ class MainActivity: FlutterActivity() {
   }
 }
 ```
+
+- vscode 没有显示mumu模拟器连接
+```powershell
+adb connect 127.0.0.1:7555
+```
+> ps: 如果adb命令不可用。在mumu安装目录下的`emulator\nemu\vmonitor\bin`目录下有`adb_serve.exe`
+
+- flutter编译卡在`Running Gradle task 'assembleDebug'.`.需要设置阿里云加速
+  - 打开项目目录下`android/build.gradle`文件，
+  ```gradle
+    buildscript {
+        ext.kotlin_version = '1.3.50'
+        repositories {
+            // google()
+            // jcenter()
+            // 修改处
+            maven { url 'https://maven.aliyun.com/repository/google' }
+            maven { url 'https://maven.aliyun.com/repository/jcenter' }
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        }
+    
+        dependencies {
+            classpath 'com.android.tools.build:gradle:3.5.0'
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        }
+    }
+    
+    allprojects {
+        repositories {
+            // google()
+            // jcenter()
+            // 修改处
+            maven { url 'https://maven.aliyun.com/repository/google' }
+            maven { url 'https://maven.aliyun.com/repository/jcenter' }
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        }
+    }
+  ```
+  - 打开fultter安装目录下`packages/flutter_tools/gradle/flutter.gradle`文件
+  ```gradle
+    buildscript {
+        repositories {
+            // google()
+            // jcenter()
+            maven { url 'https://maven.aliyun.com/repository/google' }
+            maven { url 'https://maven.aliyun.com/repository/jcenter' }
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        }
+        dependencies {
+            classpath 'com.android.tools.build:gradle:3.5.0'
+        }
+    }
+  ```
