@@ -47,3 +47,14 @@ $ sudo systemctl enable docker
 ```bash
 $ docker version
 ```
+- 提示`dokcer-compose: command not found`的解决办法
+```bash
+# 下载文件
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+# 添加执行权限
+sudo chmod +x /usr/local/bin/docker-compose
+# 添加链接
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+# 验证
+docker-compose --version
+```
