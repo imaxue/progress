@@ -73,3 +73,25 @@ adb connect 127.0.0.1:7555
         }
     }
   ```
+- 在使用flutter的时候，无意中点开了某个包的代码，发现`Widget?`这样的代码。然后在自己的代码中试着这样写，结果报错了。一搜索才发现这是sdk更新到2.12.0之后的新特性，于是将pubspec.yaml中的sdk版本号改为2.12.0。然后代码中出现好多依赖引入出现下波浪线提示，于是一个挨一个的将依赖进行升级。后来在stackoverflow发现可以这样操作进行升级
+    ```bash
+      # 切换sdk仓库到stable分支
+      $ flutter channel stable
+      # 升级sdk
+      $ flutter upgrade
+      # To perform a clean reinstall of the packages in your system cache, use pub cache repair
+      # 清除package包缓存并重新安装
+      $ flutter pub cache repair
+      # flutter clean will delete the /build folder
+      # 清除build缓存
+      $ flutter clean
+    ```
+- 项目迁移至null safety
+  ```bash
+  # dart版本要求2.12以上
+  $ dart --version
+  # 检查您的依赖包的迁移状态
+  $ dart pub outdated --mode=null-safety
+  # 升级依赖至支持空安全的最新版本
+  $ dart pub upgrade --null-safety
+  ```
