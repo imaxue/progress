@@ -95,3 +95,47 @@ adb connect 127.0.0.1:7555
   # 升级依赖至支持空安全的最新版本
   $ dart pub upgrade --null-safety
   ```
+- 使用`ListTile.divideTiles`的时候提示`type 'Null' is not a subtype of type 'ListTile' in type cast`,原因是在使用`List.map`方法时没有传入泛型参数。**map后面要写widget类型 不然 因为闭包的原因无法识别**
+```dart
+// 报错代码
+ListTile.divideTiles(
+  context: context,
+  tiles: [...].map(
+    (e) => ListTile(
+      title: Text('title'),
+    )
+  ),
+).toList();
+// 正确代码
+ListTile.divideTiles(
+  context: context,
+  tiles: [...].map<Widget>(
+    (e) => ListTile(
+      title: Text('title'),
+    )
+  ),
+).toList();
+```
+- 执行`flutter doctor --android-licenses`报错
+提示：`Exception in thread "main" java.lang.NoClassDefFoundError...`
+解决办法：从android studio的Android SDK Manager中安装`Android SDK Command-line tools`
+    ```
+        1. tools > sdk manager
+        2. 依次选择Appearance & Behavior > System Settings > Android SDK
+        3. 选择SDK Tools页签
+        4. 勾选Android SDK Command-line tools并确认
+    ```
+- 提示android studio未安装
+```bash
+Doctor summary (to see all details, run flutter doctor -v):
+[√] Flutter (Channel stable, 2.2.0, on Microsoft Windows [Version 10.0.19042.985], locale zh-CN)
+[√] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+[√] Chrome - develop for the web
+[!] Android Studio (not installed)
+[√] VS Code
+[√] Connected device (2 available)
+```
+如果已经安装有android studio这种情况需要配置一下路径
+```bash
+flutter config --android-studio-dir="C:\Program Files\Android\Android Studio"
+```
