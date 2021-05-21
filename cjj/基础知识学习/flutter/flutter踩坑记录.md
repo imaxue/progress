@@ -139,3 +139,26 @@ Doctor summary (to see all details, run flutter doctor -v):
 ```bash
 flutter config --android-studio-dir="C:\Program Files\Android\Android Studio"
 ```
+- 项目中Android Gradle使用的3.5版本，而依赖的包中使用了新版本的功能导致出现错误提示`unexpected element <queries> found in <manifest>.`；解决办法是直接升级Android Gradle到4.1.0版本。
+```vim
+# android/build.gradle
+buildscript {
+    ext.kotlin_version = '1.4.20'
+    repositories {
+       ...
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+# android/gradle/wrapper/gradle-wrapper.properties
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-all.zip
+
+```
