@@ -162,3 +162,7 @@ zipStorePath=wrapper/dists
 distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-all.zip
 
 ```
+
+- 安装升级的时候卡死，提示`Waiting for another flutter command to release the startup lock`
+  + linux: `killall -9 dart`
+  + windows系统：`taskkill /F /IM dart.exe`
