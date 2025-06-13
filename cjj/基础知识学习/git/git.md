@@ -160,3 +160,8 @@ fatal: your current branch appears to be broken
 
 - stash
   - `git stash push -u -m 'message'` 存储（包含未追踪）
+
+- 查看本地分支基于哪个分支创建
+  ```bash
+  git reflog show --date=local | grep branch_name
+  ```
