@@ -15,6 +15,6 @@
     "egg-sequelize": "^3.1.5"
   },
   "devDependencies": {
-    "egg-bin": "^4.8.1"
+    "egg-bin": "^4.20.0"
   }
 }
