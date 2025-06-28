@@ -12,7 +12,7 @@
     "core-js": "^2.6.5",
     "element-ui": "^2.8.2",
     "jquery": "^3.4.0",
-    "jquery.terminal": "^2.4.1",
+    "jquery.terminal": "^2.31.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
